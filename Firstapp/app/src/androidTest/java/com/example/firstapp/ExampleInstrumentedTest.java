@@ -63,16 +63,19 @@ public class ExampleInstrumentedTest {
     /*************************************************
                      TEST CUJS for GM
      *************************************************/
-    private static final String[] directions = {"editable;Search here;Googleplex", "clickable;Amphitheatre", "clickable;Directions", "editable;Choose starting", "clickable;Your location;strict"};
-    private static final String[] nav = {"editable;Search here;Googleplex", "clickable;Amphitheatre", "clickable;Directions", "editable;Choose starting", "clickable;Your location;strict", "clickable;Start"};
-    private static final String[] drinks = {"clickable;Cheap drinks", "clickable;Top rated", "clickable;Open now", "clickable;View map", "clickableImage" };
+    private static final String[] directions = {"edit;Search here;Googleplex", "click;Amphitheatre", "click;Directions", "click;Choose starting", "click;Your location;strict"};
+    private static final String[] nav = {"edit;Search here;Googleplex", "click;Amphitheatre", "click;Directions", "click;Choose starting", "click;Your location;strict", "click;Start"};
+    private static final String[] drinks = {"click;Cheap drinks", "click;Top rated", "click;Open now", "click;View map", "clickImage;your location"};
+    private static final String[] change_of_heart = {"click;Takeout", "click;Billy Barooz", "clickImage;Search;strict", "edit;Search here;McDonalds", "click;West Kirby", "click;DIRECTIONS"};
+    private static final String[][] all_tests = {directions, drinks, change_of_heart};
+
 
 
     /*************************************************
                        USER INPUT:
      *************************************************/
     private static final String PACKAGE = MAPS_PACKAGE;
-    private static final String[] CUJ = directions;
+    private static String[] CUJ = change_of_heart;
 
 
 
@@ -80,15 +83,14 @@ public class ExampleInstrumentedTest {
     /*************************************************
                      Helper Functions:
      *************************************************/
+
+
     private UiObject2 lowestClickableAncestor(UiObject2 object) throws invalidInputException {
         if (object == null) {
             throw new invalidInputException("passed object is null. Consider increasing TIMEOUT parameter");
         }
-        while (object != null && !object.isClickable()) {
+        while (!object.isClickable()) {
             object = object.getParent();
-        }
-        if (object == null) {
-            throw new invalidInputException("located object doesn't have a clickable ancestor");
         }
         return object;
     }
@@ -96,15 +98,27 @@ public class ExampleInstrumentedTest {
         String resourceName = object.getResourceName();
         String className = object.getClassName();
         String text = object.getText();
+        String contentDescription = object.getContentDescription();
+
         //String contentDescription = object.getContentDescription();
 
-        //UiSelector selector = new UiSelector();
+        //For some reason, UiSelectors don't work properly unless fields are set during
+        // instantiation, so we consider each case separately
         UiSelector selector = null;
-        if (resourceName != null) {
+        if (resourceName != null && text != null) {
+            selector = new UiSelector().resourceId(resourceName).text(text).className(className);
+        } else if (resourceName != null && contentDescription != null) {
+            selector = new UiSelector().resourceId(resourceName).description(contentDescription).className(className);
+        } else if (contentDescription != null && text != null) {
+            selector = new UiSelector().description(contentDescription).text(text).className(className);
+        } else if (resourceName != null) {
             selector = new UiSelector().resourceId(resourceName).className(className);
         } else if (text != null) {
             selector = new UiSelector().text(text).className(className);
+        } else if (contentDescription != null) {
+            selector = new UiSelector().description(contentDescription).className(className);
         }
+
         
         return device.findObject(selector);
     }
@@ -168,24 +182,32 @@ public class ExampleInstrumentedTest {
         whether a clickable is a textview or button?
         reference to a UIObject?
      */
-
-
-
     @Test
-    public void master_test() throws UiObjectNotFoundException, InterruptedException, RemoteException, invalidInputException {
+    public void validate_change() throws InterruptedException, invalidInputException, UiObjectNotFoundException, RemoteException {
+        for (String[] test : all_tests) {
+            CUJ = test;
+            CUJ_test();
+        }
+    }
+
+
+    //@Test
+    public void CUJ_test() throws UiObjectNotFoundException, InterruptedException, RemoteException, invalidInputException {
         //Caching run:
         launchApp(PACKAGE);
+        String[][] cached_tokens = new String[CUJ.length][];
         UiObject[] cached_objects = new UiObject[CUJ.length];
         for (int i = 0; i < CUJ.length; i++) {
             String action = CUJ[i];
             //System.out.println("INDEX " + i + " says " + action);
             String[] tokens = action.split(";");
-            if (!(2 <= tokens.length && tokens.length <= 3)) {
+            cached_tokens[i] = tokens;
+            if (!(2 <= tokens.length && tokens.length <= 4)) {
                 throw new invalidInputException("input at index " + i + " is of an invalid length");
             }
             boolean strict = (tokens[tokens.length - 1].equals("strict"));
             switch (tokens[0]) {
-                case "clickable":
+                case "click":
                     String a_displayed = tokens[1];
                     UiObject2 a_object2 = null;
                     if (strict) {
@@ -199,39 +221,33 @@ public class ExampleInstrumentedTest {
                     a_object.click();
                     break;
 
-
-                case "editable":
-                    switch (tokens.length) {
-                        case 2:
-                            String b_displayed = tokens[1];
-                            UiObject2 b_object2 = null;
-                            if (strict) {
-                                b_object2 = device.wait(Until.findObject(By.text(b_displayed)), TIMEOUT);
-                            } else {
-                                b_object2 = device.wait(Until.findObject(By.textContains(b_displayed)), TIMEOUT);
-                            }
-
-                            //lowestClickableAncestor(b_object2).click();
-                            UiObject b_object = castToObject(b_object2);
-                            cached_objects[i] = b_object;
-                            b_object.click();
-                            break;
-
-                        case 3:
-                            String c_displayed = tokens[1];
-                            String c_entered = tokens[2];
-                            UiObject2 c_object2 = null;
-                            if (strict) {
-                                c_object2 = device.wait(Until.findObject(By.clazz("android.widget.TextView").text(c_displayed)), TIMEOUT);
-                            } else {
-                                c_object2 = device.wait(Until.findObject(By.clazz("android.widget.TextView").textContains(c_displayed)), TIMEOUT);
-                            }
-                            UiObject c_object = getEditableObject(c_object2);
-                            cached_objects[i] = c_object;
-                            c_object.waitForExists(TIMEOUT);
-                            c_object.legacySetText(c_entered);
-                            break;
+                case "clickImage":
+                    String b_description = tokens[1];
+                    UiObject2 b_object2 = null;
+                    if (strict) {
+                        b_object2 = device.wait(Until.findObject(By.desc(b_description)), TIMEOUT);
+                    } else {
+                        b_object2 = device.wait(Until.findObject(By.descContains(b_description)), TIMEOUT);
                     }
+                    UiObject b_object = castToObject(b_object2);
+                    cached_objects[i] = b_object;
+                    b_object.click();
+                    break;
+
+
+                case "edit":
+                    String c_displayed = tokens[1];
+                    String c_entered = tokens[2];
+                    UiObject2 c_object2 = null;
+                    if (strict) {
+                        c_object2 = device.wait(Until.findObject(By.text(c_displayed)), TIMEOUT);
+                    } else {
+                        c_object2 = device.wait(Until.findObject(By.textContains(c_displayed)), TIMEOUT);
+                    }
+                    UiObject c_object = getEditableObject(c_object2);
+                    cached_objects[i] = c_object;
+                    c_object.waitForExists(TIMEOUT);
+                    c_object.legacySetText(c_entered);
                     break;
 
 
@@ -240,12 +256,12 @@ public class ExampleInstrumentedTest {
             }
 
         }
+        //sleep(5000);
         //recorded run:
         launchApp(PACKAGE);
         for (int i = 0; i < CUJ.length; i++) {
-            String action = CUJ[i];
-            String[] tokens = action.split(";");
-            if(tokens[0].equals("editable") && tokens.length == 3) {
+            String[] tokens = cached_tokens[i];
+            if(tokens[0].equals("edit")) {
                 UiObject object = cached_objects[i];
                 object.waitForExists(TIMEOUT);
                 object.legacySetText(tokens[2]);
