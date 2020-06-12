@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+PRE_CUJ=${1?ERROR: no Pre CUJ given}
+POST_CUJ=${2?ERROR: no Recorded CUJ given}
+
+adb logcat -c
+
+sed -i -e "s/static String.*pre_CUJ = .*;/static String[] pre_CUJ = $PRE_CUJ;/g" ./app/src/androidTest/java/com/example/firstapp/ExampleInstrumentedTest.java 
+sed -i -e "s/static String.*post_CUJ = .*;/static String[] post_CUJ = $POST_CUJ;/g" ./app/src/androidTest/java/com/example/firstapp/ExampleInstrumentedTest.java 
+
+
+
+#./gradlew connectedAndroidTest
+./gradlew installDebugAndroidTest
+
+./../../adb shell screenrecord --bit-rate 48M /sdcard/demo8.mp4 &
+PID=$!
+
+adb shell am instrument -w com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner
+
+kill $PID 
+
+(adb logcat -s "iterations" -v raw -d | sed -n -e '/^ITERATION/p') > action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+(adb logcat -s "averages" -v raw -d | sed -n -e '/^AVERAGES/p') >> action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+(adb logcat -s "median" -v raw -d | sed -n -e '/^MEDIAN/p') >> action_time_stamps.txt
+cat action_time_stamps.txt
+
+
+#sed -i -e "s/pre_CUJ = $PRE_CUJ/pre_CUJ = null/" ./app/src/androidTest/java/com/example/firstapp/ExampleInstrumentedTest.java 
+#sed -i -e "s/post_CUJ = $POST_CUJ/post_CUJ = null/" ./app/src/androidTest/java/com/example/firstapp/ExampleInstrumentedTest.java 
+
+

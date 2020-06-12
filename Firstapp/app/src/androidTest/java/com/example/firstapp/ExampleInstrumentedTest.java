@@ -3,7 +3,10 @@ package com.example.firstapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
+import android.os.SystemClock;
+import android.util.Log;
 
+import androidx.core.content.res.TypedArrayUtils;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -23,7 +26,11 @@ import androidx.test.uiautomator.Until;
 
 import junit.runner.Version;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.time.Clock;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 
@@ -47,13 +54,10 @@ public class ExampleInstrumentedTest {
     private static final String MAPS_PACKAGE = "com.google.android.apps.maps";
     private static final String YT_PACKAGE = "com.google.android.youtube";
 
-    private static final int TIMEOUT = 3000;
+    private static final int TIMEOUT = 6000;
     private static final String SEARCH = "Googleplex";
+    private static final int NUM_ITERATIONS = 3;
     private UiDevice device;
-    //target value for searchForTargetNumber()
-    private static Integer TARGET = 2;
-    //Celebration message to be displayed when target is found
-    private static String CELEBRATION = "YAYYYY! " + TARGET + "!!";
     class invalidInputException extends Exception {
         public invalidInputException(String message) {
             super(message);
@@ -63,19 +67,32 @@ public class ExampleInstrumentedTest {
     /*************************************************
                      TEST CUJS for GM
      *************************************************/
-    private static final String[] directions = {"edit;Search here;Googleplex", "click;Amphitheatre", "click;Directions", "click;Choose starting", "click;Your location;strict"};
-    private static final String[] nav = {"edit;Search here;Googleplex", "click;Amphitheatre", "click;Directions", "click;Choose starting", "click;Your location;strict", "click;Start"};
-    private static final String[] drinks = {"click;Cheap drinks", "click;Top rated", "click;Open now", "click;View map", "clickImage;your location"};
-    private static final String[] change_of_heart = {"click;Takeout", "click;Billy Barooz", "clickImage;Search;strict", "edit;Search here;McDonalds", "click;West Kirby", "click;DIRECTIONS"};
+    private static final String[] directions = {"start", "edit;Search here;Googleplex", "click;Amphitheatre", "click;Directions", "click;Choose starting", "click;Your location;strict"};
+    private static final String[] nav = {"start", "edit;Search here;Googleplex", "click;Amphitheatre", "click;Directions", "click;Choose starting", "click;Your location;strict", "click;Start"};
+    private static final String[] drinks = {"start", "click;Cheap drinks", "click;Top rated", "click;Open now", "click;View map", "clickImage;your location"};
+    private static final String[] change_of_heart = {"start", "click;Takeout", "click;Billy Barooz", "clickImage;Search;strict", "edit;Search here;McDonalds", "click;West Kirby", "click;DIRECTIONS"};
     private static final String[][] all_tests = {directions, drinks, change_of_heart};
 
 
 
     /*************************************************
                        USER INPUT:
+     PACKAGE - package to be used
+     pre_CUJ - preparatory actions (unrecorded)
+     post_CUJ - recorded actions
      *************************************************/
     private static final String PACKAGE = MAPS_PACKAGE;
-    private static String[] CUJ = change_of_heart;
+    private static String[] pre_CUJ = {};
+    private static String[] post_CUJ = {"start", "edit;Search here;Cold Bay"};
+
+
+
+
+
+    private static String[] CUJ = null;
+    private static String[][] cached_tokens = null;
+    private static UiObject[] cached_objects = null;
+
 
 
 
@@ -119,7 +136,7 @@ public class ExampleInstrumentedTest {
             selector = new UiSelector().description(contentDescription).className(className);
         }
 
-        
+
         return device.findObject(selector);
     }
 
@@ -127,10 +144,33 @@ public class ExampleInstrumentedTest {
         return castToObject(lowestClickableAncestor(object));
     }
 
+    private void clearRecentApps() throws RemoteException, UiObjectNotFoundException, InterruptedException {
+        //Clear recent Apps
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        device.pressRecentApps();
 
 
+        /* CLEAR LAST APP ON PIXEL:*/
+        UiObject maps_button = device.findObject(new UiSelector().className("android.view.View").resourceId("com.google.android.apps.nexuslauncher:id/snapshot").instance(0));
+        if (maps_button.waitForExists(TIMEOUT)) {
+            maps_button.swipeUp(400);
+        } else {
+            device.pressHome();
+        }
 
-    private void launchApp(String Package) throws RemoteException, UiObjectNotFoundException, InterruptedException {
+
+        /*CLEAR LAST APP ON S10
+        UiObject maps_button = device.findObject(new UiSelector().text("Close all"));
+        if (maps_button.waitForExists(TIMEOUT)) {
+            maps_button.click();
+        } else {
+            device.pressHome();
+        }*/
+
+    }
+    
+
+    private long launchApp(String Package) throws RemoteException, UiObjectNotFoundException, InterruptedException {
 
 
         // Initialize UiDevice instance
@@ -144,36 +184,127 @@ public class ExampleInstrumentedTest {
         assertThat(launcherPackage, notNullValue());
         device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), TIMEOUT);
 
-        //Clear recent Apps
-        device.pressRecentApps();
-        UiObject maps_button = device.findObject(new UiSelector().className("android.view.View").resourceId("com.google.android.apps.nexuslauncher:id/snapshot").instance(0));
-
-        if (maps_button.waitForExists(TIMEOUT)) {
-            maps_button.swipeUp(400);
-        } else {
-            device.pressHome();
-        }
-        sleep(1000);
 
         // Launch the app
         Context context = ApplicationProvider.getApplicationContext();
         final Intent intent = context.getPackageManager().getLaunchIntentForPackage(Package);
         // Clear out any previous instances
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        //sleep(1000);
+        long start = SystemClock.elapsedRealtime();
+
         context.startActivity(intent);
 
         // Wait for the app to appear
         device.wait(Until.hasObject(By.pkg(Package).depth(0)), TIMEOUT);
 
+        return start;
     }
-    /*
-    @Test
-    public void YT() throws UiObjectNotFoundException, RemoteException {
-        launchApp(YT_PACKAGE);
-        UiObject first_desitnation = device.findObject(new UiSelector().className("android.widget.ViewGroup").textContains("Live PD"));
-        first_desitnation.waitForExists(TIMEOUT);
-        first_desitnation.click();
-    }*/
+    public void start_recording () throws Exception {
+        /*Using 3rd party software:
+        launchApp("us.rec.screen");
+        device.findObject(new UiSelector().className("android.widget.ImageButton").resourceId("us.rec.screen:id/fab_record")).click();
+        device.findObject(new UiSelector().className("android.widget.Button").resourceId("us.rec.screen:id/simple_dialog_button_ok")).click();
+        device.findObject(new UiSelector().className("android.widget.Button").resourceId("android:id/button1")).click();
+        */
+        try{
+
+            Process su = Runtime.getRuntime().exec("su");
+
+            DataOutputStream outputStream = new DataOutputStream(su.getOutputStream());
+
+            outputStream.writeBytes("screenrecord --time-limit 10 /sdcard/MyVideo.mp4\n");
+            outputStream.flush();
+
+            outputStream.writeBytes("exit\n");
+            outputStream.flush();
+            su.waitFor();
+        }catch(IOException e){
+            throw new Exception(e);
+        }catch(InterruptedException e){
+            throw new Exception(e);
+        }
+
+    }
+    public void stop_recording () throws Exception {
+        /*Using 3rd party software:
+        launchApp("us.rec.screen");
+        device.findObject(new UiSelector().className("android.widget.ImageButton").resourceId("us.rec.screen:id/fab_record")).click();*/
+    }
+
+    public long execute_cached_action(UiObject object, String[] tokens) throws UiObjectNotFoundException {
+        object.waitForExists(TIMEOUT);
+        long start = SystemClock.elapsedRealtime();
+        if (tokens[0].equals("edit")) {
+            object.legacySetText(tokens[2]);
+        } else {
+            object.click();
+        }
+        return start;
+    }
+
+    public long sumArr(long[] arr) {
+        long total = 0;
+        for (long t : arr) total += t;
+        return total;
+    }
+    public void execute_uncached_action(int i, String[] tokens) throws invalidInputException, UiObjectNotFoundException {
+        boolean strict = (tokens[tokens.length - 1].equals("strict"));
+        switch (tokens[0]) {
+            case "click":
+                String a_displayed = tokens[1];
+                UiObject2 a_object2 = null;
+                if (strict) {
+                    a_object2 = device.wait(Until.findObject(By.text(a_displayed)), TIMEOUT);
+                } else {
+                    a_object2 = device.wait(Until.findObject(By.textContains(a_displayed)), TIMEOUT);
+                }
+                ///lowestClickableAncestor(a_object2).click();
+                UiObject a_object = castToObject(a_object2);
+                cached_objects[i] = a_object;
+                a_object.click();
+                break;
+
+            case "clickImage":
+                String b_description = tokens[1];
+                UiObject2 b_object2 = null;
+                if (strict) {
+                    b_object2 = device.wait(Until.findObject(By.desc(b_description)), TIMEOUT);
+                } else {
+                    b_object2 = device.wait(Until.findObject(By.descContains(b_description)), TIMEOUT);
+                }
+                UiObject b_object = castToObject(b_object2);
+                cached_objects[i] = b_object;
+                b_object.click();
+                break;
+
+
+            case "edit":
+                String c_displayed = tokens[1];
+                String c_entered = tokens[2];
+                UiObject2 c_object2 = null;
+                if (strict) {
+                    c_object2 = device.wait(Until.findObject(By.text(c_displayed)), TIMEOUT);
+                } else {
+                    c_object2 = device.wait(Until.findObject(By.textContains(c_displayed)), TIMEOUT);
+                }
+                UiObject c_object = getEditableObject(c_object2);
+                cached_objects[i] = c_object;
+                c_object.waitForExists(TIMEOUT);
+                c_object.legacySetText(c_entered);
+                break;
+
+
+            default:
+                throw new invalidInputException("input at index " + i + " has an invalid first token");
+        }
+    }
+
+    public long round_time_up(long t) {
+        return ((1000 + t) / 1000) * 1000;
+    }
+
     /*************************************************
                      MASTER TEST
      *************************************************/
@@ -182,109 +313,151 @@ public class ExampleInstrumentedTest {
         whether a clickable is a textview or button?
         reference to a UIObject?
      */
-    @Test
-    public void validate_change() throws InterruptedException, invalidInputException, UiObjectNotFoundException, RemoteException {
-        for (String[] test : all_tests) {
-            CUJ = test;
-            CUJ_test();
-        }
-    }
-
-
     //@Test
-    public void CUJ_test() throws UiObjectNotFoundException, InterruptedException, RemoteException, invalidInputException {
-        //Caching run:
-        launchApp(PACKAGE);
-        String[][] cached_tokens = new String[CUJ.length][];
-        UiObject[] cached_objects = new UiObject[CUJ.length];
-        for (int i = 0; i < CUJ.length; i++) {
-            String action = CUJ[i];
-            //System.out.println("INDEX " + i + " says " + action);
-            String[] tokens = action.split(";");
-            cached_tokens[i] = tokens;
-            if (!(2 <= tokens.length && tokens.length <= 4)) {
-                throw new invalidInputException("input at index " + i + " is of an invalid length");
-            }
-            boolean strict = (tokens[tokens.length - 1].equals("strict"));
-            switch (tokens[0]) {
-                case "click":
-                    String a_displayed = tokens[1];
-                    UiObject2 a_object2 = null;
-                    if (strict) {
-                        a_object2 = device.wait(Until.findObject(By.text(a_displayed)), TIMEOUT);
-                    } else {
-                        a_object2 = device.wait(Until.findObject(By.textContains(a_displayed)), TIMEOUT);
-                    }
-                    ///lowestClickableAncestor(a_object2).click();
-                    UiObject a_object = castToObject(a_object2);
-                    cached_objects[i] = a_object;
-                    a_object.click();
-                    break;
-
-                case "clickImage":
-                    String b_description = tokens[1];
-                    UiObject2 b_object2 = null;
-                    if (strict) {
-                        b_object2 = device.wait(Until.findObject(By.desc(b_description)), TIMEOUT);
-                    } else {
-                        b_object2 = device.wait(Until.findObject(By.descContains(b_description)), TIMEOUT);
-                    }
-                    UiObject b_object = castToObject(b_object2);
-                    cached_objects[i] = b_object;
-                    b_object.click();
-                    break;
-
-
-                case "edit":
-                    String c_displayed = tokens[1];
-                    String c_entered = tokens[2];
-                    UiObject2 c_object2 = null;
-                    if (strict) {
-                        c_object2 = device.wait(Until.findObject(By.text(c_displayed)), TIMEOUT);
-                    } else {
-                        c_object2 = device.wait(Until.findObject(By.textContains(c_displayed)), TIMEOUT);
-                    }
-                    UiObject c_object = getEditableObject(c_object2);
-                    cached_objects[i] = c_object;
-                    c_object.waitForExists(TIMEOUT);
-                    c_object.legacySetText(c_entered);
-                    break;
-
-
-                default:
-                    throw new invalidInputException("input at index " + i + " has an invalid first token");
-            }
-
+    public void validate_change() throws Exception {
+        for (String[] test : all_tests) {
+            pre_CUJ = null;
+            post_CUJ = test;
+            //CUJ_test();
         }
-        //sleep(5000);
-        //recorded run:
-        launchApp(PACKAGE);
+    }
+
+    @Test
+    public void cache_CUJ_test() throws Exception {
+
+        /******************************
+         * PERFORM CACHING RUN :
+         ******************************/
+        long start = SystemClock.elapsedRealtime();
+        long pre_offset = 0;
+        CUJ = new String[pre_CUJ.length + post_CUJ.length];
+        if (pre_CUJ != null) {
+            System.arraycopy(pre_CUJ, 0, CUJ, 0, pre_CUJ.length);
+        }
+        System.arraycopy(post_CUJ, 0, CUJ, pre_CUJ.length, post_CUJ.length);
+        //PACKAGE = CUJ[0];
+        clearRecentApps();
+
+
+        cached_tokens = new String[CUJ.length][];
+        cached_objects = new UiObject[CUJ.length];
         for (int i = 0; i < CUJ.length; i++) {
-            String[] tokens = cached_tokens[i];
-            if(tokens[0].equals("edit")) {
-                UiObject object = cached_objects[i];
-                object.waitForExists(TIMEOUT);
-                object.legacySetText(tokens[2]);
+            if(i == pre_CUJ.length) {
+                pre_offset = round_time_up(SystemClock.elapsedRealtime() - start);
+            }
+            if (i == 0) {
+                launchApp(PACKAGE);
             } else {
-                UiObject object = cached_objects[i];
-                object.waitForExists(TIMEOUT);
-                cached_objects[i].click();
+                String action = CUJ[i];
+                String[] tokens = action.split(";");
+                cached_tokens[i] = tokens;
+                if (!(2 <= tokens.length && tokens.length <= 4)) {
+                    throw new invalidInputException("input at index " + i + " is of an invalid length");
+                }
+                execute_uncached_action(i, tokens);
             }
         }
+        sleep(5000); //leeway for loading
+
+        long checkpoint = SystemClock.elapsedRealtime();
+        long interval = round_time_up(10000 + checkpoint - start); //allot each subsequent run time_to_complete_caching_run + 10 seconds
+
+        /*******************************
+         * PERFORM RUN USING CACHED DATA :
+         *******************************/
+        //recorded runs:
+        int iter = -1;
+        long[][] all_stamps = new long[NUM_ITERATIONS][];
+        while (++iter < NUM_ITERATIONS) {
+
+            clearRecentApps();
+
+            /******************************
+             * EXECUTE PREPARATORY ACTIONS :
+             ******************************/
+
+            for (int i = 0; i < pre_CUJ.length; i++) {
+                if (i == 0) {
+                    launchApp(PACKAGE);
+                } else {
+                    String[] tokens = cached_tokens[i];
+                    UiObject object = cached_objects[i];
+                    execute_cached_action(object, tokens);
+                }
+            }
+
+            /******************************
+             * EXECUTE RECORDED ACTIONS :
+             ******************************/
+
+            long[] stamps = new long[post_CUJ.length - 1];
+            long stamp_start_time = SystemClock.elapsedRealtime();
+
+
+
+            //start_recording();
+            long waitFor = (iter + 1) * interval + pre_offset + start; //when this run should begin
+
+            while (SystemClock.elapsedRealtime() < waitFor) {}
+            for (int i = pre_CUJ.length; i < CUJ.length; i++) {
+                if (i == 0) {
+                    stamp_start_time = launchApp(PACKAGE);
+                    stamps[i - pre_CUJ.length] = SystemClock.elapsedRealtime() - stamp_start_time;
+                } else {
+                    String[] tokens = cached_tokens[i];
+                    UiObject object = cached_objects[i];
+                    long available_time = execute_cached_action(object, tokens);
+                    stamps[i - 1 - pre_CUJ.length] = available_time - stamp_start_time;
+                    stamp_start_time = available_time;
+                }
+            }
+            sleep(5000); //leeway for loading
+            //stop_recording();
+
+
+
+
+            Log.i("iterations", "ITERATION " + iter + ": " + Arrays.toString(stamps) + ", TOTAL: " + sumArr(stamps));
+            all_stamps[iter] = stamps;
+        }
+        /******************************
+         * COMPUTE AND REPORT METRICS:
+         ******************************/
+        long[] averages = new long[post_CUJ.length - 1];
+        long[][] copy = new long[all_stamps.length][all_stamps[0].length];
+         for (int i = 0; i < averages.length; i++) {
+             long sum = 0;
+             for (iter = 0; iter < NUM_ITERATIONS; iter++) {
+                 sum += all_stamps[iter][i];
+                 copy[iter][i] = all_stamps[iter][i];
+             }
+             averages[i] = sum / NUM_ITERATIONS;
+         }
+        long total = 0;
+        for (long t : averages) total += t;
+
+
+
+        Arrays.sort(copy, (a,b) -> Long.compare(sumArr(a), sumArr(b)));
+        long[] median = copy[copy.length / 2];
+        int median_idx = 0;
+        for (int i = 0; i < all_stamps.length; i++) {
+            long[] run = all_stamps[i];
+            if (Arrays.equals(median, run)) median_idx = i;
+        }
+
+        long clip_start = (median_idx + 1) * interval + pre_offset;
+        long clip_end =  (median_idx + 2) * interval + pre_offset;;
+
+        Log.i("averages", "AVERAGES: " + Arrays.toString(averages) + ", TOTAL: " + total);
+
+        Log.i("median", "MEDIAN RUN: " + median_idx);
+        Log.i("median", "MEDIAN RUN STARTS @: " + clip_start);
+        Log.i("median", "MEDIAN RUN ENDS @: " + clip_end);
+
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
