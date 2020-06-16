@@ -17,10 +17,6 @@ public class MapsInstrumentedTest {
     private static final int TIMEOUT = 5000;
     private static final String SEARCH = "Googleplex";
 
-
-
-
-
     @Test
     public void getDirections() throws InterruptedException, UiObjectNotFoundException {
         device = UtilityMethods.launchApp(MAPS_PACKAGE, TIMEOUT);
