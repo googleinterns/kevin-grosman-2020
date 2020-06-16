@@ -2,12 +2,17 @@ package com.example.firstapp;
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiObject2;
 import androidx.test.uiautomator.Until;
+
+import java.io.IOException;
+
 import static java.lang.Thread.sleep;
 
 
@@ -31,6 +36,12 @@ public class ExampleInstrumentedTest {
     //Celebration message to be displayed when target is found
     private static String CELEBRATION = "YAYYYY! " + TARGET + "!!";
 
+
+    @Before
+    public void get_device() {
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+    }
+
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -41,8 +52,9 @@ public class ExampleInstrumentedTest {
 
 
     @Test
-    public void searchForTargetNumber() throws InterruptedException {
-        device = UtilityMethods.launchApp(BASIC_SAMPLE_PACKAGE, TIMEOUT);
+    public void searchForTargetNumber() throws InterruptedException, IOException {
+        ShellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
+        ShellUtility.launchApp(device, BASIC_SAMPLE_PACKAGE, TIMEOUT);
 
         //pressing count button:
         //UiObject countButton = device.findObject(new UiSelector().className("android.widget.Button").instance(1));
