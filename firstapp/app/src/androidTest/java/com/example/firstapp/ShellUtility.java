@@ -19,19 +19,19 @@ import java.io.IOException;
 import static java.lang.Thread.sleep;
 
 
-public class UtilityMethods {
-    /*
-    Launches the specified App on the specified device and returns the time just before the app was
-    launched--to be used later for timing startup.
+public class ShellUtility {
+    /**
+     * Launches the specified App on the specified device and returns the time just before the app was
+     * launched--to be used later for timing startup.
      */
-    static long launchApp(UiDevice device, String pkg, int timeout) throws InterruptedException {
+    public static long launchApp(UiDevice device, String pkg, int timeoutMs) throws InterruptedException {
         // Start from the home screen
         device.pressHome();
 
         // Wait for launcher
         final String launcherPackage = device.getLauncherPackageName();
         Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
-        device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeout);
+        device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
 
         // Launch the app
         Context context = ApplicationProvider.getApplicationContext();
@@ -47,16 +47,15 @@ public class UtilityMethods {
         context.startActivity(intent);
 
         // Wait for the app to appear
-        device.wait(Until.hasObject(By.pkg(pkg).depth(0)), timeout);
+        device.wait(Until.hasObject(By.pkg(pkg).depth(0)), timeoutMs);
 
         return start;
 
     }
 
 
-    static void force_quit_app(String pkg) throws IOException, InterruptedException {
-        Runtime.getRuntime().exec(new String[] {"am", "force-stop", pkg});
-        sleep(5000);
+    public static void forceQuitApp(String pkg) throws IOException, InterruptedException {
+        new ProcessBuilder("am", "force-stop", pkg).start();
     }
 
 

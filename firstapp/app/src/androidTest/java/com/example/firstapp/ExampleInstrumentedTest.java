@@ -10,6 +10,9 @@ import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiObject2;
 import androidx.test.uiautomator.Until;
+
+import java.io.IOException;
+
 import static java.lang.Thread.sleep;
 
 
@@ -49,8 +52,9 @@ public class ExampleInstrumentedTest {
 
 
     @Test
-    public void searchForTargetNumber() throws InterruptedException {
-        UtilityMethods.launchApp(device, BASIC_SAMPLE_PACKAGE, TIMEOUT);
+    public void searchForTargetNumber() throws InterruptedException, IOException {
+        ShellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
+        ShellUtility.launchApp(device, BASIC_SAMPLE_PACKAGE, TIMEOUT);
 
         //pressing count button:
         //UiObject countButton = device.findObject(new UiSelector().className("android.widget.Button").instance(1));

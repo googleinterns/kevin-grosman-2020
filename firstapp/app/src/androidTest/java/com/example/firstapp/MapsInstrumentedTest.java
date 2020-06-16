@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import java.io.IOException;
+
 
 @RunWith(AndroidJUnit4.class)
 public class MapsInstrumentedTest {
@@ -26,8 +28,9 @@ public class MapsInstrumentedTest {
     }
 
     @Test
-    public void getDirections() throws InterruptedException, UiObjectNotFoundException {
-        UtilityMethods.launchApp(device, MAPS_PACKAGE, TIMEOUT);
+    public void getDirections() throws InterruptedException, UiObjectNotFoundException, IOException {
+        ShellUtility.forceQuitApp(MAPS_PACKAGE);
+        ShellUtility.launchApp(device, MAPS_PACKAGE, TIMEOUT);
 
 
         UiObject search_edit_text = device.findObject(new UiSelector().className("android.widget.EditText").resourceId("com.google.android.apps.maps:id/search_omnibox_text_box"));
