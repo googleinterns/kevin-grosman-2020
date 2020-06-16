@@ -1,21 +1,14 @@
 package com.example.firstapp;
-
 import android.content.Context;
-
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import androidx.test.uiautomator.UiDevice;
-
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiObject2;
 import androidx.test.uiautomator.Until;
-
 import static java.lang.Thread.sleep;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
 
 
 
@@ -37,8 +30,6 @@ public class ExampleInstrumentedTest {
     private static Integer TARGET = 2;
     //Celebration message to be displayed when target is found
     private static String CELEBRATION = "YAYYYY! " + TARGET + "!!";
-
-
 
     @Test
     public void useAppContext() {

@@ -4,14 +4,9 @@ import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObjectNotFoundException;
 import androidx.test.uiautomator.UiSelector;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
-
 
 
 @RunWith(AndroidJUnit4.class)
