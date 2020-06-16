@@ -1,9 +1,12 @@
 package com.example.firstapp;
 
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObjectNotFoundException;
 import androidx.test.uiautomator.UiSelector;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -17,9 +20,14 @@ public class MapsInstrumentedTest {
     private static final int TIMEOUT = 5000;
     private static final String SEARCH = "Googleplex";
 
+    @Before
+    public void get_device() {
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+    }
+
     @Test
     public void getDirections() throws InterruptedException, UiObjectNotFoundException {
-        device = UtilityMethods.launchApp(MAPS_PACKAGE, TIMEOUT);
+        UtilityMethods.launchApp(device, MAPS_PACKAGE, TIMEOUT);
 
 
         UiObject search_edit_text = device.findObject(new UiSelector().className("android.widget.EditText").resourceId("com.google.android.apps.maps:id/search_omnibox_text_box"));

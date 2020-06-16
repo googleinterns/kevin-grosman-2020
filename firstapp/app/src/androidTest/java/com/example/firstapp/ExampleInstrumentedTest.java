@@ -2,6 +2,8 @@ package com.example.firstapp;
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import androidx.test.uiautomator.UiDevice;
@@ -31,6 +33,12 @@ public class ExampleInstrumentedTest {
     //Celebration message to be displayed when target is found
     private static String CELEBRATION = "YAYYYY! " + TARGET + "!!";
 
+
+    @Before
+    public void get_device() {
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+    }
+
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -42,7 +50,7 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void searchForTargetNumber() throws InterruptedException {
-        device = UtilityMethods.launchApp(BASIC_SAMPLE_PACKAGE, TIMEOUT);
+        UtilityMethods.launchApp(device, BASIC_SAMPLE_PACKAGE, TIMEOUT);
 
         //pressing count button:
         //UiObject countButton = device.findObject(new UiSelector().className("android.widget.Button").instance(1));
