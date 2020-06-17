@@ -53,5 +53,14 @@ public class FirstFragment extends Fragment {
                 increment(view);
             }
         });
+
+        view.findViewById(R.id.deceptive_random_parent).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int c = Integer.parseInt(countTextView.getText().toString());
+                NavDirections action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(c);
+                NavHostFragment.findNavController(FirstFragment.this).navigate(action);
+            }
+        });
     }
 }

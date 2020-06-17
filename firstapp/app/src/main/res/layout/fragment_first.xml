@@ -71,4 +71,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.479" />
+
+    <LinearLayout
+        android:id="@+id/deceptive_random_parent"
+        android:layout_width="409dp"
+        android:layout_height="197dp"
+        android:layout_marginTop="72dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/count_button">
+
+        <TextView
+            android:id="@+id/deceptive_random"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:ems="10"
+            android:text="ALSO RANDOM"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/textview_first"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.479" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
