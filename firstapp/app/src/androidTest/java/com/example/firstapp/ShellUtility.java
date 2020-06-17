@@ -23,8 +23,12 @@ import static java.lang.Thread.sleep;
 
 
 public class ShellUtility {
-    public static UiDevice device;
-    private static int timeoutMs = 6000;
+    public UiDevice device;
+    private int timeoutMs = 6000;
+
+    public ShellUtility() {
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+    }
 
     public static class invalidInputException extends Exception {
         public invalidInputException(String message) {
@@ -32,13 +36,31 @@ public class ShellUtility {
         }
     }
 
+    public class Action {
+        Boolean strict;
+    }
+    public class StartAction extends Action {
+        String pkg;
+    }
+    public class ClickAction extends Action {
+        String text;
+    }
+    public class ClickImageAction extends Action {
+        String description;
+    }
+    public class EditAction extends Action {
+        String text;
+        String entered;
+    }
+
+
 
     /**
      * Launches the specified App on the specified device and returns the time just before the app was
      * launched--to be used later for timing startup.
      */
-    public static long launchApp(String pkg) throws InterruptedException, IOException {
-        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+    public long launchApp(String pkg) throws InterruptedException, IOException {
+
 
         /* Might want to reinclude this later:
         //Start from the home screen
@@ -50,8 +72,6 @@ public class ShellUtility {
 
         // Launch the app
         //Process process = new ProcessBuilder("am", "start", pkg).start();
-
-
 
         Context context = ApplicationProvider.getApplicationContext();
         final Intent intent = context.getPackageManager().getLaunchIntentForPackage(pkg);
@@ -73,8 +93,8 @@ public class ShellUtility {
     }
 
 
-    public static void forceQuitApp(String pkg) throws IOException, InterruptedException {
-        ShellUtility.device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+    public void forceQuitApp(String pkg) throws IOException, InterruptedException {
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         Process process = new ProcessBuilder("am", "force-stop", pkg).start();
 
     }
@@ -84,7 +104,7 @@ public class ShellUtility {
      * views that have a textbox as a descendant and thus the view containing the text cannot be
      * clicked
      */
-    public static UiObject2 getLowestClickableAncestor(UiObject2 object2) throws invalidInputException {
+    public UiObject2 getLowestClickableAncestor(UiObject2 object2) throws invalidInputException {
         if (object2 == null) {
             throw new invalidInputException("passed object is null. Consider increasing TIMEOUT parameter.");
         }
@@ -102,7 +122,7 @@ public class ShellUtility {
      * since UiObject2s store references to particular views and are thus worthless once that view
      * has been destroyed.
      */
-    public static UiObject castToObject(UiObject2 object2) throws invalidInputException {
+    public UiObject castToObject(UiObject2 object2) throws invalidInputException {
 
         //Grab identifying information
         String resourceName = object2.getResourceName();
@@ -138,55 +158,123 @@ public class ShellUtility {
      * Retrieves an editable UiObject from the UiObject2 corresponding to the view containing the
      * hint text in a textbox.
      */
-    public static UiObject getEditableObject(UiObject2 object2) throws invalidInputException {
+    public UiObject getEditableObject(UiObject2 object2) throws invalidInputException {
         return castToObject(getLowestClickableAncestor(object2));
     }
+
+
+    public Action parseStringAction(String str, int i) throws invalidInputException {
+        String[] tokens = str.split(";");
+        if (!(1 <= tokens.length && tokens.length <= 4)) {
+            throw new ShellUtility.invalidInputException("input at index " + i + " is of an invalid length");
+        }
+        Action action;
+        switch (tokens[0]) {
+            case "start":
+                action = new StartAction();
+                ((StartAction) action).pkg = tokens[1];
+                break;
+
+            case "click":
+                action = new ClickAction();
+                ((ClickAction) action).text = tokens[1];
+                break;
+
+            case "clickImage":
+                action = new ClickImageAction();
+                ((ClickImageAction) action).description = tokens[1];
+                break;
+
+            case "edit":
+                action = new EditAction();
+                ((EditAction) action).text = tokens[1];
+                ((EditAction) action).entered = tokens[2];
+                break;
+
+            default:
+                throw new invalidInputException("input at index " + i + " has an invalid first token");
+        }
+        action.strict = tokens[tokens.length - 1].equals("strict");
+        return action;
+    }
+
+    public Action[] parseStringCUJ(String[] CUJ) throws invalidInputException {
+        Action[] res = new Action[CUJ.length];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = parseStringAction(CUJ[i], i);
+        }
+        return res;
+    }
+
     /**
      * Executes an action with parts speficied by tokens and returns a UiObject (for caching)
      */
-    public static UiObject executeUncachedAction(String[] tokens) throws invalidInputException, UiObjectNotFoundException {
-        boolean strict = (tokens[tokens.length - 1].equals("strict"));
-        String text = tokens[1];
+    public UiObject executeUncachedAction(Action action, int i) throws invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+        boolean strict = action.strict;
+
         UiObject2 object2 = null;
         UiObject object = null;
-
-        switch (tokens[0]) {
-            case "click":
-                if (strict) {
-                    object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
-                } else {
-                    object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
-                }
-                object = castToObject(object2);
-                object.click();
-                return object;
-
-            case "clickImage":
-                if (strict) {
-                    object2 = device.wait(Until.findObject(By.desc(text)), timeoutMs);
-                } else {
-                    object2 = device.wait(Until.findObject(By.descContains(text)), timeoutMs);
-                }
-                object = castToObject(object2);
-                object.click();
-                return object;
-
-            case "edit":
-                String entered = tokens[2];
-                if (strict) {
-                    object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
-                } else {
-                    object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
-                }
-                object = getEditableObject(object2);
-                object.waitForExists(timeoutMs);
-                object.legacySetText(entered);
-                return object;
-
-            default:
-                throw new invalidInputException("an action has an invalid first token.");
+        if (action instanceof StartAction) {
+            String pkg = ((StartAction) action).pkg;
+            forceQuitApp(pkg);
+            launchApp(pkg);
+        } else if (action instanceof ClickAction) {
+            String text = ((ClickAction) action).text;
+            if (strict) {
+                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+            } else {
+                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+            }
+            object = castToObject(object2);
+            object.click();
+        } else if(action instanceof ClickImageAction) {
+            String description = ((ClickImageAction) action).description;
+            if (strict) {
+                object2 = device.wait(Until.findObject(By.desc(description)), timeoutMs);
+            } else {
+                object2 = device.wait(Until.findObject(By.descContains(description)), timeoutMs);
+            }
+            object = castToObject(object2);
+            object.click();
+        } else if(action instanceof EditAction) {
+            String text = ((EditAction) action).text;
+            String entered = ((EditAction) action).entered;
+            if (strict) {
+                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+            } else {
+                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+            }
+            object = getEditableObject(object2);
+            object.waitForExists(timeoutMs);
+            object.legacySetText(entered);
+        } else {
+            throw new invalidInputException("an action has an invalid first token at index" + i);
         }
+        return object;
     }
+
+    /**
+     * Executes CUJ and returns cached objects
+     */
+    public UiObject[] cacheCUJ(Action[] CUJ) throws InterruptedException, invalidInputException, UiObjectNotFoundException, IOException {
+        UiObject[] cachedObjects = new UiObject[CUJ.length];
+        for (int i = 0; i < CUJ.length; i++) {
+            cachedObjects[i] = executeUncachedAction(CUJ[i], i);
+        }
+        return cachedObjects;
+    }
+
+    /**
+     * Executes a CUJ with preparatory actions pre and measured actions post. Caches information for later use.
+     */
+    public void executeCUJ(String[] preCUJ, String[] postCUJ) throws Exception {
+        String[] CUJStrings = new String[preCUJ.length + postCUJ.length];
+        System.arraycopy(preCUJ, 0, CUJStrings, 0, preCUJ.length);
+        System.arraycopy(postCUJ, 0, CUJStrings, preCUJ.length, postCUJ.length);
+        Action[] CUJ = parseStringCUJ(CUJStrings);
+        UiObject[] cachedObjects = cacheCUJ(CUJ);
+    }
+
 
 
 }

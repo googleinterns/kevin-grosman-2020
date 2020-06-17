@@ -36,7 +36,12 @@ public class ExampleInstrumentedTest {
     //Celebration message to be displayed when target is found
     private static String CELEBRATION = "YAYYYY! " + TARGET + "!!";
 
+    private ShellUtility shellUtility;
 
+    @Before
+    public void getDevice() {
+        shellUtility = new ShellUtility();
+    }
 
     @Test
     public void useAppContext() {
@@ -50,23 +55,23 @@ public class ExampleInstrumentedTest {
     @Test
     public void searchForTargetNumber() throws InterruptedException, IOException {
 
-        ShellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
-        ShellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
+        shellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         Integer val = -1;
         //Keep getting random values in the range [0, TARGET] until TARGET comes up
         while (val != TARGET) {
             //wait for count and random buttons to appear on screen
-            UiObject2 countButton = ShellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "count_button")),TIMEOUT);
-            UiObject2 randomButton = ShellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
+            UiObject2 countButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "count_button")),TIMEOUT);
+            UiObject2 randomButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
 
 
             int count = TARGET;
             while (count-- != 0) countButton.click();
             //get random number in range [0, counter] (counter is now TARGET)
             randomButton.click();
-            UiObject2 randomText = ShellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "textview_random")), TIMEOUT );
-            UiObject2 previousButton = ShellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")),TIMEOUT);
+            UiObject2 randomText = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "textview_random")), TIMEOUT );
+            UiObject2 previousButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")),TIMEOUT);
 
 
             //ensure that random produced a value in the appropriate range
@@ -78,7 +83,7 @@ public class ExampleInstrumentedTest {
         }
         //display CELEBRATION message and make sure it appears on the screen
         sleep(1000);
-        UiObject2 sentimentText = ShellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "plaintext_sentiment")),TIMEOUT);
+        UiObject2 sentimentText = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "plaintext_sentiment")),TIMEOUT);
         sentimentText.setText(CELEBRATION);
         assertEquals(CELEBRATION, sentimentText.getText());
         sleep(1000);
