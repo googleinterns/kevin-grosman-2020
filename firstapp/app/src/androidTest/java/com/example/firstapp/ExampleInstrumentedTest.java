@@ -37,10 +37,6 @@ public class ExampleInstrumentedTest {
     private static String CELEBRATION = "YAYYYY! " + TARGET + "!!";
 
 
-    @Before
-    public void get_device() {
-        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-    }
 
     @Test
     public void useAppContext() {
@@ -53,12 +49,9 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void searchForTargetNumber() throws InterruptedException, IOException {
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         ShellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
         ShellUtility.launchApp(device, BASIC_SAMPLE_PACKAGE, TIMEOUT);
-
-        //pressing count button:
-        //UiObject countButton = device.findObject(new UiSelector().className("android.widget.Button").instance(1));
-
 
         Integer val = -1;
         //Keep getting random values in the range [0, TARGET] until TARGET comes up

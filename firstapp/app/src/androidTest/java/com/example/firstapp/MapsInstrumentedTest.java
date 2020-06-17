@@ -23,7 +23,7 @@ public class MapsInstrumentedTest {
     private static final String SEARCH = "Googleplex";
 
     @Before
-    public void get_device() {
+    public void getDevice() {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
     }
 
@@ -59,5 +59,7 @@ public class MapsInstrumentedTest {
         start_button.click();
 
     }
+
+
 }
 
