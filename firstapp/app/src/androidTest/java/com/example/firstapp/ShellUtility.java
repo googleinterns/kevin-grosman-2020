@@ -34,15 +34,16 @@ public class ShellUtility {
      * launched--to be used later for timing startup.
      */
     public static long launchApp(UiDevice device, String pkg, int timeoutMs) throws InterruptedException, IOException {
-        /*// Start from the home screen (might want to re-include this later)
+        /* Might want to reinclude this later:
+        //Start from the home screen
         device.pressHome();
         final String launcherPackage = device.getLauncherPackageName();
         Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
         device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
         */
-        // Launch the app
 
-        Process process = new ProcessBuilder("am", "start", pkg).start();
+        // Launch the app
+        //Process process = new ProcessBuilder("am", "start", pkg).start();
 
 
 
@@ -76,12 +77,15 @@ public class ShellUtility {
      * views that have a textbox as a descendant and thus the view containing the text cannot be
      * clicked
      */
-    public static UiObject2 lowestClickableAncestor(UiObject2 object2) throws invalidInputException {
+    public static UiObject2 getLowestClickableAncestor(UiObject2 object2) throws invalidInputException {
         if (object2 == null) {
-            throw new invalidInputException("passed object is null. Consider increasing TIMEOUT parameter");
+            throw new invalidInputException("passed object is null. Consider increasing TIMEOUT parameter.");
         }
         while (!object2.isClickable()) {
             object2 = object2.getParent();
+        }
+        if (object2 == null) {
+            throw new invalidInputException("No clickable ancestors. Try more specific search terms.");
         }
         return object2;
     }
@@ -91,7 +95,7 @@ public class ShellUtility {
      * since UiObject2s store references to particular views and are thus worthless once that view
      * has been destroyed.
      */
-    public static UiObject castToObject(UiDevice device, UiObject2 object2) {
+    public static UiObject castToObject(UiDevice device, UiObject2 object2) throws invalidInputException {
 
         //Grab identifying information
         String resourceName = object2.getResourceName();
@@ -116,8 +120,11 @@ public class ShellUtility {
             selector = new UiSelector().description(contentDescription).className(className);
         }
 
-
-        return device.findObject(selector);
+        UiObject casted = device.findObject(selector);
+        if (casted == null) {
+            throw new invalidInputException("Casting failed. Try different actions.");
+        }
+        return casted;
     }
 
     /**
@@ -125,7 +132,7 @@ public class ShellUtility {
      * hint text in a textbox.
      */
     public static UiObject getEditableObject(UiDevice device, UiObject2 object2) throws invalidInputException {
-        return castToObject(device, lowestClickableAncestor(object2));
+        return castToObject(device, getLowestClickableAncestor(object2));
     }
 
 

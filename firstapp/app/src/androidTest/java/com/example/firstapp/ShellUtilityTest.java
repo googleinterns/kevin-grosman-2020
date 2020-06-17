@@ -59,7 +59,7 @@ public class ShellUtilityTest {
         assertEquals(false, alsoRandomButton.isClickable());
 
         //click on the ancestor
-        UiObject2 clickable_button = ShellUtility.lowestClickableAncestor(alsoRandomButton);
+        UiObject2 clickable_button = ShellUtility.getLowestClickableAncestor(alsoRandomButton);
         assertEquals(true, clickable_button.isClickable());
         clickable_button.click();
 
@@ -69,7 +69,7 @@ public class ShellUtilityTest {
     }
 
     @Test
-    public void casting() throws UiObjectNotFoundException {
+    public void casting() throws UiObjectNotFoundException, ShellUtility.invalidInputException {
         UiObject2 randomButton = device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
         UiObject randomButtonCasted = ShellUtility.castToObject(device, randomButton);
         randomButtonCasted.waitForExists(TIMEOUT);
