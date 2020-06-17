@@ -5,6 +5,7 @@ import android.os.RemoteException;
 import android.os.SystemClock;
 
 import androidx.test.core.app.ApplicationProvider;
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
@@ -22,6 +23,8 @@ import static java.lang.Thread.sleep;
 
 
 public class ShellUtility {
+    public static UiDevice device;
+    private static int timeoutMs = 6000;
 
     public static class invalidInputException extends Exception {
         public invalidInputException(String message) {
@@ -29,11 +32,14 @@ public class ShellUtility {
         }
     }
 
+
     /**
      * Launches the specified App on the specified device and returns the time just before the app was
      * launched--to be used later for timing startup.
      */
-    public static long launchApp(UiDevice device, String pkg, int timeoutMs) throws InterruptedException, IOException {
+    public static long launchApp(String pkg) throws InterruptedException, IOException {
+        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+
         /* Might want to reinclude this later:
         //Start from the home screen
         device.pressHome();
@@ -55,7 +61,7 @@ public class ShellUtility {
 
         //startActivity imposes a 5 second cool-down after the home button is pressed, so we wait
         //out that cool-down before grabbing the time and launching
-        sleep(5000);
+        //sleep(5000);
         long start = SystemClock.elapsedRealtime();
         context.startActivity(intent);
 
@@ -68,6 +74,7 @@ public class ShellUtility {
 
 
     public static void forceQuitApp(String pkg) throws IOException, InterruptedException {
+        ShellUtility.device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         Process process = new ProcessBuilder("am", "force-stop", pkg).start();
 
     }
@@ -95,7 +102,7 @@ public class ShellUtility {
      * since UiObject2s store references to particular views and are thus worthless once that view
      * has been destroyed.
      */
-    public static UiObject castToObject(UiDevice device, UiObject2 object2) throws invalidInputException {
+    public static UiObject castToObject(UiObject2 object2) throws invalidInputException {
 
         //Grab identifying information
         String resourceName = object2.getResourceName();
@@ -131,8 +138,54 @@ public class ShellUtility {
      * Retrieves an editable UiObject from the UiObject2 corresponding to the view containing the
      * hint text in a textbox.
      */
-    public static UiObject getEditableObject(UiDevice device, UiObject2 object2) throws invalidInputException {
-        return castToObject(device, getLowestClickableAncestor(object2));
+    public static UiObject getEditableObject(UiObject2 object2) throws invalidInputException {
+        return castToObject(getLowestClickableAncestor(object2));
+    }
+    /**
+     * Executes an action with parts speficied by tokens and returns a UiObject (for caching)
+     */
+    public static UiObject executeUncachedAction(String[] tokens) throws invalidInputException, UiObjectNotFoundException {
+        boolean strict = (tokens[tokens.length - 1].equals("strict"));
+        String text = tokens[1];
+        UiObject2 object2 = null;
+        UiObject object = null;
+
+        switch (tokens[0]) {
+            case "click":
+                if (strict) {
+                    object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+                } else {
+                    object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+                }
+                object = castToObject(object2);
+                object.click();
+                return object;
+
+            case "clickImage":
+                if (strict) {
+                    object2 = device.wait(Until.findObject(By.desc(text)), timeoutMs);
+                } else {
+                    object2 = device.wait(Until.findObject(By.descContains(text)), timeoutMs);
+                }
+                object = castToObject(object2);
+                object.click();
+                return object;
+
+            case "edit":
+                String entered = tokens[2];
+                if (strict) {
+                    object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+                } else {
+                    object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+                }
+                object = getEditableObject(object2);
+                object.waitForExists(timeoutMs);
+                object.legacySetText(entered);
+                return object;
+
+            default:
+                throw new invalidInputException("an action has an invalid first token.");
+        }
     }
 
 
