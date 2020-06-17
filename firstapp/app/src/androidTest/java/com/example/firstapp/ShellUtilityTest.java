@@ -58,8 +58,12 @@ public class ShellUtilityTest {
         UiObject2 alsoRandomButton = device.wait(Until.findObject(By.textContains("ALSO RANDOM")),TIMEOUT);
         assertEquals(false, alsoRandomButton.isClickable());
 
-        //click on the ancestor and check whether the desired action took place (previous button should be visible)
-        ShellUtility.lowestClickableAncestor(alsoRandomButton).click();
+        //click on the ancestor
+        UiObject2 clickable_button = ShellUtility.lowestClickableAncestor(alsoRandomButton);
+        assertEquals(true, clickable_button.isClickable());
+        clickable_button.click();
+
+        //check whether the desired action took place (previous button should be visible)
         UiObject2 previousButton = device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")),TIMEOUT);
         assertNotEquals(null, previousButton);
     }
