@@ -36,7 +36,6 @@ public class ShellUtilityTest {
     /**
      * LAUNCHING AND QUITING
      */
-
     @Test
     public void launching() {
         Boolean appeared = shellUtility.device.wait(Until.hasObject(By.pkg(BASIC_SAMPLE_PACKAGE).depth(0)), TIMEOUT);
@@ -60,7 +59,6 @@ public class ShellUtilityTest {
     /**
      * CASTING AND GETTING ANCESTORS
      */
-
     @Test
     public void gettingClickableAncestor() throws ShellUtility.invalidInputException, UiObjectNotFoundException {
         //grab a view that is not clickable (but which has a an ancestor which is)
@@ -294,7 +292,4 @@ public class ShellUtilityTest {
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
     }
-
-
-
 }
