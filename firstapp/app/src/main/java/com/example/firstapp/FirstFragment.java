@@ -62,5 +62,11 @@ public class FirstFragment extends Fragment {
                 NavHostFragment.findNavController(FirstFragment.this).navigate(action);
             }
         });
+        view.findViewById(R.id.count_image).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                increment(view);
+            }
+        });
     }
 }
