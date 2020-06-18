@@ -33,6 +33,9 @@ public class ShellUtilityTest {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
     }
 
+    /**
+     * LAUNCHING AND QUITING
+     */
 
     @Test
     public void launching() {
@@ -53,6 +56,11 @@ public class ShellUtilityTest {
         randomButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
         assertNotEquals(null, randomButton);
     }
+
+    /**
+     * CASTING AND GETTING ANCESTORS
+     */
+
     @Test
     public void gettingClickableAncestor() throws ShellUtility.invalidInputException, UiObjectNotFoundException {
         //grab a view that is not clickable (but which has a an ancestor which is)
@@ -96,40 +104,68 @@ public class ShellUtilityTest {
         assertNotEquals(null, entered_text);
     }
 
+    /**
+     * ACTION EXECUTION TESTS
+     */
+
     @Test
-    public void executingActionClickStrict() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingStartAction() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+        String str = "start;" + BASIC_SAMPLE_PACKAGE;
+        ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
+        action.executeUncachedAction();
+        UiObject2 zero = shellUtility.device.wait(Until.findObject(By.textContains("0")),TIMEOUT);
+        assertNotEquals(null, zero);
+    }
+
+    @Test
+    public void executingClickActionStrict() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
         String str = "click;COUNT;strict";
-        shellUtility.executeUncachedAction(shellUtility.parseStringAction(str, 0), 0);
+        ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
+        action.executeUncachedAction();
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
         assertNotEquals(null, one);
     }
 
     @Test
-    public void executingActionClickSubstring() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingClickActionSubstring() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
         String str = "click;OUN";
-        shellUtility.executeUncachedAction(shellUtility.parseStringAction(str, 0), 0);
+        ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
+        action.executeUncachedAction();
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
         assertNotEquals(null, one);
     }
 
     @Test
-    public void executingActionClickNonClickable() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingClickActionNonClickable() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
         String str = "click;ALSO RAND";
-        shellUtility.executeUncachedAction(shellUtility.parseStringAction(str, 0), 0);
+        ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
+        action.executeUncachedAction();
         UiObject2 previousButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")),TIMEOUT);
         assertNotEquals(null, previousButton);
     }
 
     @Test
-    public void executingActionEdit() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingEditAction() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
         String str = "edit;you feel;" + entered_text;
-        shellUtility.executeUncachedAction(shellUtility.parseStringAction(str, 0), 0);
+        ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
+        action.executeUncachedAction();
         UiObject final_search_box = shellUtility.device.findObject(new UiSelector().text(entered_text));
         final_search_box.waitForExists(TIMEOUT);
         assertNotEquals(null, entered_text);
     }
 
+    @Test
+    public void executingClickImageAction() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+        String str = "clickImage;increment";
+        ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
+        action.executeUncachedAction();
+        UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
+        assertNotEquals(null, one);
+    }
 
+    /**
+     * FULL CUJ TESTS
+     */
     //Basic clicking test
     @Test
     public void clickTest() throws Exception {

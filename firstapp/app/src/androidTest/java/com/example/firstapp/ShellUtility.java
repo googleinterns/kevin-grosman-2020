@@ -26,6 +26,7 @@ public class ShellUtility {
     public UiDevice device;
     private int timeoutMs = 6000;
 
+
     public ShellUtility() {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
     }
@@ -36,21 +37,79 @@ public class ShellUtility {
         }
     }
 
-    public class Action {
-        Boolean strict;
+    public abstract class Action {
+        abstract UiObject executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException;
     }
     public class StartAction extends Action {
         String pkg;
+        public StartAction(String p) {
+            pkg = p;
+        }
+        UiObject executeUncachedAction() throws IOException, InterruptedException {
+            forceQuitApp(pkg);
+            launchApp(pkg);
+            return null;
+        }
     }
     public class ClickAction extends Action {
         String text;
+        Boolean strict;
+        public ClickAction(String t, Boolean s) {
+            text = t;
+            strict = s;
+        }
+        UiObject executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException {
+            UiObject2 object2;
+            if (strict) {
+                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+            } else {
+                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+            }
+            UiObject object = castToObject(object2);
+            object.click();
+            return object;
+        }
     }
     public class ClickImageAction extends Action {
         String description;
+        Boolean strict;
+        public ClickImageAction(String d, Boolean s) {
+            description = d;
+            strict = s;
+        }
+        UiObject executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException {
+            UiObject2 object2;
+            if (strict) {
+                object2 = device.wait(Until.findObject(By.desc(description)), timeoutMs);
+            } else {
+                object2 = device.wait(Until.findObject(By.descContains(description)), timeoutMs);
+            }
+            UiObject object = castToObject(object2);
+            object.click();
+            return object;
+        }
     }
     public class EditAction extends Action {
         String text;
         String entered;
+        Boolean strict;
+        public EditAction(String t, String e, Boolean s) {
+            text = t;
+            entered = e;
+            strict = s;
+        }
+        UiObject executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException {
+            UiObject2 object2;
+            if (strict) {
+                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+            } else {
+                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+            }
+            UiObject object = getEditableObject(object2);
+            object.waitForExists(timeoutMs);
+            object.legacySetText(entered);
+            return object;
+        }
     }
 
 
@@ -62,13 +121,13 @@ public class ShellUtility {
     public long launchApp(String pkg) throws InterruptedException, IOException {
 
 
-        /* Might want to reinclude this later:
-        //Start from the home screen
-        device.pressHome();
-        final String launcherPackage = device.getLauncherPackageName();
-        Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
-        device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
-        */
+    /* Might want to reinclude this later:
+    //Start from the home screen
+    device.pressHome();
+    final String launcherPackage = device.getLauncherPackageName();
+    Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
+    device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
+    */
 
         // Launch the app
         //Process process = new ProcessBuilder("am", "start", pkg).start();
@@ -162,104 +221,71 @@ public class ShellUtility {
         return castToObject(getLowestClickableAncestor(object2));
     }
 
-
+    /** INSTRUCTIONS FOR ACTION FORMATTING:
+     * The first action must be a string containing the package to be opened (e.g. “start;com.google.android.apps.maps").
+     * Each subsequent action must be to click on a particular View or to enter text in a particular textbox. Subsequent
+     * actions can take on one of the following forms:
+     *
+     * 1. “edit;text_displayed;text_entered” to enter text_entered into a textbox, where text_displayed is the text currently visible in the textbox.
+     * 2. “click;text_displayed” to click a non-editable view (normally a text-view or button) on the screen which has text containing the string text_displayed displayed on it
+     * 3. “clickImage;text_description” to click a view without text (normally an image view) where the description of the view contains the string description_text
+     *
+     * Note that all text fields are case sensitive. Additionally, if any of the above strings are followed by “;strict”
+     * the search for a corresponding view will enforce that an exact match is found for text_displayed (in cases 1 or 2)
+     * or text_description (in case 3).
+     */
     public Action parseStringAction(String str, int i) throws invalidInputException {
         String[] tokens = str.split(";");
         if (!(1 <= tokens.length && tokens.length <= 4)) {
             throw new ShellUtility.invalidInputException("input at index " + i + " is of an invalid length");
         }
         Action action;
+        boolean strict = tokens[tokens.length - 1].equals("strict");
         switch (tokens[0]) {
             case "start":
-                action = new StartAction();
-                ((StartAction) action).pkg = tokens[1];
+                action = new StartAction(tokens[1]);
                 break;
 
             case "click":
-                action = new ClickAction();
-                ((ClickAction) action).text = tokens[1];
+                action = new ClickAction(tokens[1], strict);
                 break;
 
             case "clickImage":
-                action = new ClickImageAction();
-                ((ClickImageAction) action).description = tokens[1];
+                action = new ClickImageAction(tokens[1], strict);
                 break;
 
             case "edit":
-                action = new EditAction();
-                ((EditAction) action).text = tokens[1];
-                ((EditAction) action).entered = tokens[2];
+                action = new EditAction(tokens[1], tokens[2], strict);
                 break;
 
             default:
                 throw new invalidInputException("input at index " + i + " has an invalid first token");
         }
-        action.strict = tokens[tokens.length - 1].equals("strict");
         return action;
     }
-
-    public Action[] parseStringCUJ(String[] CUJ) throws invalidInputException {
-        Action[] res = new Action[CUJ.length];
+    /**
+     * A CUJ is passed in as two arrays of sequential actions, the first being preparatory (not measured)
+     * and the second being measured and starting from where the first left off. e.g:
+     *
+     * ‘{"com.google.android.apps.maps", "click;Takeout}' '{"click;Billy Barooz", "clickImage;Search;strict", "edit;Search here;McDonalds", "click;West Kirby", "click;DIRECTIONS"}’
+     *
+     */
+    public Action[] parseStringCUJ(String[] cuj) throws invalidInputException {
+        Action[] res = new Action[cuj.length];
         for (int i = 0; i < res.length; i++) {
-            res[i] = parseStringAction(CUJ[i], i);
+            res[i] = parseStringAction(cuj[i], i);
         }
         return res;
     }
 
-    /**
-     * Executes an action with parts speficied by tokens and returns a UiObject (for caching)
-     */
-    public UiObject executeUncachedAction(Action action, int i) throws invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
-        boolean strict = action.strict;
-
-        UiObject2 object2 = null;
-        UiObject object = null;
-        if (action instanceof StartAction) {
-            String pkg = ((StartAction) action).pkg;
-            forceQuitApp(pkg);
-            launchApp(pkg);
-        } else if (action instanceof ClickAction) {
-            String text = ((ClickAction) action).text;
-            if (strict) {
-                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
-            } else {
-                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
-            }
-            object = castToObject(object2);
-            object.click();
-        } else if(action instanceof ClickImageAction) {
-            String description = ((ClickImageAction) action).description;
-            if (strict) {
-                object2 = device.wait(Until.findObject(By.desc(description)), timeoutMs);
-            } else {
-                object2 = device.wait(Until.findObject(By.descContains(description)), timeoutMs);
-            }
-            object = castToObject(object2);
-            object.click();
-        } else if(action instanceof EditAction) {
-            String text = ((EditAction) action).text;
-            String entered = ((EditAction) action).entered;
-            if (strict) {
-                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
-            } else {
-                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
-            }
-            object = getEditableObject(object2);
-            object.waitForExists(timeoutMs);
-            object.legacySetText(entered);
-        } else {
-            throw new invalidInputException("an action has an invalid first token at index" + i);
-        }
-        return object;
-    }
 
     /**
      * Executes CUJ and returns cached objects
      */
-    public UiObject[] cacheCUJ(Action[] CUJ) throws InterruptedException, invalidInputException, UiObjectNotFoundException, IOException {
-        UiObject[] cachedObjects = new UiObject[CUJ.length];
-        for (int i = 0; i < CUJ.length; i++) {
-            cachedObjects[i] = executeUncachedAction(CUJ[i], i);
+    public UiObject[] cacheCUJ(Action[] cuj) throws InterruptedException, invalidInputException, UiObjectNotFoundException, IOException {
+        UiObject[] cachedObjects = new UiObject[cuj.length];
+        for (int i = 0; i < cuj.length; i++) {
+            cachedObjects[i] = cuj[i].executeUncachedAction();
         }
         return cachedObjects;
     }
@@ -268,11 +294,11 @@ public class ShellUtility {
      * Executes a CUJ with preparatory actions pre and measured actions post. Caches information for later use.
      */
     public void executeCUJ(String[] preCUJ, String[] postCUJ) throws Exception {
-        String[] CUJStrings = new String[preCUJ.length + postCUJ.length];
-        System.arraycopy(preCUJ, 0, CUJStrings, 0, preCUJ.length);
-        System.arraycopy(postCUJ, 0, CUJStrings, preCUJ.length, postCUJ.length);
-        Action[] CUJ = parseStringCUJ(CUJStrings);
-        UiObject[] cachedObjects = cacheCUJ(CUJ);
+        String[] cujStrings = new String[preCUJ.length + postCUJ.length];
+        System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
+        System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
+        Action[] cuj = parseStringCUJ(cujStrings);
+        UiObject[] cachedObjects = cacheCUJ(cuj);
     }
 
 
