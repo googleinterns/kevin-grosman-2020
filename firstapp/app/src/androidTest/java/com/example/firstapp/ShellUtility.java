@@ -234,32 +234,42 @@ public class ShellUtility {
      * the search for a corresponding view will enforce that an exact match is found for text_displayed (in cases 1 or 2)
      * or text_description (in case 3).
      */
-    public Action parseStringAction(String str, int i) throws invalidInputException {
+    public Action parseStringAction(String str, int idx) throws invalidInputException {
         String[] tokens = str.split(";");
-        if (!(1 <= tokens.length && tokens.length <= 4)) {
-            throw new ShellUtility.invalidInputException("input at index " + i + " is of an invalid length");
-        }
+
         Action action;
         boolean strict = tokens[tokens.length - 1].equals("strict");
         switch (tokens[0]) {
             case "start":
+                if (!(tokens.length == 2)) {
+                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                }
                 action = new StartAction(tokens[1]);
                 break;
 
             case "click":
+                if (!(2 <= tokens.length && tokens.length <= 3)) {
+                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                }
                 action = new ClickAction(tokens[1], strict);
                 break;
 
             case "clickImage":
+                if (!(2 <= tokens.length && tokens.length <= 3)) {
+                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                }
                 action = new ClickImageAction(tokens[1], strict);
                 break;
 
             case "edit":
+                if (!(3 <= tokens.length && tokens.length <= 4)) {
+                throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                }
                 action = new EditAction(tokens[1], tokens[2], strict);
                 break;
 
             default:
-                throw new invalidInputException("input at index " + i + " has an invalid first token");
+                throw new invalidInputException("input at index " + idx + " has an invalid first token");
         }
         return action;
     }
