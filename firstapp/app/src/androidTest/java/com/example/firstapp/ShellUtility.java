@@ -39,6 +39,9 @@ public class ShellUtility {
         }
     }
 
+                                /******************************
+                                 *       ACTION CLASS
+                                 ******************************/
     public abstract class Action {
         UiObject cachedObject;
         //execute the action and cache the result
@@ -143,9 +146,9 @@ public class ShellUtility {
             return t;
         }
     }
-
-
-
+                                /******************************
+                                 *    APP LIFECYCLE HELPERS
+                                 ******************************/
     /**
      * Launches the specified App on the specified device and returns the time just before the app was
      * launched--to be used later for timing startup.
@@ -153,13 +156,13 @@ public class ShellUtility {
     public long launchApp(String pkg) throws InterruptedException, IOException {
 
 
-    /* Might want to reinclude this later:
-    //Start from the home screen
-    device.pressHome();
-    final String launcherPackage = device.getLauncherPackageName();
-    Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
-    device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
-    */
+        /* Might want to reinclude this later:
+        //Start from the home screen
+        device.pressHome();
+        final String launcherPackage = device.getLauncherPackageName();
+        Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
+        device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
+        */
 
         // Launch the app
         //Process process = new ProcessBuilder("am", "start", pkg).start();
@@ -183,13 +186,16 @@ public class ShellUtility {
 
     }
 
-
     public void forceQuitApp(String pkg) throws IOException, InterruptedException {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         Process process = new ProcessBuilder("am", "force-stop", pkg).start();
 
     }
 
+
+                                /******************************
+                                 *    OBJECT FINDING HELPERS
+                                 ******************************/
     /**
      * Walks up view tree until a clickable ancestor is found. Google apps often have clickable
      * views that have a textbox as a descendant and thus the view containing the text cannot be
@@ -253,6 +259,10 @@ public class ShellUtility {
         return castToObject(getLowestClickableAncestor(object2));
     }
 
+
+                                    /******************************
+                                     *   PARSING+CACHING HELPERS
+                                     ******************************/
     /** INSTRUCTIONS FOR ACTION FORMATTING:
      * The first action must be a string containing the package to be opened (e.g. “start;com.google.android.apps.maps").
      * Each subsequent action must be to click on a particular View or to enter text in a particular textbox. Subsequent
@@ -266,35 +276,45 @@ public class ShellUtility {
      * the search for a corresponding view will enforce that an exact match is found for text_displayed (in cases 1 or 2)
      * or text_description (in case 3).
      */
-    public Action parseStringAction(String str, int i) throws invalidInputException {
+    public Action parseStringAction(String str, int idx) throws invalidInputException {
         String[] tokens = str.split(";");
-        if (!(1 <= tokens.length && tokens.length <= 4)) {
-            throw new ShellUtility.invalidInputException("input at index " + i + " is of an invalid length");
-        }
         Action action;
         boolean strict = tokens[tokens.length - 1].equals("strict");
         switch (tokens[0]) {
             case "start":
+                if (!(tokens.length == 2)) {
+                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                }
                 action = new StartAction(tokens[1]);
                 break;
 
             case "click":
+                if (!(2 <= tokens.length && tokens.length <= 3)) {
+                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                }
                 action = new ClickAction(tokens[1], strict);
                 break;
 
             case "clickImage":
+                if (!(2 <= tokens.length && tokens.length <= 3)) {
+                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                }
                 action = new ClickImageAction(tokens[1], strict);
                 break;
 
             case "edit":
+                if (!(3 <= tokens.length && tokens.length <= 4)) {
+                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                }
                 action = new EditAction(tokens[1], tokens[2], strict);
                 break;
 
             default:
-                throw new invalidInputException("input at index " + i + " has an invalid first token");
+                throw new invalidInputException("input at index " + idx + " has an invalid first token");
         }
         return action;
     }
+
     /**
      * A CUJ is passed in as two arrays of sequential actions, the first being preparatory (not measured)
      * and the second being measured and starting from where the first left off. e.g:
@@ -310,7 +330,6 @@ public class ShellUtility {
         return res;
     }
 
-
     /**
      * Executes CUJ and returns cached objects
      */
@@ -320,23 +339,39 @@ public class ShellUtility {
         }
     }
 
+
+                                /****************************
+                                 * DATA MANIPULATION HELPERS
+                                 ****************************/
     public long getTime() {
         return SystemClock.currentGnssTimeClock().millis();
     }
 
-    /**
-     * Data manipulation helpers
-     */
     public long sumArr(long[] arr) {
         long total = 0;
         for (long t : arr) total += t;
         return total;
     }
+
+    /**
+     * differences between successive elements
+     */
     public long[] differences(long[] arr) {
-        if (arr.length == 0) return null;
+        if (arr.length == 0) return arr;
         long[] res = new long[arr.length - 1];
         for (int i = 0; i < res.length; i++) {
             res[i] = arr[i + 1] - arr[i];
+        }
+        return res;
+    }
+    /**
+     * value of last (n - 1) scaled, where first value is set to 0
+     */
+    public long[] relativeValues(long[] arr) {
+        if (arr.length == 0) return null;
+        long[] res = new long[arr.length - 1];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = arr[i + 1] - arr[0];
         }
         return res;
     }
@@ -354,108 +389,92 @@ public class ShellUtility {
         return averages;
     }
 
-
-    /**
-     * Executes a CUJ with preparatory actions pre and measured actions post. Caches information for later use.
-     */
-    public void executeCUJ(String[] preCUJ, String[] postCUJ, int iterations) throws Exception {
-        if (postCUJ.length < 2) throw new invalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'dummy' action");
-        String[] cujStrings = new String[preCUJ.length + postCUJ.length];
-        System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
-        System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
-        Action[] cuj = parseStringCUJ(cujStrings);
-        cacheCUJ(cuj);
-
-
-
-        /*******************************
-         * PERFORM RUN USING CACHED DATA :
-         *******************************/
-        //recorded runs:
-        int iter = -1;
-        long[] enterTimes = new long[iterations + 1];
-        long[][] allActionStamps = new long[iterations][postCUJ.length - 1];
-
-        while (++iter < iterations) {
-
-
-            /******************************
-             * EXECUTE PREPARATORY ACTIONS :
-             ******************************/
-
-            for (int i = 0; i < preCUJ.length; i++) {
-                cuj[i].executeCachedAction();
-            }
-
-            //start_recording()
-            /******************************
-             * EXECUTE RECORDED ACTIONS :
-             ******************************/
-
-             for (int i = preCUJ.length; i < cuj.length; i++) {
-                 allActionStamps[iter][i - preCUJ.length] = cuj[i].executeCachedAction();
-             }
-             //stop_recording();
+    public String zeroPad(String s, int finalLength) {
+        while (s.length() < finalLength) {
+            s = "0" + s;
         }
+        return s;
+    }
 
-        /******************************
-         * COMPUTE AND REPORT METRICS:
-         ******************************/
-        /*Log action durations*/
+    public void logData(long[][] allActionStamps) {
+        int iterations = allActionStamps.length;
+
+        //Log action durations
         long[][] allActionDurations = new long[iterations][];
-        for (iter = 0; iter < iterations; iter++) {
+        for (int iter = 0; iter < iterations; iter++) {
             long[] actionDurations = differences(allActionStamps[iter]);
             allActionDurations[iter] = actionDurations;
             Log.i("iterations-actions", "ITERATION " + (iter + 2) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + sumArr(actionDurations));
         }
 
-        /*Log average action durations*/
+        //Log average action durations
         long[] averageActionDurations = averageColumns(allActionDurations);
         Log.i("averages-actions", "AVERAGE:     " + Arrays.toString(averageActionDurations) + ", TOTAL: " + sumArr(averageActionDurations));
 
 
-        /*Log time stamps relative to moment first measured action became available and store iteration durations */
+        //Log time stamps relative to moment first measured action became available and store iteration durations
         long[][] allRelativeStamps = new long[iterations][];
-        long[][] iterDurations = new long[iterations][2];
-        for (iter = 0; iter < iterations; iter++) {
+        long[][] iterDurations = new long[iterations][2]; //to be used later for finding median
+        for (int iter = 0; iter < iterations; iter++) {
             long[] actionStamps = allActionStamps[iter];
-            long[] relativeStamps = new long[postCUJ.length - 1];
-            for (int i = 0; i < relativeStamps.length; i++) {
-                relativeStamps[i] = actionStamps[i + 1] - actionStamps[0];
-            }
+            long[] relativeStamps = relativeValues(actionStamps);
+
             allRelativeStamps[iter] = relativeStamps;
             iterDurations[iter][0] = iter;
             iterDurations[iter][1] = relativeStamps[relativeStamps.length - 1];
             Log.i("iterations-stamps", "ITERATION " + (iter + 2) + ": " + Arrays.toString(relativeStamps));
         }
 
+        //log average relative stamps
         long[] averageRelativeStamps = averageColumns(allRelativeStamps);
         Log.i("averages-stamps", "AVERAGE:     " + Arrays.toString(averageRelativeStamps));
 
-
-
-
-
+        //log median iteration
         Arrays.sort(iterDurations, (a,b) -> Long.compare(a[1], b[1]));
         int median_idx = (int) iterDurations[iterDurations.length / 2][0];
-
-
-
         long med_start = allActionStamps[median_idx][0];
         long med_end = allActionStamps[median_idx][allActionStamps[0].length - 1];
-
-
-
         Log.i("median", "MEDIAN RUN: " + (median_idx + 2));
-        Log.i("median", "MEDIAN RUN STARTS @: " + miliseconds_to_time(med_start));
-        Log.i("median", "MEDIAN RUN ENDS @: " + miliseconds_to_time(med_end));
-        Log.i("clip", "ffmpeg -ss " + miliseconds_to_time(med_start) + " -i test.mp4 -to " + miliseconds_to_time(med_end - med_start) + " -c copy median_clip.mp4");
-        Log.i("clip", "" + epoch_2);
+        //Log.i("median", "MEDIAN RUN STARTS @: " + miliseconds_to_time(med_start));
+        //Log.i("median", "MEDIAN RUN ENDS @: " + miliseconds_to_time(med_end));
 
-
-
+        //log median clip data
+        Log.i("clip_start", "" + med_start);
+        Log.i("clip_end", "" + med_end);
     }
 
+    /******************************************************************************
+     * Executes a CUJ with preparatory actions pre and measured actions post.
+     * Caches data and then runs through the CUJ iterations times and logs results
+     ******************************************************************************/
+    public void executeCUJ(String[] preCUJ, String[] postCUJ, int iterations) throws Exception {
+        if (postCUJ.length < 2) throw new invalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'dummy' action");
+        String[] cujStrings = new String[preCUJ.length + postCUJ.length];
+        System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
+        System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
+        Action[] cuj = parseStringCUJ(cujStrings);
 
+        //caching run
+        cacheCUJ(cuj);
 
+        //cached runs:
+        int iter = -1;
+        long[][] allActionStamps = new long[iterations][postCUJ.length];
+        while (++iter < iterations) {
+            //Execute preparatory actions:
+            for (int i = 0; i < preCUJ.length; i++) {
+                cuj[i].executeCachedAction();
+            }
+
+            //execute recorded actions:
+            //start_recording()
+            for (int i = preCUJ.length; i < cuj.length; i++) {
+                 allActionStamps[iter][i - preCUJ.length] = cuj[i].executeCachedAction();
+             }
+             //stop_recording();
+        }
+        if (iterations > 0) {
+            logData(allActionStamps);
+        }
+    }
 }
