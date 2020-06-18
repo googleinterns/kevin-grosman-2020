@@ -236,7 +236,6 @@ public class ShellUtility {
      */
     public Action parseStringAction(String str, int idx) throws invalidInputException {
         String[] tokens = str.split(";");
-
         Action action;
         boolean strict = tokens[tokens.length - 1].equals("strict");
         switch (tokens[0]) {
