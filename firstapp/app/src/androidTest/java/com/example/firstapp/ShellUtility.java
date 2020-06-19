@@ -26,11 +26,11 @@ import static java.lang.Thread.sleep;
 
 public class ShellUtility {
     public UiDevice device;
-    private int timeoutMs = 6000;
+    private long timeoutMs;
 
-
-    public ShellUtility() {
+    public ShellUtility(long timeoutMillis) {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        timeoutMs = timeoutMillis;
     }
 
     public static class invalidInputException extends Exception {
@@ -43,23 +43,44 @@ public class ShellUtility {
                                  *       ACTION CLASS
                                  ******************************/
     public abstract class Action {
-        UiObject cachedObject;
-        //execute the action and cache the result
+        private UiObject cachedObject;
+        long actionTimeout;
+
+        void setCachedObject(UiObject object) {
+            cachedObject = object;
+        }
+        UiObject getCachedObject() {
+            return cachedObject;
+        }
+
+        /**
+         * execute the action and cache the result in cachedObject
+         **/
         abstract void executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException;
-        //execute teh cached action
+
+        /**
+         * execute the action on the object specified by cachedObject
+         * return the time (since epoch) just before the action is performed
+         **/
         abstract long executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException;
     }
 
     public class StartAction extends Action {
         String pkg;
-        public StartAction(String p) {
+
+        public StartAction(String p, long timeoutMillis) {
             pkg = p;
+            actionTimeout = timeoutMillis;
         }
+
+        @Override
         void executeUncachedAction() throws IOException, InterruptedException {
             forceQuitApp(pkg);
             launchApp(pkg);
-            cachedObject = null;
+            setCachedObject(null);
         }
+
+        @Override
         long executeCachedAction() throws IOException, InterruptedException {
             forceQuitApp(pkg);
             return launchApp(pkg);
@@ -69,25 +90,31 @@ public class ShellUtility {
     public class ClickAction extends Action {
         String text;
         Boolean strict;
-        public ClickAction(String t, Boolean s) {
+        public ClickAction(String t, Boolean s, long timeoutMillis) {
             text = t;
             strict = s;
+            actionTimeout = timeoutMillis;
         }
+
+        @Override
         void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.text(text)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.textContains(text)), actionTimeout);
             }
             UiObject object = castToObject(object2);
             object.click();
-            cachedObject = object;
+            setCachedObject(object);
         }
+
+        @Override
         long executeCachedAction() throws UiObjectNotFoundException {
-            cachedObject.waitForExists(timeoutMs);
+            UiObject object = getCachedObject();
+            object.waitForExists(actionTimeout);
             long t = getTime();
-            cachedObject.click();
+            object.click();
             return t;
         }
     }
@@ -95,25 +122,31 @@ public class ShellUtility {
     public class ClickImageAction extends Action {
         String description;
         Boolean strict;
-        public ClickImageAction(String d, Boolean s) {
+        public ClickImageAction(String d, Boolean s, long timeoutMillis) {
             description = d;
             strict = s;
+            actionTimeout = timeoutMillis;
         }
+
+        @Override
         void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.desc(description)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.desc(description)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.descContains(description)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.descContains(description)), actionTimeout);
             }
             UiObject object = castToObject(object2);
             object.click();
-            cachedObject = object;
+            setCachedObject(object);
         }
+
+        @Override
         long executeCachedAction() throws UiObjectNotFoundException {
-            cachedObject.waitForExists(timeoutMs);
+            UiObject object = getCachedObject();
+            object.waitForExists(actionTimeout);
             long t = getTime();
-            cachedObject.click();
+            object.click();
             return t;
         }
     }
@@ -122,27 +155,33 @@ public class ShellUtility {
         String text;
         String entered;
         Boolean strict;
-        public EditAction(String t, String e, Boolean s) {
+        public EditAction(String t, String e, Boolean s, long timeoutMillis) {
             text = t;
             entered = e;
             strict = s;
+            actionTimeout = timeoutMillis;
         }
+
+        @Override
         void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.text(text)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.textContains(text)), actionTimeout);
             }
             UiObject object = getEditableObject(object2);
-            object.waitForExists(timeoutMs);
+            object.waitForExists(actionTimeout);
             object.legacySetText(entered);
-            cachedObject = object;
+            setCachedObject(object);
         }
+
+        @Override
         long executeCachedAction() throws UiObjectNotFoundException {
-            cachedObject.waitForExists(timeoutMs);
+            UiObject object = getCachedObject();
+            object.waitForExists(actionTimeout);
             long t = getTime();
-            cachedObject.legacySetText(entered);
+            object.legacySetText(entered);
             return t;
         }
     }
@@ -285,28 +324,28 @@ public class ShellUtility {
                 if (!(tokens.length == 2)) {
                     throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new StartAction(tokens[1]);
+                action = new StartAction(tokens[1], timeoutMs);
                 break;
 
             case "click":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickAction(tokens[1], strict);
+                action = new ClickAction(tokens[1], strict), timeoutMs;
                 break;
 
             case "clickImage":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickImageAction(tokens[1], strict);
+                action = new ClickImageAction(tokens[1], strict, timeoutMs);
                 break;
 
             case "edit":
                 if (!(3 <= tokens.length && tokens.length <= 4)) {
                     throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new EditAction(tokens[1], tokens[2], strict);
+                action = new EditAction(tokens[1], tokens[2], strict, timeoutMs);
                 break;
 
             default:
@@ -365,7 +404,8 @@ public class ShellUtility {
         return res;
     }
     /**
-     * value of last (n - 1) scaled, where first value is set to 0
+     * last (n - 1) values scaled, where first value is set to 0
+     * e.g : {5, 23, 45} -> {23 - 5, 45 - 5} = {18, 40}
      */
     public long[] relativeValues(long[] arr) {
         if (arr.length == 0) return null;
@@ -390,10 +430,11 @@ public class ShellUtility {
     }
 
     public String zeroPad(String s, int finalLength) {
-        while (s.length() < finalLength) {
-            s = "0" + s;
+        StringBuilder sBuilder = new StringBuilder(s);
+        while (sBuilder.length() < finalLength) {
+            sBuilder.insert(0, "0");
         }
-        return s;
+        return sBuilder.toString();
     }
 
     public void logData(long[][] allActionStamps) {

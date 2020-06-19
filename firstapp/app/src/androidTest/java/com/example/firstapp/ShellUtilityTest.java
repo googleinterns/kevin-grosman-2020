@@ -28,7 +28,7 @@ public class ShellUtilityTest {
 
     @Before
     public void openBasicApp() throws IOException, InterruptedException {
-        shellUtility = new ShellUtility();
+        shellUtility = new ShellUtility(TIMEOUT);
         shellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
     }
