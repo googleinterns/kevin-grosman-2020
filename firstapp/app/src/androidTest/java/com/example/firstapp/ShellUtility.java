@@ -3,6 +3,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
 import android.os.SystemClock;
+import android.util.Log;
 
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -17,6 +18,7 @@ import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
@@ -24,11 +26,11 @@ import static java.lang.Thread.sleep;
 
 public class ShellUtility {
     public UiDevice device;
-    private int timeoutMs = 6000;
+    private long timeoutMs;
 
-
-    public ShellUtility() {
+    public ShellUtility(long timeoutMillis) {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        timeoutMs = timeoutMillis;
     }
 
     public static class invalidInputException extends Exception {
@@ -37,83 +39,155 @@ public class ShellUtility {
         }
     }
 
+                                /******************************
+                                 *       ACTION CLASS
+                                 ******************************/
     public abstract class Action {
-        abstract UiObject executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException;
+        private UiObject cachedObject;
+        long actionTimeout;
+
+        void setCachedObject(UiObject object) {
+            cachedObject = object;
+        }
+        UiObject getCachedObject() {
+            return cachedObject;
+        }
+
+        /**
+         * execute the action and cache the result in cachedObject
+         **/
+        abstract void executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException;
+
+        /**
+         * execute the action on the object specified by cachedObject
+         * return the time (since epoch) just before the action is performed
+         **/
+        abstract long executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException;
     }
+
     public class StartAction extends Action {
         String pkg;
-        public StartAction(String p) {
+
+        public StartAction(String p, long timeoutMillis) {
             pkg = p;
+            actionTimeout = timeoutMillis;
         }
-        UiObject executeUncachedAction() throws IOException, InterruptedException {
+
+        @Override
+        void executeUncachedAction() throws IOException, InterruptedException {
             forceQuitApp(pkg);
             launchApp(pkg);
-            return null;
+            setCachedObject(null);
+        }
+
+        @Override
+        long executeCachedAction() throws IOException, InterruptedException {
+            forceQuitApp(pkg);
+            return launchApp(pkg);
         }
     }
+
     public class ClickAction extends Action {
         String text;
         Boolean strict;
-        public ClickAction(String t, Boolean s) {
+        public ClickAction(String t, Boolean s, long timeoutMillis) {
             text = t;
             strict = s;
+            actionTimeout = timeoutMillis;
         }
-        UiObject executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException {
+
+        @Override
+        void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.text(text)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.textContains(text)), actionTimeout);
             }
             UiObject object = castToObject(object2);
             object.click();
-            return object;
+            setCachedObject(object);
+        }
+
+        @Override
+        long executeCachedAction() throws UiObjectNotFoundException {
+            UiObject object = getCachedObject();
+            object.waitForExists(actionTimeout);
+            long t = getTime();
+            object.click();
+            return t;
         }
     }
+
     public class ClickImageAction extends Action {
         String description;
         Boolean strict;
-        public ClickImageAction(String d, Boolean s) {
+        public ClickImageAction(String d, Boolean s, long timeoutMillis) {
             description = d;
             strict = s;
+            actionTimeout = timeoutMillis;
         }
-        UiObject executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException {
+
+        @Override
+        void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.desc(description)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.desc(description)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.descContains(description)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.descContains(description)), actionTimeout);
             }
             UiObject object = castToObject(object2);
             object.click();
-            return object;
+            setCachedObject(object);
+        }
+
+        @Override
+        long executeCachedAction() throws UiObjectNotFoundException {
+            UiObject object = getCachedObject();
+            object.waitForExists(actionTimeout);
+            long t = getTime();
+            object.click();
+            return t;
         }
     }
+
     public class EditAction extends Action {
         String text;
         String entered;
         Boolean strict;
-        public EditAction(String t, String e, Boolean s) {
+        public EditAction(String t, String e, Boolean s, long timeoutMillis) {
             text = t;
             entered = e;
             strict = s;
+            actionTimeout = timeoutMillis;
         }
-        UiObject executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException {
+
+        @Override
+        void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.text(text)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.text(text)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.textContains(text)), timeoutMs);
+                object2 = device.wait(Until.findObject(By.textContains(text)), actionTimeout);
             }
             UiObject object = getEditableObject(object2);
-            object.waitForExists(timeoutMs);
+            object.waitForExists(actionTimeout);
             object.legacySetText(entered);
-            return object;
+            setCachedObject(object);
+        }
+
+        @Override
+        long executeCachedAction() throws UiObjectNotFoundException {
+            UiObject object = getCachedObject();
+            object.waitForExists(actionTimeout);
+            long t = getTime();
+            object.legacySetText(entered);
+            return t;
         }
     }
-
-
-
+                                /******************************
+                                 *    APP LIFECYCLE HELPERS
+                                 ******************************/
     /**
      * Launches the specified App on the specified device and returns the time just before the app was
      * launched--to be used later for timing startup.
@@ -121,13 +195,13 @@ public class ShellUtility {
     public long launchApp(String pkg) throws InterruptedException, IOException {
 
 
-    /* Might want to reinclude this later:
-    //Start from the home screen
-    device.pressHome();
-    final String launcherPackage = device.getLauncherPackageName();
-    Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
-    device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
-    */
+        /* Might want to reinclude this later:
+        //Start from the home screen
+        device.pressHome();
+        final String launcherPackage = device.getLauncherPackageName();
+        Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
+        device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
+        */
 
         // Launch the app
         //Process process = new ProcessBuilder("am", "start", pkg).start();
@@ -141,7 +215,7 @@ public class ShellUtility {
         //startActivity imposes a 5 second cool-down after the home button is pressed, so we wait
         //out that cool-down before grabbing the time and launching
         //sleep(5000);
-        long start = SystemClock.elapsedRealtime();
+        long start = getTime();
         context.startActivity(intent);
 
         // Wait for the app to appear
@@ -151,13 +225,16 @@ public class ShellUtility {
 
     }
 
-
     public void forceQuitApp(String pkg) throws IOException, InterruptedException {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         Process process = new ProcessBuilder("am", "force-stop", pkg).start();
 
     }
 
+
+                                /******************************
+                                 *    OBJECT FINDING HELPERS
+                                 ******************************/
     /**
      * Walks up view tree until a clickable ancestor is found. Google apps often have clickable
      * views that have a textbox as a descendant and thus the view containing the text cannot be
@@ -221,6 +298,10 @@ public class ShellUtility {
         return castToObject(getLowestClickableAncestor(object2));
     }
 
+
+                                    /******************************
+                                     *   PARSING+CACHING HELPERS
+                                     ******************************/
     /** INSTRUCTIONS FOR ACTION FORMATTING:
      * The first action must be a string containing the package to be opened (e.g. “start;com.google.android.apps.maps").
      * Each subsequent action must be to click on a particular View or to enter text in a particular textbox. Subsequent
@@ -243,28 +324,28 @@ public class ShellUtility {
                 if (!(tokens.length == 2)) {
                     throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new StartAction(tokens[1]);
+                action = new StartAction(tokens[1], timeoutMs);
                 break;
 
             case "click":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickAction(tokens[1], strict);
+                action = new ClickAction(tokens[1], strict), timeoutMs;
                 break;
 
             case "clickImage":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickImageAction(tokens[1], strict);
+                action = new ClickImageAction(tokens[1], strict, timeoutMs);
                 break;
 
             case "edit":
                 if (!(3 <= tokens.length && tokens.length <= 4)) {
-                throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new EditAction(tokens[1], tokens[2], strict);
+                action = new EditAction(tokens[1], tokens[2], strict, timeoutMs);
                 break;
 
             default:
@@ -272,6 +353,7 @@ public class ShellUtility {
         }
         return action;
     }
+
     /**
      * A CUJ is passed in as two arrays of sequential actions, the first being preparatory (not measured)
      * and the second being measured and starting from where the first left off. e.g:
@@ -287,29 +369,153 @@ public class ShellUtility {
         return res;
     }
 
-
     /**
      * Executes CUJ and returns cached objects
      */
-    public UiObject[] cacheCUJ(Action[] cuj) throws InterruptedException, invalidInputException, UiObjectNotFoundException, IOException {
-        UiObject[] cachedObjects = new UiObject[cuj.length];
+    public void  cacheCUJ(Action[] cuj) throws InterruptedException, invalidInputException, UiObjectNotFoundException, IOException {
         for (int i = 0; i < cuj.length; i++) {
-            cachedObjects[i] = cuj[i].executeUncachedAction();
+            cuj[i].executeUncachedAction();
         }
-        return cachedObjects;
+    }
+
+
+                                /****************************
+                                 * DATA MANIPULATION HELPERS
+                                 ****************************/
+    public long getTime() {
+        return SystemClock.currentGnssTimeClock().millis();
+    }
+
+    public long sumArr(long[] arr) {
+        long total = 0;
+        for (long t : arr) total += t;
+        return total;
     }
 
     /**
-     * Executes a CUJ with preparatory actions pre and measured actions post. Caches information for later use.
+     * differences between successive elements
      */
-    public void executeCUJ(String[] preCUJ, String[] postCUJ) throws Exception {
+    public long[] differences(long[] arr) {
+        if (arr.length == 0) return arr;
+        long[] res = new long[arr.length - 1];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = arr[i + 1] - arr[i];
+        }
+        return res;
+    }
+    /**
+     * last (n - 1) values scaled, where first value is set to 0
+     * e.g : {5, 23, 45} -> {23 - 5, 45 - 5} = {18, 40}
+     */
+    public long[] relativeValues(long[] arr) {
+        if (arr.length == 0) return null;
+        long[] res = new long[arr.length - 1];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = arr[i + 1] - arr[0];
+        }
+        return res;
+    }
+
+    public long[] averageColumns(long[][] arr) {
+        if (arr == null || arr.length == 0) return null;
+        long[] averages = new long[arr[0].length];
+        for (int j = 0; j < arr[0].length; j++) {
+            long sum = 0;
+            for (int i = 0; i < arr.length; i++) {
+                sum += arr[i][j];
+            }
+            averages[j] = sum / arr.length;
+        }
+        return averages;
+    }
+
+    public String zeroPad(String s, int finalLength) {
+        StringBuilder sBuilder = new StringBuilder(s);
+        while (sBuilder.length() < finalLength) {
+            sBuilder.insert(0, "0");
+        }
+        return sBuilder.toString();
+    }
+
+    public void logData(long[][] allActionStamps) {
+        int iterations = allActionStamps.length;
+
+        //Log action durations
+        long[][] allActionDurations = new long[iterations][];
+        for (int iter = 0; iter < iterations; iter++) {
+            long[] actionDurations = differences(allActionStamps[iter]);
+            allActionDurations[iter] = actionDurations;
+            Log.i("iterations-actions", "ITERATION " + (iter + 2) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + sumArr(actionDurations));
+        }
+
+        //Log average action durations
+        long[] averageActionDurations = averageColumns(allActionDurations);
+        Log.i("averages-actions", "AVERAGE:     " + Arrays.toString(averageActionDurations) + ", TOTAL: " + sumArr(averageActionDurations));
+
+
+        //Log time stamps relative to moment first measured action became available and store iteration durations
+        long[][] allRelativeStamps = new long[iterations][];
+        long[][] iterDurations = new long[iterations][2]; //to be used later for finding median
+        for (int iter = 0; iter < iterations; iter++) {
+            long[] actionStamps = allActionStamps[iter];
+            long[] relativeStamps = relativeValues(actionStamps);
+
+            allRelativeStamps[iter] = relativeStamps;
+            iterDurations[iter][0] = iter;
+            iterDurations[iter][1] = relativeStamps[relativeStamps.length - 1];
+            Log.i("iterations-stamps", "ITERATION " + (iter + 2) + ": " + Arrays.toString(relativeStamps));
+        }
+
+        //log average relative stamps
+        long[] averageRelativeStamps = averageColumns(allRelativeStamps);
+        Log.i("averages-stamps", "AVERAGE:     " + Arrays.toString(averageRelativeStamps));
+
+        //log median iteration
+        Arrays.sort(iterDurations, (a,b) -> Long.compare(a[1], b[1]));
+        int median_idx = (int) iterDurations[iterDurations.length / 2][0];
+        long med_start = allActionStamps[median_idx][0];
+        long med_end = allActionStamps[median_idx][allActionStamps[0].length - 1];
+        Log.i("median", "MEDIAN RUN: " + (median_idx + 2));
+        //Log.i("median", "MEDIAN RUN STARTS @: " + miliseconds_to_time(med_start));
+        //Log.i("median", "MEDIAN RUN ENDS @: " + miliseconds_to_time(med_end));
+
+        //log median clip data
+        Log.i("clip_start", "" + med_start);
+        Log.i("clip_end", "" + med_end);
+    }
+
+    /******************************************************************************
+     * Executes a CUJ with preparatory actions pre and measured actions post.
+     * Caches data and then runs through the CUJ iterations times and logs results
+     ******************************************************************************/
+    public void executeCUJ(String[] preCUJ, String[] postCUJ, int iterations) throws Exception {
+        if (postCUJ.length < 2) throw new invalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'dummy' action");
         String[] cujStrings = new String[preCUJ.length + postCUJ.length];
         System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
         System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
         Action[] cuj = parseStringCUJ(cujStrings);
-        UiObject[] cachedObjects = cacheCUJ(cuj);
+
+        //caching run
+        cacheCUJ(cuj);
+
+        //cached runs:
+        int iter = -1;
+        long[][] allActionStamps = new long[iterations][postCUJ.length];
+        while (++iter < iterations) {
+            //Execute preparatory actions:
+            for (int i = 0; i < preCUJ.length; i++) {
+                cuj[i].executeCachedAction();
+            }
+
+            //execute recorded actions:
+            //start_recording()
+            for (int i = preCUJ.length; i < cuj.length; i++) {
+                 allActionStamps[iter][i - preCUJ.length] = cuj[i].executeCachedAction();
+             }
+             //stop_recording();
+        }
+        if (iterations > 0) {
+            logData(allActionStamps);
+        }
     }
-
-
-
 }
