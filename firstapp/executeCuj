@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+
+PRE_CUJ=${1?ERROR: no Pre CUJ given}
+POST_CUJ=${2?ERROR: no Recorded CUJ given}
+NUM=${3:-1}
+RECORD=${4:-"n"}
+
+
+
+adb logcat -c
+sed -i -e "s/int NUM_ITERATIONS = .*;/int NUM_ITERATIONS = $NUM;/g" ./app/src/androidTest/java/com/example/firstapp/UserCujTest.java
+sed -i -e "s/static String.*preCUJ = .*;/static String[] preCUJ = $PRE_CUJ;/g" ./app/src/androidTest/java/com/example/firstapp/UserCujTest.java
+sed -i -e "s/static String.*postCUJ = .*;/static String[] postCUJ = $POST_CUJ;/g" ./app/src/androidTest/java/com/example/firstapp/UserCujTest.java
+
+if [ "$RECORD" = "r" ] 
+then 
+	sed -i -e "s/long RECORDING_BUF = .*;/long RECORDING_BUF = 1000;/g" ./app/src/androidTest/java/com/example/firstapp/UserCujTest.java
+else 
+	sed -i -e "s/long RECORDING_BUF = .*;/long RECORDING_BUF = 0;/g" ./app/src/androidTest/java/com/example/firstapp/UserCujTest.java
+fi 
+
+
+
+#./gradlew connectedAndroidTest
+./gradlew installDebugAndroidTest
+
+if [ "$RECORD" = "r" ] 
+then 
+	RECSTART=$(( $(date '+%s%N') / 1000000))
+	./../../adb shell "screenrecord /sdcard/test.mp4" &
+	PID=$!
+fi 
+
+adb shell am instrument -w -e class com.example.firstapp.UserCujTest com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner
+
+if [ "$RECORD" = "r" ] 
+then 
+	kill $PID 
+	RECEND=$(( $(date '+%s%N') / 1000000))
+	rm test.mp4
+	adb pull sdcard/test.mp4 
+	adb pull sdcard/test.mp4 
+	rm median_clip.mp4
+	#(eval "$(adb logcat -s "clip" -v raw -d | sed -n -e '/^ffmpeg/p')")
+	CUJSTART=$(adb logcat -s "clip_start" -v raw -d | sed -n -e '/^1/p')
+	CUJEND=$(adb logcat -s "clip_end" -v raw -d | sed -n -e '/^1/p')
+	echo "rec start: $RECSTART"
+	echo "clip start: $CUJSTART"
+	echo "clip end: $CUJEND"
+	echo "rec end: $RECEND"
+	CUTAT=$((CUJSTART - RECSTART - 8000)) 
+	LENGTH=$((CUJEND - RECSTART - 0)) 
+	#LENGTH=$((CUJEND + 2000 - CUJSTART)) 
+	./date "$CUTAT"	
+	CUTATFORMAT=$(cat time.txt)
+	./date "$LENGTH"	
+	LENGTHFORMAT=$(cat time.txt)
+	increasefps="ffmpeg -i test.mp4 -filter:v fps=fps=90 more_frames.mp4"
+	#cmd="ffmpeg -i more_frames.mp4 -force_key_frames:v $CUTATFORMAT,$LENGTHFORMAT -acodec copy -map 0 -f segment -segment_times $CUTATFORMAT,$LENGTHFORMAT -reset_timestamps 1 -y mortemp%d.mp4"
+	cmd2="ffmpeg -i test.mp4 -force_key_frames:v $CUTATFORMAT,$LENGTHFORMAT -acodec copy -map 0 -f segment -segment_times $CUTATFORMAT,$LENGTHFORMAT -reset_timestamps 1 -y temp%d.mp4"
+	#cmd3="ffmpeg -ss $CUTATFORMAT -i test.mp4 -to $LENGTHFORMAT -c copy median_clip.mp4"
+	#cmd4="ffmpeg -i test.mp4 -ss $CUTATFORMAT -strict -2 -to $LENGTHFORMAT output_clip.mp4"
+	#echo $cmd > action_time_stamps.txt
+	#eval $increasefps
+	#eval $cmd
+	eval $cmd2
+fi 
+
+
+echo "----------------------------------------------" >> action_time_stamps.txt
+echo "ACTION DURATIONS:" >> action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+(adb logcat -s "iterations-actions" -v raw -d | sed -n -e '/^ITERATION/p') >> action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+(adb logcat -s "averages-actions" -v raw -d | sed -n -e '/^AVERAGE/p') >> action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+echo "----------------------------------------------" >> action_time_stamps.txt
+echo "TIME STAMPS:" >> action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+(adb logcat -s "iterations-stamps" -v raw -d | sed -n -e '/^ITERATION/p') >> action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+(adb logcat -s "averages-stamps" -v raw -d | sed -n -e '/^AVERAGE/p') >> action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+echo "----------------------------------------------" >> action_time_stamps.txt
+echo "MEDIAN:" >> action_time_stamps.txt
+echo "" >> action_time_stamps.txt
+(adb logcat -s "median" -v raw -d | sed -n -e '/^MEDIAN/p') >> action_time_stamps.txt
+
+
+
+cat action_time_stamps.txt
+
+
+

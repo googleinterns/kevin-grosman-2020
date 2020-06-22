@@ -1,13 +1,16 @@
 package com.example.firstapp;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.RemoteException;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.accessibility.AccessibilityNodeInfo;
 
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
+import androidx.test.uiautomator.Tracer;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObject2;
@@ -39,7 +42,7 @@ public class ShellUtility {
         }
     }
 
-                                /******************************
+            /******************************
                                  *       ACTION CLASS
                                  ******************************/
     public abstract class Action {
@@ -113,9 +116,9 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            long t = getTime();
+            //long t = getTime();
             object.click();
-            return t;
+            return getTime();
         }
     }
 
@@ -145,9 +148,9 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            long t = getTime();
+            //long t = getTime();
             object.click();
-            return t;
+            return getTime();
         }
     }
 
@@ -180,9 +183,9 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            long t = getTime();
+            //long t = getTime();
             object.legacySetText(entered);
-            return t;
+            return getTime();
         }
     }
                                 /******************************
@@ -195,13 +198,12 @@ public class ShellUtility {
     public long launchApp(String pkg) throws InterruptedException, IOException {
 
 
-        /* Might want to reinclude this later:
         //Start from the home screen
         device.pressHome();
         final String launcherPackage = device.getLauncherPackageName();
         Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
         device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
-        */
+
 
         // Launch the app
         //Process process = new ProcessBuilder("am", "start", pkg).start();
@@ -214,7 +216,7 @@ public class ShellUtility {
 
         //startActivity imposes a 5 second cool-down after the home button is pressed, so we wait
         //out that cool-down before grabbing the time and launching
-        //sleep(5000);
+        sleep(6000);
         long start = getTime();
         context.startActivity(intent);
 
@@ -303,17 +305,17 @@ public class ShellUtility {
                                      *   PARSING+CACHING HELPERS
                                      ******************************/
     /** INSTRUCTIONS FOR ACTION FORMATTING:
-     * The first action must be a string containing the package to be opened (e.g. “start;com.google.android.apps.maps").
-     * Each subsequent action must be to click on a particular View or to enter text in a particular textbox. Subsequent
-     * actions can take on one of the following forms:
+     * Each action must be to launch an app, click on a particular View or to enter text in a particular textbox.
+     * Actions are represented in one of the following forms:
      *
-     * 1. “edit;text_displayed;text_entered” to enter text_entered into a textbox, where text_displayed is the text currently visible in the textbox.
-     * 2. “click;text_displayed” to click a non-editable view (normally a text-view or button) on the screen which has text containing the string text_displayed displayed on it
-     * 3. “clickImage;text_description” to click a view without text (normally an image view) where the description of the view contains the string description_text
+     * 1. “start;package_name" to launch the specified package.
+     * 2. “edit;text_displayed;text_entered” to enter text_entered into a textbox, where text_displayed is the text currently visible in the textbox.
+     * 3. “click;text_displayed” to click a non-editable view (normally a text-view or button) on the screen which has text containing the string text_displayed displayed on it
+     * 4. “clickImage;text_description” to click a view without text (normally an image view) where the description of the view contains the string description_text
      *
-     * Note that all text fields are case sensitive. Additionally, if any of the above strings are followed by “;strict”
-     * the search for a corresponding view will enforce that an exact match is found for text_displayed (in cases 1 or 2)
-     * or text_description (in case 3).
+     * Note that all text fields are case sensitive. Additionally, if an action of form 2, 3, or 4 is followed by “;strict”
+     * the search for a corresponding view will enforce that an exact match is found for text_displayed (in cases 2 or 3)
+     * or text_description (in case 4).
      */
     public Action parseStringAction(String str, int idx) throws invalidInputException {
         String[] tokens = str.split(";");
@@ -331,7 +333,7 @@ public class ShellUtility {
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickAction(tokens[1], strict), timeoutMs;
+                action = new ClickAction(tokens[1], strict, timeoutMs);
                 break;
 
             case "clickImage":
@@ -383,7 +385,7 @@ public class ShellUtility {
                                  * DATA MANIPULATION HELPERS
                                  ****************************/
     public long getTime() {
-        return SystemClock.currentGnssTimeClock().millis();
+        return System.currentTimeMillis();
     }
 
     public long sumArr(long[] arr) {
@@ -488,7 +490,7 @@ public class ShellUtility {
      * Executes a CUJ with preparatory actions pre and measured actions post.
      * Caches data and then runs through the CUJ iterations times and logs results
      ******************************************************************************/
-    public void executeCUJ(String[] preCUJ, String[] postCUJ, int iterations) throws Exception {
+    public void executeCUJ(String[] preCUJ, String[] postCUJ, int iterations, long recordingBuf) throws Exception {
         if (postCUJ.length < 2) throw new invalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'dummy' action");
         String[] cujStrings = new String[preCUJ.length + postCUJ.length];
         System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
@@ -509,10 +511,12 @@ public class ShellUtility {
 
             //execute recorded actions:
             //start_recording()
+            sleep(recordingBuf);
             for (int i = preCUJ.length; i < cuj.length; i++) {
                  allActionStamps[iter][i - preCUJ.length] = cuj[i].executeCachedAction();
              }
-             //stop_recording();
+            sleep(recordingBuf);
+            //stop_recording();
         }
         if (iterations > 0) {
             logData(allActionStamps);

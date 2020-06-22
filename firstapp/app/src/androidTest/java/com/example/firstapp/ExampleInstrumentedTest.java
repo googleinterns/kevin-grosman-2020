@@ -40,7 +40,7 @@ public class ExampleInstrumentedTest {
 
     @Before
     public void getDevice() {
-        shellUtility = new ShellUtility();
+        shellUtility = new ShellUtility(TIMEOUT);
     }
 
     @Test
