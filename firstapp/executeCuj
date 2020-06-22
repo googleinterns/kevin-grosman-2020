@@ -26,7 +26,7 @@ fi
 
 if [ "$RECORD" = "r" ] 
 then 
-	RECSTART=$(( $(date '+%s%N') / 1000000))
+	RECSTART=$(( $(adb shell date '+%s%N') / 1000000))
 	./../../adb shell "screenrecord /sdcard/test.mp4" &
 	PID=$!
 fi 
@@ -36,26 +36,26 @@ adb shell am instrument -w -e class com.example.firstapp.UserCujTest com.example
 if [ "$RECORD" = "r" ] 
 then 
 	kill $PID 
-	RECEND=$(( $(date '+%s%N') / 1000000))
-	rm test.mp4
+	#RECEND=$(( $(adb shell date '+%s%N') / 1000000))
+	#rm test.mp4
 	adb pull sdcard/test.mp4 
-	adb pull sdcard/test.mp4 
-	rm median_clip.mp4
+	adb pull sdcard/test.mp4  #for some reason, the first pull sometimes doesn't always get the "moov" atom, which we need. Pulling twice seems to always do the trick...
+	#rm median_clip.mp4
 	#(eval "$(adb logcat -s "clip" -v raw -d | sed -n -e '/^ffmpeg/p')")
 	CUJSTART=$(adb logcat -s "clip_start" -v raw -d | sed -n -e '/^1/p')
 	CUJEND=$(adb logcat -s "clip_end" -v raw -d | sed -n -e '/^1/p')
-	echo "rec start: $RECSTART"
-	echo "clip start: $CUJSTART"
-	echo "clip end: $CUJEND"
-	echo "rec end: $RECEND"
-	CUTAT=$((CUJSTART - RECSTART - 8000)) 
-	LENGTH=$((CUJEND - RECSTART - 0)) 
+	#echo "rec start: $RECSTART"
+	#echo "clip start: $CUJSTART"
+	#echo "clip end: $CUJEND"
+	#echo "rec end: $RECEND"
+	CUTAT=$((CUJSTART - RECSTART - 1000)) 
+	LENGTH=$((CUJEND - RECSTART + 1000)) 
 	#LENGTH=$((CUJEND + 2000 - CUJSTART)) 
-	./date "$CUTAT"	
+	./formatTime "$CUTAT"	
 	CUTATFORMAT=$(cat time.txt)
-	./date "$LENGTH"	
+	./formatTime "$LENGTH"	
 	LENGTHFORMAT=$(cat time.txt)
-	increasefps="ffmpeg -i test.mp4 -filter:v fps=fps=90 more_frames.mp4"
+	#increasefps="ffmpeg -i test.mp4 -filter:v fps=fps=90 more_frames.mp4"
 	#cmd="ffmpeg -i more_frames.mp4 -force_key_frames:v $CUTATFORMAT,$LENGTHFORMAT -acodec copy -map 0 -f segment -segment_times $CUTATFORMAT,$LENGTHFORMAT -reset_timestamps 1 -y mortemp%d.mp4"
 	cmd2="ffmpeg -i test.mp4 -force_key_frames:v $CUTATFORMAT,$LENGTHFORMAT -acodec copy -map 0 -f segment -segment_times $CUTATFORMAT,$LENGTHFORMAT -reset_timestamps 1 -y temp%d.mp4"
 	#cmd3="ffmpeg -ss $CUTATFORMAT -i test.mp4 -to $LENGTHFORMAT -c copy median_clip.mp4"
@@ -67,7 +67,7 @@ then
 fi 
 
 
-echo "----------------------------------------------" >> action_time_stamps.txt
+echo "----------------------------------------------" > action_time_stamps.txt
 echo "ACTION DURATIONS:" >> action_time_stamps.txt
 echo "" >> action_time_stamps.txt
 (adb logcat -s "iterations-actions" -v raw -d | sed -n -e '/^ITERATION/p') >> action_time_stamps.txt
