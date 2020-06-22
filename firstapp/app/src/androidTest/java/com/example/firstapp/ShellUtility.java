@@ -116,9 +116,9 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            //long t = getTime();
+            long t = getTime();
             object.click();
-            return getTime();
+            return t;
         }
     }
 
@@ -148,9 +148,9 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            //long t = getTime();
+            long t = getTime();
             object.click();
-            return getTime();
+            return t;
         }
     }
 
@@ -183,9 +183,9 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            //long t = getTime();
+            long t = getTime();
             object.legacySetText(entered);
-            return getTime();
+            return t;
         }
     }
                                 /******************************
