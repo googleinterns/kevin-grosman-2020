@@ -10,11 +10,27 @@ then
 	RECORD="n"
 fi
 
-#replace space and semicolon characters, since these terminate string in the am instrument command (in the test, we revert these changes)
-PRE_CUJ=${PRE_CUJ// /_}
-PRE_CUJ=${PRE_CUJ//;/^}
-POST_CUJ=${POST_CUJ// /_}
-POST_CUJ=${POST_CUJ//;/^}
+#use escape char to allow single quotes and semi-colons (which would terminate the argument in the am instrument command). Wrap strings in \" to allow for spaces within them. 
+SpecialChars=(";"  "'" "\&")
+for exp in ${SpecialChars[@]}; do
+	char="${exp: -1}"
+	echo $exp
+	echo $char
+	PRE_CUJ=${PRE_CUJ//$exp/\\$char}
+	POST_CUJ=${POST_CUJ//$exp/\\$char}
+done
+
+#POST_CUJ=${POST_CUJ//\&/\\\&}
+#PRE_CUJ=${PRE_CUJ//;/\\\;}
+#PRE_CUJ=${PRE_CUJ//\'/\\\'}
+PRE_CUJ="\\\"$PRE_CUJ\\\""
+
+#POST_CUJ=${POST_CUJ//;/\\\;}
+#POST_CUJ=${POST_CUJ//\'/\\\'}
+POST_CUJ="\\\"$POST_CUJ\\\""
+
+echo $PRE_CUJ
+echo $POST_CUJ
 
 adb logcat -c
 
@@ -27,7 +43,8 @@ then
 	PID=$!
 fi 
 
-adb shell am instrument -w -e class com.example.firstapp.UserCujTest -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM -e rec $RECORD com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM -e rec $RECORD com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+eval $cmd
 
 if [ "$RECORD" = "r" ] 
 then 
