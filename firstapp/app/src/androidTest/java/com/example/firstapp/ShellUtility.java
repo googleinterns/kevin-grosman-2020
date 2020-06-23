@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.RemoteException;
 import android.os.SystemClock;
+import android.util.JsonReader;
 import android.util.Log;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -18,7 +19,11 @@ import androidx.test.uiautomator.UiObjectNotFoundException;
 import androidx.test.uiautomator.UiSelector;
 import androidx.test.uiautomator.Until;
 import org.hamcrest.CoreMatchers;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -304,6 +309,20 @@ public class ShellUtility {
                                     /******************************
                                      *   PARSING+CACHING HELPERS
                                      ******************************/
+
+
+    String[] parseToArray(String s) throws JSONException {
+        if (s == null || s.length() == 0) return new String[0];
+        String[] res =  s.split(",");
+        for (int i = 0; i < res.length; i++) {
+            //remove leading spaces, since none of the action names have leading spaces (But leave trailing spaces since arbitrary string arguments could have trailing spaces)
+            res[i] = res[i].replaceFirst("^\\s++", "");
+        }
+        return res;
+    }
+
+
+
     /** INSTRUCTIONS FOR ACTION FORMATTING:
      * Each action must be to launch an app, click on a particular View or to enter text in a particular textbox.
      * Actions are represented in one of the following forms:
@@ -351,7 +370,7 @@ public class ShellUtility {
                 break;
 
             default:
-                throw new invalidInputException("input at index " + idx + " has an invalid first token");
+                throw new invalidInputException("input at index " + idx + " has an invalid first token:" + tokens[0]);
         }
         return action;
     }
@@ -490,9 +509,12 @@ public class ShellUtility {
      * Executes a CUJ with preparatory actions pre and measured actions post.
      * Caches data and then runs through the CUJ iterations times and logs results
      ******************************************************************************/
-    public void executeCUJ(String[] preCUJ, String[] postCUJ, int iterations, long recordingBuf) throws Exception {
-        if (postCUJ.length < 2) throw new invalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'dummy' action");
+    public void executeCUJ(String preStr, String postStr, int iterations, boolean recordIntent) throws Exception {
+        String[] preCUJ = parseToArray(preStr);
+        String[] postCUJ = parseToArray(postStr);
+        if (postCUJ.length < 2) throw new invalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
         String[] cujStrings = new String[preCUJ.length + postCUJ.length];
+        long recordingBufMs = recordIntent ? 1000 : 0;
         System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
         System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
         Action[] cuj = parseStringCUJ(cujStrings);
@@ -511,11 +533,11 @@ public class ShellUtility {
 
             //execute recorded actions:
             //start_recording()
-            sleep(recordingBuf);
+            sleep(recordingBufMs);
             for (int i = preCUJ.length; i < cuj.length; i++) {
                  allActionStamps[iter][i - preCUJ.length] = cuj[i].executeCachedAction();
              }
-            sleep(recordingBuf);
+            sleep(recordingBufMs);
             //stop_recording();
         }
         if (iterations > 0) {

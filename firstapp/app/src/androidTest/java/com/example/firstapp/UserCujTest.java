@@ -1,24 +1,29 @@
 package com.example.firstapp;
 
+import android.os.Bundle;
+import android.util.Log;
+
+import androidx.test.platform.app.InstrumentationRegistry;
+
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+
 public class UserCujTest {
-    /*************************************************
-     USER INPUT:
-     PACKAGE - package to be used
-     pre_CUJ - preparatory actions (unrecorded)
-     post_CUJ - recorded actions
-     RECORDING_BUF:  how long to sleep in between prep and measured actions (can be 0 if no intent to record)
-     *************************************************/
-    private static String[] preCUJ = {"start;com.google.android.apps.maps"};
-    private static String[] postCUJ = {"click;Takeout", "click;Open now"};
-    private static int NUM_ITERATIONS = 1;
-    private static long RECORDING_BUF = 1000;
-    private static long TIMEOUT = 5000;
+
+    private static long TIMEOUTMS = 5000;
 
     @Test
     public void runCuj() throws Exception {
-        ShellUtility shellUtility = new ShellUtility(TIMEOUT);
-        shellUtility.executeCUJ(preCUJ, postCUJ, NUM_ITERATIONS, RECORDING_BUF);
+        Bundle extras = InstrumentationRegistry.getArguments();
+        String preCUJ = extras.getString("pre").replace('_', ' ').replace('^', ';');;
+        String postCUJ = extras.getString("post").replace('_', ' ').replace('^', ';');
+        int iterations = Integer.parseInt(extras.getString("iters"));
+        boolean recordIntent = "r".equals(extras.getString("rec"));
+
+        ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
+        shellUtility.executeCUJ(preCUJ, postCUJ, iterations, recordIntent);
     }
 }
