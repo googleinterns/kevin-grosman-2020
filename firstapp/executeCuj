@@ -23,7 +23,7 @@ adb logcat -c
 if [ "$RECORD" = "r" ] 
 then 
 	RECSTART=$(( $(adb shell date '+%s%N') / 1000000))
-	./../../adb shell "screenrecord /sdcard/test.mp4" &
+	adb shell "screenrecord /sdcard/test.mp4" &
 	PID=$!
 fi 
 
