@@ -24,7 +24,7 @@ public class MapsInstrumentedTest {
 
     @Before
     public void getDevice() {
-        shellUtility = new ShellUtility();
+        shellUtility = new ShellUtility(TIMEOUT);
     }
 
     @Test

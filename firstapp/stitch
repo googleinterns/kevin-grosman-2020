@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+arguments=""
+
+for var in "$@"
+do
+	arguments="$arguments -i $var"
+done
+
+cmd="ffmpeg$arguments -filter_complex hstack=$# stitched.mp4"
+eval $cmd
