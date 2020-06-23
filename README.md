@@ -25,7 +25,6 @@ Apache header:
     See the License for the specific language governing permissions and
     limitations under the License.
 
-
 # CUJ recording
 
 ## Usage
@@ -33,10 +32,21 @@ Apache header:
 ### executeCuj
 
 To get data on the latency of a CUJ running on a connected device, run 
+
 ```bash
-./executeCuj <preparatory_actions> <measured_actions> <num_iterations> <r?>
+./executeCuj <input_file>
 ```
-where preparatory_actions consists of actions to be performed prior to the CUJ 
+
+where input file is formatted as follows (all on seperate lines):
+
+```bash
+<preparatory_actions> 
+<measured_actions> 
+<num_iterations> 
+<r?>
+```
+
+preparatory_actions consists of actions to be performed prior to the CUJ 
 in question and measured actions consists of the CUJ in question plus a final 
 "termination" action, which will only be able to be performed once the last
 action in the CUJ has fully terminated. num_iterations denotes the number of 
@@ -45,10 +55,10 @@ follow the command with "r" to signify that you'd like the run of median length
 to be outputted by the program. (Note that if you'd like to record, the entire
 test, including eachiteration, much have length <= 3 minutes.)
 
-the action list arguments must be formatted as follows:
+the action list lines must be formatted as follows:
 
 ```bash
-'{<action1>, <action2>, ... , <actionN>}'
+<action1>, <action2>, ... , <actionN>
 ```
 and each action is either to launch an app, click on a particular View or to enter 
 text in a particular textbox. Actions are represented in one of the following forms:
@@ -66,10 +76,4 @@ that an exact match is found for text_displayed (in cases 2 or 3) or text_descri
 ### stitch
 
 to stitch together several videos to compare them side-by-side, use the stitch command 
-as follows:
-
-```bash
-./stitch <video1> <video2> ... <videoN>
-```
-the resulting video will be called "stitched.mp4" 
 
