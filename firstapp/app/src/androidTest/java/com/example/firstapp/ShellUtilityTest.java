@@ -109,7 +109,7 @@ public class ShellUtilityTest {
 
     @Test
     public void parsingToArray() throws JSONException {
-        String actionList = "a;b, c;d;e";
+        String actionList = "['a;b', 'c;d;e']";
         String[] arr = shellUtility.parseToArray(actionList);
         assertEquals(2, arr.length);
         assertEquals("a;b", arr[0]);
@@ -118,16 +118,16 @@ public class ShellUtilityTest {
 
     @Test
     public void parsingToArrayExtraSpacing() throws JSONException {
-        String actionList = "a  b,      c;d;e ";
+        String actionList = "['a  b',     ' c;d; e ']";
         String[] arr = shellUtility.parseToArray(actionList);
         assertEquals(2, arr.length);
         assertEquals("a  b", arr[0]);
-        assertEquals("c;d;e ", arr[1]);
+        assertEquals(" c;d; e ", arr[1]);
     }
 
     @Test
     public void parsingToArrayEmpty() throws JSONException {
-        String actionList = "";
+        String actionList = "[]";
         String[] arr = shellUtility.parseToArray(actionList);
         assertEquals(0, arr.length);
     }
@@ -288,8 +288,8 @@ public class ShellUtilityTest {
 
     @Test
     public void clickTest() throws Exception {
-        String preCUJ = "";
-        String postCUJ = "start;" + BASIC_SAMPLE_PACKAGE + ", click;COUNT, click;COUNT, click;COUNT, click;COUNT, click;COUNT";
+        String preCUJ = "[]";
+        String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
         shellUtility.executeCUJ(preCUJ, postCUJ, 0,false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
@@ -299,8 +299,8 @@ public class ShellUtilityTest {
 
     @Test
     public void nonEmptyPreCUJStrictMatching() throws Exception {
-        String preCUJ = "start;" + BASIC_SAMPLE_PACKAGE + ", click;COUNT;strict, click;COUNT, click;COUNT";
-        String postCUJ = "click;COUNT,  click;COUNT;strict";
+        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT;strict', 'click;COUNT', 'click;COUNT']";
+        String postCUJ = "['click;COUNT',  'click;COUNT;strict']";
         shellUtility.executeCUJ(preCUJ, postCUJ, 0, false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
@@ -309,8 +309,8 @@ public class ShellUtilityTest {
     //test clicking on non-clickables, editing text, using proper substring for matching
     @Test
     public void properSubstringAndClickingOnNonClickables() throws Exception {
-        String preCUJ = "start;" + BASIC_SAMPLE_PACKAGE;
-        String postCUJ =  "[click;ALSO RAND, click;PREVIOUS, edit;How does;Good!";
+        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "']";
+        String postCUJ =  "['click;ALSO RAND', 'click;PREVIOUS', 'edit;How does;Good!']";
         shellUtility.executeCUJ(preCUJ, postCUJ, 0, false);
     }
 
@@ -318,13 +318,13 @@ public class ShellUtilityTest {
      * Cached CUJ Tests
      */
     //Basic clicking test
-    /*
+
     @Test
     public void clickTestCached() throws Exception {
-        String[] preCUJ = {};
-        String[] postCUJ = {"start;" + BASIC_SAMPLE_PACKAGE, "click;COUNT", "click;COUNT", "click;COUNT", "click;COUNT", "click;COUNT"};
-        shellUtility.executeCUJ(preCUJ, postCUJ, 1,0);
+        String preCUJ = "";
+        String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
+        shellUtility.executeCUJ(preCUJ, postCUJ, 1,false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
-    }*/
+    }
 }

@@ -313,10 +313,10 @@ public class ShellUtility {
 
     String[] parseToArray(String s) throws JSONException {
         if (s == null || s.length() == 0) return new String[0];
-        String[] res =  s.split(",");
+        JSONArray ja = new JSONArray(s);
+        String[] res = new String[ja.length()];
         for (int i = 0; i < res.length; i++) {
-            //remove leading spaces, since none of the action names have leading spaces (But leave trailing spaces since arbitrary string arguments could have trailing spaces)
-            res[i] = res[i].replaceFirst("^\\s++", "");
+            res[i] = ja.getString(i);
         }
         return res;
     }
@@ -506,8 +506,17 @@ public class ShellUtility {
     }
 
     /******************************************************************************
-     * Executes a CUJ with preparatory actions pre and measured actions post.
-     * Caches data and then runs through the CUJ iterations times and logs results
+     * Executes a CUJ, caches data and then runs through it again iterations times
+     * measuring and logging data on the measured actions. If there is an intent to record,
+     * also leaves a window of space before and after the measured actions for recording boundaries
+     *
+     * @param preStr Preparatory actions array represented as a string
+     *               (i.e. "['action_1', 'action_2', ... ])
+     * @param preStr Measured actions array represented as a string
+     *               (i.e. "['action_1', 'action_2', ... ])
+     *
+     * @param iterations The number of times to run through and measure the CUJ
+     * @param recordIntent Whether the user intends to record the test
      ******************************************************************************/
     public void executeCUJ(String preStr, String postStr, int iterations, boolean recordIntent) throws Exception {
         String[] preCUJ = parseToArray(preStr);

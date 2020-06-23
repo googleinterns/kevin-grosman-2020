@@ -1,0 +1,4 @@
+['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphitheatre']
+['click;Directions;strict', 'click;Choose starting', 'click;Your location;strict', 'click;Steps & more;strict']
+5
+r

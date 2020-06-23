@@ -18,8 +18,8 @@ public class UserCujTest {
     @Test
     public void runCuj() throws Exception {
         Bundle extras = InstrumentationRegistry.getArguments();
-        String preCUJ = extras.getString("pre").replace('_', ' ').replace('^', ';');;
-        String postCUJ = extras.getString("post").replace('_', ' ').replace('^', ';');
+        String preCUJ = extras.getString("pre");
+        String postCUJ = extras.getString("post");
         int iterations = Integer.parseInt(extras.getString("iters"));
         boolean recordIntent = "r".equals(extras.getString("rec"));
 

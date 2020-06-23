@@ -39,7 +39,7 @@ To get data on the latency of a CUJ running on a connected device, run
 
 where input file is formatted as follows (all on seperate lines):
 
-```bash
+```
 <preparatory_actions> 
 <measured_actions> 
 <num_iterations> 
@@ -50,15 +50,15 @@ preparatory_actions consists of actions to be performed prior to the CUJ
 in question and measured actions consists of the CUJ in question plus a final 
 "termination" action, which will only be able to be performed once the last
 action in the CUJ has fully terminated. num_iterations denotes the number of 
-iterations you'd like the test to run through your CUJ. Optionally, you may 
-follow the command with "r" to signify that you'd like the run of median length
-to be outputted by the program. (Note that if you'd like to record, the entire
-test, including eachiteration, much have length <= 3 minutes.)
+iterations you'd like the test to run through your CUJ. Optionally, end the 
+input with the line "r" to signify that you'd like the run of median length to 
+be outputted by the program. (Note that if you'd like to record, the entire
+test, including each iteration, much have length <= 3 minutes.)
 
 the action list lines must be formatted as follows:
 
 ```bash
-<action1>, <action2>, ... , <actionN>
+['<action1>', '<action2>', ... , '<actionN>']
 ```
 and each action is either to launch an app, click on a particular View or to enter 
 text in a particular textbox. Actions are represented in one of the following forms:
@@ -73,7 +73,36 @@ Note that all text fields are case sensitive. Additionally, if an action of form
 that an exact match is found for text_displayed (in cases 2 or 3) or text_description 
 (in case 4).
 
+
+#### Example:
+A text file you might feed to ``executeCuj`` might look like (also available in firstapp/directions_to_googleplex.txt):
+```
+['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphitheatre']
+['click;Directions;strict', 'click;Choose starting', 'click;Your location;strict', 'click;Steps & more;strict']
+5
+r
+```
+Here, the CUJ in question starts after the user has searched for and selected Googleplex at Amphitheatre Parkway and consists of 
+
+1. click on "Directions"
+2. click on "Choose starting location"
+3. click on "Your location"
+
+to signal when the last action in the CUJ has terminated, the input also includes the "termination" action
+
+4. click on "Steps & more"  
+
+which signifies that action 3 is only over once the Steps & more button appears, which in this case, occurs only once the directions have fully loaded.
+
+this file additionally specifies that it would like the CUJ to run 5 times and that it would like the script to return a clip of the run that took the median total length
+
 ### stitch
 
 to stitch together several videos to compare them side-by-side, use the stitch command 
+as follows:
 
+```bash
+./stitch <video1> <video2> ... <videoN>
+```
+
+the resulting video will be called "stitched.mp4" 
