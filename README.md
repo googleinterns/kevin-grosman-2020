@@ -48,58 +48,61 @@ where input file is formatted as follows (all on seperate lines):
 
 preparatory_actions consists of actions to be performed prior to the CUJ 
 in question and measured actions consists of the CUJ in question plus a final 
-"termination" action, which will only be able to be performed once the last
-action in the CUJ has fully terminated. num_iterations denotes the number of 
-iterations you'd like the test to run through your CUJ. Optionally, end the 
-input with the line "r" to signify that you'd like the run of median length to 
-be outputted by the program. (Note that if you'd like to record, the entire
-test, including each iteration, much have length <= 3 minutes.)
+"termination" action, which can only be performed once the last action in the 
+CUJ has fully terminated. num_iterations denotes the number of iterations 
+you'd like the test to run through your CUJ. Optionally, end the input with 
+the line "r" to signify that you'd like the run of median length to be outputted 
+by the program. (Note that if you'd like to record, you need to have **ffmpeg 
+installed on your machine** and the entire test, including each iteration, 
+much have length <= 3 minutes). The resulting video will be called "median_clip.mp4"
 
 the action list lines must be formatted as follows:
 
 ```bash
 ['<action1>', '<action2>', ... , '<actionN>']
 ```
-and each action is either to launch an app, click on a particular View or to enter 
+Each action is either to launch an app, click on a particular View or to enter 
 text in a particular textbox. Actions are represented in one of the following forms:
      
-      1. “start;package_name" to launch the specified package.
-      2. “edit;text_displayed;text_entered” to enter text_entered into a textbox, where text_displayed is the text currently visible in the textbox.
-      3. “click;text_displayed” to click a non-editable view (normally a text-view or button) on the screen which has text containing the string text_displayed displayed on it
-      4. “clickImage;text_description” to click a view without text (normally an image view) where the description of the view contains the string description_text
+1. “start;package_name" to launch the specified package.
+2. “edit;text_displayed;text_entered” to enter text_entered into a textbox, where 
+    text_displayed is the text currently visible in the textbox.
+3. “click;text_displayed” to click a non-editable view (normally a text-view or button) 
+    on the screen which has text containing the string text_displayed displayed on it
+4. “clickImage;text_description” to click a view without text (normally an image view) 
+    where the description of the view contains the string description_text
      
-Note that all text fields are case sensitive. Additionally, if an action of form 
-2, 3, or 4 is followed by “;strict” the search for a corresponding view will enforce 
-that an exact match is found for text_displayed (in cases 2 or 3) or text_description 
-(in case 4).
+Note that all text fields are case and space sensitive. Additionally, if an action 
+of form 2, 3, or 4 is followed by “;strict” the search for a corresponding view 
+will enforce that an exact match is found for text_displayed (in cases 2 or 3) or
+text_description (in case 4).
 
 
 #### Example:
-A text file you might feed to ``executeCuj`` might look like (also available in firstapp/directions_to_googleplex.txt):
+A text file you would feed to ``executeCuj`` might look like (also available in firstapp/directions_to_googleplex.txt):
 ```
 ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphitheatre']
 ['click;Directions;strict', 'click;Choose starting', 'click;Your location;strict', 'click;Steps & more;strict']
 5
 r
 ```
-Here, the CUJ in question starts after the user has searched for and selected Googleplex at Amphitheatre Parkway and consists of 
+Here, the CUJ in question starts after the user has searched for and selected Googleplex at Amphitheatre Parkway and consists of the actions:
 
 1. click on "Directions"
 2. click on "Choose starting location"
 3. click on "Your location"
 
-to signal when the last action in the CUJ has terminated, the input also includes the "termination" action
+To signal when the last action in the CUJ has terminated, the input also includes the "termination" action
 
 4. click on "Steps & more"  
 
-This signifies that action 3 is only over once the Steps & more button appears, which in this case, occurs only once the directions have fully loaded.
+This signifies that action 3 is over once the Steps & more button is clickable, which occurs only once the directions have fully loaded.
 
-Thi file additionally specifies that it would like the CUJ to run 5 times and that it would like the script to return a clip of the run that took the median total length
+The file additionally specifies that it would like the CUJ to run 5 times and that it would like the script to return a clip of the run that took the median total length
 
 ### stitch
 
-to stitch together several videos to compare them side-by-side, use the stitch command 
-as follows:
+to stitch together several videos to compare them side-by-side, use the stitch command as follows:
 
 ```bash
 ./stitch <video1> <video2> ... <videoN>
