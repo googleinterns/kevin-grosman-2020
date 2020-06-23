@@ -10,27 +10,18 @@ then
 	RECORD="n"
 fi
 
-#use escape char to allow single quotes and semi-colons (which would terminate the argument in the am instrument command). Wrap strings in \" to allow for spaces within them. 
-SpecialChars=(";"  "'" "\&")
-for exp in ${SpecialChars[@]}; do
-	char="${exp: -1}"
-	echo $exp
+#use escape char to allow special characters (which would terminate the argument in the am instrument command or do other undesirable things).
+SpecialChars=(";"  "'" "&" "%" "(" ")" "^")
+for char in ${SpecialChars[@]}; do
+	exp="\\${char}"
 	echo $char
+	echo $exp
 	PRE_CUJ=${PRE_CUJ//$exp/\\$char}
 	POST_CUJ=${POST_CUJ//$exp/\\$char}
 done
-
-#POST_CUJ=${POST_CUJ//\&/\\\&}
-#PRE_CUJ=${PRE_CUJ//;/\\\;}
-#PRE_CUJ=${PRE_CUJ//\'/\\\'}
+# Wrap strings in \" to allow for spaces within them. 
 PRE_CUJ="\\\"$PRE_CUJ\\\""
-
-#POST_CUJ=${POST_CUJ//;/\\\;}
-#POST_CUJ=${POST_CUJ//\'/\\\'}
 POST_CUJ="\\\"$POST_CUJ\\\""
-
-echo $PRE_CUJ
-echo $POST_CUJ
 
 adb logcat -c
 

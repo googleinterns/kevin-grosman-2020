@@ -92,9 +92,9 @@ to signal when the last action in the CUJ has terminated, the input also include
 
 4. click on "Steps & more"  
 
-which signifies that action 3 is only over once the Steps & more button appears, which in this case, occurs only once the directions have fully loaded.
+This signifies that action 3 is only over once the Steps & more button appears, which in this case, occurs only once the directions have fully loaded.
 
-this file additionally specifies that it would like the CUJ to run 5 times and that it would like the script to return a clip of the run that took the median total length
+Thi file additionally specifies that it would like the CUJ to run 5 times and that it would like the script to return a clip of the run that took the median total length
 
 ### stitch
 
