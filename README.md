@@ -72,7 +72,7 @@ text in a particular textbox. Actions are represented in one of the following fo
 3. 'click;text_displayed' to click on a view on the screen which has text_displayed 
     as a substring of the text currently visible on it.
 4. 'clickImage;text_description' to click a view without text which has text_description 
-    as a substring of its description. (One might be able to guess this, and if one is 
+    as a substring of its description. (One might be able to guess this, but if one is 
     wrong, the script will return an error message with the descriptions of images to 
     choose from).
 
