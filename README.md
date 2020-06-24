@@ -91,6 +91,6 @@ to stitch together several videos to compare them side-by-side, navigate to `/CU
 the resulting video will be called "stitched.mp4" 
 
 ## Demo
-The following video was produced by running the `stitch` script on four videos produced by running the `executeCuj` script on `CUJExecutor/takeout.txt` (where the CUJ in question consists of clicking on "Takeout"):
+The following video was produced by running the `stitch` script on four videos produced by running the `executeCuj` script on `CUJExecutor/takeout.txt` (where the CUJ in question consists of clicking on "Takeout" after having opened Google Maps):
 
 ![](takeout_demo.gif)
