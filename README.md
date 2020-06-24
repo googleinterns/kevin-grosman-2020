@@ -6,7 +6,7 @@
 
 ### executeCuj
 
-To get data on the latency of a CUJ running on a connected device, run 
+To get data on the latency of a CUJ running on a connected device navigate to `/CUJExecutor` and run 
 
 ```bash
 ./executeCuj <input_file>
@@ -82,7 +82,7 @@ The file additionally specifies that it would like the CUJ to run 5 times and th
 
 ### stitch
 
-to stitch together several videos to compare them side-by-side, use the stitch command as follows:
+to stitch together several videos to compare them side-by-side, navigate to `/CUJExecutor` and use the stitch command as follows:
 
 ```bash
 ./stitch <video1> <video2> ... <videoN>
