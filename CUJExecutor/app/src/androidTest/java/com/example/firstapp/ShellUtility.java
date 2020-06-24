@@ -7,6 +7,7 @@ import android.os.SystemClock;
 import android.util.JsonReader;
 import android.util.Log;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.ImageView;
 
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -26,7 +27,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
@@ -35,6 +38,7 @@ import static java.lang.Thread.sleep;
 public class ShellUtility {
     public UiDevice device;
     private long timeoutMs;
+    private String curPackage;
 
     public ShellUtility(long timeoutMillis) {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
@@ -144,6 +148,22 @@ public class ShellUtility {
             } else {
                 object2 = device.wait(Until.findObject(By.descContains(description)), actionTimeout);
             }
+            if (object2 == null) {
+                List<UiObject2> views = device.wait(Until.findObjects(By.pkg(curPackage)), actionTimeout);
+                if (views == null) {
+                    throw new invalidInputException("no image matching description \"" + description + "\' found," +
+                            " and no Images were were found either... Try something else.");
+                }
+                List<String> possibleDescriptions = new ArrayList<>();
+                for (int i = 0; i < views.size(); i++) {
+                    UiObject2 object = views.get(i);
+                    if (object.getText() == null && object.getContentDescription() != null) {
+                        possibleDescriptions.add(object.getContentDescription());
+                    }
+                }
+                throw new invalidInputException("no image matching description \"" + description + "\' found," +
+                        " but images with the following descriptions were found:\n" + possibleDescriptions + "\nTry again with one of these.");
+            }
             UiObject object = castToObject(object2);
             object.click();
             setCachedObject(object);
@@ -202,7 +222,7 @@ public class ShellUtility {
      */
     public long launchApp(String pkg) throws InterruptedException, IOException {
 
-
+        curPackage = pkg;
         //Start from the home screen
         device.pressHome();
         final String launcherPackage = device.getLauncherPackageName();
@@ -395,7 +415,11 @@ public class ShellUtility {
      */
     public void  cacheCUJ(Action[] cuj) throws InterruptedException, invalidInputException, UiObjectNotFoundException, IOException {
         for (int i = 0; i < cuj.length; i++) {
-            cuj[i].executeUncachedAction();
+            try {
+                cuj[i].executeUncachedAction();
+            } catch (NullPointerException e) {
+                throw new invalidInputException("CUJ argument at index " + i + " was not found. Make sure your action is currently executable on your device.");
+            }
         }
     }
 
@@ -497,8 +521,7 @@ public class ShellUtility {
         long med_start = allActionStamps[median_idx][0];
         long med_end = allActionStamps[median_idx][allActionStamps[0].length - 1];
         Log.i("median", "MEDIAN RUN: " + (median_idx + 1));
-        //Log.i("median", "MEDIAN RUN STARTS @: " + miliseconds_to_time(med_start));
-        //Log.i("median", "MEDIAN RUN ENDS @: " + miliseconds_to_time(med_end));
+
 
         //log median clip data
         Log.i("clip_start", "" + med_start);
