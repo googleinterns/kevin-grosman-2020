@@ -114,3 +114,5 @@ to stitch together several videos to compare them side-by-side, use the stitch c
 ```
 
 the resulting video will be called "stitched.mp4" 
+
+![](takeout_demo.gif)
