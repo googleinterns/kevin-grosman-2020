@@ -1,4 +1,4 @@
-# New Project Template
+# CUJ Recording Project
 
 **This is not an officially supported Google product.**
 
@@ -25,7 +25,6 @@ Apache header:
     See the License for the specific language governing permissions and
     limitations under the License.
 
-# CUJ recording
 
 ## Usage
 
