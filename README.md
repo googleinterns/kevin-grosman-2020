@@ -116,6 +116,6 @@ to stitch together several videos to compare them side-by-side, use the stitch c
 the resulting video will be called "stitched.mp4" 
 
 ## Demo
-The following video was produced by running the `stitch` script on four videos produced by running the `executeCuj` script on `CUJExecutor/takeout.txt`:
+The following video was produced by running the `stitch` script on four videos produced by running the `executeCuj` script on `CUJExecutor/takeout.txt` (where the CUJ in question consists of clicking on "Takeout":
 
 ![](takeout_demo.gif)
