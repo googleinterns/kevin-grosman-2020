@@ -84,7 +84,7 @@ text_description (in case 4).
 
 
 #### Example:
-A text file you would feed to ``executeCuj`` might look like (also available in firstapp/directions_to_googleplex.txt):
+A text file you would feed to ``executeCuj`` might look like (also available in CUJExecutor/directions_to_googleplex.txt):
 ```
 ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphitheatre']
 ['click;Directions;strict', 'click;Choose starting', 'click;Your location;strict', 'click;Steps & more;strict']
