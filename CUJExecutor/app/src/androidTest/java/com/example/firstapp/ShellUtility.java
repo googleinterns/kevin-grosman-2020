@@ -466,7 +466,7 @@ public class ShellUtility {
         for (int iter = 0; iter < iterations; iter++) {
             long[] actionDurations = differences(allActionStamps[iter]);
             allActionDurations[iter] = actionDurations;
-            Log.i("iterations-actions", "ITERATION " + (iter + 2) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + sumArr(actionDurations));
+            Log.i("iterations-actions", "ITERATION " + (iter + 1) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + sumArr(actionDurations));
         }
 
         //Log average action durations
@@ -484,7 +484,7 @@ public class ShellUtility {
             allRelativeStamps[iter] = relativeStamps;
             iterDurations[iter][0] = iter;
             iterDurations[iter][1] = relativeStamps[relativeStamps.length - 1];
-            Log.i("iterations-stamps", "ITERATION " + (iter + 2) + ": " + Arrays.toString(relativeStamps));
+            Log.i("iterations-stamps", "ITERATION " + (iter + 1) + ": " + Arrays.toString(relativeStamps));
         }
 
         //log average relative stamps
@@ -496,7 +496,7 @@ public class ShellUtility {
         int median_idx = (int) iterDurations[iterDurations.length / 2][0];
         long med_start = allActionStamps[median_idx][0];
         long med_end = allActionStamps[median_idx][allActionStamps[0].length - 1];
-        Log.i("median", "MEDIAN RUN: " + (median_idx + 2));
+        Log.i("median", "MEDIAN RUN: " + (median_idx + 1));
         //Log.i("median", "MEDIAN RUN STARTS @: " + miliseconds_to_time(med_start));
         //Log.i("median", "MEDIAN RUN ENDS @: " + miliseconds_to_time(med_end));
 
