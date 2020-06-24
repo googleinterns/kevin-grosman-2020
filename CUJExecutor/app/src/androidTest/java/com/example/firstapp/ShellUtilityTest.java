@@ -61,7 +61,7 @@ public class ShellUtilityTest {
      * CASTING AND GETTING ANCESTORS
      */
     @Test
-    public void gettingClickableAncestor() throws ShellUtility.invalidInputException, UiObjectNotFoundException {
+    public void gettingClickableAncestor() throws ShellUtility.InvalidInputException, UiObjectNotFoundException {
         //grab a view that is not clickable (but which has a an ancestor which is)
         UiObject2 alsoRandomButton = shellUtility.device.wait(Until.findObject(By.textContains("ALSO RANDOM")),TIMEOUT);
         assertEquals(false, alsoRandomButton.isClickable());
@@ -77,7 +77,7 @@ public class ShellUtilityTest {
     }
 
     @Test
-    public void casting() throws UiObjectNotFoundException, ShellUtility.invalidInputException {
+    public void casting() throws UiObjectNotFoundException, ShellUtility.InvalidInputException {
         UiObject2 randomButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
         UiObject randomButtonCasted = shellUtility.castToObject(randomButton);
         randomButtonCasted.waitForExists(TIMEOUT);
@@ -90,7 +90,7 @@ public class ShellUtilityTest {
 
 
     @Test
-    public void gettingEditableAncestor() throws ShellUtility.invalidInputException, UiObjectNotFoundException {
+    public void gettingEditableAncestor() throws ShellUtility.InvalidInputException, UiObjectNotFoundException {
 
         UiObject2 search_text_view = shellUtility.device.wait(Until.findObject(By.textContains("How does this app")),TIMEOUT);
         UiObject clickable = shellUtility.getEditableObject(search_text_view);
@@ -139,7 +139,7 @@ public class ShellUtilityTest {
      */
 
     @Test
-    public void executingStartAction() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingStartAction() throws Exception {
         String str = "start;" + BASIC_SAMPLE_PACKAGE;
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -157,7 +157,7 @@ public class ShellUtilityTest {
     }
 
     @Test
-    public void executingClickActionStrict() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingClickActionStrict() throws Exception {
         String str = "click;COUNT;strict";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -175,7 +175,7 @@ public class ShellUtilityTest {
     }
 
     @Test
-    public void executingClickActionSubstring() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingClickActionSubstring() throws Exception {
         String str = "click;OUN";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -193,7 +193,7 @@ public class ShellUtilityTest {
     }
 
     @Test
-    public void executingClickActionNonClickable() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingClickActionNonClickable() throws Exception {
         String str = "click;ALSO RAND";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -211,7 +211,7 @@ public class ShellUtilityTest {
     }
 
     @Test
-    public void executingEditAction() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingEditAction() throws Exception {
         String str = "edit;you feel;" + entered_text;
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -231,7 +231,7 @@ public class ShellUtilityTest {
     }
 
     @Test
-    public void executingClickImageAction() throws ShellUtility.invalidInputException, UiObjectNotFoundException, IOException, InterruptedException {
+    public void executingClickImageAction() throws Exception {
         String str = "clickImage;increment";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 

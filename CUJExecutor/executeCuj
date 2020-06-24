@@ -57,9 +57,9 @@ then
 	#forces key frames at the positions at which we'd like to cut, then makes cuts at those positions and dumps output in clip0.mp4, clip1.mp4, clip2.mp4
 	cmd="ffmpeg -i test.mp4 -force_key_frames:v $CUTATFORMAT,$LENGTHFORMAT -acodec copy -map 0 -f segment -segment_times $CUTATFORMAT,$LENGTHFORMAT -reset_timestamps 1 -y temp%d.mp4"
 	eval $cmd
+	mv temp1.mp4 median_clip.mp4
 fi 
 
-mv temp1.mp4 median_clip.mp4
 
 
 echo "----------------------------------------------" > action_time_stamps.txt

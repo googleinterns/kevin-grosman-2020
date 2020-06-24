@@ -1,4 +1,4 @@
 ['start;com.google.android.apps.maps']
 ['click;Takeout',  'click;Open now']
-2
+1
 r
