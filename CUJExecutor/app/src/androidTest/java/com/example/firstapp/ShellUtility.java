@@ -1,18 +1,10 @@
 package com.example.firstapp;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Rect;
-import android.os.RemoteException;
-import android.os.SystemClock;
-import android.util.JsonReader;
 import android.util.Log;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.ImageView;
-
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
-import androidx.test.uiautomator.Tracer;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObject2;
@@ -22,16 +14,11 @@ import androidx.test.uiautomator.Until;
 import org.hamcrest.CoreMatchers;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 import static java.lang.Thread.sleep;
 
 
@@ -45,13 +32,13 @@ public class ShellUtility {
         timeoutMs = timeoutMillis;
     }
 
-    public static class invalidInputException extends Exception {
-        public invalidInputException(String message) {
+    public static class InvalidInputException extends Exception {
+        public InvalidInputException(String message) {
             super(message);
         }
     }
 
-            /******************************
+                                /******************************
                                  *       ACTION CLASS
                                  ******************************/
     public abstract class Action {
@@ -68,7 +55,7 @@ public class ShellUtility {
         /**
          * execute the action and cache the result in cachedObject
          **/
-        abstract void executeUncachedAction() throws IOException, InterruptedException, UiObjectNotFoundException, invalidInputException;
+        abstract void executeUncachedAction() throws Exception;
 
         /**
          * execute the action on the object specified by cachedObject
@@ -109,13 +96,14 @@ public class ShellUtility {
         }
 
         @Override
-        void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
+        void executeUncachedAction() throws Exception {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.text(text)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(curPackage).text(text)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.textContains(text)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(curPackage).textContains(text)), actionTimeout);
             }
+            if (object2 == null) throw new Exception();
             UiObject object = castToObject(object2);
             object.click();
             setCachedObject(object);
@@ -141,29 +129,14 @@ public class ShellUtility {
         }
 
         @Override
-        void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
+        void executeUncachedAction() throws UiObjectNotFoundException, InvalidInputException {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.desc(description)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(curPackage).desc(description)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.descContains(description)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(curPackage).descContains(description)), actionTimeout);
             }
-            if (object2 == null) {
-                List<UiObject2> views = device.wait(Until.findObjects(By.pkg(curPackage)), actionTimeout);
-                if (views == null) {
-                    throw new invalidInputException("no image matching description \"" + description + "\' found," +
-                            " and no Images were were found either... Try something else.");
-                }
-                List<String> possibleDescriptions = new ArrayList<>();
-                for (int i = 0; i < views.size(); i++) {
-                    UiObject2 object = views.get(i);
-                    if (object.getText() == null && object.getContentDescription() != null) {
-                        possibleDescriptions.add(object.getContentDescription());
-                    }
-                }
-                throw new invalidInputException("no image matching description \"" + description + "\' found," +
-                        " but images with the following descriptions were found:\n" + possibleDescriptions + "\nTry again with one of these.");
-            }
+            if (object2 == null) throwImageContentDescriptions(description, actionTimeout);
             UiObject object = castToObject(object2);
             object.click();
             setCachedObject(object);
@@ -191,13 +164,14 @@ public class ShellUtility {
         }
 
         @Override
-        void executeUncachedAction() throws UiObjectNotFoundException, invalidInputException {
+        void executeUncachedAction() throws Exception {
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.text(text)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(curPackage).text(text)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.textContains(text)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(curPackage).textContains(text)), actionTimeout);
             }
+            if (object2 == null) throw new Exception();
             UiObject object = getEditableObject(object2);
             object.waitForExists(actionTimeout);
             object.legacySetText(entered);
@@ -262,20 +236,36 @@ public class ShellUtility {
                                 /******************************
                                  *    OBJECT FINDING HELPERS
                                  ******************************/
+    public void throwImageContentDescriptions(String description, long actionTimeout) throws InvalidInputException {
+        List<UiObject2> views = device.wait(Until.findObjects(By.pkg(curPackage)), actionTimeout);
+        if (views == null) {
+            throw new InvalidInputException("no image matching description \"" + description + "\' found," +
+                    " and no Images were were found either... Try something else.");
+        }
+        List<String> possibleDescriptions = new ArrayList<>();
+        for (int i = 0; i < views.size(); i++) {
+            UiObject2 object = views.get(i);
+            if (object.getText() == null && object.getContentDescription() != null) {
+                possibleDescriptions.add(object.getContentDescription());
+            }
+        }
+        throw new InvalidInputException("no image matching description \"" + description + "\' found," +
+                " but images with the following descriptions were found:\n" + possibleDescriptions + "\nTry again with one of these.");
+    }
     /**
      * Walks up view tree until a clickable ancestor is found. Google apps often have clickable
      * views that have a textbox as a descendant and thus the view containing the text cannot be
      * clicked
      */
-    public UiObject2 getLowestClickableAncestor(UiObject2 object2) throws invalidInputException {
+    public UiObject2 getLowestClickableAncestor(UiObject2 object2) throws InvalidInputException {
         if (object2 == null) {
-            throw new invalidInputException("passed object is null. Consider increasing TIMEOUT parameter.");
+            throw new InvalidInputException("passed object is null. Consider increasing TIMEOUT parameter.");
         }
         while (!object2.isClickable()) {
             object2 = object2.getParent();
         }
         if (object2 == null) {
-            throw new invalidInputException("No clickable ancestors. Try more specific search terms.");
+            throw new InvalidInputException("No clickable ancestors. Try more specific search terms.");
         }
         return object2;
     }
@@ -285,7 +275,7 @@ public class ShellUtility {
      * since UiObject2s store references to particular views and are thus worthless once that view
      * has been destroyed.
      */
-    public UiObject castToObject(UiObject2 object2) throws invalidInputException {
+    public UiObject castToObject(UiObject2 object2) throws InvalidInputException {
 
         //Grab identifying information
         String resourceName = object2.getResourceName();
@@ -312,7 +302,7 @@ public class ShellUtility {
 
         UiObject casted = device.findObject(selector);
         if (casted == null) {
-            throw new invalidInputException("Casting failed. Try different actions.");
+            throw new InvalidInputException("Casting failed. Try different actions.");
         }
         return casted;
     }
@@ -321,7 +311,7 @@ public class ShellUtility {
      * Retrieves an editable UiObject from the UiObject2 corresponding to the view containing the
      * hint text in a textbox.
      */
-    public UiObject getEditableObject(UiObject2 object2) throws invalidInputException {
+    public UiObject getEditableObject(UiObject2 object2) throws InvalidInputException {
         return castToObject(getLowestClickableAncestor(object2));
     }
 
@@ -342,7 +332,6 @@ public class ShellUtility {
     }
 
 
-
     /** INSTRUCTIONS FOR ACTION FORMATTING:
      * Each action must be to launch an app, click on a particular View or to enter text in a particular textbox.
      * Actions are represented in one of the following forms:
@@ -356,41 +345,41 @@ public class ShellUtility {
      * the search for a corresponding view will enforce that an exact match is found for text_displayed (in cases 2 or 3)
      * or text_description (in case 4).
      */
-    public Action parseStringAction(String str, int idx) throws invalidInputException {
+    public Action parseStringAction(String str, int idx) throws InvalidInputException {
         String[] tokens = str.split(";");
         Action action;
         boolean strict = tokens[tokens.length - 1].equals("strict");
         switch (tokens[0]) {
             case "start":
                 if (!(tokens.length == 2)) {
-                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                    throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
                 action = new StartAction(tokens[1], timeoutMs);
                 break;
 
             case "click":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
-                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                    throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
                 action = new ClickAction(tokens[1], strict, timeoutMs);
                 break;
 
             case "clickImage":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
-                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                    throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
                 action = new ClickImageAction(tokens[1], strict, timeoutMs);
                 break;
 
             case "edit":
                 if (!(3 <= tokens.length && tokens.length <= 4)) {
-                    throw new ShellUtility.invalidInputException("input at index " + idx + " is of an invalid length");
+                    throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
                 action = new EditAction(tokens[1], tokens[2], strict, timeoutMs);
                 break;
 
             default:
-                throw new invalidInputException("input at index " + idx + " has an invalid first token:" + tokens[0]);
+                throw new InvalidInputException("input at index " + idx + " has an invalid first token:" + tokens[0]);
         }
         return action;
     }
@@ -402,7 +391,7 @@ public class ShellUtility {
      * ‘{"com.google.android.apps.maps", "click;Takeout}' '{"click;Billy Barooz", "clickImage;Search;strict", "edit;Search here;McDonalds", "click;West Kirby", "click;DIRECTIONS"}’
      *
      */
-    public Action[] parseStringCUJ(String[] cuj) throws invalidInputException {
+    public Action[] parseStringCUJ(String[] cuj) throws InvalidInputException {
         Action[] res = new Action[cuj.length];
         for (int i = 0; i < res.length; i++) {
             res[i] = parseStringAction(cuj[i], i);
@@ -413,16 +402,17 @@ public class ShellUtility {
     /**
      * Executes CUJ and returns cached objects
      */
-    public void  cacheCUJ(Action[] cuj) throws InterruptedException, invalidInputException, UiObjectNotFoundException, IOException {
+    public void  cacheCUJ(Action[] cuj) throws InterruptedException, InvalidInputException, UiObjectNotFoundException, IOException {
         for (int i = 0; i < cuj.length; i++) {
             try {
                 cuj[i].executeUncachedAction();
-            } catch (NullPointerException e) {
-                throw new invalidInputException("CUJ argument at index " + i + " was not found. Make sure your action is currently executable on your device.");
+            } catch (Exception e) {
+                if (!(e instanceof InvalidInputException)) {
+                    throw new InvalidInputException("CUJ argument at index " + i + " was not found. Make sure your action is currently executable on your device.");
+                }
             }
         }
     }
-
 
                                 /****************************
                                  * DATA MANIPULATION HELPERS
@@ -544,7 +534,7 @@ public class ShellUtility {
     public void executeCUJ(String preStr, String postStr, int iterations, boolean recordIntent) throws Exception {
         String[] preCUJ = parseToArray(preStr);
         String[] postCUJ = parseToArray(postStr);
-        if (postCUJ.length < 2) throw new invalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
+        if (postCUJ.length < 2) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
         String[] cujStrings = new String[preCUJ.length + postCUJ.length];
         long recordingBufMs = recordIntent ? 1000 : 0;
         System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
