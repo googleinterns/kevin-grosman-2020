@@ -53,8 +53,9 @@ CUJ has fully terminated. num_iterations denotes the number of iterations
 you'd like the test to run through your CUJ. Optionally, end the input with 
 the line "r" to signify that you'd like the run of median length to be outputted 
 by the program. (Note that if you'd like to record, you need to have **ffmpeg 
-installed on your machine** and the entire test, including each iteration, 
-much have length <= 3 minutes). The resulting video will be called "median_clip.mp4"
+installed on your machine** (Ubuntu instructions here: https://tecadmin.net/install-ffmpeg-on-linux/)
+and the entire test, including each iteration, much have length <= 3 minutes). 
+The resulting video will be called "median_clip.mp4"
 
 the action list lines must be formatted as follows:
 
@@ -64,13 +65,17 @@ the action list lines must be formatted as follows:
 Each action is either to launch an app, click on a particular View or to enter 
 text in a particular textbox. Actions are represented in one of the following forms:
      
-1. “start;package_name" to launch the specified package.
-2. “edit;text_displayed;text_entered” to enter text_entered into a textbox, where 
+
+1. 'start;package_name' to launch the specified package.
+2. 'edit;text_displayed;text_entered' to enter text_entered into a textbox, where 
     text_displayed is the text currently visible in the textbox.
-3. “click;text_displayed” to click a non-editable view (normally a text-view or button) 
-    on the screen which has text containing the string text_displayed displayed on it
-4. “clickImage;text_description” to click a view without text (normally an image view) 
-    where the description of the view contains the string description_text
+3. 'click;text_displayed' to click on a view on the screen which has text_displayed 
+    as a substring of the text currently visible on it.
+4. 'clickImage;text_description' to click a view without text which has text_description 
+    as a substring of its description. (One might be able to guess this, and if one is 
+    wrong, the script will return an error message with the descriptions of images to 
+    choose from).
+
      
 Note that all text fields are case and space sensitive. Additionally, if an action 
 of form 2, 3, or 4 is followed by “;strict” the search for a corresponding view 
