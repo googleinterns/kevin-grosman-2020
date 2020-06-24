@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+MILLIS=${1?ERROR: no number given}
+
+
+(printf "%02d" $((MILLIS / 3600000))) > time.txt
+(printf ":") >> time.txt
+MILLIS=$((MILLIS % 360000))
+(printf "%02d" $((MILLIS / 60000))) >> time.txt
+(printf ":") >> time.txt
+MILLIS=$((MILLIS % 60000)) 
+(printf "%02d" $((MILLIS / 1000))) >> time.txt
+(printf ".") >> time.txt
+MILLIS=$((MILLIS % 1000)) 
+(printf "%03d" $MILLIS) >> time.txt
+
