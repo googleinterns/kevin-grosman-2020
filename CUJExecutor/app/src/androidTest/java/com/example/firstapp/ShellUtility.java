@@ -54,6 +54,11 @@ public class ShellUtility {
         }
     }
 
+    public class TwoTimes {
+        long before;
+        long after;
+    }
+
                                 /******************************
                                  *       ACTION CLASS
                                  ******************************/
@@ -77,7 +82,7 @@ public class ShellUtility {
          * execute the action on the object specified by cachedObject
          * return the time (since epoch) just before the action is performed
          **/
-        abstract long executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException;
+        abstract TwoTimes executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException;
     }
 
     public class StartAction extends Action {
@@ -96,11 +101,12 @@ public class ShellUtility {
         }
 
         @Override
-        long executeCachedAction() throws IOException, InterruptedException {
+        TwoTimes executeCachedAction() throws IOException, InterruptedException {
             forceQuitApp(pkg);
-            return launchApp(pkg);
+            launchApp(pkg);
+            return null;
         }
-    }
+    }   
 
     public class ClickAction extends Action {
         String text;
@@ -126,11 +132,13 @@ public class ShellUtility {
         }
 
         @Override
-        long executeCachedAction() throws UiObjectNotFoundException {
+        TwoTimes executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            long t = getTime();
+            TwoTimes t = new TwoTimes();
+            t.before = getTime();
             object.click();
+            t.after = getTime();
             return t;
         }
     }
@@ -159,12 +167,12 @@ public class ShellUtility {
         }
 
         @Override
-        long executeCachedAction() throws UiObjectNotFoundException {
+        TwoTimes executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
             long t = getTime();
             object.click();
-            return t;
+            return null;
         }
     }
 
@@ -195,12 +203,12 @@ public class ShellUtility {
         }
 
         @Override
-        long executeCachedAction() throws UiObjectNotFoundException {
+        TwoTimes executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
             long t = getTime();
             object.legacySetText(entered);
-            return t;
+            return null;
         }
     }
                                 /******************************
@@ -562,7 +570,7 @@ public class ShellUtility {
 
         //cached runs:
         int iter = -1;
-        long[][] allActionStamps = new long[iterations][postCUJ.length];
+        TwoTimes[][] allActionStamps = new TwoTimes[iterations][postCUJ.length];
         while (++iter < iterations) {
             //Execute preparatory actions:
             for (int i = 0; i < preCUJ.length; i++) {
@@ -579,7 +587,16 @@ public class ShellUtility {
             //stop_recording();
         }
         if (iterations > 0) {
-            logData(allActionStamps);
+            long[][] arr = new long[iterations][allActionStamps[0].length * 2];
+            for (int i = 0; i < iterations; i++) {
+                int j = 0;
+                for (TwoTimes t : allActionStamps[i]) {
+                    arr[i][j++] = t.before;
+                    arr[i][j++] = t.after;
+                }
+            }
+
+            logData(arr);
         }
     }
 
