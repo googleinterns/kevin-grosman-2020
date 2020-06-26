@@ -14,18 +14,7 @@
 #See the License for the specific language governing permissions and
 #limitations under the License.
 
+INPUT_FILE=${1:-input.txt}
 
-MILLIS=${1?ERROR: no number given}
-
-
-(printf "%02d" $((MILLIS / 3600000))) > /tmp/time.txt
-(printf ":") >> /tmp/time.txt
-MILLIS=$((MILLIS % 360000))
-(printf "%02d" $((MILLIS / 60000))) >> /tmp/time.txt
-(printf ":") >> /tmp/time.txt
-MILLIS=$((MILLIS % 60000)) 
-(printf "%02d" $((MILLIS / 1000))) >> /tmp/time.txt
-(printf ".") >> /tmp/time.txt
-MILLIS=$((MILLIS % 1000)) 
-(printf "%03d" $MILLIS) >> /tmp/time.txt
-
+#Specify that only the pre_CUJ should be included in the profile
+./manipulateProfilesAndTest $INPUT_FILE n

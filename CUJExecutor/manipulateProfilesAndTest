@@ -15,6 +15,7 @@
 #limitations under the License.
 
 INPUT_FILE=${1:-input.txt}
+INCLUDE_MEASURED_CUJ=${2?"ERROR: need to specify whether the measured CUJ should be included in the profile"}
 FILE_NAME="${INPUT_FILE%.*}"
 PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
 POST_CUJ=$(sed '2q;d' $INPUT_FILE)
@@ -43,19 +44,17 @@ POST_CUJ="\\\"$POST_CUJ\\\""
 echo "Resetting the profile...."
 adb shell cmd package compile --reset com.google.android.apps.maps
 
-#Get the entire CUJ into the profile:
-echo "Walking through the CUJ to (hopefully) add it to the profile...."
-#echo $PRE_CUJ > walk_through_cuj.txt
-#echo "$POST_CUJ" >> walk_through_cuj.txt
-#echo "0" >> walk_through_cuj.txt
+#Get the desired actions into the profile::
+echo "Adding the desired actions to the profile...."
 
 ./gradlew installDebugAndroidTest
-cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#dontRunLast -e pre $PRE_CUJ -e post $POST_CUJ com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userSingleCujRun -e pre $PRE_CUJ -e post $POST_CUJ -e include $INCLUDE_MEASURED_CUJ com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
 eval $cmd
+
 
 echo "Waiting..."
 sleep 60
-
+adb shell am force-stop com.google.android.apps.maps
 PROFILE_SIZE=$(adb shell stat -c%s /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof)
 echo "size of profile is $PROFILE_SIZE"
 
@@ -64,7 +63,6 @@ adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
 
 echo "Executing and measuring the CUJ..."
 ./executeCuj $INPUT_FILE
-
 
 if [ "$RECORD" = "r" ] && [ -f "median_clip.mp4" ]
 then 

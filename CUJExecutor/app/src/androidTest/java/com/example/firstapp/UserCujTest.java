@@ -32,7 +32,7 @@ public class UserCujTest {
     private static long TIMEOUTMS = 10000;
 
     @Test
-    public void runCuj() throws Exception {
+    public void userTestCuj() throws Exception {
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
         String postCUJ = extras.getString("post");
@@ -40,16 +40,19 @@ public class UserCujTest {
         boolean recordIntent = "r".equals(extras.getString("rec"));
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.executeCUJ(preCUJ, postCUJ, iterations, recordIntent);
+        shellUtility.testCuj(preCUJ, postCUJ, iterations, recordIntent);
     }
 
     @Test
-    public void dontRunLast() throws Exception {
+    public void userSingleCujRun() throws Exception {
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
         String postCUJ = extras.getString("post");
+        String include = extras.getString("include");
+        boolean includeMeasured = "y".equals(include);
+
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.dontExecuteTerminationAction(preCUJ, postCUJ);
+        shellUtility.singleCujRun(preCUJ, postCUJ, includeMeasured);
     }
 }
