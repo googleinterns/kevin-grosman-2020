@@ -547,10 +547,10 @@ public class ShellUtility {
      * @param iterations The number of times to run through and measure the CUJ
      * @param recordIntent Whether the user intends to record the test
      ******************************************************************************/
-    public void executeCUJ(String preStr, String postStr, int iterations, boolean recordIntent) throws Exception {
+    public void executeCUJ(String preStr, String cujStr, int iterations, boolean recordIntent) throws Exception {
         String[] preCUJ = parseToArray(preStr);
-        String[] postCUJ = parseToArray(postStr);
-        if (postCUJ.length < 2) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
+        String[] postCUJ = parseToArray(cujStr);
+        if (postCUJ.length == 1) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
         String[] cujStrings = new String[preCUJ.length + postCUJ.length];
         long recordingBufMs = recordIntent ? 1000 : 0;
         System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
@@ -582,4 +582,18 @@ public class ShellUtility {
             logData(allActionStamps);
         }
     }
+
+
+    public void dontExecuteTerminationAction(String preStr, String cujStr) throws Exception {
+        String[] preCUJ = parseToArray(preStr);
+        String[] postCUJ = parseToArray(cujStr);
+        String[] cujStrings = new String[preCUJ.length + postCUJ.length - 1];
+        System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
+        System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length - 1);
+        Action[] cuj = parseStringCUJ(cujStrings);
+
+        //caching run
+        cacheCUJ(cuj);
+    }
+
 }

@@ -29,7 +29,7 @@ import java.io.InputStreamReader;
 
 public class UserCujTest {
 
-    private static long TIMEOUTMS = 5000;
+    private static long TIMEOUTMS = 10000;
 
     @Test
     public void runCuj() throws Exception {
@@ -41,5 +41,15 @@ public class UserCujTest {
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
         shellUtility.executeCUJ(preCUJ, postCUJ, iterations, recordIntent);
+    }
+
+    @Test
+    public void dontRunLast() throws Exception {
+        Bundle extras = InstrumentationRegistry.getArguments();
+        String preCUJ = extras.getString("pre");
+        String postCUJ = extras.getString("post");
+
+        ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
+        shellUtility.dontExecuteTerminationAction(preCUJ, postCUJ);
     }
 }
