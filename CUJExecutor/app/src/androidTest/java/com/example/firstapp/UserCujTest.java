@@ -29,10 +29,10 @@ import java.io.InputStreamReader;
 
 public class UserCujTest {
 
-    private static long TIMEOUTMS = 5000;
+    private static long TIMEOUTMS = 15000;
 
     @Test
-    public void runCuj() throws Exception {
+    public void userIterateCuj() throws Exception {
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
         String postCUJ = extras.getString("post");
@@ -40,6 +40,19 @@ public class UserCujTest {
         boolean recordIntent = "r".equals(extras.getString("rec"));
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.executeCUJ(preCUJ, postCUJ, iterations, recordIntent);
+        shellUtility.iterateCuj(preCUJ, postCUJ, iterations, recordIntent);
+    }
+
+    @Test
+    public void userRunCujOnce() throws Exception {
+        Bundle extras = InstrumentationRegistry.getArguments();
+        String preCUJ = extras.getString("pre");
+        String postCUJ = extras.getString("post");
+        String include = extras.getString("include");
+        boolean includeMeasured = "y".equals(include); //tells us whether we should execute the "measured" actions
+
+
+        ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
+        shellUtility.runCujOnce(preCUJ, postCUJ, includeMeasured);
     }
 }
