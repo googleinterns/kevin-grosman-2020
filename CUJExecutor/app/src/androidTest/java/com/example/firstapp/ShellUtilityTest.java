@@ -306,7 +306,7 @@ public class ShellUtilityTest {
     public void clickTest() throws Exception {
         String preCUJ = "[]";
         String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
-        shellUtility.testCuj(preCUJ, postCUJ, 0,false);
+        shellUtility.iterateCuj(preCUJ, postCUJ, 0,false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
     }
@@ -317,7 +317,7 @@ public class ShellUtilityTest {
     public void nonEmptyPreCUJStrictMatching() throws Exception {
         String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT;strict', 'click;COUNT', 'click;COUNT']";
         String postCUJ = "['click;COUNT',  'click;COUNT;strict']";
-        shellUtility.testCuj(preCUJ, postCUJ, 0, false);
+        shellUtility.iterateCuj(preCUJ, postCUJ, 0, false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
     }
@@ -327,7 +327,7 @@ public class ShellUtilityTest {
     public void properSubstringAndClickingOnNonClickables() throws Exception {
         String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "']";
         String postCUJ =  "['click;ALSO RAND', 'click;PREVIOUS', 'edit;How does;Good!']";
-        shellUtility.testCuj(preCUJ, postCUJ, 0, false);
+        shellUtility.iterateCuj(preCUJ, postCUJ, 0, false);
     }
 
     /**
@@ -339,7 +339,7 @@ public class ShellUtilityTest {
     public void clickTestCached() throws Exception {
         String preCUJ = "";
         String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
-        shellUtility.testCuj(preCUJ, postCUJ, 1,false);
+        shellUtility.iterateCuj(preCUJ, postCUJ, 1,false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
     }

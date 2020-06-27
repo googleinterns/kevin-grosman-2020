@@ -129,9 +129,8 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            long t = getTime();
             object.click();
-            return t;
+            return getTime();
         }
     }
 
@@ -162,9 +161,8 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            long t = getTime();
             object.click();
-            return t;
+            return getTime();
         }
     }
 
@@ -198,9 +196,8 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            long t = getTime();
             object.legacySetText(entered);
-            return t;
+            return getTime();
         }
     }
                                 /******************************
@@ -232,11 +229,9 @@ public class ShellUtility {
         //startActivity imposes a 5 second cool-down after the home button is pressed, so we wait
         //out that cool-down before grabbing the time and launching
         sleep(6000);
-        long start = getTime();
         context.startActivity(intent);
 
-        // Wait for the app to appear
-        device.wait(Until.hasObject(By.pkg(pkg).depth(0)), timeoutMs);
+        long start = getTime();
 
         return start;
 
@@ -539,17 +534,17 @@ public class ShellUtility {
      * measuring and logging data on the measured actions. If there is an intent to record,
      * also leaves a window of space before and after the measured actions for recording boundaries
      *
-     * @param preStr Preparatory actions array represented as a string
+     * @param preActionsStr Preparatory actions array represented as a string
      *               (i.e. "['action_1', 'action_2', ... ])
-     * @param preStr Measured actions array represented as a string
+     * @param preActionsStr Measured actions array represented as a string
      *               (i.e. "['action_1', 'action_2', ... ])
      *
      * @param iterations The number of times to run through and measure the CUJ
      * @param recordIntent Whether the user intends to record the test
      ******************************************************************************/
-    public void testCuj(String preStr, String cujStr, int iterations, boolean recordIntent) throws Exception {
-        String[] preCUJ = parseToArray(preStr);
-        String[] postCUJ = parseToArray(cujStr);
+    public void iterateCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent) throws Exception {
+        String[] preCUJ = parseToArray(preActionsStr);
+        String[] postCUJ = parseToArray(cujActionsStr);
         if (postCUJ.length == 1) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
         String[] cujStrings = new String[preCUJ.length + postCUJ.length];
         long recordingBufMs = recordIntent ? 1000 : 0;
@@ -584,7 +579,7 @@ public class ShellUtility {
     }
 
 
-    public void singleCujRun(String preStr, String cujStr, boolean includeMeasured) throws Exception {
+    public void runCujOnce(String preStr, String cujStr, boolean includeMeasured) throws Exception {
         String[] preCUJ = parseToArray(preStr);
         String[] postCUJ = parseToArray(cujStr);
         String[] cujStrings;
@@ -598,7 +593,7 @@ public class ShellUtility {
 
         Action[] cuj = parseStringCUJ(cujStrings);
 
-        //caching run
+        //Run through cuj once (cached data won't actually be used)
         cacheCUJ(cuj);
     }
 

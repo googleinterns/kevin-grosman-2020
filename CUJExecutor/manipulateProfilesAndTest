@@ -48,7 +48,7 @@ adb shell cmd package compile --reset com.google.android.apps.maps
 echo "Adding the desired actions to the profile...."
 
 ./gradlew installDebugAndroidTest
-cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userSingleCujRun -e pre $PRE_CUJ -e post $POST_CUJ -e include $INCLUDE_MEASURED_CUJ com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userRunCujOnce -e pre $PRE_CUJ -e post $POST_CUJ -e include $INCLUDE_MEASURED_CUJ com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
 eval $cmd
 
 

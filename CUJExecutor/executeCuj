@@ -53,7 +53,7 @@ then
 	PID=$!
 fi 
 
-cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userTestCuj -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM -e rec $RECORD com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userIterateCuj -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM -e rec $RECORD com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
 eval $cmd
 
 if [ "$RECORD" = "r" ] 
@@ -63,7 +63,7 @@ then
 	adb pull sdcard/test.mp4  #for some reason, the first pull sometimes doesn't always get the "moov" atom, which we need. Pulling twice seems to always do the trick...
 	CUJSTART=$(adb logcat -s "clip_start" -v raw -d | sed -n -e '/^1/p')
 	CUJEND=$(adb logcat -s "clip_end" -v raw -d | sed -n -e '/^1/p')
-	CUTAT=$((CUJSTART - RECSTART - 1000)) #1000 millisecond buffer in recording before first action is performed
+	CUTAT=$((CUJSTART - RECSTART - 2000)) #2000 millisecond buffer in recording before first action is performed
 	LENGTH=$((CUJEND - RECSTART + 200)) #200 millisecond buffer in recording after the termination action view is located
 	./formatTime "$CUTAT"	
 	CUTATFORMAT=$(cat /tmp/time.txt)
