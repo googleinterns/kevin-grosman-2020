@@ -103,8 +103,7 @@ public class ShellUtility {
         @Override
         TwoTimes executeCachedAction() throws IOException, InterruptedException {
             forceQuitApp(pkg);
-            launchApp(pkg);
-            return null;
+            return launchApp(pkg);
         }
     }   
 
@@ -218,7 +217,7 @@ public class ShellUtility {
      * Launches the specified App on the specified device and returns the time just before the app was
      * launched--to be used later for timing startup.
      */
-    public long launchApp(String pkg) throws InterruptedException, IOException {
+    public TwoTimes launchApp(String pkg) throws InterruptedException, IOException {
 
         curPackage = pkg;
         //Start from the home screen
@@ -240,13 +239,13 @@ public class ShellUtility {
         //startActivity imposes a 5 second cool-down after the home button is pressed, so we wait
         //out that cool-down before grabbing the time and launching
         sleep(6000);
-        long start = getTime();
+        TwoTimes t = new TwoTimes();
+        t.before = getTime();
         context.startActivity(intent);
+        t.after = getTime();
 
-        // Wait for the app to appear
-        device.wait(Until.hasObject(By.pkg(pkg).depth(0)), timeoutMs);
 
-        return start;
+        return t;
 
     }
 
