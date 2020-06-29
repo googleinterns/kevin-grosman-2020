@@ -1,0 +1,321 @@
+Mon 29 Jun 2020 01:46:28 PM CDT
+------------------------------------------------DOING YEEEEEEEEEEEEES TEST:------------------------------------
+size of profile is 49200
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2400], TOTAL: 2400
+ITERATION 2: [2797], TOTAL: 2797
+ITERATION 3: [2463], TOTAL: 2463
+ITERATION 4: [2439], TOTAL: 2439
+ITERATION 5: [2422], TOTAL: 2422
+ITERATION 6: [2410], TOTAL: 2410
+ITERATION 7: [2426], TOTAL: 2426
+
+AVERAGE:     [2479], TOTAL: 2479
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2400]
+ITERATION 2: [2797]
+ITERATION 3: [2463]
+ITERATION 4: [2439]
+ITERATION 5: [2422]
+ITERATION 6: [2410]
+ITERATION 7: [2426]
+
+AVERAGE:     [2479]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 7
+------------------------------------------------DOING NOOOOOOOOOOOOOO TEST:------------------------------------
+size of profile is 45708
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2457], TOTAL: 2457
+ITERATION 2: [2467], TOTAL: 2467
+ITERATION 3: [2459], TOTAL: 2459
+ITERATION 4: [2425], TOTAL: 2425
+ITERATION 5: [2460], TOTAL: 2460
+ITERATION 6: [2369], TOTAL: 2369
+ITERATION 7: [2406], TOTAL: 2406
+
+AVERAGE:     [2434], TOTAL: 2434
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2457]
+ITERATION 2: [2467]
+ITERATION 3: [2459]
+ITERATION 4: [2425]
+ITERATION 5: [2460]
+ITERATION 6: [2369]
+ITERATION 7: [2406]
+
+AVERAGE:     [2434]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 1
+------------------------------------------------DOING YEEEEEEEEEEEEES TEST:------------------------------------
+size of profile is 49603
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2430], TOTAL: 2430
+ITERATION 2: [2411], TOTAL: 2411
+ITERATION 3: [2416], TOTAL: 2416
+ITERATION 4: [2422], TOTAL: 2422
+ITERATION 5: [2424], TOTAL: 2424
+ITERATION 6: [2411], TOTAL: 2411
+ITERATION 7: [2422], TOTAL: 2422
+
+AVERAGE:     [2419], TOTAL: 2419
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2430]
+ITERATION 2: [2411]
+ITERATION 3: [2416]
+ITERATION 4: [2422]
+ITERATION 5: [2424]
+ITERATION 6: [2411]
+ITERATION 7: [2422]
+
+AVERAGE:     [2419]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 4
+------------------------------------------------DOING NOOOOOOOOOOOOOO TEST:------------------------------------
+size of profile is 45739
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2508], TOTAL: 2508
+ITERATION 2: [2447], TOTAL: 2447
+ITERATION 3: [2421], TOTAL: 2421
+ITERATION 4: [2410], TOTAL: 2410
+ITERATION 5: [2493], TOTAL: 2493
+ITERATION 6: [2427], TOTAL: 2427
+ITERATION 7: [2442], TOTAL: 2442
+
+AVERAGE:     [2449], TOTAL: 2449
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2508]
+ITERATION 2: [2447]
+ITERATION 3: [2421]
+ITERATION 4: [2410]
+ITERATION 5: [2493]
+ITERATION 6: [2427]
+ITERATION 7: [2442]
+
+AVERAGE:     [2449]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 7
+------------------------------------------------DOING YEEEEEEEEEEEEES TEST:------------------------------------
+size of profile is 49648
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2549], TOTAL: 2549
+ITERATION 2: [2428], TOTAL: 2428
+ITERATION 3: [2424], TOTAL: 2424
+ITERATION 4: [2458], TOTAL: 2458
+ITERATION 5: [2473], TOTAL: 2473
+ITERATION 6: [2408], TOTAL: 2408
+ITERATION 7: [2385], TOTAL: 2385
+
+AVERAGE:     [2446], TOTAL: 2446
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2549]
+ITERATION 2: [2428]
+ITERATION 3: [2424]
+ITERATION 4: [2458]
+ITERATION 5: [2473]
+ITERATION 6: [2408]
+ITERATION 7: [2385]
+
+AVERAGE:     [2446]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 2
+------------------------------------------------DOING NOOOOOOOOOOOOOO TEST:------------------------------------
+size of profile is 45414
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2458], TOTAL: 2458
+ITERATION 2: [2459], TOTAL: 2459
+ITERATION 3: [2394], TOTAL: 2394
+ITERATION 4: [2432], TOTAL: 2432
+ITERATION 5: [2438], TOTAL: 2438
+ITERATION 6: [2448], TOTAL: 2448
+ITERATION 7: [2459], TOTAL: 2459
+
+AVERAGE:     [2441], TOTAL: 2441
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2458]
+ITERATION 2: [2459]
+ITERATION 3: [2394]
+ITERATION 4: [2432]
+ITERATION 5: [2438]
+ITERATION 6: [2448]
+ITERATION 7: [2459]
+
+AVERAGE:     [2441]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 6
+------------------------------------------------DOING YEEEEEEEEEEEEES TEST:------------------------------------
+size of profile is 48378
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2409], TOTAL: 2409
+ITERATION 2: [2479], TOTAL: 2479
+ITERATION 3: [2426], TOTAL: 2426
+ITERATION 4: [2426], TOTAL: 2426
+ITERATION 5: [2409], TOTAL: 2409
+ITERATION 6: [2407], TOTAL: 2407
+ITERATION 7: [2402], TOTAL: 2402
+
+AVERAGE:     [2422], TOTAL: 2422
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2409]
+ITERATION 2: [2479]
+ITERATION 3: [2426]
+ITERATION 4: [2426]
+ITERATION 5: [2409]
+ITERATION 6: [2407]
+ITERATION 7: [2402]
+
+AVERAGE:     [2422]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 5
+------------------------------------------------DOING NOOOOOOOOOOOOOO TEST:------------------------------------
+size of profile is 44655
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2465], TOTAL: 2465
+ITERATION 2: [2479], TOTAL: 2479
+ITERATION 3: [2457], TOTAL: 2457
+ITERATION 4: [2444], TOTAL: 2444
+ITERATION 5: [2423], TOTAL: 2423
+ITERATION 6: [2388], TOTAL: 2388
+ITERATION 7: [2444], TOTAL: 2444
+
+AVERAGE:     [2442], TOTAL: 2442
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2465]
+ITERATION 2: [2479]
+ITERATION 3: [2457]
+ITERATION 4: [2444]
+ITERATION 5: [2423]
+ITERATION 6: [2388]
+ITERATION 7: [2444]
+
+AVERAGE:     [2442]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 7
+------------------------------------------------DOING YEEEEEEEEEEEEES TEST:------------------------------------
+size of profile is 48836
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2434], TOTAL: 2434
+ITERATION 2: [2403], TOTAL: 2403
+ITERATION 3: [2438], TOTAL: 2438
+ITERATION 4: [2481], TOTAL: 2481
+ITERATION 5: [2436], TOTAL: 2436
+ITERATION 6: [2434], TOTAL: 2434
+ITERATION 7: [2420], TOTAL: 2420
+
+AVERAGE:     [2435], TOTAL: 2435
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2434]
+ITERATION 2: [2403]
+ITERATION 3: [2438]
+ITERATION 4: [2481]
+ITERATION 5: [2436]
+ITERATION 6: [2434]
+ITERATION 7: [2420]
+
+AVERAGE:     [2435]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 6
+------------------------------------------------DOING NOOOOOOOOOOOOOO TEST:------------------------------------
+size of profile is 45972
+----------------------------------------------
+ACTION DURATIONS:
+
+ITERATION 1: [2526], TOTAL: 2526
+ITERATION 2: [2415], TOTAL: 2415
+ITERATION 3: [2421], TOTAL: 2421
+ITERATION 4: [2433], TOTAL: 2433
+ITERATION 5: [2439], TOTAL: 2439
+ITERATION 6: [2397], TOTAL: 2397
+ITERATION 7: [2386], TOTAL: 2386
+
+AVERAGE:     [2431], TOTAL: 2431
+
+----------------------------------------------
+TIME STAMPS:
+
+ITERATION 1: [2526]
+ITERATION 2: [2415]
+ITERATION 3: [2421]
+ITERATION 4: [2433]
+ITERATION 5: [2439]
+ITERATION 6: [2397]
+ITERATION 7: [2386]
+
+AVERAGE:     [2431]
+
+----------------------------------------------
+MEDIAN:
+
+MEDIAN RUN: 3
