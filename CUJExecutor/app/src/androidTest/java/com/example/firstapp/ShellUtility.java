@@ -592,9 +592,18 @@ public class ShellUtility {
         }
 
         Action[] cuj = parseStringCUJ(cujStrings);
+        //run 1 time:
+        for (int k = 0; k < 1; k++) {
+            //in canonical case, still launch app.
+            if (cuj.length == 0) {
+                parseStringAction(postCUJ[0], 0).executeUncachedAction();
+                Process process = new ProcessBuilder("am", "force-stop", curPackage).start();
+            } else {
+                //Run through cuj once (cached data won't actually be used)
+                cacheCUJ(cuj);
+            }
+        }
 
-        //Run through cuj once (cached data won't actually be used)
-        cacheCUJ(cuj);
     }
 
 }

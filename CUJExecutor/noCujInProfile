@@ -15,6 +15,8 @@
 #limitations under the License.
 
 INPUT_FILE=${1:-input.txt}
+RECORD=$(sed '4q;d' $INPUT_FILE)
 
 #Specify that only the pre_CUJ should be included in the profile
 ./manipulateProfilesAndTest $INPUT_FILE n
+

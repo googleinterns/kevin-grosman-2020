@@ -18,3 +18,4 @@ INPUT_FILE=${1:-input.txt}
 
 #specify that the entire CUJ (pre_CUJ + measured_CUJ) should be included into the profile
 ./manipulateProfilesAndTest $INPUT_FILE y
+

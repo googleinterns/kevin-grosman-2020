@@ -54,9 +54,11 @@ eval $cmd
 
 echo "Waiting..."
 sleep 60
-adb shell am force-stop com.google.android.apps.maps
+
+#adb shell am force-stop com.google.android.apps.maps
 PROFILE_SIZE=$(adb shell stat -c%s /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof)
-echo "size of profile is $PROFILE_SIZE"
+echo "size of profile is $PROFILE_SIZE" > "profile_manipulation_output.txt"
+cat profile_manipulation_output.txt
 
 echo "Recompiling profile..."
 adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
@@ -66,8 +68,13 @@ echo "Executing and measuring the CUJ..."
 
 if [ "$RECORD" = "r" ] && [ -f "median_clip.mp4" ]
 then 
-	OUTPUT="${FILE_NAME}_yes_in_profile.mp4"
+	if [ "$INCLUDE_MEASURED_CUJ" = "y" ]
+	then 
+		YESORNO="yes"
+	else 
+		YESORNO="no"
+	fi
+	OUTPUT="${FILE_NAME}_${YESORNO}_in_profile.mp4"
 	mv median_clip.mp4 $OUTPUT
 	echo "output file is called: $OUTPUT"
 fi
-

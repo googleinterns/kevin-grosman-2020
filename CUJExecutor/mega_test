@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+INPUT_FILE=${1:-input.txt}
+FILE_NAME="${INPUT_FILE%.*}"
+DATA_FILE="mega_data_${FILE_NAME}.txt"
+
+"-------------------------------------------------------------------------------------------------------------------------------------------------" >> $DATA_FILE
+date >> $DATA_FILE
+
+for run in {1..10}
+do
+	echo "------------------------------------------------DOING YEEEEEEEEEEEEES TEST:------------------------------------" 2>&1 | tee -a $DATA_FILE 
+	./yesCujInProfile $INPUT_FILE 
+	cat profile_manipulation_output.txt >> $DATA_FILE
+	cat action_time_stamps.txt >> $DATA_FILE
+	echo "------------------------------------------------DOING NOOOOOOOOOOOOOO TEST:------------------------------------" 2>&1 | tee -a $DATA_FILE 
+	./noCujInProfile $INPUT_FILE 
+	cat profile_manipulation_output.txt >> $DATA_FILE
+	cat action_time_stamps.txt >> $DATA_FILE
+done
