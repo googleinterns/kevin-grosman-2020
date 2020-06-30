@@ -1,20 +1,61 @@
 #!/usr/bin/env bash
 
 INPUT_FILE=${1:-input.txt}
+COMPILATION_TYPE_1=${2?ERROR: NO FIRST COMPILATION TYPE PROVIDED}
+COMPILATION_TYPE_2=${3?ERROR: NO SECOND COMPILATION TYPE PROVIDED}
+
+EMPTY_TEXT="EEEEEEEEMPTY"
+YES_TEXT="YEEEEEEEEEEES"
+NO_TEXT="NOOOOOOOOOOOOO"
+ALL_TEXT="ALLLLLLLLLLLL"
+
+if [ "$COMPILATION_TYPE_1" = "y" ] 
+then 
+	TEXT_1=$YES_TEXT
+elif [ "$COMPILATION_TYPE_1" = "n" ] 
+then 
+	TEXT_1=$NO_TEXT
+elif [ "$COMPILATION_TYPE_1" = "e" ] 
+then 
+	TEXT_1=$EMPTY_TEXT
+elif [ "$COMPILATION_TYPE_1" = "a" ]
+then
+	TEXT_1=$ALL_TEXT
+fi
+
+if [ "$COMPILATION_TYPE_2" = "y" ] 
+then 
+	TEXT_2=$YES_TEXT
+elif [ "$COMPILATION_TYPE_2" = "n" ] 
+then 
+	TEXT_2=$NO_TEXT
+elif [ "$COMPILATION_TYPE_2" = "e" ] 
+then 
+	TEXT_2=$EMPTY_TEXT
+elif [ "$COMPILATION_TYPE_2" = "a" ]
+then
+	TEXT_2=$ALL_TEXT
+fi
+
 FILE_NAME="${INPUT_FILE%.*}"
 DATA_FILE="mega_data_${FILE_NAME}.txt"
 
-"-------------------------------------------------------------------------------------------------------------------------------------------------" >> $DATA_FILE
+echo "warming up..."
+./runCujNTimes $INPUT_FILE y 5
+
+
+echo "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" >> $DATA_FILE
 date >> $DATA_FILE
+
 
 for run in {1..10}
 do
-	echo "------------------------------------------------DOING YEEEEEEEEEEEEES TEST:------------------------------------" 2>&1 | tee -a $DATA_FILE 
-	./yesCujInProfile $INPUT_FILE 
+	echo "------------------------------------------------DOING $TEXT_1 TEST:------------------------------------" 2>&1 | tee -a $DATA_FILE 
+	./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_TYPE_1
 	cat profile_manipulation_output.txt >> $DATA_FILE
 	cat action_time_stamps.txt >> $DATA_FILE
-	echo "------------------------------------------------DOING NOOOOOOOOOOOOOO TEST:------------------------------------" 2>&1 | tee -a $DATA_FILE 
-	./noCujInProfile $INPUT_FILE 
+	echo "------------------------------------------------DOING $TEXT_2 TEST:------------------------------------" 2>&1 | tee -a $DATA_FILE 
+	./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_TYPE_2
 	cat profile_manipulation_output.txt >> $DATA_FILE
 	cat action_time_stamps.txt >> $DATA_FILE
 done

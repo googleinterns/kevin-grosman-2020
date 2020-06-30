@@ -15,6 +15,8 @@
  */
 
 package com.example.firstapp;
+import android.os.RemoteException;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiDevice;
@@ -38,31 +40,26 @@ import static java.lang.Thread.sleep;
  */
 public class ShellUtilityTest {
     private static final String BASIC_SAMPLE_PACKAGE = "com.example.firstapp";
+    private static final String MAPS_PACKAGE = "com.google.android.apps.maps";
     private static final int TIMEOUT = 6000;
     private static final String entered_text = "Not bad";
     private ShellUtility shellUtility;
 
 
-    @Before
-    public void openBasicApp() throws IOException, InterruptedException {
+    @Test
+    public void openBasicApp() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
         shellUtility = new ShellUtility(TIMEOUT);
-        shellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
-        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
+        shellUtility.launchApp(MAPS_PACKAGE);
     }
 
     /**
      * LAUNCHING AND QUITING
      */
-    @Test
-    public void launching() {
-        Boolean appeared = shellUtility.device.wait(Until.hasObject(By.pkg(BASIC_SAMPLE_PACKAGE).depth(0)), TIMEOUT);
-        assertEquals(true, appeared);
-    }
 
 
 
     @Test
-    public void quitingApp() throws IOException, InterruptedException {
+    public void quitingApp() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
         UiObject2 randomButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
         randomButton.click();
 

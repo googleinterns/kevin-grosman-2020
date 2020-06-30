@@ -44,15 +44,16 @@ public class UserCujTest {
     }
 
     @Test
-    public void userRunCujOnce() throws Exception {
+    public void userRunCujNTimes() throws Exception {
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
         String postCUJ = extras.getString("post");
         String include = extras.getString("include");
+        int n = Integer.parseInt(extras.getString("n"));
         boolean includeMeasured = "y".equals(include); //tells us whether we should execute the "measured" actions
 
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.runCujOnce(preCUJ, postCUJ, includeMeasured);
+        shellUtility.runCujNTimes(preCUJ, postCUJ, includeMeasured, n);
     }
 }

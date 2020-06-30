@@ -17,10 +17,12 @@
 package com.example.firstapp;
 import android.content.Context;
 import android.content.Intent;
+import android.os.RemoteException;
 import android.util.Log;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
+import androidx.test.uiautomator.Direction;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObject2;
@@ -77,7 +79,7 @@ public class ShellUtility {
          * execute the action on the object specified by cachedObject
          * return the time (since epoch) just before the action is performed
          **/
-        abstract long executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException;
+        abstract long executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException, RemoteException;
     }
 
     public class StartAction extends Action {
@@ -89,15 +91,12 @@ public class ShellUtility {
         }
 
         @Override
-        void executeUncachedAction() throws IOException, InterruptedException {
-            forceQuitApp(pkg);
+        void executeUncachedAction() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
             launchApp(pkg);
-            setCachedObject(null);
         }
 
         @Override
-        long executeCachedAction() throws IOException, InterruptedException {
-            forceQuitApp(pkg);
+        long executeCachedAction() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
             return launchApp(pkg);
         }
     }
@@ -207,11 +206,11 @@ public class ShellUtility {
      * Launches the specified App on the specified device and returns the time just before the app was
      * launched--to be used later for timing startup.
      */
-    public long launchApp(String pkg) throws InterruptedException, IOException {
+    public long launchApp(String pkg) throws InterruptedException, IOException, RemoteException, UiObjectNotFoundException {
+        forceQuitApp(pkg);
 
         curPackage = pkg;
         //Start from the home screen
-        device.pressHome();
         final String launcherPackage = device.getLauncherPackageName();
         Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
         device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
@@ -226,20 +225,31 @@ public class ShellUtility {
         // Clear out any previous instances
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        //startActivity imposes a 5 second cool-down after the home button is pressed, so we wait
-        //out that cool-down before grabbing the time and launching
-        sleep(6000);
         context.startActivity(intent);
 
         long start = getTime();
+        //device.wait(Until.hasObject(By.pkg(pkg).depth(0)), timeoutMs);
 
         return start;
 
     }
 
-    public void forceQuitApp(String pkg) throws IOException, InterruptedException {
+    public void forceQuitApp(String pkg) throws IOException, InterruptedException, UiObjectNotFoundException, RemoteException {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-        Process process = new ProcessBuilder("am", "force-stop", pkg).start();
+        //Process process = new ProcessBuilder("am", "force-stop", pkg).start();
+
+        device.pressRecentApps();
+
+
+        UiObject2 maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res("com.google.android.apps.nexuslauncher:id/snapshot")), 1000);
+        if (maps_button == null) {
+            device.pressBack();
+            return;
+        }
+        while (maps_button != null) {
+            maps_button.swipe(Direction.UP, 1f, 10000);
+            maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res("com.google.android.apps.nexuslauncher:id/snapshot")), 1000);
+        }
 
     }
 
@@ -579,25 +589,24 @@ public class ShellUtility {
     }
 
 
-    public void runCujOnce(String preStr, String cujStr, boolean includeMeasured) throws Exception {
+    public void runCujNTimes(String preStr, String cujStr, boolean includeMeasured, int n) throws Exception {
         String[] preCUJ = parseToArray(preStr);
         String[] postCUJ = parseToArray(cujStr);
         String[] cujStrings;
         if (includeMeasured) {
-            cujStrings = new String[preCUJ.length + postCUJ.length - 1];
+            cujStrings = new String[preCUJ.length + postCUJ.length];
             System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
-            System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length - 1);
+            System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
         } else {
             cujStrings = preCUJ;
         }
 
         Action[] cuj = parseStringCUJ(cujStrings);
-        //run 1 time:
-        for (int k = 0; k < 1; k++) {
+        //run n times:
+        for (int k = 0; k < n; k++) {
             //in canonical case, still launch app.
             if (cuj.length == 0) {
                 parseStringAction(postCUJ[0], 0).executeUncachedAction();
-                Process process = new ProcessBuilder("am", "force-stop", curPackage).start();
             } else {
                 //Run through cuj once (cached data won't actually be used)
                 cacheCUJ(cuj);
