@@ -10,13 +10,14 @@ FILE_NAME="${INPUT_FILE##*/}"
 FILE_NAME="${FILE_NAME%.*}"
 AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}.txt"
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
+HEADER_FOOTER="-------------------------------------------------------------------------------COMPILATION FLAGS: $@----------$DATE-------------------------------------------------------------------------------" 
 shift ##shift input names (i.e. $3 -> $2, $2 -> $1, $1 -> (deleted)
 
 echo "warming up..."
 ./runCujNTimes $INPUT_FILE c 5 
 
 
-echo "-------------------------------------------------------------------------------COMPILATION FLAGS: $@----------$DATE-------------------------------------------------------------------------------" >> $AGGREGATED_DATA_FILE
+echo $HEADER_FOOTER >> $AGGREGATED_DATA_FILE
 
 for run in {1..10}
 do
@@ -27,3 +28,5 @@ do
 		cat $SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
 	done
 done
+
+echo $HEADER_FOOTER >> $AGGREGATED_DATA_FILE
