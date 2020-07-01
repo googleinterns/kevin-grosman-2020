@@ -14,57 +14,120 @@
 #See the License for the specific language governing permissions and
 #limitations under the License.
 
+
+##compiles the app according to the COMPILATION_FLAG and then measures the cuj specified by the INPUT_FILE 
+##stores a command/output summary, a short data summary, the profile used to compile the app (if applicable) 
+##and a recording of the median run 
+
+
+
+#PARSING INPUTS:
 INPUT_FILE=${1:-input.txt}
-INCLUDE_MEASURED_CUJ=${2?"ERROR: need to specify whether the measured CUJ should be included in the profile"}
-FILE_NAME="${INPUT_FILE%.*}"
+COMPILATION_FLAG=${2?"ERROR: need to specify a compilation flag"} 
+if [ $COMPILATION_FLAG != "e" ] && [ $COMPILATION_FLAG != "p" ] && [ $COMPILATION_FLAG != "c" ] && [ $COMPILATION_FLAG != "a" ] 
+then
+	echo "compilation flag invalid. Use one of {e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code}"
+	exit 1	
+fi	
+
+FILE_NAME="${INPUT_FILE##*/}"
+FILE_NAME="${FILE_NAME%.*}"
 RECORD=$(sed '4q;d' $INPUT_FILE)
+TIME_DATA="/tmp/time_data.txt"
+
+#PREPARING OUTPUTS:
+DATE=$(date '+%m-%d-%Y--%H:%M:%S')
+HEADER_FOOTER="---------------------------------COMPILATION SETTING: ${COMPILATION_FLAG}----------${DATE}---------------------------------" 
+#Generate the appropriate folder hierarchy if it doesn't already exist
+FOLDER="profile_test_data/${FILE_NAME}"
+mkdir $FOLDER 2> /dev/null
+FOLDER="profile_test_data/${FILE_NAME}/${COMPILATION_FLAG}"
+mkdir $FOLDER 2> /dev/null
+FOLDER="profile_test_data/${FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
+mkdir $FOLDER 2> /dev/null
+COMMAND_SUMMARY="${FOLDER}/command_summary.txt" #contains full summary commands and raw outputs
+SHORT_SUMMARY="${FOLDER}/short_summary.txt" #contains short summary of time data and size of profile/app
+TMP_SHORT_SUMMARY="/tmp/short_summary.txt" #copy of short summary in case other scripts (e.g. mega_test want it)
+SAVED_PROFILE="${FOLDER}/saved_profile.prof" #contains short summary of time data and size of profile/app
+MEDIAN_CLIP="${FOLDER}/median_clip.mp4" #contains a clip of the median run if one is requested
+echo "" > $COMMAND_SUMMARY
+echo "" > $SHORT_SUMMARY
+
+#spit command output to Full_Summary and echo it
+function spitToFull() {
+	cmd="$1"
+	echo "----------------------------------" >> $COMMAND_SUMMARY
+	echo "EXECUTING COMMAND:" >> $COMMAND_SUMMARY
+	echo "$cmd" >> $COMMAND_SUMMARY
+	echo "RAW OUTPUT: " >> $COMMAND_SUMMARY
+	output=$(eval $cmd)
+	echo "$output" >> $COMMAND_SUMMARY
+	echo "$output" 
+}
+
 
 #ADD HEADER FOR DATA
-echo "SIZE DATA:" > profile_manipulation_output.txt
-echo "" >> profile_manipulation_output.txt
+echo $HEADER_FOOTER >> $SHORT_SUMMARY
+echo "SIZE DATA:" >> $SHORT_SUMMARY
+echo "" >> $SHORT_SUMMARY
 
 echo "Resetting the profile...."
-adb shell cmd package compile --reset com.google.android.apps.maps
+output=$(spitToFull "adb shell cmd package compile --reset com.google.android.apps.maps")
 
 #Get the desired actions into the profile:
-if [ "$INCLUDE_MEASURED_CUJ" = "y" ] || [ "$INCLUDE_MEASURED_CUJ" = "n" ] 
+if [ "$COMPILATION_FLAG" = "c" ] || [ "$COMPILATION_FLAG" = "p" ] 
 then
-	echo "Adding the desired actions to the profile...."
-	./runCujNTimes $INPUT_FILE $INCLUDE_MEASURED_CUJ 1
+	
+	echo "Adding the desired actions to the profile..."
+	output=$(spitToFull "./runCujNTimes $INPUT_FILE $COMPILATION_FLAG 1")
 
 	echo "Waiting..."
-	sleep 60
+	output=$(spitToFull "sleep 60")
 
-	#adb shell am force-stop com.google.android.apps.maps
+	echo "Force stopping Maps..."
+	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
+	
+
+	echo "Saving the profile..."
+	output=$(spitToFull "adb pull /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof $SAVED_PROFILE")
+
+	echo "Getting profile size..."
+	output=$(spitToFull "adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof")
 	PROFILE_SIZE=$(adb shell stat -c%s /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof)
-	echo "size of profile is $PROFILE_SIZE" >> "profile_manipulation_output.txt"
+	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
 	
 	echo "Recompiling profile..."
-	adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
-elif [ "$INCLUDE_MEASURED_CUJ" = "a" ] 
+	output=$(spitToFull "adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps")
+
+elif [ "$COMPILATION_FLAG" = "a" ] 
 then 
-	echo "compiling everything..."
-	adb shell cmd package compile -m everything -f com.google.android.apps.maps
+	echo "Compiling everything..."
+	output=$(spitToFull "adb shell cmd package compile -m everything -f com.google.android.apps.maps")
+
+elif [ "$COMPILATION_FLAG" = "e" ]
+then
+	echo "Getting profile size..."
+	output=$(spitToFull "adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof")
+	PROFILE_SIZE=$(adb shell stat -c%s /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof)
+	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
 fi
 
-
-APP_SIZE=$(adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64)
-echo "app has size $APP_SIZE" >> "profile_manipulation_output.txt"
-cat profile_manipulation_output.txt
+echo "Getting app size..." #IS THIS "total" value the proper APP SIZE???
+output=$(spitToFull "adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64")
+APP_SIZE=$(echo $output | awk '{print $2}')
+echo "Size of app: $APP_SIZE" >> $SHORT_SUMMARY
 
 echo "Executing and measuring the CUJ..."
-./executeCuj $INPUT_FILE
+output=$(spitToFull "./executeCuj $INPUT_FILE")
 
-#NNNNNEEEEEEEEEEED TO UPDATE THIS TO INCLUDE ALL AND EMPTY
+cat $TIME_DATA >> $SHORT_SUMMARY
+echo $HEADER_FOOTER >> $SHORT_SUMMARY
+cat $SHORT_SUMMARY > $TMP_SHORT_SUMMARY
+cat $SHORT_SUMMARY
+
+
 if [ "$RECORD" = "r" ] && [ -f "median_clip.mp4" ]
 then 
-	if [ "$INCLUDE_MEASURED_CUJ" = "y" ]
-	then 
-		YESORNO="yes"
-	else 
-		YESORNO="no"
-	fi
-	OUTPUT="${FILE_NAME}_${YESORNO}_in_profile.mp4"
-	mv median_clip.mp4 $OUTPUT
-	echo "output file is called: $OUTPUT"
+	mv median_clip.mp4 $MEDIAN_CLIP
+	echo "output video is called: $MEDIAN_CLIP"
 fi

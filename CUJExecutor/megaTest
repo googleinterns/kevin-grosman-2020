@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+##Loops through all provided compilation flags 10 times and runs manipulateProfilesAndTest
+##Appends the SHORT_SUMMARY from each run to the AGGREGATED_DATA_FILE for the specified INPUT_FILE
+
+INPUT_FILE=${1:-input.txt}
+SHORT_SUMMARY="/tmp/short_summary.txt" #contains short summary of time data and size of profile/app
+
+FILE_NAME="${INPUT_FILE##*/}"
+FILE_NAME="${FILE_NAME%.*}"
+AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}.txt"
+DATE=$(date '+%m-%d-%Y--%H:%M:%S')
+shift ##shift input names (i.e. $3 -> $2, $2 -> $1, $1 -> (deleted)
+
+echo "warming up..."
+./runCujNTimes $INPUT_FILE c 5 
+
+
+echo "-------------------------------------------------------------------------------COMPILATION FLAGS: $@----------$DATE-------------------------------------------------------------------------------" >> $AGGREGATED_DATA_FILE
+
+for run in {1..10}
+do
+	for COMPILATION_TYPE in "$@"
+	do
+		echo "DOING $COMPILATION_TYPE TEST..." 
+		./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_TYPE
+		cat $SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
+	done
+done

@@ -25,6 +25,10 @@ then
 	RECORD="n"
 fi
 
+OUTPUT_FILE="/tmp/time_data.txt"
+echo "" > $OUTPUT_FILE
+
+
 #replace other single quotes by the one recognized by the test
 PRE_CUJ=${PRE_CUJ//\‘/\'}
 PRE_CUJ=${PRE_CUJ//\’/\'}
@@ -77,24 +81,22 @@ fi
 
 
 
-echo "----------------------------------------------" > action_time_stamps.txt
-echo "ACTION DURATIONS:" >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "iterations-actions" -v raw -d | sed -n -e '/^ITERATION/p') >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "averages-actions" -v raw -d | sed -n -e '/^AVERAGE/p') >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-echo "----------------------------------------------" >> action_time_stamps.txt
-echo "TIME STAMPS:" >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "iterations-stamps" -v raw -d | sed -n -e '/^ITERATION/p') >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "averages-stamps" -v raw -d | sed -n -e '/^AVERAGE/p') >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-echo "----------------------------------------------" >> action_time_stamps.txt
-echo "MEDIAN:" >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "median" -v raw -d | sed -n -e '/^MEDIAN/p') >> action_time_stamps.txt
-
-cat action_time_stamps.txt
+echo "----------------------------------------------" > $OUTPUT_FILE 
+echo "ACTION DURATIONS:" >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "iterations-actions" -v raw -d | sed -n -e '/^ITERATION/p') >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "averages-actions" -v raw -d | sed -n -e '/^AVERAGE/p') >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+echo "----------------------------------------------" >> $OUTPUT_FILE 
+echo "TIME STAMPS:" >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "iterations-stamps" -v raw -d | sed -n -e '/^ITERATION/p') >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "averages-stamps" -v raw -d | sed -n -e '/^AVERAGE/p') >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+echo "----------------------------------------------" >> $OUTPUT_FILE 
+echo "MEDIAN:" >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "median" -v raw -d | sed -n -e '/^MEDIAN/p') >> $OUTPUT_FILE 
 

@@ -50,7 +50,7 @@ public class UserCujTest {
         String postCUJ = extras.getString("post");
         String include = extras.getString("include");
         int n = Integer.parseInt(extras.getString("n"));
-        boolean includeMeasured = "y".equals(include); //tells us whether we should execute the "measured" actions
+        boolean includeMeasured = "c".equals(include); //tells us whether we should execute the the entire CUJ or just prepatory actions
 
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);

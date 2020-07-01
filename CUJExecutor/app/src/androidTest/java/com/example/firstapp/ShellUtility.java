@@ -228,7 +228,7 @@ public class ShellUtility {
         context.startActivity(intent);
 
         long start = getTime();
-        //device.wait(Until.hasObject(By.pkg(pkg).depth(0)), timeoutMs);
+        device.wait(Until.hasObject(By.pkg(pkg).depth(0)), timeoutMs);
 
         return start;
 
@@ -236,17 +236,18 @@ public class ShellUtility {
 
     public void forceQuitApp(String pkg) throws IOException, InterruptedException, UiObjectNotFoundException, RemoteException {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-        //Process process = new ProcessBuilder("am", "force-stop", pkg).start();
-
-        device.pressRecentApps();
-
 
         UiObject2 maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res("com.google.android.apps.nexuslauncher:id/snapshot")), 1000);
-        if (maps_button == null) {
+        if (maps_button == null) { //if recent apps page is not already opened, open it
+            device.pressRecentApps();
+        }
+
+        maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res("com.google.android.apps.nexuslauncher:id/snapshot")), 1000);
+        if (maps_button == null) { //if there are no recent apps, exit recent apps
             device.pressBack();
             return;
         }
-        while (maps_button != null) {
+        while (maps_button != null) { //clear all recent apps (after last one is cleared, we will be returned to the home screen
             maps_button.swipe(Direction.UP, 1f, 10000);
             maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res("com.google.android.apps.nexuslauncher:id/snapshot")), 1000);
         }
@@ -604,13 +605,9 @@ public class ShellUtility {
         Action[] cuj = parseStringCUJ(cujStrings);
         //run n times:
         for (int k = 0; k < n; k++) {
-            //in canonical case, still launch app.
-            if (cuj.length == 0) {
-                parseStringAction(postCUJ[0], 0).executeUncachedAction();
-            } else {
-                //Run through cuj once (cached data won't actually be used)
-                cacheCUJ(cuj);
-            }
+            //Run through cuj once (cached data won't actually be used)
+            cacheCUJ(cuj);
+            sleep(1000);
         }
 
     }
