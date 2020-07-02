@@ -4,29 +4,108 @@
 ##Appends the SHORT_SUMMARY from each run to the AGGREGATED_DATA_FILE for the specified INPUT_FILE
 
 INPUT_FILE=${1:-input.txt}
+POST_CUJ=$(sed '2q;d' $INPUT_FILE)
+POST_CUJ_STR_ARRAY=$(echo $POST_CUJ | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
+IFS=', ' read -r -a POST_CUJ_ARRAY <<< "$POST_CUJ_STR_ARRAY" #Read data to an array
 SHORT_SUMMARY="/tmp/short_summary.txt" #contains short summary of time data and size of profile/app
+LOOPS=1
 
+DATE=$(date '+%m-%d-%Y--%H:%M:%S')
+RAW_AVERAGES="/tmp/raw_averages.txt"
 FILE_NAME="${INPUT_FILE##*/}"
 FILE_NAME="${FILE_NAME%.*}"
-AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}.txt"
-DATE=$(date '+%m-%d-%Y--%H:%M:%S')
-HEADER_FOOTER="-------------------------------------------------------------------------------COMPILATION FLAGS: $@----------$DATE-------------------------------------------------------------------------------" 
-shift ##shift input names (i.e. $3 -> $2, $2 -> $1, $1 -> (deleted)
+#Create the folder hierarchy for the data produced by the test, if it doesn't exist
+AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}"
+mkdir $AGGREGATED_DATA_FILE  2> /dev/null
+AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}/${DATE}"
+mkdir $AGGREGATED_DATA_FILE  2> /dev/null
+AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}/${DATE}/all_data.txt"
+TEST_SUMMARY="mega_data/${FILE_NAME}/${DATE}/summary.txt"
+CPU_STATUSES=$(./getCPUs)
+declare -A averages
+shift ##shift args such that remaining args are the compilation settings
+ROWS=$#
+ARGS=("$@")
+HEADER_FOOTER="-----------------------------------------------------------------CPU STATUSES: $CPU_STATUSES----------CCOMPILATION SETTINGS: $@----------$DATE-----------------------------------------------------------------" 
+SUMMARY_HF="************************************************MEGA TEST SUMMARY:*************************************************"
+
 
 echo "warming up..."
 ./runCujNTimes $INPUT_FILE c 5 
 
+echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
 
-echo $HEADER_FOOTER >> $AGGREGATED_DATA_FILE
-
-for run in {1..10}
+for ((run=0;run<$LOOPS;run++))
 do
+	let i=0
 	for COMPILATION_TYPE in "$@"
 	do
 		echo "DOING $COMPILATION_TYPE TEST..." 
 		./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_TYPE
+		echo "" >> $AGGREGATED_DATA_FILE
 		cat $SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
+		STRING_AVERAGES=$(cat $RAW_AVERAGES)
+		STRING_AVERAGES=$(echo $STRING_AVERAGES | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
+		IFS=', ' read -r -a ARRAY <<< "$STRING_AVERAGES" #Read data to an array
+		COLS=${#ARRAY[@]}
+    		for ((j=0;j<COLS;j++)) do
+			((averages[$i,$j]=averages[$i,$j] + ARRAY[$j])) 
+   	 	done
+ 
+		let i++
 	done
 done
 
+echo "Generating mega test summary..."
+
+#Set up print formatting
+w1="%-18s" #Column width for first col in first row
+w2="%-19s" #Column width for first col in subsequent rows
+MAX_WIDTH=6
+for ((j=0;j<COLS;j++)) do
+	str=${POST_CUJ_ARRAY[$j]} 
+	len=$(expr length $str)
+	MAX_WIDTH=$(($len > $MAX_WIDTH ? $len : $MAX_WIDTH))
+done
+let "MAX_WIDTH=$MAX_WIDTH + 1"
+w3="%-${MAX_WIDTH}s" #column width for all other cols
+
+#Print header info
+echo $SUMMARY_HF >> $TEST_SUMMARY
+echo "AVERAGES OVER $LOOPS ITERATIONS:" >> $TEST_SUMMARY
+echo "" >> $TEST_SUMMARY
+
+#Print first row of table
+printf "$w1" "Compilation flag" >> $TEST_SUMMARY
+
+for ((j=0;j<COLS;j++)) do
+    printf "$w3" ${POST_CUJ_ARRAY[$j]} >> $TEST_SUMMARY 
+done
+printf "%6s" "TOTAL" >> $TEST_SUMMARY 
+
+#Print data rows and totals
+for ((i=0;i<ROWS;i++)) do
+	echo "" >> $TEST_SUMMARY
+	let "arg=$i+1"
+	printf "$w2" ${!arg} >> $TEST_SUMMARY
+	total=0
+    	for ((j=0;j<COLS;j++)) do
+		((averages[$i,$j]=averages[$i,$j] / $LOOPS))
+        	let "total=$total + ${averages[$i,$j]}"
+		printf "$w3" ${averages[$i,$j]} >> $TEST_SUMMARY
+    	done
+	printf "$w3" "$total" >> $TEST_SUMMARY
+
+done
+
+#format spacing and cat data summary to aggregated data file
+echo "" >> $TEST_SUMMARY
+echo "" >> $TEST_SUMMARY
+echo $SUMMARY_HF >> $TEST_SUMMARY
+echo "" >> $AGGREGATED_DATA_FILE
+cat $TEST_SUMMARY >> $AGGREGATED_DATA_FILE
+echo "" >> $AGGREGATED_DATA_FILE
 echo $HEADER_FOOTER >> $AGGREGATED_DATA_FILE
+
+#Display the summary table
+cat $TEST_SUMMARY

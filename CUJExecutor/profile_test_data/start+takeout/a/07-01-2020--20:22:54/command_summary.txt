@@ -6,20 +6,19 @@ RAW OUTPUT:
 Success
 ----------------------------------
 EXECUTING COMMAND:
-adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+adb shell cmd package compile -m everything -f com.google.android.apps.maps
 RAW OUTPUT: 
--rw------- 1 u0_a221 u0_a221 0 2020-06-30 19:41 /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+Success
 ----------------------------------
 EXECUTING COMMAND:
 adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
 RAW OUTPUT: 
-total 45076
--rw-r----- 1 system all_a221   151552 2020-06-30 19:41 base.art
--rw-r----- 1 system all_a221  1375616 2020-06-25 14:17 base.odex
--rw-r----- 1 system all_a221 44584828 2020-06-30 19:41 base.vdex
+total 170904
+-rw-r--r-- 1 system all_a221 133077384 2020-06-25 14:17 base.odex
+-rw-r--r-- 1 system all_a221  41745484 2020-07-01 20:23 base.vdex
 ----------------------------------
 EXECUTING COMMAND:
-./executeCuj CUJS/takeout.txt
+./executeCuj CUJS/start+takeout.txt
 RAW OUTPUT: 
 > Task :app:preBuild UP-TO-DATE
 > Task :app:preDebugBuild UP-TO-DATE
@@ -74,6 +73,6 @@ BUILD SUCCESSFUL in 3s
 
 com.example.firstapp.UserCujTest:.
 
-Time: 46.897
+Time: 20.318
 
 OK (1 test)
