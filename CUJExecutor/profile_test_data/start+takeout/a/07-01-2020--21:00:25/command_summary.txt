@@ -6,17 +6,16 @@ RAW OUTPUT:
 Success
 ----------------------------------
 EXECUTING COMMAND:
-adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+adb shell cmd package compile -m everything -f com.google.android.apps.maps
 RAW OUTPUT: 
--rw------- 1 u0_a221 u0_a221 0 2020-07-01 20:22 /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+Success
 ----------------------------------
 EXECUTING COMMAND:
 adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
 RAW OUTPUT: 
-total 45076
--rw-r----- 1 system all_a221   151552 2020-07-01 20:22 base.art
--rw-r----- 1 system all_a221  1375616 2020-06-25 14:17 base.odex
--rw-r----- 1 system all_a221 44582200 2020-07-01 20:22 base.vdex
+total 170908
+-rw-r--r-- 1 system all_a221 133077384 2020-06-25 14:17 base.odex
+-rw-r--r-- 1 system all_a221  41747084 2020-07-01 21:00 base.vdex
 ----------------------------------
 EXECUTING COMMAND:
 ./executeCuj CUJS/start+takeout.txt
@@ -26,21 +25,21 @@ RAW OUTPUT:
 > Task :app:compileDebugAidl NO-SOURCE
 > Task :app:generateDebugBuildConfig UP-TO-DATE
 > Task :app:writeDebugApplicationId UP-TO-DATE
+> Task :app:compileDebugRenderscript NO-SOURCE
 > Task :app:generateSafeArgsDebug UP-TO-DATE
 > Task :app:javaPreCompileDebug UP-TO-DATE
-> Task :app:compileDebugRenderscript NO-SOURCE
 > Task :app:generateDebugResValues UP-TO-DATE
 > Task :app:generateDebugResources UP-TO-DATE
-> Task :app:mergeDebugResources UP-TO-DATE
 > Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
 > Task :app:extractDeepLinksDebug UP-TO-DATE
 > Task :app:processDebugManifest UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
 > Task :app:processDebugResources UP-TO-DATE
 > Task :app:compileDebugJavaWithJavac UP-TO-DATE
 > Task :app:bundleDebugClasses UP-TO-DATE
 > Task :app:preDebugAndroidTestBuild SKIPPED
-> Task :app:compileDebugAndroidTestAidl NO-SOURCE
 > Task :app:javaPreCompileDebugAndroidTest UP-TO-DATE
+> Task :app:compileDebugAndroidTestAidl NO-SOURCE
 > Task :app:processDebugAndroidTestManifest UP-TO-DATE
 > Task :app:compileDebugAndroidTestRenderscript NO-SOURCE
 > Task :app:generateDebugAndroidTestBuildConfig UP-TO-DATE
@@ -69,11 +68,11 @@ RAW OUTPUT:
 Installing APK 'app-debug-androidTest.apk' on 'Pixel 4 XL - 10' for app:debugAndroidTest
 Installed on 1 device.
 
-BUILD SUCCESSFUL in 3s
+BUILD SUCCESSFUL in 1s
 32 actionable tasks: 1 executed, 31 up-to-date
 
 com.example.firstapp.UserCujTest:.
 
-Time: 22.446
+Time: 40.377
 
 OK (1 test)

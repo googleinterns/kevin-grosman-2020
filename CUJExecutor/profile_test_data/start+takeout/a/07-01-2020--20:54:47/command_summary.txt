@@ -13,9 +13,9 @@ Success
 EXECUTING COMMAND:
 adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
 RAW OUTPUT: 
-total 170904
+total 170908
 -rw-r--r-- 1 system all_a221 133077384 2020-06-25 14:17 base.odex
--rw-r--r-- 1 system all_a221  41745484 2020-07-01 20:23 base.vdex
+-rw-r--r-- 1 system all_a221  41747092 2020-07-01 20:55 base.vdex
 ----------------------------------
 EXECUTING COMMAND:
 ./executeCuj CUJS/start+takeout.txt
@@ -68,11 +68,11 @@ RAW OUTPUT:
 Installing APK 'app-debug-androidTest.apk' on 'Pixel 4 XL - 10' for app:debugAndroidTest
 Installed on 1 device.
 
-BUILD SUCCESSFUL in 3s
+BUILD SUCCESSFUL in 1s
 32 actionable tasks: 1 executed, 31 up-to-date
 
 com.example.firstapp.UserCujTest:.
 
-Time: 20.318
+Time: 41.83
 
 OK (1 test)

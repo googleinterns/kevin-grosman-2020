@@ -4,12 +4,16 @@
 ##Appends the SHORT_SUMMARY from each run to the AGGREGATED_DATA_FILE for the specified INPUT_FILE
 
 INPUT_FILE=${1:-input.txt}
+ITERS=$(sed '3q;d' $INPUT_FILE)
 POST_CUJ=$(sed '2q;d' $INPUT_FILE)
 POST_CUJ_STR_ARRAY=$(echo $POST_CUJ | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
 IFS=', ' read -r -a POST_CUJ_ARRAY <<< "$POST_CUJ_STR_ARRAY" #Read data to an array
-SHORT_SUMMARY="/tmp/short_summary.txt" #contains short summary of time data and size of profile/app
-LOOPS=1
+LOOPS=2 #Probably should make this an input
+let "TOTAL_ITERS=$ITERS * $LOOPS"
 
+
+#Initializing variables
+SHORT_SUMMARY="/tmp/short_summary.txt" #contains short summary of time data and size of profile/app
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
 RAW_AVERAGES="/tmp/raw_averages.txt"
 FILE_NAME="${INPUT_FILE##*/}"
@@ -26,6 +30,8 @@ declare -A averages
 shift ##shift args such that remaining args are the compilation settings
 ROWS=$#
 ARGS=("$@")
+
+#Headers/Footers
 HEADER_FOOTER="-----------------------------------------------------------------CPU STATUSES: $CPU_STATUSES----------CCOMPILATION SETTINGS: $@----------$DATE-----------------------------------------------------------------" 
 SUMMARY_HF="************************************************MEGA TEST SUMMARY:*************************************************"
 
@@ -81,7 +87,7 @@ printf "$w1" "Compilation flag" >> $TEST_SUMMARY
 for ((j=0;j<COLS;j++)) do
     printf "$w3" ${POST_CUJ_ARRAY[$j]} >> $TEST_SUMMARY 
 done
-printf "%6s" "TOTAL" >> $TEST_SUMMARY 
+printf "%6s" "TOTAL" >> $TEST_SUMMARY #Justify "TOTAL" to be in line with numbers below
 
 #Print data rows and totals
 for ((i=0;i<ROWS;i++)) do
