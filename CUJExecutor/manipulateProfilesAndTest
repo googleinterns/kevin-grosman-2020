@@ -30,6 +30,7 @@ then
 	exit 1	
 fi	
 
+#Initializing variables
 FILE_NAME="${INPUT_FILE##*/}"
 FILE_NAME="${FILE_NAME%.*}"
 RECORD=$(sed '4q;d' $INPUT_FILE)
@@ -121,6 +122,7 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" >> $SHORT_SUMMAR
 echo "Executing and measuring the CUJ..."
 output=$(spitToFull "./executeCuj $INPUT_FILE")
 
+#Prepare short summary
 cat $TIME_DATA >> $SHORT_SUMMARY
 echo $HEADER_FOOTER >> $SHORT_SUMMARY
 cat $SHORT_SUMMARY > $TMP_SHORT_SUMMARY

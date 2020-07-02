@@ -485,8 +485,7 @@ public class ShellUtility {
         }
         return averages;
     }
-
-
+    
     public long[] medianColumns(long[][] arr) {
         if (arr == null || arr.length == 0) return null;
         long[] medians = new long[arr[0].length];
@@ -504,6 +503,7 @@ public class ShellUtility {
         }
         return medians;
     }
+
     public String zeroPad(String s, int finalLength) {
         StringBuilder sBuilder = new StringBuilder(s);
         while (sBuilder.length() < finalLength) {
@@ -533,10 +533,6 @@ public class ShellUtility {
         Log.i("averages-actions", "AVERAGE:     " + Arrays.toString(averageActionDurations) + ", TOTAL: " + sumArr(averageActionDurations));
         Log.i("averages-actions-raw", Arrays.toString(averageActionDurations));
 
-
-
-
-
         //Log time stamps relative to moment first measured action became available
         long[][] allRelativeStamps = new long[iterations][];
         for (int iter = 0; iter < iterations; iter++) {
@@ -551,9 +547,6 @@ public class ShellUtility {
         //log average relative stamps
         long[] averageRelativeStamps = averageColumns(allRelativeStamps);
         Log.i("averages-stamps", "AVERAGE:     " + Arrays.toString(averageRelativeStamps));
-
-
-
 
         //log median iteration
         Arrays.sort(indexedIterDurations, (a,b) -> Long.compare(a[1], b[1]));
@@ -642,7 +635,5 @@ public class ShellUtility {
             cacheCUJ(cuj);
             sleep(1000);
         }
-
     }
-
 }
