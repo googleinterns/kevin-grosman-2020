@@ -1,5 +1,5 @@
 ************************************************MEGA TEST SUMMARY:*************************************************
-AVERAGES OVER 2 ITERATIONS:
+AVERAGES OVER 6 ITERATIONS:
 
 Compilation flag  'start;com.google.android.apps.maps' 'click;Takeout'                       TOTAL
 p                  2079                                 2727                                 4806                                 

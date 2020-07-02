@@ -11,7 +11,6 @@ IFS=', ' read -r -a POST_CUJ_ARRAY <<< "$POST_CUJ_STR_ARRAY" #Read data to an ar
 LOOPS=2 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
-
 #Initializing variables
 SHORT_SUMMARY="/tmp/short_summary.txt" #contains short summary of time data and size of profile/app
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
@@ -78,7 +77,7 @@ w3="%-${MAX_WIDTH}s" #column width for all other cols
 
 #Print header info
 echo $SUMMARY_HF >> $TEST_SUMMARY
-echo "AVERAGES OVER $LOOPS ITERATIONS:" >> $TEST_SUMMARY
+echo "AVERAGES OVER $TOTAL_ITERS ITERATIONS:" >> $TEST_SUMMARY
 echo "" >> $TEST_SUMMARY
 
 #Print first row of table
