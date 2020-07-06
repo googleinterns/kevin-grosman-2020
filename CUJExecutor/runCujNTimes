@@ -51,5 +51,5 @@ POST_CUJ="\\\"$POST_CUJ\\\""
 
 #Get the desired actions into the profile:
 ./gradlew installDebugAndroidTest
-cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userRunCujNTimes -e pre $PRE_CUJ -e post $POST_CUJ -e include $EXECUTION_FLAG -e n $N com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userWalkCujNTimes -e pre $PRE_CUJ -e post $POST_CUJ -e include $EXECUTION_FLAG -e n $N com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
 eval $cmd

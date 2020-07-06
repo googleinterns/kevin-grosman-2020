@@ -323,7 +323,7 @@ public class ShellUtilityTest {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "[]";
         String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
-        shellUtility.iterateCuj(preCUJ, postCUJ, 0,false);
+        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, 0,false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
     }
@@ -335,7 +335,7 @@ public class ShellUtilityTest {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT;strict', 'click;COUNT', 'click;COUNT']";
         String postCUJ = "['click;COUNT',  'click;COUNT;strict']";
-        shellUtility.iterateCuj(preCUJ, postCUJ, 0, false);
+        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, 0, false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
     }
@@ -346,7 +346,7 @@ public class ShellUtilityTest {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "']";
         String postCUJ =  "['click;ALSO RAND', 'click;PREVIOUS', 'edit;How does;Good!']";
-        shellUtility.iterateCuj(preCUJ, postCUJ, 0, false);
+        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, 0, false);
     }
 
     /**
@@ -359,7 +359,7 @@ public class ShellUtilityTest {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "";
         String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
-        shellUtility.iterateCuj(preCUJ, postCUJ, 1,false);
+        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, 1,false);
         UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
         assertNotEquals(null, five);
     }

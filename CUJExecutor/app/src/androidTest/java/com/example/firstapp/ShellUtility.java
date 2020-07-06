@@ -62,12 +62,21 @@ public class ShellUtility {
     public abstract class Action {
         private UiObject cachedObject;
         long actionTimeout;
+        String actionString;
 
         void setCachedObject(UiObject object) {
             cachedObject = object;
         }
         UiObject getCachedObject() {
             return cachedObject;
+        }
+
+        /**
+         * Spit a message to logcat indicating that the action was executed
+         **/
+
+        void logExecuted() {
+            Log.i("action-completion", "Executed: " + actionString);
         }
 
         /**
@@ -85,29 +94,34 @@ public class ShellUtility {
     public class StartAction extends Action {
         String pkg;
 
-        public StartAction(String p, long timeoutMillis) {
+        public StartAction(String p, long timeoutMillis, String str) {
             pkg = p;
             actionTimeout = timeoutMillis;
+            actionString = str;
         }
 
         @Override
         void executeUncachedAction() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
             launchApp(pkg);
+            logExecuted();
         }
 
         @Override
         long executeCachedAction() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
-            return launchApp(pkg);
+            long time = launchApp(pkg);
+            logExecuted();
+            return time;
         }
     }
 
     public class ClickAction extends Action {
         String text;
         Boolean strict;
-        public ClickAction(String t, Boolean s, long timeoutMillis) {
+        public ClickAction(String t, Boolean s, long timeoutMillis, String str) {
             text = t;
             strict = s;
             actionTimeout = timeoutMillis;
+            actionString = str;
         }
 
         @Override
@@ -122,6 +136,7 @@ public class ShellUtility {
             UiObject object = castToObject(object2);
             object.click();
             setCachedObject(object);
+            logExecuted();
         }
 
         @Override
@@ -129,6 +144,7 @@ public class ShellUtility {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
             object.click();
+            logExecuted();
             return getTime();
         }
     }
@@ -136,10 +152,11 @@ public class ShellUtility {
     public class ClickImageAction extends Action {
         String description;
         Boolean strict;
-        public ClickImageAction(String d, Boolean s, long timeoutMillis) {
+        public ClickImageAction(String d, Boolean s, long timeoutMillis, String str) {
             description = d;
             strict = s;
             actionTimeout = timeoutMillis;
+            actionString = str;
         }
 
         @Override
@@ -154,6 +171,7 @@ public class ShellUtility {
             UiObject object = castToObject(object2);
             object.click();
             setCachedObject(object);
+            logExecuted();
         }
 
         @Override
@@ -161,6 +179,7 @@ public class ShellUtility {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
             object.click();
+            logExecuted();
             return getTime();
         }
     }
@@ -169,11 +188,12 @@ public class ShellUtility {
         String text;
         String entered;
         Boolean strict;
-        public EditAction(String t, String e, Boolean s, long timeoutMillis) {
+        public EditAction(String t, String e, Boolean s, long timeoutMillis, String str) {
             text = t;
             entered = e;
             strict = s;
             actionTimeout = timeoutMillis;
+            actionString = str;
         }
 
         @Override
@@ -189,6 +209,7 @@ public class ShellUtility {
             object.waitForExists(actionTimeout);
             object.legacySetText(entered);
             setCachedObject(object);
+            logExecuted();
         }
 
         @Override
@@ -196,6 +217,7 @@ public class ShellUtility {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
             object.legacySetText(entered);
+            logExecuted();
             return getTime();
         }
     }
@@ -380,28 +402,28 @@ public class ShellUtility {
                 if (!(tokens.length == 2)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new StartAction(tokens[1], timeoutMs);
+                action = new StartAction(tokens[1], timeoutMs, str);
                 break;
 
             case "click":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickAction(tokens[1], strict, timeoutMs);
+                action = new ClickAction(tokens[1], strict, timeoutMs, str);
                 break;
 
             case "clickImage":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickImageAction(tokens[1], strict, timeoutMs);
+                action = new ClickImageAction(tokens[1], strict, timeoutMs, str);
                 break;
 
             case "edit":
                 if (!(3 <= tokens.length && tokens.length <= 4)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new EditAction(tokens[1], tokens[2], strict, timeoutMs);
+                action = new EditAction(tokens[1], tokens[2], strict, timeoutMs, str);
                 break;
 
             default:
@@ -567,6 +589,7 @@ public class ShellUtility {
         Log.i("median", "MEDIAN RUN: " + (median_idx + 1));
 
 
+
         //log median clip data
         Log.i("clip_start", "" + med_start);
         Log.i("clip_end", "" + med_end);
@@ -574,6 +597,7 @@ public class ShellUtility {
         //Log median action durations
         long[] medianActionDurations = medianColumns(allActionDurations);
         Log.i("median-actions", "MEDIAN:      " + Arrays.toString(medianActionDurations) + ", TOTAL: " + medianColumns(indexedIterDurations)[1]);
+
     }
 
 
@@ -590,7 +614,7 @@ public class ShellUtility {
      * @param iterations The number of times to run through and measure the CUJ
      * @param recordIntent Whether the user intends to record the test
      ******************************************************************************/
-    public void iterateCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent) throws Exception {
+    public void iterateAndMeasureCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent) throws Exception {
         String[] preCUJ = parseToArray(preActionsStr);
         String[] postCUJ = parseToArray(cujActionsStr);
         if (postCUJ.length == 1) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
@@ -627,7 +651,7 @@ public class ShellUtility {
     }
 
 
-    public void runCujNTimes(String preStr, String cujStr, boolean includeMeasured, int n) throws Exception {
+    public void walkCujNTimes(String preStr, String cujStr, boolean includeMeasured, int n) throws Exception {
         String[] preCUJ = parseToArray(preStr);
         String[] postCUJ = parseToArray(cujStr);
         String[] cujStrings;

@@ -59,7 +59,7 @@ FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
 mkdir $FOLDER 2> /dev/null
 COMMAND_SUMMARY="${FOLDER}/command_summary.txt" #contains full summary commands and raw outputs
 SHORT_SUMMARY="${FOLDER}/short_summary.txt" #contains short summary of time data and size of profile/app
-TMP_SHORT_SUMMARY="/tmp/short_summary.txt" #copy of short summary in case other scripts (e.g. mega_test want it)
+TMP_SHORT_SUMMARY="/tmp/short_summary.txt" #copy of short summary in case callee (e.g. mega_test) wants it
 SAVED_PROFILE="${FOLDER}/saved_profile.prof" #contains short summary of time data and size of profile/app
 MEDIAN_CLIP="${FOLDER}/median_clip.mp4" #contains a clip of the median run if one is requested
 echo "" > $COMMAND_SUMMARY

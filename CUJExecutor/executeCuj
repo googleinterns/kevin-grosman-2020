@@ -64,7 +64,7 @@ then
 	PID=$!
 fi 
 
-cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userIterateCuj -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM_ITERS -e rec $RECORD com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userIterateAndMeasureCuj -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM_ITERS -e rec $RECORD com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
 eval $cmd
 
 if [ "$RECORD" = "r" ] 
@@ -87,6 +87,8 @@ then
 fi 
 
 
+
+adb logcat -s "action-completion" -v raw -d | sed -n -e '/^Executed/p'
 
 echo "ACTION DURATIONS:" > $OUTPUT_FILE 
 echo "" >> $OUTPUT_FILE 
