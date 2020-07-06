@@ -73,8 +73,6 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void searchForTargetNumber() throws InterruptedException, IOException, RemoteException, UiObjectNotFoundException {
-
-        shellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         Integer val = -1;

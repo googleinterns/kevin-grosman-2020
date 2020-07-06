@@ -207,7 +207,7 @@ public class ShellUtility {
      * launched--to be used later for timing startup.
      */
     public long launchApp(String pkg) throws InterruptedException, IOException, RemoteException, UiObjectNotFoundException {
-        forceQuitApp(pkg);
+        forceQuitApps();
 
         curPackage = pkg;
         //Start from the home screen
@@ -233,23 +233,27 @@ public class ShellUtility {
         return start;
 
     }
+    /**
+     * clears all recent apps from the recent apps panel
+     */
+    public void forceQuitApps() throws IOException, InterruptedException, UiObjectNotFoundException, RemoteException {
 
-    public void forceQuitApp(String pkg) throws IOException, InterruptedException, UiObjectNotFoundException, RemoteException {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        String snapshotResourceId = device.getLauncherPackageName() + ":id/snapshot";
 
-        UiObject2 maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res("com.google.android.apps.nexuslauncher:id/snapshot")), 1000);
+        UiObject2 maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
         if (maps_button == null) { //if recent apps page is not already opened, open it
             device.pressRecentApps();
         }
 
-        maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res("com.google.android.apps.nexuslauncher:id/snapshot")), 1000);
+        maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
         if (maps_button == null) { //if there are no recent apps, exit recent apps
             device.pressBack();
             return;
         }
         while (maps_button != null) { //clear all recent apps (after last one is cleared, we will be returned to the home screen
             maps_button.swipe(Direction.UP, 1f, 10000);
-            maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res("com.google.android.apps.nexuslauncher:id/snapshot")), 1000);
+            maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
         }
 
     }
@@ -472,7 +476,10 @@ public class ShellUtility {
         }
         return res;
     }
-
+    /**
+     * calculates the average of each column
+     * ith entry of returned array is average of ith column of input
+     */
     public long[] averageColumns(long[][] arr) {
         if (arr == null || arr.length == 0) return null;
         long[] averages = new long[arr[0].length];
@@ -485,7 +492,11 @@ public class ShellUtility {
         }
         return averages;
     }
-    
+
+    /**
+     * calculates the median of each column
+     * ith entry of returned array is median of ith column of input
+     */
     public long[] medianColumns(long[][] arr) {
         if (arr == null || arr.length == 0) return null;
         long[] medians = new long[arr[0].length];

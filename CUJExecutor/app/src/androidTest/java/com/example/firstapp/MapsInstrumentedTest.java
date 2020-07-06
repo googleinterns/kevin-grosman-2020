@@ -47,7 +47,6 @@ public class MapsInstrumentedTest {
 
     @Test
     public void getDirections() throws InterruptedException, UiObjectNotFoundException, IOException, RemoteException {
-        shellUtility.forceQuitApp(MAPS_PACKAGE);
         shellUtility.launchApp(MAPS_PACKAGE);
 
 

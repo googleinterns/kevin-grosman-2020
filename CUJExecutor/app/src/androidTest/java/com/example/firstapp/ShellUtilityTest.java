@@ -51,20 +51,17 @@ public class ShellUtilityTest {
         shellUtility = new ShellUtility(TIMEOUT);
     }
 
+
     /**
      * LAUNCHING AND QUITING
      */
-
-
-
     @Test
     public void quitingApp() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         UiObject2 randomButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
         randomButton.click();
 
         //quit and make sure we are back on the first fragment, not on the second fragment where we left off
-        shellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         randomButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
         assertNotEquals(null, randomButton);
@@ -75,7 +72,7 @@ public class ShellUtilityTest {
      */
     @Test
     public void gettingClickableAncestor() throws ShellUtility.InvalidInputException, UiObjectNotFoundException, InterruptedException, RemoteException, IOException {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         //grab a view that is not clickable (but which has a an ancestor which is)
         UiObject2 alsoRandomButton = shellUtility.device.wait(Until.findObject(By.textContains("ALSO RANDOM")),TIMEOUT);
         assertEquals(false, alsoRandomButton.isClickable());
@@ -92,7 +89,7 @@ public class ShellUtilityTest {
 
     @Test
     public void casting() throws UiObjectNotFoundException, ShellUtility.InvalidInputException, InterruptedException, RemoteException, IOException {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         UiObject2 randomButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE,"random_button")), TIMEOUT);
         UiObject randomButtonCasted = shellUtility.castToObject(randomButton);
         randomButtonCasted.waitForExists(TIMEOUT);
@@ -106,7 +103,7 @@ public class ShellUtilityTest {
 
     @Test
     public void gettingEditableAncestor() throws ShellUtility.InvalidInputException, UiObjectNotFoundException, InterruptedException, RemoteException, IOException {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         UiObject2 search_text_view = shellUtility.device.wait(Until.findObject(By.textContains("How does this app")),TIMEOUT);
         UiObject clickable = shellUtility.getEditableObject(search_text_view);
         clickable.waitForExists(TIMEOUT);
@@ -155,7 +152,7 @@ public class ShellUtilityTest {
 
     @Test
     public void executingStartAction() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String str = "start;" + BASIC_SAMPLE_PACKAGE;
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -164,7 +161,7 @@ public class ShellUtilityTest {
         UiObject2 zero = shellUtility.device.wait(Until.findObject(By.textContains("0")),TIMEOUT);
         assertNotEquals(null, zero);
 
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
@@ -174,7 +171,7 @@ public class ShellUtilityTest {
 
     @Test
     public void executingClickActionStrict() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String str = "click;COUNT;strict";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -183,7 +180,7 @@ public class ShellUtilityTest {
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
         assertNotEquals(null, one);
 
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
@@ -193,7 +190,7 @@ public class ShellUtilityTest {
 
     @Test
     public void executingClickActionSubstring() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String str = "click;OUN";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -202,7 +199,7 @@ public class ShellUtilityTest {
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
         assertNotEquals(null, one);
 
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
@@ -212,7 +209,7 @@ public class ShellUtilityTest {
 
     @Test
     public void executingClickActionNonClickable() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String str = "click;ALSO RAND";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -221,7 +218,7 @@ public class ShellUtilityTest {
         UiObject2 previousButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")),TIMEOUT);
         assertNotEquals(null, previousButton);
 
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
@@ -231,7 +228,7 @@ public class ShellUtilityTest {
 
     @Test
     public void executingEditAction() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String str = "edit;you feel;" + entered_text;
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -241,7 +238,7 @@ public class ShellUtilityTest {
         finaSearchBox.waitForExists(TIMEOUT);
         assertNotEquals(null, entered_text);
 
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
@@ -252,7 +249,7 @@ public class ShellUtilityTest {
 
     @Test
     public void executingClickImageAction() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String str = "clickImage;increment";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
@@ -261,7 +258,7 @@ public class ShellUtilityTest {
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
         assertNotEquals(null, one);
 
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
@@ -298,14 +295,14 @@ public class ShellUtilityTest {
     }
 
     @Test
-    public void medianingColumns() {
+    public void medianColumnsOddLength() {
         long[][] arr = {{6,5,3}, {5,7,2}, {4,6,4}};
         long[] expected = {5,6,3};
         assertArrayEquals(expected, shellUtility.medianColumns(arr));
     }
 
     @Test
-    public void medianingColumnsEvenLength() {
+    public void medianColumnsEvenLength() {
         long[][] arr = {{6,5,4}, {6,7,2}, {4,7,4}, {0, 0, 0}};
         long[] expected = {5,6,3};
         assertArrayEquals(expected, shellUtility.medianColumns(arr));
@@ -323,7 +320,7 @@ public class ShellUtilityTest {
 
     @Test
     public void clickTest() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "[]";
         String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
         shellUtility.iterateCuj(preCUJ, postCUJ, 0,false);
@@ -335,7 +332,7 @@ public class ShellUtilityTest {
 
     @Test
     public void nonEmptyPreCUJStrictMatching() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT;strict', 'click;COUNT', 'click;COUNT']";
         String postCUJ = "['click;COUNT',  'click;COUNT;strict']";
         shellUtility.iterateCuj(preCUJ, postCUJ, 0, false);
@@ -346,7 +343,7 @@ public class ShellUtilityTest {
     //test clicking on non-clickables, editing text, using proper substring for matching
     @Test
     public void properSubstringAndClickingOnNonClickables() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "']";
         String postCUJ =  "['click;ALSO RAND', 'click;PREVIOUS', 'edit;How does;Good!']";
         shellUtility.iterateCuj(preCUJ, postCUJ, 0, false);
@@ -359,7 +356,7 @@ public class ShellUtilityTest {
 
     @Test
     public void clickTestCached() throws Exception {
-        shellUtility.launchApp(MAPS_PACKAGE);
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "";
         String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
         shellUtility.iterateCuj(preCUJ, postCUJ, 1,false);

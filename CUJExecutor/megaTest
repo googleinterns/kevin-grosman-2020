@@ -1,7 +1,25 @@
 #!/usr/bin/env bash
 
-##Loops through all provided compilation flags 10 times and runs manipulateProfilesAndTest
-##Appends the SHORT_SUMMARY from each run to the AGGREGATED_DATA_FILE for the specified INPUT_FILE
+##
+# Loops through all provided compilation flags 5 times, each time recompiling aGMM as specified and measuring the desired portion of the CUJ specified by INPUT_FILE
+# Appends the SHORT_SUMMARY from each run to the AGGREGATED_DATA_FILE for the specified INPUT_FILE
+# Stores the following files at /mega_data/<INPUT_FILE_NAME>/<DATE>/:
+# - (all_data.txt) a log containing formatted data from each measurement (acquired via a call to manipulateProfilesAndTest) 
+# - (summary.txt) a summary containing average action durations for each compilation flag (over all iterations)
+#
+# @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
+# @param COMPILATION_FLAGS (all arguments after INPUT_FILE, e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code)
+
+# Example: ./megaTest CUJS/takeout.txt e p c a 
+# Result: Will loop through compiling on an empty profile, one containing the pre-CUJ, one containing the entire CUJ and one containing all of aGMM, measuring the desired CUJ each time (as specified by the takeout file)
+#
+# Example: ./megaTest CUJS/takeout.txt a e
+# Result: Will alternate between compiling copiling all of aGMM and compiling nothing, measuring the desired CUJ each time (as specified by the takeout file)
+
+
+
+
+
 
 INPUT_FILE=${1:-input.txt}
 ITERS=$(sed '3q;d' $INPUT_FILE)
@@ -12,18 +30,18 @@ LOOPS=2 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
-SHORT_SUMMARY="/tmp/short_summary.txt" #contains short summary of time data and size of profile/app
+SHORT_SUMMARY="/tmp/short_summary.txt" #location where ./manipulateProfilesAndTest will dump a short summary of time data and size of profile/app
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
 RAW_AVERAGES="/tmp/raw_averages.txt"
-FILE_NAME="${INPUT_FILE##*/}"
-FILE_NAME="${FILE_NAME%.*}"
+INPUT_FILE_NAME="${INPUT_FILE##*/}"
+INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}"
 #Create the folder hierarchy for the data produced by the test, if it doesn't exist
-AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}"
+AGGREGATED_DATA_FILE="mega_data/${INPUT_FILE_NAME}"
 mkdir $AGGREGATED_DATA_FILE  2> /dev/null
-AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}/${DATE}"
+AGGREGATED_DATA_FILE="mega_data/${INPUT_FILE_NAME}/${DATE}"
 mkdir $AGGREGATED_DATA_FILE  2> /dev/null
-AGGREGATED_DATA_FILE="mega_data/${FILE_NAME}/${DATE}/all_data.txt"
-TEST_SUMMARY="mega_data/${FILE_NAME}/${DATE}/summary.txt"
+AGGREGATED_DATA_FILE="mega_data/${INPUT_FILE_NAME}/${DATE}/all_data.txt"
+TEST_SUMMARY="mega_data/${INPUT_FILE_NAME}/${DATE}/summary.txt"
 CPU_STATUSES=$(./getCPUs)
 declare -A averages
 shift ##shift args such that remaining args are the compilation settings
@@ -31,7 +49,7 @@ ROWS=$#
 ARGS=("$@")
 
 #Headers/Footers
-HEADER_FOOTER="-----------------------------------------------------------------CPU STATUSES: $CPU_STATUSES----------CCOMPILATION SETTINGS: $@----------$DATE-----------------------------------------------------------------" 
+HEADER_FOOTER="-----------------------------------------------------------------CPU STATUSES: $CPU_STATUSES----------COMPILATION FLAGS: $@----------$DATE-----------------------------------------------------------------" 
 SUMMARY_HF="************************************************MEGA TEST SUMMARY:*************************************************"
 
 echo "warming up..."
@@ -42,10 +60,10 @@ echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
 for ((run=0;run<$LOOPS;run++))
 do
 	let i=0
-	for COMPILATION_TYPE in "$@"
+	for COMPILATION_FLAG in "$@"
 	do
-		echo "DOING $COMPILATION_TYPE TEST..." 
-		./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_TYPE
+		echo "DOING $COMPILATION_FLAG TEST..." 
+		./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_FLAG
 		echo "" >> $AGGREGATED_DATA_FILE
 		cat $SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
 		STRING_AVERAGES=$(cat $RAW_AVERAGES)

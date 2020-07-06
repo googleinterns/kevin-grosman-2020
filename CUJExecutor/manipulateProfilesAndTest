@@ -15,9 +15,20 @@
 #limitations under the License.
 
 
-##compiles the app according to the COMPILATION_FLAG and then measures the cuj specified by the INPUT_FILE 
-##stores a command/output summary, a short data summary, the profile used to compile the app (if applicable) 
-##and a recording of the median run 
+##
+# compiles aGMM according to the COMPILATION_FLAG and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
+# Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_FLAG>/<DATE>/:
+# - (command_summary.txt) a log of each run command and their output 
+# - (short_summary.txt) a formatted summary including the profile used for compilation, resulting app size and measurements of the POST_CUJ (acquired via a call to executeCUJ). A copy is stored in /tmp for the callee.
+# - (saved_profile.prof) the profile used to compile the app (if applicable) 
+# - (median_clip.mp4) and a recording of the median iteration (if requested)
+#
+# @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
+# @param COMPILATION_FLAG (e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code)
+
+# Example: ./manipulateProfilesAndTest CUJS/takeout.txt p
+# Result: Will reset the profile attempt to add actions in the pre-CUJ to it. Then re-compiles the app according to that profile and measures the CUJ specified by CUJS/takeout.txt
+
 
 
 
@@ -31,8 +42,8 @@ then
 fi	
 
 #Initializing variables
-FILE_NAME="${INPUT_FILE##*/}"
-FILE_NAME="${FILE_NAME%.*}"
+INPUT_FILE_NAME="${INPUT_FILE##*/}"
+INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}"
 RECORD=$(sed '4q;d' $INPUT_FILE)
 TIME_DATA="/tmp/time_data.txt"
 
@@ -40,11 +51,11 @@ TIME_DATA="/tmp/time_data.txt"
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
 HEADER_FOOTER="--------------------------------COMPILATION SETTING: ${COMPILATION_FLAG}----------${DATE}-------------------------------"
 #Generate the appropriate folder hierarchy if it doesn't already exist
-FOLDER="profile_test_data/${FILE_NAME}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}"
 mkdir $FOLDER 2> /dev/null
-FOLDER="profile_test_data/${FILE_NAME}/${COMPILATION_FLAG}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}"
 mkdir $FOLDER 2> /dev/null
-FOLDER="profile_test_data/${FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
 mkdir $FOLDER 2> /dev/null
 COMMAND_SUMMARY="${FOLDER}/command_summary.txt" #contains full summary commands and raw outputs
 SHORT_SUMMARY="${FOLDER}/short_summary.txt" #contains short summary of time data and size of profile/app
