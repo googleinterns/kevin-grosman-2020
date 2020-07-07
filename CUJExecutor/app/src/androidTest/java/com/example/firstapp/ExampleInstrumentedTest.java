@@ -16,6 +16,8 @@
 
 package com.example.firstapp;
 import android.content.Context;
+import android.os.RemoteException;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -25,6 +27,7 @@ import org.junit.runner.RunWith;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiObject2;
+import androidx.test.uiautomator.UiObjectNotFoundException;
 import androidx.test.uiautomator.Until;
 
 import java.io.IOException;
@@ -69,9 +72,7 @@ public class ExampleInstrumentedTest {
 
 
     @Test
-    public void searchForTargetNumber() throws InterruptedException, IOException {
-
-        shellUtility.forceQuitApp(BASIC_SAMPLE_PACKAGE);
+    public void searchForTargetNumber() throws InterruptedException, IOException, RemoteException, UiObjectNotFoundException {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         Integer val = -1;

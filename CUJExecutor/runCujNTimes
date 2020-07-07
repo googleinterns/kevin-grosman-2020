@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+#Copyright 2020 Google LLC
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#    https://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing, software
+#distributed under the License is distributed on an "AS IS" BASIS,
+#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#See the License for the specific language governing permissions and
+#limitations under the License.
+
+##Simply runs through the CUJ specified by INPUT_FILE N times. Does not record any data
+
+
+
+INPUT_FILE=${1:-input.txt}
+EXECUTION_FLAG=${2?"ERROR: need to specify an execution flag"}
+if [ $EXECUTION_FLAG != "p" ] && [ $EXECUTION_FLAG != "c" ]
+then
+	echo "EXECUTION FLAG INVALID: Use one of {p - execute actions in Pre-CUJ, c - execute entire CUJ}"
+	exit 1	
+fi	
+
+N=${3:-1}
+PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
+POST_CUJ=$(sed '2q;d' $INPUT_FILE)
+
+
+##FORMAT PRE AND POS CUJS
+PRE_CUJ=${PRE_CUJ//\‘/\'}
+PRE_CUJ=${PRE_CUJ//\’/\'}
+POST_CUJ=${POST_CUJ//\‘/\'}
+POST_CUJ=${POST_CUJ//\’/\'}
+
+#use escape char to allow special characters (which would terminate the argument in the am instrument command or do other undesirable things).
+SpecialChars=(";"  "'" "&" "%" "(" ")" "^" "#" "@" "!" "+")
+for char in ${SpecialChars[@]}; do
+	exp="\\${char}"
+	PRE_CUJ=${PRE_CUJ//$exp/\\$char}
+	POST_CUJ=${POST_CUJ//$exp/\\$char}
+done
+# Wrap strings in \" to allow for spaces within them. 
+PRE_CUJ="\\\"$PRE_CUJ\\\""
+POST_CUJ="\\\"$POST_CUJ\\\""
+
+
+#Get the desired actions into the profile:
+./gradlew installDebugAndroidTest
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userWalkCujNTimes -e pre $PRE_CUJ -e post $POST_CUJ -e include $EXECUTION_FLAG -e n $N com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+eval $cmd

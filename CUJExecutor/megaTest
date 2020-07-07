@@ -1,0 +1,143 @@
+#!/usr/bin/env bash
+
+##
+# Loops through all provided compilation flags 5 times, each time recompiling aGMM as specified and measuring the desired portion of the CUJ specified by INPUT_FILE.
+# Appends the SHORT_SUMMARY from each run to the AGGREGATED_DATA_FILE for the specified INPUT_FILE.
+# Stores the following files at /mega_data/<INPUT_FILE_NAME>/<DATE>/:
+# - (all_data.txt) a log containing formatted data from each measurement (acquired via a call to manipulateProfilesAndTest).
+# - (summary.txt) a summary containing average action durations for each compilation flag (over all iterations).
+#
+# @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
+# @param COMPILATION_FLAGS (all arguments after INPUT_FILE, e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code).
+
+# Example: ./megaTest CUJS/takeout.txt e p c a 
+# Result: Will loop through compiling on an empty profile, one containing the pre-CUJ, one containing the entire CUJ and one containing all of aGMM, measuring the desired CUJ each time (as specified by the takeout file).
+#
+# Example: ./megaTest CUJS/takeout.txt a e
+# Result: Will alternate between compiling all of aGMM and compiling nothing, measuring the desired CUJ each time (as specified by the takeout file).
+
+
+
+
+
+
+INPUT_FILE=${1:-input.txt}
+POST_CUJ=$(sed '2q;d' $INPUT_FILE)
+ITERS=$(sed '3q;d' $INPUT_FILE)
+RECORD=$(sed '4q;d' $INPUT_FILE)
+POST_CUJ_STR_ARRAY=$(echo $POST_CUJ | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
+IFS=', ' read -r -a POST_CUJ_ARRAY <<< "$POST_CUJ_STR_ARRAY" #Read data to an array
+LOOPS=1 #Probably should make this an input
+let "TOTAL_ITERS=$ITERS * $LOOPS"
+
+#Initializing variables
+SHORT_SUMMARY="/tmp/short_summary.txt" #location where ./manipulateProfilesAndTest will dump a short summary of time data and size of profile/app
+APP_SIZE_DATA="/tmp/app_size.txt" #location where ./manipulateProfilesAndTest will dump the app size
+DATE=$(date '+%m-%d-%Y--%H:%M:%S')
+RAW_AVERAGES="/tmp/raw_averages.txt"
+INPUT_FILE_NAME="${INPUT_FILE##*/}"
+INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}"
+#Create the folder hierarchy for the data produced by the test, if it doesn't exist
+FOLDER="mega_data/${INPUT_FILE_NAME}"
+mkdir $FOLDER  2> /dev/null
+FOLDER="mega_data/${INPUT_FILE_NAME}/${DATE}"
+mkdir $FOLDER  2> /dev/null
+AGGREGATED_DATA_FILE="${FOLDER}/all_data.txt"
+TEST_SUMMARY="${FOLDER}/summary.txt"
+CPU_STATUSES=$(./getCPUs)
+declare -A averages
+declare -A sizes
+shift ##shift args such that remaining args are the compilation settings
+ROWS=$#
+ARGS=("$@")
+
+#Headers/Footers
+HEADER_FOOTER="-----------------------------------------------------------------CPU STATUSES: $CPU_STATUSES----------COMPILATION FLAGS: $@----------$DATE-----------------------------------------------------------------" 
+SUMMARY_HF="************************************************MEGA TEST SUMMARY:*************************************************"
+
+echo "forc-stopping app..."
+adb shell am force-stop com.google.android.apps.maps
+echo "warming up..."
+./runCujNTimes $INPUT_FILE c 5 
+
+echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
+
+for ((run=0;run<$LOOPS;run++))
+do
+	let i=0
+	for COMPILATION_FLAG in "$@"
+	do
+		echo "DOING $COMPILATION_FLAG TEST..." 
+		./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_FLAG
+		echo "" >> $AGGREGATED_DATA_FILE
+		cat $SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
+		APP_SIZE=$(cat $APP_SIZE_DATA)
+		STRING_AVERAGES=$(cat $RAW_AVERAGES)
+		STRING_AVERAGES=$(echo $STRING_AVERAGES | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
+		IFS=', ' read -r -a ARRAY <<< "$STRING_AVERAGES" #Read data to an array
+		COLS=${#ARRAY[@]}
+		for ((j=0;j<COLS;j++)) do
+			((averages[$i,$j]=averages[$i,$j] + ARRAY[$j])) 
+   	 	done
+		((sizes[$i]=sizes[$i] + APP_SIZE)) 
+
+		let i++
+	done
+done
+
+echo "Generating mega test summary..."
+
+#Set up print formatting
+w1="%-18s" #Column width for first col in first row
+w2="%-19s" #Column width for first col in subsequent rows
+MAX_WIDTH=8
+for ((j=0;j<COLS;j++)) do
+	str=${POST_CUJ_ARRAY[$j]} 
+	len=$(expr length $str)
+	MAX_WIDTH=$(($len > $MAX_WIDTH ? $len : $MAX_WIDTH))
+done
+let "BUF_MAX_WIDTH=$MAX_WIDTH + 1"
+w3="%-${BUF_MAX_WIDTH}s" #column width for all other cols
+
+#Print header info
+echo $SUMMARY_HF >> $TEST_SUMMARY
+echo "AVERAGES OVER $TOTAL_ITERS ITERATIONS:" >> $TEST_SUMMARY
+echo "" >> $TEST_SUMMARY
+
+#Print first row of table
+printf "$w2" "Compilation flag" >> $TEST_SUMMARY
+printf "%-${MAX_WIDTH}s" "App size"  >> $TEST_SUMMARY #Justify one to the left of w3 for better allignment
+
+for ((j=0;j<COLS;j++)) do
+    printf "$w3" ${POST_CUJ_ARRAY[$j]} >> $TEST_SUMMARY 
+done
+printf "%6s" "TOTAL" >> $TEST_SUMMARY #Justify "TOTAL" to be in line with numbers below
+
+#Print data rows and totals
+for ((i=0;i<ROWS;i++)) do
+	echo "" >> $TEST_SUMMARY
+	let "arg=$i+1"
+	printf "$w2" ${!arg} >> $TEST_SUMMARY
+	((sizes[$i]=sizes[$i] / $LOOPS)) 
+	printf "$w3" ${sizes[$i]} >> $TEST_SUMMARY
+	total=0
+    	for ((j=0;j<COLS;j++)) do
+		((averages[$i,$j]=averages[$i,$j] / $LOOPS))
+        	let "total=$total + ${averages[$i,$j]}"
+		printf "$w3" ${averages[$i,$j]} >> $TEST_SUMMARY
+    	done
+	printf "$w3" "$total" >> $TEST_SUMMARY
+
+done
+
+#format spacing and cat data summary to aggregated data file
+echo "" >> $TEST_SUMMARY
+echo "" >> $TEST_SUMMARY
+echo $SUMMARY_HF >> $TEST_SUMMARY
+echo "" >> $AGGREGATED_DATA_FILE
+cat $TEST_SUMMARY >> $AGGREGATED_DATA_FILE
+echo "" >> $AGGREGATED_DATA_FILE
+echo $HEADER_FOOTER >> $AGGREGATED_DATA_FILE
+
+#Display the summary table
+cat $TEST_SUMMARY

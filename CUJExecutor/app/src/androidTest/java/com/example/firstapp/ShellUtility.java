@@ -17,10 +17,12 @@
 package com.example.firstapp;
 import android.content.Context;
 import android.content.Intent;
+import android.os.RemoteException;
 import android.util.Log;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.By;
+import androidx.test.uiautomator.Direction;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObject2;
@@ -60,12 +62,21 @@ public class ShellUtility {
     public abstract class Action {
         private UiObject cachedObject;
         long actionTimeout;
+        String actionString;
 
         void setCachedObject(UiObject object) {
             cachedObject = object;
         }
         UiObject getCachedObject() {
             return cachedObject;
+        }
+
+        /**
+         * Spit a message to logcat indicating that the action was executed
+         **/
+
+        void logExecuted() {
+            Log.i("action-completion", "Executed: " + actionString);
         }
 
         /**
@@ -77,38 +88,40 @@ public class ShellUtility {
          * execute the action on the object specified by cachedObject
          * return the time (since epoch) just before the action is performed
          **/
-        abstract long executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException;
+        abstract long executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException, RemoteException;
     }
 
     public class StartAction extends Action {
         String pkg;
 
-        public StartAction(String p, long timeoutMillis) {
+        public StartAction(String p, long timeoutMillis, String str) {
             pkg = p;
             actionTimeout = timeoutMillis;
+            actionString = str;
         }
 
         @Override
-        void executeUncachedAction() throws IOException, InterruptedException {
-            forceQuitApp(pkg);
+        void executeUncachedAction() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
             launchApp(pkg);
-            setCachedObject(null);
+            logExecuted();
         }
 
         @Override
-        long executeCachedAction() throws IOException, InterruptedException {
-            forceQuitApp(pkg);
-            return launchApp(pkg);
+        long executeCachedAction() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
+            long time = launchApp(pkg);
+            logExecuted();
+            return time;
         }
     }
 
     public class ClickAction extends Action {
         String text;
         Boolean strict;
-        public ClickAction(String t, Boolean s, long timeoutMillis) {
+        public ClickAction(String t, Boolean s, long timeoutMillis, String str) {
             text = t;
             strict = s;
             actionTimeout = timeoutMillis;
+            actionString = str;
         }
 
         @Override
@@ -123,6 +136,7 @@ public class ShellUtility {
             UiObject object = castToObject(object2);
             object.click();
             setCachedObject(object);
+            logExecuted();
         }
 
         @Override
@@ -130,6 +144,7 @@ public class ShellUtility {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
             object.click();
+            logExecuted();
             return getTime();
         }
     }
@@ -137,10 +152,11 @@ public class ShellUtility {
     public class ClickImageAction extends Action {
         String description;
         Boolean strict;
-        public ClickImageAction(String d, Boolean s, long timeoutMillis) {
+        public ClickImageAction(String d, Boolean s, long timeoutMillis, String str) {
             description = d;
             strict = s;
             actionTimeout = timeoutMillis;
+            actionString = str;
         }
 
         @Override
@@ -155,6 +171,7 @@ public class ShellUtility {
             UiObject object = castToObject(object2);
             object.click();
             setCachedObject(object);
+            logExecuted();
         }
 
         @Override
@@ -162,6 +179,7 @@ public class ShellUtility {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
             object.click();
+            logExecuted();
             return getTime();
         }
     }
@@ -170,11 +188,12 @@ public class ShellUtility {
         String text;
         String entered;
         Boolean strict;
-        public EditAction(String t, String e, Boolean s, long timeoutMillis) {
+        public EditAction(String t, String e, Boolean s, long timeoutMillis, String str) {
             text = t;
             entered = e;
             strict = s;
             actionTimeout = timeoutMillis;
+            actionString = str;
         }
 
         @Override
@@ -190,6 +209,7 @@ public class ShellUtility {
             object.waitForExists(actionTimeout);
             object.legacySetText(entered);
             setCachedObject(object);
+            logExecuted();
         }
 
         @Override
@@ -197,6 +217,7 @@ public class ShellUtility {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
             object.legacySetText(entered);
+            logExecuted();
             return getTime();
         }
     }
@@ -207,11 +228,11 @@ public class ShellUtility {
      * Launches the specified App on the specified device and returns the time just before the app was
      * launched--to be used later for timing startup.
      */
-    public long launchApp(String pkg) throws InterruptedException, IOException {
+    public long launchApp(String pkg) throws InterruptedException, IOException, RemoteException, UiObjectNotFoundException {
+        forceQuitApps();
 
         curPackage = pkg;
         //Start from the home screen
-        device.pressHome();
         final String launcherPackage = device.getLauncherPackageName();
         Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
         device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)), timeoutMs);
@@ -226,20 +247,36 @@ public class ShellUtility {
         // Clear out any previous instances
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-        //startActivity imposes a 5 second cool-down after the home button is pressed, so we wait
-        //out that cool-down before grabbing the time and launching
-        sleep(6000);
         context.startActivity(intent);
 
         long start = getTime();
+        device.wait(Until.hasObject(By.pkg(pkg).depth(0)), timeoutMs);
 
         return start;
 
     }
+    /**
+     * clears all recent apps from the recent apps panel
+     */
+    public void forceQuitApps() throws IOException, InterruptedException, UiObjectNotFoundException, RemoteException {
 
-    public void forceQuitApp(String pkg) throws IOException, InterruptedException {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-        Process process = new ProcessBuilder("am", "force-stop", pkg).start();
+        String snapshotResourceId = device.getLauncherPackageName() + ":id/snapshot";
+
+        UiObject2 maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
+        if (maps_button == null) { //if recent apps page is not already opened, open it
+            device.pressRecentApps();
+        }
+
+        maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
+        if (maps_button == null) { //if there are no recent apps, exit recent apps
+            device.pressBack();
+            return;
+        }
+        while (maps_button != null) { //clear all recent apps (after last one is cleared, we will be returned to the home screen
+            maps_button.swipe(Direction.UP, 1f, 10000);
+            maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
+        }
 
     }
 
@@ -365,28 +402,28 @@ public class ShellUtility {
                 if (!(tokens.length == 2)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new StartAction(tokens[1], timeoutMs);
+                action = new StartAction(tokens[1], timeoutMs, str);
                 break;
 
             case "click":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickAction(tokens[1], strict, timeoutMs);
+                action = new ClickAction(tokens[1], strict, timeoutMs, str);
                 break;
 
             case "clickImage":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickImageAction(tokens[1], strict, timeoutMs);
+                action = new ClickImageAction(tokens[1], strict, timeoutMs, str);
                 break;
 
             case "edit":
                 if (!(3 <= tokens.length && tokens.length <= 4)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new EditAction(tokens[1], tokens[2], strict, timeoutMs);
+                action = new EditAction(tokens[1], tokens[2], strict, timeoutMs, str);
                 break;
 
             default:
@@ -461,7 +498,10 @@ public class ShellUtility {
         }
         return res;
     }
-
+    /**
+     * calculates the average of each column
+     * ith entry of returned array is average of ith column of input
+     */
     public long[] averageColumns(long[][] arr) {
         if (arr == null || arr.length == 0) return null;
         long[] averages = new long[arr[0].length];
@@ -475,6 +515,28 @@ public class ShellUtility {
         return averages;
     }
 
+    /**
+     * calculates the median of each column
+     * ith entry of returned array is median of ith column of input
+     */
+    public long[] medianColumns(long[][] arr) {
+        if (arr == null || arr.length == 0) return null;
+        long[] medians = new long[arr[0].length];
+        for (int j = 0; j < arr[0].length; j++) {
+            long[] column = new long[arr.length];
+            for (int i = 0; i < arr.length; i++) {
+                column[i] += arr[i][j];
+            }
+            Arrays.sort(column);
+            if (column.length % 2 == 1) {
+                medians[j] = column[column.length / 2];
+            } else {
+                medians[j] = (column[column.length / 2] + column[(column.length / 2) - 1]) / 2;
+            }
+        }
+        return medians;
+    }
+
     public String zeroPad(String s, int finalLength) {
         StringBuilder sBuilder = new StringBuilder(s);
         while (sBuilder.length() < finalLength) {
@@ -483,32 +545,35 @@ public class ShellUtility {
         return sBuilder.toString();
     }
 
+
     public void logData(long[][] allActionStamps) {
         int iterations = allActionStamps.length;
 
-        //Log action durations
+        //Log action durations and store iteration durations
         long[][] allActionDurations = new long[iterations][];
+        //long[][] iterDurations = new long[iterations][1]; // to be used later to calculate median total duration
+        long[][] indexedIterDurations = new long[iterations][2]; //to be used later for finding index of median run
         for (int iter = 0; iter < iterations; iter++) {
             long[] actionDurations = differences(allActionStamps[iter]);
             allActionDurations[iter] = actionDurations;
-            Log.i("iterations-actions", "ITERATION " + (iter + 1) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + sumArr(actionDurations));
+            indexedIterDurations[iter][0] = iter;
+            indexedIterDurations[iter][1] =  sumArr(actionDurations);
+            Log.i("iterations-actions", "ITERATION " + (iter + 1) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + indexedIterDurations[iter][1]);
         }
 
         //Log average action durations
         long[] averageActionDurations = averageColumns(allActionDurations);
         Log.i("averages-actions", "AVERAGE:     " + Arrays.toString(averageActionDurations) + ", TOTAL: " + sumArr(averageActionDurations));
+        Log.i("averages-actions-raw", Arrays.toString(averageActionDurations));
 
-
-        //Log time stamps relative to moment first measured action became available and store iteration durations
+        //Log time stamps relative to moment first measured action became available
         long[][] allRelativeStamps = new long[iterations][];
-        long[][] iterDurations = new long[iterations][2]; //to be used later for finding median
         for (int iter = 0; iter < iterations; iter++) {
             long[] actionStamps = allActionStamps[iter];
             long[] relativeStamps = relativeValues(actionStamps);
 
             allRelativeStamps[iter] = relativeStamps;
-            iterDurations[iter][0] = iter;
-            iterDurations[iter][1] = relativeStamps[relativeStamps.length - 1];
+
             Log.i("iterations-stamps", "ITERATION " + (iter + 1) + ": " + Arrays.toString(relativeStamps));
         }
 
@@ -517,17 +582,24 @@ public class ShellUtility {
         Log.i("averages-stamps", "AVERAGE:     " + Arrays.toString(averageRelativeStamps));
 
         //log median iteration
-        Arrays.sort(iterDurations, (a,b) -> Long.compare(a[1], b[1]));
-        int median_idx = (int) iterDurations[iterDurations.length / 2][0];
+        Arrays.sort(indexedIterDurations, (a,b) -> Long.compare(a[1], b[1]));
+        int median_idx = (int) indexedIterDurations[indexedIterDurations.length / 2][0];
         long med_start = allActionStamps[median_idx][0];
         long med_end = allActionStamps[median_idx][allActionStamps[0].length - 1];
         Log.i("median", "MEDIAN RUN: " + (median_idx + 1));
 
 
+
         //log median clip data
         Log.i("clip_start", "" + med_start);
         Log.i("clip_end", "" + med_end);
+
+        //Log median action durations
+        long[] medianActionDurations = medianColumns(allActionDurations);
+        Log.i("median-actions", "MEDIAN:      " + Arrays.toString(medianActionDurations) + ", TOTAL: " + medianColumns(indexedIterDurations)[1]);
+
     }
+
 
     /******************************************************************************
      * Executes a CUJ, caches data and then runs through it again iterations times
@@ -542,7 +614,7 @@ public class ShellUtility {
      * @param iterations The number of times to run through and measure the CUJ
      * @param recordIntent Whether the user intends to record the test
      ******************************************************************************/
-    public void iterateCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent) throws Exception {
+    public void iterateAndMeasureCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent) throws Exception {
         String[] preCUJ = parseToArray(preActionsStr);
         String[] postCUJ = parseToArray(cujActionsStr);
         if (postCUJ.length == 1) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
@@ -579,7 +651,7 @@ public class ShellUtility {
     }
 
 
-    public void runCujOnce(String preStr, String cujStr, boolean includeMeasured) throws Exception {
+    public void walkCujNTimes(String preStr, String cujStr, boolean includeMeasured, int n) throws Exception {
         String[] preCUJ = parseToArray(preStr);
         String[] postCUJ = parseToArray(cujStr);
         String[] cujStrings;
@@ -592,9 +664,11 @@ public class ShellUtility {
         }
 
         Action[] cuj = parseStringCUJ(cujStrings);
-
-        //Run through cuj once (cached data won't actually be used)
-        cacheCUJ(cuj);
+        //run n times:
+        for (int k = 0; k < n; k++) {
+            //Run through cuj once (cached data won't actually be used)
+            cacheCUJ(cuj);
+            sleep(1000);
+        }
     }
-
 }

@@ -26,13 +26,14 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.logging.LogManager;
 
 public class UserCujTest {
 
     private static long TIMEOUTMS = 15000;
 
     @Test
-    public void userIterateCuj() throws Exception {
+    public void userIterateAndMeasureCuj() throws Exception {
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
         String postCUJ = extras.getString("post");
@@ -40,19 +41,20 @@ public class UserCujTest {
         boolean recordIntent = "r".equals(extras.getString("rec"));
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.iterateCuj(preCUJ, postCUJ, iterations, recordIntent);
+        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, iterations, recordIntent);
     }
 
     @Test
-    public void userRunCujOnce() throws Exception {
+    public void userWalkCujNTimes() throws Exception {
+
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
         String postCUJ = extras.getString("post");
         String include = extras.getString("include");
-        boolean includeMeasured = "y".equals(include); //tells us whether we should execute the "measured" actions
-
+        int n = Integer.parseInt(extras.getString("n"));
+        boolean includeMeasured = "c".equals(include); //tells us whether we should execute the the entire CUJ or just prepatory actions
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.runCujOnce(preCUJ, postCUJ, includeMeasured);
+        shellUtility.walkCujNTimes(preCUJ, postCUJ, includeMeasured, n);
     }
 }

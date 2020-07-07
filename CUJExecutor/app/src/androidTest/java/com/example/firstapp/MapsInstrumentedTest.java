@@ -16,6 +16,8 @@
 
 package com.example.firstapp;
 
+import android.os.RemoteException;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
@@ -44,8 +46,7 @@ public class MapsInstrumentedTest {
     }
 
     @Test
-    public void getDirections() throws InterruptedException, UiObjectNotFoundException, IOException {
-        shellUtility.forceQuitApp(MAPS_PACKAGE);
+    public void getDirections() throws InterruptedException, UiObjectNotFoundException, IOException, RemoteException {
         shellUtility.launchApp(MAPS_PACKAGE);
 
 

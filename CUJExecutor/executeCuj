@@ -15,15 +15,26 @@
 #limitations under the License.
 
 
+##
+# Iterates through the desired CUJ the NUM_ITERS times and measures the POST_CUJ each time. Optionally produces a clip of the iteration with the median total duration. 
+# Formatted data gets sent to /tmp/time_data.txt and raw action duration averages get sent to /tmp/raw_averages.txt for callee processing.
+#
+# @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
+# 
+
 INPUT_FILE=${1:-input.txt}
 PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
 POST_CUJ=$(sed '2q;d' $INPUT_FILE)
-NUM=$(sed '3q;d' $INPUT_FILE)
+NUM_ITERS=$(sed '3q;d' $INPUT_FILE)
 RECORD=$(sed '4q;d' $INPUT_FILE)
 if [ "$RECORD" != "r" ] 
 then 
 	RECORD="n"
 fi
+
+OUTPUT_FILE="/tmp/time_data.txt"
+RAW_AVERAGES_FILE="/tmp/raw_averages.txt"
+
 
 #replace other single quotes by the one recognized by the test
 PRE_CUJ=${PRE_CUJ//\‘/\'}
@@ -53,7 +64,7 @@ then
 	PID=$!
 fi 
 
-cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userIterateCuj -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM -e rec $RECORD com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userIterateAndMeasureCuj -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM_ITERS -e rec $RECORD com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
 eval $cmd
 
 if [ "$RECORD" = "r" ] 
@@ -77,24 +88,23 @@ fi
 
 
 
-echo "----------------------------------------------" > action_time_stamps.txt
-echo "ACTION DURATIONS:" >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "iterations-actions" -v raw -d | sed -n -e '/^ITERATION/p') >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "averages-actions" -v raw -d | sed -n -e '/^AVERAGE/p') >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-echo "----------------------------------------------" >> action_time_stamps.txt
-echo "TIME STAMPS:" >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "iterations-stamps" -v raw -d | sed -n -e '/^ITERATION/p') >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "averages-stamps" -v raw -d | sed -n -e '/^AVERAGE/p') >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-echo "----------------------------------------------" >> action_time_stamps.txt
-echo "MEDIAN:" >> action_time_stamps.txt
-echo "" >> action_time_stamps.txt
-(adb logcat -s "median" -v raw -d | sed -n -e '/^MEDIAN/p') >> action_time_stamps.txt
+adb logcat -s "action-completion" -v raw -d | sed -n -e '/^Executed/p'
 
-cat action_time_stamps.txt
+echo "ACTION DURATIONS:" > $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "iterations-actions" -v raw -d | sed -n -e '/^ITERATION/p') >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "averages-actions" -v raw -d | sed -n -e '/^AVERAGE/p') >> $OUTPUT_FILE 
+(adb logcat -s "averages-actions-raw" -v raw -d | sed -n -e '/^\[/p') > $RAW_AVERAGES_FILE 
+(adb logcat -s "median-actions" -v raw -d | sed -n -e '/^MEDIAN/p') >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" >> $OUTPUT_FILE 
+echo "TIME STAMPS:" >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "iterations-stamps" -v raw -d | sed -n -e '/^ITERATION/p') >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+(adb logcat -s "averages-stamps" -v raw -d | sed -n -e '/^AVERAGE/p') >> $OUTPUT_FILE 
+echo "" >> $OUTPUT_FILE 
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" >> $OUTPUT_FILE 
+(adb logcat -s "median" -v raw -d | sed -n -e '/^MEDIAN/p') >> $OUTPUT_FILE 
 
