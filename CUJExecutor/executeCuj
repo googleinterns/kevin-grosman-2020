@@ -16,8 +16,8 @@
 
 
 ##
-# Iterates through the desired CUJ the NUM_ITERS times and measures the POST_CUJ each time. Optionally produces a clip of the iteration with the median total duration. Formatted data gets
-# Seent to /tmp/time_data.txt and raw action duration averages get sent to /tmp/raw_averages.txt for callee processing
+# Iterates through the desired CUJ the NUM_ITERS times and measures the POST_CUJ each time. Optionally produces a clip of the iteration with the median total duration. 
+# Formatted data gets sent to /tmp/time_data.txt and raw action duration averages get sent to /tmp/raw_averages.txt for callee processing.
 #
 # @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
 # 

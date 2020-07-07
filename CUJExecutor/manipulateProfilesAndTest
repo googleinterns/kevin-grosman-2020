@@ -16,18 +16,18 @@
 
 
 ##
-# compiles aGMM according to the COMPILATION_FLAG and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
+# Compiles aGMM according to the COMPILATION_FLAG and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
 # Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_FLAG>/<DATE>/:
-# - (command_summary.txt) a log of each run command and their output 
+# - (command_summary.txt) a log of each run command and their output.
 # - (short_summary.txt) a formatted summary including the profile used for compilation, resulting app size and measurements of the POST_CUJ (acquired via a call to executeCUJ). A copy is stored in /tmp for the callee.
-# - (saved_profile.prof) the profile used to compile the app (if applicable) 
-# - (median_clip.mp4) and a recording of the median iteration (if requested)
+# - (saved_profile.prof) the profile used to compile the app (if applicable). 
+# - (median_clip.mp4) a recording of the median iteration (if requested).
 #
 # @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
-# @param COMPILATION_FLAG (e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code)
+# @param COMPILATION_FLAG (e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code).
 
 # Example: ./manipulateProfilesAndTest CUJS/takeout.txt p
-# Result: Will reset the profile attempt to add actions in the pre-CUJ to it. Then re-compiles the app according to that profile and measures the CUJ specified by CUJS/takeout.txt
+# Result: Will reset the profile attempt to add actions in the pre-CUJ to it. Then re-compiles the app according to that profile and measures the CUJ specified by CUJS/takeout.txt.
 
 
 
@@ -57,6 +57,7 @@ FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}"
 mkdir $FOLDER 2> /dev/null
 FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
 mkdir $FOLDER 2> /dev/null
+APP_SIZE_DATA="/tmp/app_size.txt" #Contains final app size in case callee (e.g. mega_test) wants it
 COMMAND_SUMMARY="${FOLDER}/command_summary.txt" #contains full summary commands and raw outputs
 SHORT_SUMMARY="${FOLDER}/short_summary.txt" #contains short summary of time data and size of profile/app
 TMP_SHORT_SUMMARY="/tmp/short_summary.txt" #copy of short summary in case callee (e.g. mega_test) wants it
@@ -126,6 +127,8 @@ fi
 echo "Getting app size..." #IS THIS "total" value the proper APP SIZE???
 output=$(spitToFull "adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64")
 APP_SIZE=$(echo $output | awk '{print $2}')
+echo $APP_SIZE > $APP_SIZE_DATA
+
 echo "Size of app: $APP_SIZE" >> $SHORT_SUMMARY
 echo "" >> $SHORT_SUMMARY
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" >> $SHORT_SUMMARY
