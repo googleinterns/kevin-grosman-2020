@@ -19,15 +19,13 @@
 
 
 
-
-
 INPUT_FILE=${1:-input.txt}
 POST_CUJ=$(sed '2q;d' $INPUT_FILE)
 ITERS=$(sed '3q;d' $INPUT_FILE)
 RECORD=$(sed '4q;d' $INPUT_FILE)
 POST_CUJ_STR_ARRAY=$(echo $POST_CUJ | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
-IFS=', ' read -r -a POST_CUJ_ARRAY <<< "$POST_CUJ_STR_ARRAY" #Read data to an array
-LOOPS=1 #Probably should make this an input
+IFS=$',\n' POST_CUJ_ARRAY=( $(xargs -n1 printf '%s\n' <<< "$POST_CUJ_STR_ARRAY") )
+LOOPS=2 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
@@ -37,6 +35,7 @@ DATE=$(date '+%m-%d-%Y--%H:%M:%S')
 RAW_AVERAGES="/tmp/raw_averages.txt"
 INPUT_FILE_NAME="${INPUT_FILE##*/}"
 INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}"
+DATA_DUMP_FILE="/tmp/mega_data.txt"
 #Create the folder hierarchy for the data produced by the test, if it doesn't exist
 FOLDER="mega_data/${INPUT_FILE_NAME}"
 mkdir $FOLDER  2> /dev/null
@@ -45,22 +44,30 @@ mkdir $FOLDER  2> /dev/null
 AGGREGATED_DATA_FILE="${FOLDER}/all_data.txt"
 TEST_SUMMARY="${FOLDER}/summary.txt"
 CPU_STATUSES=$(./getCPUs)
-declare -A averages
-declare -A sizes
+declare -A averages #duration averages
+declare -A sizes #App size averages
+declare -A testCounts #number of successful tests run for each compilation flag
 shift ##shift args such that remaining args are the compilation settings
 ROWS=$#
+let "COLS=${#POST_CUJ_ARRAY[@]} - 1"
 ARGS=("$@")
 
 #Headers/Footers
 HEADER_FOOTER="-----------------------------------------------------------------CPU STATUSES: $CPU_STATUSES----------COMPILATION FLAGS: $@----------$DATE-----------------------------------------------------------------" 
 SUMMARY_HF="************************************************MEGA TEST SUMMARY:*************************************************"
 
-echo "forc-stopping app..."
+echo $TEST_SUMMARY > $DATA_DUMP_FILE
+echo $@ >> $DATA_DUMP_FILE
+echo $POST_CUJ_STR_ARRAY >> $DATA_DUMP_FILE
+echo $LOOPS >> $DATA_DUMP_FILE
+
+echo "force-stopping app..."
 adb shell am force-stop com.google.android.apps.maps
 echo "warming up..."
-./runCujNTimes $INPUT_FILE c 5 
+./runCujNTimes $INPUT_FILE c 10 
 
 echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
+echo $HEADER_FOOTER 
 
 for ((run=0;run<$LOOPS;run++))
 do
@@ -74,12 +81,20 @@ do
 		APP_SIZE=$(cat $APP_SIZE_DATA)
 		STRING_AVERAGES=$(cat $RAW_AVERAGES)
 		STRING_AVERAGES=$(echo $STRING_AVERAGES | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
+		echo $STRING_AVERAGES >> $DATA_DUMP_FILE
 		IFS=', ' read -r -a ARRAY <<< "$STRING_AVERAGES" #Read data to an array
-		COLS=${#ARRAY[@]}
 		for ((j=0;j<COLS;j++)) do
 			((averages[$i,$j]=averages[$i,$j] + ARRAY[$j])) 
    	 	done
+ 		
+		#If the test was successful (we got average data), increment number of successful tests of this type
+		if [ "${ARRAY}" != "" ] 
+		then 
+			((testCounts[$i]=testCounts[$i] + 1))
+		fi
+
 		((sizes[$i]=sizes[$i] + APP_SIZE)) 
+		echo $APP_SIZE >> $DATA_DUMP_FILE
 
 		let i++
 	done
@@ -88,8 +103,7 @@ done
 echo "Generating mega test summary..."
 
 #Set up print formatting
-w1="%-18s" #Column width for first col in first row
-w2="%-19s" #Column width for first col in subsequent rows
+w1="%-18s" #Column width for first col
 MAX_WIDTH=8
 for ((j=0;j<COLS;j++)) do
 	str=${POST_CUJ_ARRAY[$j]} 
@@ -105,39 +119,57 @@ echo "AVERAGES OVER $TOTAL_ITERS ITERATIONS:" >> $TEST_SUMMARY
 echo "" >> $TEST_SUMMARY
 
 #Print first row of table
-printf "$w2" "Compilation flag" >> $TEST_SUMMARY
-printf "%-${MAX_WIDTH}s" "App size"  >> $TEST_SUMMARY #Justify one to the left of w3 for better allignment
+printf "$w1" "Compilation flag" >> $TEST_SUMMARY
+printf "$w3" "App size"  >> $TEST_SUMMARY #Justify one to the left of w3 for better allignment
 
 for ((j=0;j<COLS;j++)) do
     printf "$w3" ${POST_CUJ_ARRAY[$j]} >> $TEST_SUMMARY 
 done
-printf "%6s" "TOTAL" >> $TEST_SUMMARY #Justify "TOTAL" to be in line with numbers below
+printf "$w3" "TOTAL" >> $TEST_SUMMARY #Justify "TOTAL" to be in line with numbers below
+
+
+
 
 #Print data rows and totals
 for ((i=0;i<ROWS;i++)) do
 	echo "" >> $TEST_SUMMARY
 	let "arg=$i+1"
-	printf "$w2" ${!arg} >> $TEST_SUMMARY
+	printf "$w1" ${!arg} >> $TEST_SUMMARY
 	((sizes[$i]=sizes[$i] / $LOOPS)) 
 	printf "$w3" ${sizes[$i]} >> $TEST_SUMMARY
 	total=0
     	for ((j=0;j<COLS;j++)) do
-		((averages[$i,$j]=averages[$i,$j] / $LOOPS))
-        	let "total=$total + ${averages[$i,$j]}"
-		printf "$w3" ${averages[$i,$j]} >> $TEST_SUMMARY
+		if [ "${testCounts[$i]}" == "" ] #If we didn't get any valid data...
+		then 
+			printf "$w3" "N/A" >> $TEST_SUMMARY
+		else 
+			((averages[$i,$j]=averages[$i,$j] / ${testCounts[$i]})) #Normalize by how much data we did get....
+        		let "total=$total + ${averages[$i,$j]}"
+			printf "$w3" ${averages[$i,$j]} >> $TEST_SUMMARY
+		fi
     	done
-	printf "$w3" "$total" >> $TEST_SUMMARY
+	if [ "${testCounts[$i]}" == "" ] #If we didn't get any valid data...
+	then 
+		printf "$w3" "N/A" >> $TEST_SUMMARY
+	else 
+		printf "$w3" "$total" >> $TEST_SUMMARY
+	fi
 
 done
 
+
+
+
+
 #format spacing and cat data summary to aggregated data file
-echo "" >> $TEST_SUMMARY
-echo "" >> $TEST_SUMMARY
-echo $SUMMARY_HF >> $TEST_SUMMARY
-echo "" >> $AGGREGATED_DATA_FILE
+#echo "" >> $TEST_SUMMARY
+#echo "" >> $TEST_SUMMARY
+#echo $SUMMARY_HF >> $TEST_SUMMARY
+#echo "" >> $AGGREGATED_DATA_FILE
 cat $TEST_SUMMARY >> $AGGREGATED_DATA_FILE
 echo "" >> $AGGREGATED_DATA_FILE
 echo $HEADER_FOOTER >> $AGGREGATED_DATA_FILE
 
 #Display the summary table
 cat $TEST_SUMMARY
+echo $HEADER_FOOTER 
