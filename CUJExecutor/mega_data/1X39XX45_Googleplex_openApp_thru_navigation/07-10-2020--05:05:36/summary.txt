@@ -1,0 +1,20 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+TOTAL ITERATIONS: 63
+
+AVERAGED DATA:
+Compilation flag App size 'start;com.google.android.apps.maps'  'edit;Search here;Googleplex'  'click;Amphith'  'click;Googleplex;strict'  'click;DIRECTIONS'  'click;Choose starting'  'click;Your location;strict'  'click;Start'  'clickImage;Close navigation'  TOTAL 
+e                45076    4264                                  1181                           2339             1742                       1522                1208                     4524                          2302           2020                           21105 
+u                53208    4150                                  1203                           2228             1677                       1502                1203                     4397                          2246           2022                           20630 
+f                59169    3787                                  1134                           2105             1677                       1519                1192                     4290                          2061           1856                           19625 
+c                60864    3723                                  1162                           2025             1626                       1528                1203                     4473                          2003           1859                           19605 
+a                170904   3919                                  1112                           1978             1593                       1539                1201                     4461                          1872           1812                           19491 
+
+MEDIANED DATA:
+Compilation flag App size 'start;com.google.android.apps.maps'  'edit;Search here;Googleplex'  'click;Amphith'  'click;Googleplex;strict'  'click;DIRECTIONS'  'click;Choose starting'  'click;Your location;strict'  'click;Start'  'clickImage;Close navigation'  TOTAL 
+e                45076    4277                                  1057                           2422             1729                       1519                1196                     4550                          2282           1968                           21086 
+u                53208    4128                                  1058                           2299             1670                       1521                1176                     4458                          2205           2014                           20644 
+f                59216    3764                                  1042                           2143             1648                       1530                1184                     4302                          2010           1848                           19647 
+c                60808    3710                                  1060                           2049             1601                       1534                1197                     4496                          2017           1842                           19618 
+a                170904   3773                                  1025                           2036             1575                       1541                1179                     4457                          1860           1792                           19409 
+************************************************MEGA TEST SUMMARY:*************************************************
