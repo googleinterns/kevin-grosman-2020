@@ -35,9 +35,9 @@
 #PARSING INPUTS:
 INPUT_FILE=${1:-input.txt}
 COMPILATION_FLAG=${2?"ERROR: need to specify a compilation flag"} 
-if [ $COMPILATION_FLAG != "e" ] && [ $COMPILATION_FLAG != "p" ] && [ $COMPILATION_FLAG != "c" ] && [ $COMPILATION_FLAG != "a" ] 
+if [ $COMPILATION_FLAG != "e" ] && [ $COMPILATION_FLAG != "p" ] && [ $COMPILATION_FLAG != "c" ] && [ $COMPILATION_FLAG != "a" ] && [ $COMPILATION_FLAG != "f" ] && [ $COMPILATION_FLAG != "u" ] 
 then
-	echo "compilation flag invalid. Use one of {e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code}"
+	echo "compilation flag invalid. Use one of {e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code, f - compile first action, u - compile using cloud profile}"
 	exit 1	
 fi	
 
@@ -57,12 +57,17 @@ FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}"
 mkdir $FOLDER 2> /dev/null
 FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
 mkdir $FOLDER 2> /dev/null
+CLOUD_PROFILE="referenceFiles/cloudProfile.prof" #location of the saved cloud profile
+CUR_PROFILE="/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof" #location of the cloud profile on the device
 APP_SIZE_DATA="/tmp/app_size.txt" #Contains final app size in case callee (e.g. mega_test) wants it
+MPT_FOLDER="/tmp/mpt_folder.txt" #Contains the name of the folder where files for this test live in case callee (e.e. mega_test) wants it
 COMMAND_SUMMARY="${FOLDER}/command_summary.txt" #contains full summary commands and raw outputs
 SHORT_SUMMARY="${FOLDER}/short_summary.txt" #contains short summary of time data and size of profile/app
 TMP_SHORT_SUMMARY="/tmp/short_summary.txt" #copy of short summary in case callee (e.g. mega_test) wants it
 SAVED_PROFILE="${FOLDER}/saved_profile.prof" #contains short summary of time data and size of profile/app
 MEDIAN_CLIP="${FOLDER}/median_clip.mp4" #contains a clip of the median run if one is requested
+FULL_CLIP="${FOLDER}/full_video.mp4" #contains a clip of the full run if one is requested
+
 echo "" > $COMMAND_SUMMARY
 
 #spit command output to Full_Summary and echo it
@@ -87,11 +92,12 @@ echo "Resetting the profile...."
 output=$(spitToFull "adb shell cmd package compile --reset com.google.android.apps.maps")
 
 #Get the desired actions into the profile:
-if [ "$COMPILATION_FLAG" = "c" ] || [ "$COMPILATION_FLAG" = "p" ] 
+if [ "$COMPILATION_FLAG" = "c" ] || [ "$COMPILATION_FLAG" = "p" ] || [ "$COMPILATION_FLAG" = "f" ] 
 then
 	
 	echo "Adding the desired actions to the profile..."
 	output=$(spitToFull "./runCujNTimes $INPUT_FILE $COMPILATION_FLAG 1")
+		
 
 	echo "Waiting..."
 	output=$(spitToFull "sleep 60")
@@ -101,11 +107,11 @@ then
 	
 
 	echo "Saving the profile..."
-	output=$(spitToFull "adb pull /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof $SAVED_PROFILE")
+	output=$(spitToFull "adb pull $CUR_PROFILE $SAVED_PROFILE")
 
 	echo "Getting profile size..."
-	output=$(spitToFull "adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof")
-	PROFILE_SIZE=$(adb shell stat -c%s /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof)
+	output=$(spitToFull "adb shell ls -l $CUR_PROFILE")
+	PROFILE_SIZE=$(adb shell stat -c%s $CUR_PROFILE)
 	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
 	
 	echo "Recompiling profile..."
@@ -119,9 +125,29 @@ then
 elif [ "$COMPILATION_FLAG" = "e" ]
 then
 	echo "Getting profile size..."
-	output=$(spitToFull "adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof")
-	PROFILE_SIZE=$(adb shell stat -c%s /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof)
+	output=$(spitToFull "adb shell ls -l $CUR_PROFILE")
+	PROFILE_SIZE=$(adb shell stat -c%s $CUR_PROFILE)
 	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
+
+elif [ "$COMPILATION_FLAG" = "u" ]
+then 
+	echo "Pushing the cloud profile..."
+	output=$(spitToFull "adb push $CLOUD_PROFILE $CUR_PROFILE")
+
+	echo "Restoring profile permissions"
+	output=$(spitToFull "adb shell chmod a+rw $CUR_PROFILE")
+	
+	echo "Saving the profile..."
+	output=$(spitToFull "adb pull $CUR_PROFILE $SAVED_PROFILE")
+
+	echo "Getting profile size..."
+	output=$(spitToFull "adb shell ls -l $CUR_PROFILE")
+	PROFILE_SIZE=$(adb shell stat -c%s $CUR_PROFILE)
+	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
+	
+	echo "Recompiling profile..."
+	output=$(spitToFull "adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps")
+
 fi
 
 echo "Getting app size..." #IS THIS "total" value the proper APP SIZE???
@@ -140,11 +166,21 @@ output=$(spitToFull "./executeCuj $INPUT_FILE")
 cat $TIME_DATA >> $SHORT_SUMMARY
 echo $HEADER_FOOTER >> $SHORT_SUMMARY
 cat $SHORT_SUMMARY > $TMP_SHORT_SUMMARY
+echo "$FOLDER" > "$MPT_FOLDER"
 
 if [ "$RECORD" = "r" ] && [ -f "median_clip.mp4" ]
 then 
 	mv median_clip.mp4 $MEDIAN_CLIP
-	echo "output video is called: $MEDIAN_CLIP"
+	echo "Path to median video: $MEDIAN_CLIP"
+fi
+
+if [ "$RECORD" = "f" ] || [ "$RECORD" = "r" ]
+then 
+	if  [ -f "full_video.mp4" ]
+	then 
+		mv full_video.mp4 $FULL_CLIP
+		echo "Path to full video: $FULL_CLIP"
+	fi
 fi
 
 cat $SHORT_SUMMARY

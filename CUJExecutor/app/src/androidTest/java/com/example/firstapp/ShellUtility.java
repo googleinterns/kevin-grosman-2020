@@ -15,6 +15,8 @@
  */
 
 package com.example.firstapp;
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
@@ -43,7 +45,6 @@ import static java.lang.Thread.sleep;
 public class ShellUtility {
     public UiDevice device;
     private long timeoutMs;
-    private String curPackage;
 
     public ShellUtility(long timeoutMillis) {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
@@ -102,6 +103,7 @@ public class ShellUtility {
 
         @Override
         void executeUncachedAction() throws IOException, InterruptedException, RemoteException, UiObjectNotFoundException {
+            sleep(2000); //In case packages are changing, wait for new package to load
             launchApp(pkg);
             logExecuted();
         }
@@ -126,11 +128,12 @@ public class ShellUtility {
 
         @Override
         void executeUncachedAction() throws Exception {
+            sleep(2000); //In case packages are changing, wait for new package to load
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.pkg(curPackage).text(text)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(device.getCurrentPackageName()).text(text)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.pkg(curPackage).textContains(text)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(device.getCurrentPackageName()).textContains(text)), actionTimeout);
             }
             if (object2 == null) throw new Exception();
             UiObject object = castToObject(object2);
@@ -160,12 +163,13 @@ public class ShellUtility {
         }
 
         @Override
-        void executeUncachedAction() throws UiObjectNotFoundException, InvalidInputException {
+        void executeUncachedAction() throws UiObjectNotFoundException, InvalidInputException, InterruptedException {
+            sleep(2000); //In case packages are changing, wait for new package to load
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.pkg(curPackage).desc(description)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(device.getCurrentPackageName()).desc(description)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.pkg(curPackage).descContains(description)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(device.getCurrentPackageName()).descContains(description)), actionTimeout);
             }
             if (object2 == null) throwImageContentDescriptions(description, actionTimeout);
             UiObject object = castToObject(object2);
@@ -198,11 +202,12 @@ public class ShellUtility {
 
         @Override
         void executeUncachedAction() throws Exception {
+            sleep(2000); //In case packages are changing, wait for new package to load
             UiObject2 object2;
             if (strict) {
-                object2 = device.wait(Until.findObject(By.pkg(curPackage).text(text)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(device.getCurrentPackageName()).text(text)), actionTimeout);
             } else {
-                object2 = device.wait(Until.findObject(By.pkg(curPackage).textContains(text)), actionTimeout);
+                object2 = device.wait(Until.findObject(By.pkg(device.getCurrentPackageName()).textContains(text)), actionTimeout);
             }
             if (object2 == null) throw new Exception();
             UiObject object = getEditableObject(object2);
@@ -230,8 +235,6 @@ public class ShellUtility {
      */
     public long launchApp(String pkg) throws InterruptedException, IOException, RemoteException, UiObjectNotFoundException {
         forceQuitApps();
-
-        curPackage = pkg;
         //Start from the home screen
         final String launcherPackage = device.getLauncherPackageName();
         Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
@@ -259,6 +262,13 @@ public class ShellUtility {
      * clears all recent apps from the recent apps panel
      */
     public void forceQuitApps() throws IOException, InterruptedException, UiObjectNotFoundException, RemoteException {
+        /*Context context = ApplicationProvider.getApplicationContext();
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(homeIntent);*/
+
+
 
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         String snapshotResourceId = device.getLauncherPackageName() + ":id/snapshot";
@@ -278,6 +288,35 @@ public class ShellUtility {
             maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
         }
 
+
+        /*device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        Process process = new ProcessBuilder("am", "force-stop", "com.google.android.apps.maps").start();
+        amKillProcess("com.google.android.apps.maps");
+*/
+
+
+        //ActivityManager am = (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
+        //sleep(10000);
+        //sleep(10000);
+
+
+    }
+
+
+
+    public void amKillProcess(String process)
+    {
+        Context context = ApplicationProvider.getApplicationContext();
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo>  runningProcesses = am.getRunningAppProcesses();
+
+        for(ActivityManager.RunningAppProcessInfo runningProcess : runningProcesses)
+        {
+            if(runningProcess.processName.equals(process))
+            {
+                android.os.Process.sendSignal(runningProcess.pid, android.os.Process.SIGNAL_KILL);
+            }
+        }
     }
 
 
@@ -285,7 +324,7 @@ public class ShellUtility {
                                  *    OBJECT FINDING HELPERS
                                  ******************************/
     public void throwImageContentDescriptions(String description, long actionTimeout) throws InvalidInputException {
-        List<UiObject2> views = device.wait(Until.findObjects(By.pkg(curPackage)), actionTimeout);
+        List<UiObject2> views = device.wait(Until.findObjects(By.pkg(device.getCurrentPackageName())), actionTimeout);
         if (views == null) {
             throw new InvalidInputException("no image matching description \"" + description + "\' found," +
                     " and no Images were were found either... Try something else.");
@@ -450,13 +489,15 @@ public class ShellUtility {
     /**
      * Executes CUJ and returns cached objects
      */
-    public void  cacheCUJ(Action[] cuj) throws InterruptedException, InvalidInputException, UiObjectNotFoundException, IOException {
+    public void  cacheCUJ(Action[] cuj) throws Exception {
         for (int i = 0; i < cuj.length; i++) {
             try {
                 cuj[i].executeUncachedAction();
             } catch (Exception e) {
                 if (!(e instanceof InvalidInputException)) {
                     throw new InvalidInputException("CUJ argument at index " + i + " was not found. Make sure your action is currently executable on your device.");
+                } else {
+                    throw e;
                 }
             }
         }
@@ -511,7 +552,7 @@ public class ShellUtility {
                 sum += arr[i][j];
             }
             averages[j] = sum / arr.length;
-        }
+        }   
         return averages;
     }
 
@@ -525,7 +566,7 @@ public class ShellUtility {
         for (int j = 0; j < arr[0].length; j++) {
             long[] column = new long[arr.length];
             for (int i = 0; i < arr.length; i++) {
-                column[i] += arr[i][j];
+                column[i] = arr[i][j];
             }
             Arrays.sort(column);
             if (column.length % 2 == 1) {
@@ -545,26 +586,67 @@ public class ShellUtility {
         return sBuilder.toString();
     }
 
+    public String milisecondsToTime (long t) {
+        t %= 86400000;
+        String hours = zeroPad((t / 3600000) + "",2);
+        t %= 3600000;
+        String minutes = zeroPad(t / 60000 + "", 2);
+        t %= 60000;
+        String seconds = zeroPad(t / 1000 + "",2);
+        t %= 1000;
+        String miliseconds = zeroPad(t + "", 3);
+        return (hours + ":" + minutes + ":" + seconds + "." + miliseconds);
+    }
 
-    public void logData(long[][] allActionStamps) {
+    /**
+     *  given a time for the start of a clip, provide a buffer at the beginning and format the resulting time
+     *  in the form HH:MM:SS.sss
+     */
+
+    public String adjustAndFormatStart(long time) {
+        return milisecondsToTime(time - 2000);
+    }
+
+    /**
+     *  given a time for the end of a clip, provide a buffer at the end and format the resulting time
+     *  in the form HH:MM:SS.sss
+     *
+     */
+    public String adjustAndFormatEnd(long time) {
+        return milisecondsToTime(time + 500);
+    }
+
+
+    public void logData(long[][] allActionStamps, long recstart) {
         int iterations = allActionStamps.length;
 
         //Log action durations and store iteration durations
-        long[][] allActionDurations = new long[iterations][];
+        //long[][] allActionDurations = new long[iterations][];
         //long[][] iterDurations = new long[iterations][1]; // to be used later to calculate median total duration
-        long[][] indexedIterDurations = new long[iterations][2]; //to be used later for finding index of median run
+        //long[][] indexedIterDurations = new long[iterations][2]; //to be used later for finding index of median run
         for (int iter = 0; iter < iterations; iter++) {
             long[] actionDurations = differences(allActionStamps[iter]);
-            allActionDurations[iter] = actionDurations;
-            indexedIterDurations[iter][0] = iter;
-            indexedIterDurations[iter][1] =  sumArr(actionDurations);
-            Log.i("iterations-actions", "ITERATION " + (iter + 1) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + indexedIterDurations[iter][1]);
-        }
+            //allActionDurations[iter] = actionDurations;
+            //indexedIterDurations[iter][0] = iter;
+            //indexedIterDurations[iter][1] =  sumArr(actionDurations);
 
+            //Log.i("iterations-actions", "ITERATION " + (iter + 1) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + indexedIterDurations[iter][1]);
+            Log.i("durations-raw", Arrays.toString(actionDurations));
+
+            //Log times:
+            long iterStart = allActionStamps[iter][0] - recstart; //offset by recording start
+            long iterEnd = allActionStamps[iter][allActionStamps[0].length - 1] - recstart; //offset by recording start
+            String[] recInterval = new String[] {adjustAndFormatStart(iterStart), adjustAndFormatEnd(iterEnd)};
+            Log.i("durations-raw", Arrays.toString(recInterval));
+
+
+
+        }
+/*
         //Log average action durations
         long[] averageActionDurations = averageColumns(allActionDurations);
         Log.i("averages-actions", "AVERAGE:     " + Arrays.toString(averageActionDurations) + ", TOTAL: " + sumArr(averageActionDurations));
-        Log.i("averages-actions-raw", Arrays.toString(averageActionDurations));
+
 
         //Log time stamps relative to moment first measured action became available
         long[][] allRelativeStamps = new long[iterations][];
@@ -584,19 +666,20 @@ public class ShellUtility {
         //log median iteration
         Arrays.sort(indexedIterDurations, (a,b) -> Long.compare(a[1], b[1]));
         int median_idx = (int) indexedIterDurations[indexedIterDurations.length / 2][0];
-        long med_start = allActionStamps[median_idx][0];
-        long med_end = allActionStamps[median_idx][allActionStamps[0].length - 1];
-        Log.i("median", "MEDIAN RUN: " + (median_idx + 1));
-
-
+        long medStart = allActionStamps[median_idx][0] - recstart; //offset by recording start
+        long medEnd = allActionStamps[median_idx][allActionStamps[0].length - 1] - recstart; //offset by recording start
+        String[] recInterval = new String[] {adjustAndFormatStart(medStart), adjustAndFormatEnd(medEnd)};
+        Log.i("median-idx", "MEDIAN RUN: " + (median_idx + 1));
 
         //log median clip data
-        Log.i("clip_start", "" + med_start);
-        Log.i("clip_end", "" + med_end);
+        Log.i("clip-start", adjustAndFormatStart(medStart));
+        Log.i("clip_end", adjustAndFormatEnd(medEnd));
 
         //Log median action durations
         long[] medianActionDurations = medianColumns(allActionDurations);
         Log.i("median-actions", "MEDIAN:      " + Arrays.toString(medianActionDurations) + ", TOTAL: " + medianColumns(indexedIterDurations)[1]);
+        */
+
 
     }
 
@@ -614,16 +697,17 @@ public class ShellUtility {
      * @param iterations The number of times to run through and measure the CUJ
      * @param recordIntent Whether the user intends to record the test
      ******************************************************************************/
-    public void iterateAndMeasureCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent) throws Exception {
+    public void iterateAndMeasureCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent, long recstart) throws Exception {
         String[] preCUJ = parseToArray(preActionsStr);
         String[] postCUJ = parseToArray(cujActionsStr);
         if (postCUJ.length == 1) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
         String[] cujStrings = new String[preCUJ.length + postCUJ.length];
-        long recordingBufMs = recordIntent ? 1000 : 0;
+        long recordingBufMs = recordIntent ? 500 : 0;
         System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
         System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
         Action[] cuj = parseStringCUJ(cujStrings);
 
+        forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
         //caching run
         cacheCUJ(cuj);
 
@@ -631,6 +715,8 @@ public class ShellUtility {
         int iter = -1;
         long[][] allActionStamps = new long[iterations][postCUJ.length];
         while (++iter < iterations) {
+
+            forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
             //Execute preparatory actions:
             for (int i = 0; i < preCUJ.length; i++) {
                 cuj[i].executeCachedAction();
@@ -646,26 +732,54 @@ public class ShellUtility {
             //stop_recording();
         }
         if (iterations > 0) {
-            logData(allActionStamps);
+            logData(allActionStamps, recstart);
         }
     }
 
 
-    public void walkCujNTimes(String preStr, String cujStr, boolean includeMeasured, int n) throws Exception {
+    public enum cujFlag {
+        ALL,         //entire CUJ
+        ALLBUTLAST,  //entire CUJ, except for last action
+        PRE,         //preCUJ
+        FIRST,       //just the first action
+    }
+
+    /**
+    *  walks through a portion of the CUJ n times as specified by the flag:
+     *
+     */
+    public void walkCujNTimes(String preStr, String cujStr, cujFlag flag, int n) throws Exception {
         String[] preCUJ = parseToArray(preStr);
         String[] postCUJ = parseToArray(cujStr);
-        String[] cujStrings;
-        if (includeMeasured) {
-            cujStrings = new String[preCUJ.length + postCUJ.length - 1];
-            System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
-            System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length - 1);
-        } else {
-            cujStrings = preCUJ;
+        String[] cujStrings = null;
+
+        switch (flag) {
+            case ALL:
+                cujStrings = new String[preCUJ.length + postCUJ.length];
+                System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
+                System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
+                break;
+            case ALLBUTLAST:
+                cujStrings = new String[preCUJ.length + postCUJ.length - 1];
+                System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
+                System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length - 1);
+                break;
+            case PRE:
+                cujStrings = preCUJ;
+                break;
+            case FIRST:
+                if (preCUJ.length > 0) {
+                    cujStrings = new String[]{preCUJ[0]};
+                } else {
+                    cujStrings = new String[]{postCUJ[0]};
+                }
+                break;
         }
 
         Action[] cuj = parseStringCUJ(cujStrings);
         //run n times:
         for (int k = 0; k < n; k++) {
+            forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
             //Run through cuj once (cached data won't actually be used)
             cacheCUJ(cuj);
             sleep(1000);
