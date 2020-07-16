@@ -20,11 +20,12 @@
 
 
 INPUT_FILE=${1:-input.txt}
+PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
 POST_CUJ=$(sed '2q;d' $INPUT_FILE)
 ITERS=$(sed '3q;d' $INPUT_FILE)
 RECORD=$(sed '4q;d' $INPUT_FILE)
 POST_CUJ_STR_ARRAY=$(./peelHardBrackets $POST_CUJ) #peel off hard brackets
-LOOPS=2 #Probably should make this an input
+LOOPS=1 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
@@ -36,6 +37,7 @@ RAW_DURATIONS="/tmp/raw_durations.txt"
 INPUT_FILE_NAME="${INPUT_FILE##*/}" #remove folders from file name
 INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}" #remove file extension from file name
 DATA_DUMP_FILE="/tmp/dumped_data.txt"
+SUMMARY_TABLES="/tmp/megaTest_summaryTables.txt"
 
 #Create the folder hierarchy for the data produced by the test, if it doesn't exist
 FOLDER="mega_data/${INPUT_FILE_NAME}"
@@ -49,6 +51,7 @@ shift ##shift args such that remaining args are the compilation settings
 
 #Headers/Footers
 HEADER_FOOTER="-----------------------------------------------------------------CPU STATUSES: $CPU_STATUSES----------COMPILATION FLAGS: $@----------$DATE-----------------------------------------------------------------" 
+SUMMARY_HF="\n************************************************MEGA TEST SUMMARY:*************************************************"
 
 echo "" > $DATA_DUMP_FILE
 
@@ -60,6 +63,11 @@ echo "warming up..."
 
 echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
 echo $HEADER_FOOTER 
+
+echo -e $SUMMARY_HF > $TEST_SUMMARY
+echo "PRE CUJ:      $PRE_CUJ" >> $TEST_SUMMARY
+echo "MEASURED CUJ: $POST_CUJ" >> $TEST_SUMMARY
+echo "" >> $TEST_SUMMARY
 
 for ((run=0;run<$LOOPS;run++))
 do
@@ -81,10 +89,12 @@ do
 done
 
 echo "Generating mega test summary..."
-java dataAggregation.aggregateMegaData "$DATA_DUMP_FILE" "$TEST_SUMMARY" "$POST_CUJ_STR_ARRAY" "$TOTAL_ITERS" "$FOLDER" "$*"
+java dataAggregation.aggregateMegaData "$DATA_DUMP_FILE" "$SUMMARY_TABLES" "$POST_CUJ_STR_ARRAY" "$TOTAL_ITERS" "$FOLDER" "$*"
 
 
 
+cat $SUMMARY_TABLES >> $TEST_SUMMARY
+echo -e $SUMMARY_HF >> $TEST_SUMMARY
 
 #format spacing and cat data summary to aggregated data file
 cat $TEST_SUMMARY >> $AGGREGATED_DATA_FILE

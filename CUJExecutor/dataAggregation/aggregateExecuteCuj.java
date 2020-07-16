@@ -81,7 +81,7 @@ class aggregateExecuteCuj {
 
 		String[] postCUJ = args[2].split("\\s*,\\s*");
 		int totalIters = Integer.parseInt(args[3]);
-		String clipDestination = args[4];
+		String clipDestinationFolder = args[4];
 		boolean trim = Boolean.parseBoolean(args[5]); //tell us whether we want to trim the video
 
 		List<List<Integer>> actionDurations = new ArrayList<>(totalIters);//2D list : j = test index, k = action index
@@ -109,8 +109,10 @@ class aggregateExecuteCuj {
 
 
 		//Trim and save all videos
-		if (trim) {
-			Utility.trimVideoWithMedianTotalDuration(medianActionDurations, totalDurationToClipInfo, clipDestination + "/median_clip.mp4");
+		if (medianActionDurations != null && trim) {
+			Integer medianTotalDuration = medianActionDurations.get(medianActionDurations.size() - 1);
+			Utility.clipInfo medianClip = totalDurationToClipInfo.get(medianTotalDuration);
+			Utility.trimClip(medianClip, clipDestinationFolder + "/median_clip.mp4");
 		}
 		
 

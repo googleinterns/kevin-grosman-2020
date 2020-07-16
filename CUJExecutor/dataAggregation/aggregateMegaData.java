@@ -67,9 +67,6 @@ class aggregateMegaData {
 		Scanner myReader = new Scanner(inputFile);
 		OutputStream outputStream = new FileOutputStream(args[1]);
 		PrintStream ps = new PrintStream(outputStream);
-		String headerFooter = "\n************************************************MEGA TEST SUMMARY:*************************************************\n";
-		ps.printf(headerFooter);
-
 
 		for (String s : args) {
 			System.out.println(s);
@@ -77,7 +74,7 @@ class aggregateMegaData {
 		
 		String[] postCUJ = args[2].split("\\s*,\\s*");
 		int totalIters = Integer.parseInt(args[3]);
-		String clipDestination = args[4];
+		String clipDestinationFolder = args[4];
 		String[] compilationFlags = args[5].split(" ");
 
 		int flagCount = compilationFlags.length;
@@ -131,14 +128,16 @@ class aggregateMegaData {
 		List<List<String>> medianFormattedSummary = formatTable(postCUJ, compilationFlags, medianSizes, medianActionDurations);
 		Utility.printFormattedTable(medianFormattedSummary, ps);
 
-		ps.printf(headerFooter);
 
 		//Trim and save all videos
 		for (int flagIdx = 0; flagIdx < flagCount; flagIdx++) {
 			List<Integer> flagMedianActionDurations = medianActionDurations.get(flagIdx);
 			Map<Integer, Utility.clipInfo> flagTotalDurationToClipInfo = totalDurationToClipInfo.get(flagIdx);
-			Utility.trimVideoWithMedianTotalDuration(flagMedianActionDurations, flagTotalDurationToClipInfo, clipDestination + "/" + compilationFlags[flagIdx] + "_median_clip.mp4");
-
+			if (flagMedianActionDurations != null) {
+				Integer flagMedianTotalDuration = flagMedianActionDurations.get(flagMedianActionDurations.size() - 1);
+				Utility.clipInfo flagMedianClip = flagTotalDurationToClipInfo.get(flagMedianTotalDuration);
+				Utility.trimClip(flagMedianClip, clipDestinationFolder + "/" + compilationFlags[flagIdx] + "_median_clip.mp4");
+			}
 		}
 
 

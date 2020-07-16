@@ -65,7 +65,11 @@ class Utility {
         return averages;
     }
 
-
+    /**
+     * Returns the median of the provided list
+     * If list is even, returns the greater of the two middle elements
+     * if list is empty, return null
+     */
     public static Integer median(List<Integer> list) {
 	    if (list.size() == 0) return null;
 	    Collections.sort(list);
@@ -98,7 +102,10 @@ class Utility {
         }
         return medians;
     }	
-
+    
+    /**
+     * Prints str to the provided printStream in a column with the width specified by alignment
+     */
     public static void printWithAlignment(PrintStream ps, int alignment, String str) {
 	ps.printf("%-" + (alignment + 1) + "s", str);
     }
@@ -106,7 +113,10 @@ class Utility {
 
 
 
-
+    /**
+     * prints the provided (possible non-rectangular) list of lists specified by table in a grid, such that
+     * the width of each column is 1 greater than the longest string in that column (and each row has a height of 1)
+     */
     public static void printFormattedTable(List<List<String>> table, PrintStream ps) {
 	    	//calculate number of columns
 		int cols = 0;
@@ -134,7 +144,19 @@ class Utility {
 
 
     //Return true if read was successful
-    public static void readDurationTimePair(String durations, String timestamps, String fullVideoFolder, List<List<Integer>> allData, Map<Integer, clipInfo> totalDurationToClipInfo) {
+    /**
+     * Parses the list specified durations and adds it to the allDurations list.
+     * Also creates a clipInfo object for the CUJ iteration in question and maps the iteration's total duration to 
+     * this clipInfo object in the passed totalDurationToClipInfo map.
+     *
+     * @param durations - a comma-seperated list of durations of each measured action for this particular iteration through the CUJ.
+     * @param timestamps - a comma-seperated pair of timestamps specifying the beginning and end of this iteration through the CUJ in the full video of it (located at fullVideoFolder).
+     * @param fullVideoFolder the folder holding the full video that contains the iteration in question (if such a recording exists)
+     * @param allDurations[out] - a list duration-lists, to which the data held by durations is to be added.
+     * @param totalDurationToClipInfo[out] - a map from total iteration durations to clipInfos of clips with that total duration. The data from the iteration in question is to be added to this map.
+     *
+     */
+    public static void readDurationTimePair(String durations, String timestamps, String fullVideoFolder, List<List<Integer>> allDurations, Map<Integer, clipInfo> totalDurationToClipInfo) {
 		String[] durationArr = durations.split("\\s*,\\s*");
 		List<Integer> durationList = new ArrayList<>();
 		for (String s : durationArr) {
@@ -143,21 +165,17 @@ class Utility {
 		Integer totalDuration = sum(durationList);
 		durationList.add(totalDuration);
 
-		allData.add(durationList);
+		allDurations.add(durationList);
 		clipInfo curClipInfo = new clipInfo(fullVideoFolder, timestamps);
 		totalDurationToClipInfo.put(totalDuration, curClipInfo);
 	}
 
-	public static void trimVideoWithMedianTotalDuration(List<Integer> medianActionDurations, Map<Integer, clipInfo> totalDurationToClipInfo, String destinationFile) {
-		if (medianActionDurations != null) {
-			Integer medianTotalDuration = medianActionDurations.get(medianActionDurations.size() - 1);
-			clipInfo medianClipInfo = totalDurationToClipInfo.get(medianTotalDuration);
-			String fullClipLoc = medianClipInfo.getFolder() + "/full_video.mp4";
-			File fullClip = new File(fullClipLoc);
-			System.out.println("Picked with length " + medianTotalDuration + " (starting at " + medianClipInfo.getStart() + " and ending at " + medianClipInfo.getEnd());
-			if (fullClip.exists()) {
-				splitVideo(fullClipLoc, medianClipInfo.getStart(), medianClipInfo.getEnd(), destinationFile);
-			}
+	public static void trimClip(clipInfo clip, String destinationFile) {
+		String fullClipLoc = clip.getFolder() + "/full_video.mp4";
+		File fullClip = new File(fullClipLoc);
+		System.out.println("Picked with length starting at " + clip.getStart() + " and ending at " + clip.getEnd());
+		if (fullClip.exists()) {
+			executeFFmpegTrim(fullClipLoc, clip.getStart(), clip.getEnd(), destinationFile);
 		}
 	}
 
@@ -175,13 +193,6 @@ class Utility {
 	// Run a shell script
 	//processBuilder.command("path/to/hello.sh");
 
-	// -- Windows --
-
-	// Run a command
-	//processBuilder.command("cmd.exe", "/c", "dir C:\\Users\\mkyong");
-	
-	// Run a bat file
-	//processBuilder.command("C:\\Users\\mkyong\\hello.bat");
 
 	try {
 
@@ -214,7 +225,7 @@ class Utility {
     }
 
 
-    public static void splitVideo(String source, String from, String to, String destination) {
+    public static void executeFFmpegTrim(String source, String from, String to, String destination) {
 	executeShellCommand("ffmpeg -i " + source + " -force_key_frames:v " + from + "," + to + " -acodec copy -map 0 -f segment -segment_times " + from + "," + to + " -reset_timestamps 1 -y temp%d.mp4");
 	executeShellCommand("mv temp1.mp4 " + destination);
     }
