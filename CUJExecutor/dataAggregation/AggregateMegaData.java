@@ -5,7 +5,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 import java.util.*;
 import java.io.*;
 
-class aggregateMegaData {
+class AggregateMegaData {
 	
 
 	public static void parseInputFile (Scanner myReader, int flagCount, List<List<List<Integer>>> durationData, List<List<Integer>> sizeData, List<Map<Integer, Utility.clipInfo>> totalDurationToClipInfo) {

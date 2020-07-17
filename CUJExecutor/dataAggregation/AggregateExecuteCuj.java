@@ -5,7 +5,7 @@ import java.util.Scanner; // Import the Scanner class to read text files
 import java.util.*;
 import java.io.*;
 
-class aggregateExecuteCuj {
+class AggregateExecuteCuj {
 	
 
 	public static void parseInputFile (Scanner myReader, List<List<Integer>> actionDurations,  Map<Integer, Utility.clipInfo> totalDurationToClipInfo) {

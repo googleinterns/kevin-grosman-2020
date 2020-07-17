@@ -8,28 +8,29 @@ import java.io.*;
 
 class Utility {
 
+	/**
+	 * Provides the info necessary to identify a section of a video (a clip)
+	 */
    static class clipInfo {
-	String folder;
-	String timeStamps;
-	String startTime;
-	String endTime;
+	String folder; //the folder where the clip is located (should be called "full_video.mp4)
+	String start; //the time at which this clip begins in the video (in the format HH:MM:SS.sss)
+	String end; //the time at which this clip ends in the video (in the format HH:MM:SS.sss)
 
-	public clipInfo (String f, String t) {
-		folder = f;
-		timeStamps = t;
-		String[] startEnd = timeStamps.split("\\s*,\\s*");
-		startTime = startEnd[0];
-		endTime = startEnd[1];
+	public clipInfo (String fldr, String timestamps) {
+		folder = fldr;
+		String[] startEnd = timestamps.split("\\s*,\\s*");
+		start = startEnd[0];
+		end = startEnd[1];
 	}
 	public String getFolder() {
 		return folder;
 	}
 	public String getStart() {
-		return startTime;
+		return start;
 	}
 
 	public String getEnd() {
-		return endTime;
+		return end;
 	}
    }
    
@@ -143,7 +144,6 @@ class Utility {
 
 
 
-    //Return true if read was successful
     /**
      * Parses the list specified durations and adds it to the allDurations list.
      * Also creates a clipInfo object for the CUJ iteration in question and maps the iteration's total duration to 
