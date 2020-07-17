@@ -1,3 +1,3 @@
-['start;com.google.android.keep']
-['click;Nav to BB', 'clickImage;Navigation menu']
-9
+['start;com.google.android.apps.maps']
+['click;Nav to BB', 'clickImage;Close navigation', 'clickImage;Navigate up']
+5

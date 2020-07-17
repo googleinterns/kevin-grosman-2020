@@ -1,3 +1,3 @@
 ['start;com.google.android.apps.maps', 'edit;Search here;Google Office near Mountainview'] 
 ['click;Search for', 'click;View map']
-9
+5
