@@ -8,6 +8,13 @@ import java.io.*;
 class AggregateExecuteCuj {
 	
 
+	/**
+	 * parses the test given by myReader, which is formatted as specified by the JAVADOC on the main function of this class.
+	 * Adds the parsed 
+	 *  - durations to the actionDurationsList, 
+	 *  - clipInfo object to the totalDurationsToClipinfo map.
+	 *
+	 */
 	public static void parseInputFile (Scanner myReader, List<List<Integer>> actionDurations,  Map<Integer, Utility.clipInfo> totalDurationToClipInfo) {
 		//Parse Input file:
 		while (myReader.hasNextLine()) {

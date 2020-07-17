@@ -10,7 +10,12 @@ class AggregateMegaData {
 
 
 	/**
-	 *
+	 * parses the test given by myReader, which is formatted as specified by the JAVADOC on the main function of this class.
+	 * parses each empty-line-seperated paragraph as corresponding to a flag in a cyclic fashion (according to order and flagCount)
+	 * Then, indexes into the data-structures for that flag and adds the parsed 
+	 *  - durations to the actionDurationsList, 
+	 *  - sizes to the sizeData list 
+	 *  - clipInfo object to the totalDurationsToClipinfo map.
 	 *
 	 */
 	public static void parseInputFile (Scanner myReader, int flagCount, List<List<List<Integer>>> actionDurations, List<List<Integer>> sizeData, List<Map<Integer, Utility.clipInfo>> totalDurationToClipInfo) {
@@ -85,38 +90,69 @@ class AggregateMegaData {
          * @param inputFile - location of a file that contains the data from each iteration through the CUJ executed by ./executeCuj
          *                    file must be in the following form:
          *                   
-         *                    s
+         *                    s1
 	 *                    f1
-	 *                    d1
-	 *                    t1
-	 *
-	 *                    s2
+	 *                    d1,1
+	 *                    t1,1
+	 *                    d1,2
+	 *                    t1,2
+	 *                    .
+	 *                    .
+	 *                    .
+	 *                    d1,n
+	 *                    t1,n
+	 *        
+	 *   		      s2
 	 *                    f2
-	 *                    d2
-	 *                    t2
+	 *                    d2,1
+	 *                    t2,1
+	 *                    d2,2
+	 *                    t2,2
+	 *                    .
+	 *                    .
+	 *                    .
+	 *                    d2,n
+	 *                    t2,n
+	 *        
 	 *
-	 *		      .
-	 *		      .
-	 *		      .
+	 *        	      .
+	 *	              .
+	 *        	      .
+	 *        	      .
+	 *        	      .
+	 *        	      .
 	 *
-	 *                    sn
-	 *                    fn
-	 *                    dn
-	 *                    tn
-	 *
+	 *   		      sk
+	 *                    fk
+	 *                    dk,1
+	 *                    tk,1
+	 *                    dk,2
+	 *                    tk,2
+	 *                    .
+	 *                    .
+	 *                    .
+	 *                    dk,n
+	 *                    tk,n
          *
-         *                    Where the executeCuj call successfully iterated through the CUJ n times. Each di must be a comma-seperated
-         *                    list of integers, where each integer corresponds to the duration of an action in the CUJ (passed sequentially).
-         *                    Each ti must consist of two comma-seperated times in the form HH:MM:SS.sss, where the first corresponds to the time 
-         *                    when this iteration started and the second time corresponds to the time when this iteration ended (relative to the 
-         *                    beginning of the video containing every iteration). An example file is provided at 
-         *                    dataAggregation/mockFiles/mockExecuteCujOutput.txt.
+         *
+         *                    Where each executeCuj call involved n iterations through the CUJ and k total calls were made to executeCUJ
+	 *                    Each si must be an integer representing the size of Google Maps before the test
+	 *                    Each fi must be a folder where the video recording of this iteration would be stored (if it exists).
+	 *                    Each di must be a comma-seperated list of integers, where each integer corresponds to the duration of an action in the CUJ (passed sequentially).
+         *                    Each ti must consist of two comma-seperated times in the form HH:MM:SS.sss, where the first corresponds to the time when this iteration started 
+	 *                    	and the second time corresponds to the time when this iteration ended (both relative to the beginning of the video containing every iteration).
+	 *
+	 *                    Note that the entries cycle through the provided compilation flags (i.e. if there are c compilation flags, entries sk, fk, dk,i and tk,i all corespond to iterations
+	 *                    that were executed using the flag compilationFlags[k % compilationFlags.length]). Further, it is expected that the size and folder will always be provided, but any number 
+	 *                    of durations/timestamp pairs may be passed. (Might want to add compilationFlag as a line in each paragraph...)
+	 *
+	 *                    An example file is provided at dataAggregation/mockFiles/mockMegaTestOutput.txt.
          *                   
          * @param outputStream - the location of the file where we should dump the summary table produced by parsing the given data
          * @param postCUJ - a comma-seperated list of actions of the form specified by the ./executeCuj script
-         * @param totalIters - the total number of iterations expected to have been executed
+         * @param totalIters - the total number of iterations expected to have been executed for each flag
          * @param clipDestinationFolder - the folder where we should store the output clip if one is produced
-         * @param compilationFlags - "true" or "false", telling us whether we should produce a trimmed clip
+         * @param compilationFlags - a comma-separated list of the compilation flags used in this megaTest
          */
 
 
