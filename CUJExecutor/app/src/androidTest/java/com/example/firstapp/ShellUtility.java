@@ -645,32 +645,30 @@ public class ShellUtility {
     public void walkCujNTimes(String preStr, String cujStr, cujFlag flag, int n) throws Exception {
         String[] preCUJ = parseToArray(preStr);
         String[] postCUJ = parseToArray(cujStr);
-        String[] cujStrings = null;
+        String[] entireCUJ = new String[preCUJ.length + postCUJ.length];
+        System.arraycopy(preCUJ, 0, entireCUJ, 0, preCUJ.length);
+        System.arraycopy(postCUJ, 0, entireCUJ, preCUJ.length, postCUJ.length);
+
+
+        String[] sectionCUJ = null;
 
         switch (flag) {
             case ALL:
-                cujStrings = new String[preCUJ.length + postCUJ.length];
-                System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
-                System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
+                sectionCUJ = entireCUJ;
                 break;
             case ALLBUTLAST:
-                cujStrings = new String[preCUJ.length + postCUJ.length - 1];
-                System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
-                System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length - 1);
+                sectionCUJ = new String[entireCUJ.length - 1];
+                System.arraycopy(entireCUJ, 0, sectionCUJ, 0, entireCUJ.length - 1);
                 break;
             case PRE:
-                cujStrings = preCUJ;
+                sectionCUJ = preCUJ;
                 break;
             case FIRST:
-                if (preCUJ.length > 0) {
-                    cujStrings = new String[]{preCUJ[0]};
-                } else {
-                    cujStrings = new String[]{postCUJ[0]};
-                }
+                sectionCUJ = new String[] {entireCUJ[0]};
                 break;
         }
 
-        Action[] cuj = parseStringCUJ(cujStrings);
+        Action[] cuj = parseStringCUJ(sectionCUJ);
         //run n times:
         for (int k = 0; k < n; k++) {
             forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
