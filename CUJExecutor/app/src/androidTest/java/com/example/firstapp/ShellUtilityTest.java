@@ -268,11 +268,6 @@ public class ShellUtilityTest {
     /**
      * DATA AGGREGATION TESTS
      */
-    @Test
-    public void summingArr() {
-        long[] arr = {3,5,8,16};
-        assertEquals(32, shellUtility.sumArr(arr));
-    }
 
     @Test
     public void gettingDifferences() {
@@ -280,43 +275,24 @@ public class ShellUtilityTest {
         long[] expected = {2,3,8};
         assertArrayEquals(expected, shellUtility.differences(arr));
     }
-    @Test
-    public void gettingRelativeValues() {
-        long[] arr = {3,5,8,16};
-        long[] expected = {2,5,13};
-        assertArrayEquals(expected, shellUtility.relativeValues(arr));
-    }
-    @Test
-    public void averagingColumns() {
-        long[][] arr = {{6,5,3}, {5,7,2}, {4,6,4}};
-        long[] expected = {5,6,3};
-        assertArrayEquals(expected, shellUtility.averageColumns(arr));
-    }
 
-    @Test
-    public void medianColumnsOddLength() {
-        long[][] arr = {{6,5,3}, {5,7,2}, {4,6,4}};
-        long[] expected = {5,6,3};
-        assertArrayEquals(expected, shellUtility.medianColumns(arr));
-    }
-
-    @Test
-    public void medianColumnsEvenLength() {
-        long[][] arr = {{6,5,4}, {6,7,2}, {4,7,4}, {0, 0, 0}};
-        long[] expected = {5,6,3};
-        assertArrayEquals(expected, shellUtility.medianColumns(arr));
-    }
     @Test
     public void padding() {
         String num = "31";
         assertEquals("0031", shellUtility.zeroPad(num, 4));
     }
 
+    @Test
+    public void convertingMilisecondsToTime() {
+        long time = 12345678;
+        assertEquals("03:25:45.678", shellUtility.milisecondsToTime(time));
+    }
+
     /**
      * Caching CUJ tests
      */
-    //Basic clicking test
 
+    //Basic clicking test
     @Test
     public void clickTest() throws Exception {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);

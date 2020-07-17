@@ -510,12 +510,6 @@ public class ShellUtility {
         return System.currentTimeMillis();
     }
 
-    public long sumArr(long[] arr) {
-        long total = 0;
-        for (long t : arr) total += t;
-        return total;
-    }
-
     /**
      * differences between successive elements
      */
@@ -527,56 +521,7 @@ public class ShellUtility {
         }
         return res;
     }
-    /**
-     * last (n - 1) values scaled, where first value is set to 0
-     * e.g : {5, 23, 45} -> {23 - 5, 45 - 5} = {18, 40}
-     */
-    public long[] relativeValues(long[] arr) {
-        if (arr.length == 0) return null;
-        long[] res = new long[arr.length - 1];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = arr[i + 1] - arr[0];
-        }
-        return res;
-    }
-    /**
-     * calculates the average of each column
-     * ith entry of returned array is average of ith column of input
-     */
-    public long[] averageColumns(long[][] arr) {
-        if (arr == null || arr.length == 0) return null;
-        long[] averages = new long[arr[0].length];
-        for (int j = 0; j < arr[0].length; j++) {
-            long sum = 0;
-            for (int i = 0; i < arr.length; i++) {
-                sum += arr[i][j];
-            }
-            averages[j] = sum / arr.length;
-        }   
-        return averages;
-    }
 
-    /**
-     * calculates the median of each column
-     * ith entry of returned array is median of ith column of input
-     */
-    public long[] medianColumns(long[][] arr) {
-        if (arr == null || arr.length == 0) return null;
-        long[] medians = new long[arr[0].length];
-        for (int j = 0; j < arr[0].length; j++) {
-            long[] column = new long[arr.length];
-            for (int i = 0; i < arr.length; i++) {
-                column[i] = arr[i][j];
-            }
-            Arrays.sort(column);
-            if (column.length % 2 == 1) {
-                medians[j] = column[column.length / 2];
-            } else {
-                medians[j] = (column[column.length / 2] + column[(column.length / 2) - 1]) / 2;
-            }
-        }
-        return medians;
-    }
 
     public String zeroPad(String s, int finalLength) {
         StringBuilder sBuilder = new StringBuilder(s);
