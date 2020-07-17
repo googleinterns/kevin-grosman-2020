@@ -49,7 +49,7 @@ TIME_DATA="/tmp/time_data.txt"
 
 #PREPARING OUTPUTS:
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
-HEADER_FOOTER="--------------------------------COMPILATION SETTING: ${COMPILATION_FLAG}----------${DATE}-------------------------------"
+HEADER_FOOTER="\n--------------------------------COMPILATION SETTING: ${COMPILATION_FLAG}----------${DATE}-------------------------------"
 #Generate the appropriate folder hierarchy if it doesn't already exist
 FOLDER="profile_test_data/${INPUT_FILE_NAME}"
 mkdir $FOLDER 2> /dev/null
@@ -84,7 +84,7 @@ function spitToFull() {
 
 
 #ADD HEADER FOR DATA
-echo $HEADER_FOOTER > $SHORT_SUMMARY
+echo -e $HEADER_FOOTER > $SHORT_SUMMARY
 echo "SIZE DATA:" >> $SHORT_SUMMARY
 echo "" >> $SHORT_SUMMARY
 
@@ -164,7 +164,7 @@ output=$(spitToFull "./executeCuj $INPUT_FILE")
 
 #Prepare short summary
 cat $TIME_DATA >> $SHORT_SUMMARY
-echo $HEADER_FOOTER >> $SHORT_SUMMARY
+echo -e $HEADER_FOOTER >> $SHORT_SUMMARY
 cat $SHORT_SUMMARY > $TMP_SHORT_SUMMARY
 echo "$FOLDER" > "$MPT_FOLDER"
 

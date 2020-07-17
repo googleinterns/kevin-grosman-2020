@@ -620,17 +620,8 @@ public class ShellUtility {
     public void logData(long[][] allActionStamps, long recstart) {
         int iterations = allActionStamps.length;
 
-        //Log action durations and store iteration durations
-        //long[][] allActionDurations = new long[iterations][];
-        //long[][] iterDurations = new long[iterations][1]; // to be used later to calculate median total duration
-        //long[][] indexedIterDurations = new long[iterations][2]; //to be used later for finding index of median run
         for (int iter = 0; iter < iterations; iter++) {
             long[] actionDurations = differences(allActionStamps[iter]);
-            //allActionDurations[iter] = actionDurations;
-            //indexedIterDurations[iter][0] = iter;
-            //indexedIterDurations[iter][1] =  sumArr(actionDurations);
-
-            //Log.i("iterations-actions", "ITERATION " + (iter + 1) + ": " + Arrays.toString(actionDurations) + ", TOTAL: " + indexedIterDurations[iter][1]);
             Log.i("durations-raw", Arrays.toString(actionDurations));
 
             //Log times:
@@ -638,49 +629,7 @@ public class ShellUtility {
             long iterEnd = allActionStamps[iter][allActionStamps[0].length - 1] - recstart; //offset by recording start
             String[] recInterval = new String[] {adjustAndFormatStart(iterStart), adjustAndFormatEnd(iterEnd)};
             Log.i("durations-raw", Arrays.toString(recInterval));
-
-
-
         }
-/*
-        //Log average action durations
-        long[] averageActionDurations = averageColumns(allActionDurations);
-        Log.i("averages-actions", "AVERAGE:     " + Arrays.toString(averageActionDurations) + ", TOTAL: " + sumArr(averageActionDurations));
-
-
-        //Log time stamps relative to moment first measured action became available
-        long[][] allRelativeStamps = new long[iterations][];
-        for (int iter = 0; iter < iterations; iter++) {
-            long[] actionStamps = allActionStamps[iter];
-            long[] relativeStamps = relativeValues(actionStamps);
-
-            allRelativeStamps[iter] = relativeStamps;
-
-            Log.i("iterations-stamps", "ITERATION " + (iter + 1) + ": " + Arrays.toString(relativeStamps));
-        }
-
-        //log average relative stamps
-        long[] averageRelativeStamps = averageColumns(allRelativeStamps);
-        Log.i("averages-stamps", "AVERAGE:     " + Arrays.toString(averageRelativeStamps));
-
-        //log median iteration
-        Arrays.sort(indexedIterDurations, (a,b) -> Long.compare(a[1], b[1]));
-        int median_idx = (int) indexedIterDurations[indexedIterDurations.length / 2][0];
-        long medStart = allActionStamps[median_idx][0] - recstart; //offset by recording start
-        long medEnd = allActionStamps[median_idx][allActionStamps[0].length - 1] - recstart; //offset by recording start
-        String[] recInterval = new String[] {adjustAndFormatStart(medStart), adjustAndFormatEnd(medEnd)};
-        Log.i("median-idx", "MEDIAN RUN: " + (median_idx + 1));
-
-        //log median clip data
-        Log.i("clip-start", adjustAndFormatStart(medStart));
-        Log.i("clip_end", adjustAndFormatEnd(medEnd));
-
-        //Log median action durations
-        long[] medianActionDurations = medianColumns(allActionDurations);
-        Log.i("median-actions", "MEDIAN:      " + Arrays.toString(medianActionDurations) + ", TOTAL: " + medianColumns(indexedIterDurations)[1]);
-        */
-
-
     }
 
 

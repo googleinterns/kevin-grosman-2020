@@ -77,15 +77,15 @@ then
 	kill $PID 
 	adb pull sdcard/full_video.mp4 
 	adb pull sdcard/full_video.mp4  #for some reason, the first pull sometimes doesn't always get the "moov" atom, which we need. Pulling twice seems to always do the trick...
-	java dataAggregation.aggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "true"
+	java dataAggregation.AggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "true"
 elif [ "$RECORD" = "f" ]
 then 
 	kill $PID 
 	adb pull sdcard/full_video.mp4 
 	adb pull sdcard/full_video.mp4  #for some reason, the first pull sometimes doesn't always get the "moov" atom, which we need. Pulling twice seems to always do the trick...
-	java dataAggregation.aggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
+	java dataAggregation.AggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
 else
-	java dataAggregation.aggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
+	java dataAggregation.AggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
 fi	
 
 adb logcat -s "action-completion" -v raw -d | sed -n -e '/^Executed/p'
