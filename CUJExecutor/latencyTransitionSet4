@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+
+
+
+
+#Takeout
+#./megaTest CUJS/aGMM_Latency_Transitions/Takeout/4_Takeout_placesheet_directionResults.txt e u f p c a (75%, bad nitial location?)
+#./megaTest CUJS/aGMM_Latency_Transitions/Takeout/5_Takeout_directionResults_navigation.txt e u f p c a (25%, fluke? f started it)
+#./megaTest CUJS/aGMM_Latency_Transitions/Takeout/7_Takeout_search_searchResults.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Takeout/9_Takeout_searchResults_placeSheet.txt e u f p c a (f, fluke?)
+#./megaTest CUJS/aGMM_Latency_Transitions/Takeout/14_Takeout_appStart_directionResults.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Takeout/15_Takeout_appStart_navigation.txt   e u f p c a (100%, opened keep before clicking widget)
+#./megaTest CUJS/aGMM_Latency_Transitions/Takeout/16_Takeout_placeSheet_navigation.txt e u f p c a (10%, fluke--app crash)
+#./megaTest CUJS/aGMM_Latency_Transitions/Takeout/1X7945_Takeout_openApp_thru_navigation.txt e u f p c a
+
+
+#./megaTest CUJS/aGMM_Latency_Transitions/1_appStart_home.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/2_home_search.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/3_search_placesheet.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/12_appStart_searchResults.txt e u f p c a (100%, naming keep issue)
+#./megaTest CUJS/aGMM_Latency_Transitions/13_appStart_placesheet.txt e u f p c a (100%, naming keep issue)
+
+
+#Googleplex
+#./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/4_Googleplex_placesheet_directionResults.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/5_Googleplex_directionResults_navigation.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/7_Googleplex_search_searchResults.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/9_Googleplex_searchResults_plaseSheet.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/14_Googleplex_appStart_directionResults.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/15_Googleplex_appStart_navigation.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/16_Googleplex_placeSheet_navigation.txt e u f p c a
+#./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/1X39XX45_Googleplex_openApp_thru_navigation.txt e u f p c a

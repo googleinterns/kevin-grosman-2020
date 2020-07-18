@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+
+
+
+#Takeout
+./megaTest CUJS/aGMM_Latency_Transitions/Takeout/14_Takeout_appStart_directionResults.txt e u f p c a
+./megaTest CUJS/aGMM_Latency_Transitions/Takeout/15_Takeout_appStart_navigation.txt e u f p c a 
+./megaTest CUJS/aGMM_Latency_Transitions/Takeout/1X7945_Takeout_openApp_thru_navigation.txt e u f p c a
+
+
+#Googleplex
+./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/7_Googleplex_search_searchResults.txt e u f p c a
+./megaTest CUJS/aGMM_Latency_Transitions/Googleplex/1X39XX45_Googleplex_openApp_thru_navigation.txt e u f p c a

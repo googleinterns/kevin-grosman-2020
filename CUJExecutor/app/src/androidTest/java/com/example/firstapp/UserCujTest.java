@@ -64,11 +64,20 @@ public class UserCujTest {
             case "c" :
                 flag  = ShellUtility.cujFlag.ALLBUTLAST;
                 break;
+            case "cr" : //Rest after leaving off from ALLBUTLAST
+                flag = ShellUtility.cujFlag.LAST;
+                break;
             case "p" :
                 flag  = ShellUtility.cujFlag.PRE;
                 break;
+            case "pr" : //Rest after leaving off from PRE
+                flag  = ShellUtility.cujFlag.POST;
+                break;
             case "f" :
                 flag  = ShellUtility.cujFlag.FIRST;
+                break;
+            case "fr" : //Rest after leaving off from FIRST
+                flag  = ShellUtility.cujFlag.ALLBUTFIRST;
                 break;
             default:
                 throw new ShellUtility.InvalidInputException("Invalid section flag provided");

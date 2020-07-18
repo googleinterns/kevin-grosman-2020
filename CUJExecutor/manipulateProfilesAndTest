@@ -45,7 +45,7 @@ fi
 INPUT_FILE_NAME="${INPUT_FILE##*/}"
 INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}"
 RECORD=$(sed '4q;d' $INPUT_FILE)
-TIME_DATA="/tmp/time_data.txt"
+STASHED_SUMMARY_TABLE="/tmp/execute_summary_table.txt"
 
 #PREPARING OUTPUTS:
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
@@ -59,11 +59,13 @@ FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
 mkdir $FOLDER 2> /dev/null
 CLOUD_PROFILE="utilityProfiles/cloudProfile.prof" #location of the saved cloud profile
 CUR_PROFILE="/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof" #location of the cloud profile on the device
-APP_SIZE_DATA="/tmp/app_size.txt" #Contains final app size in case callee (e.g. mega_test) wants it
-MPT_FOLDER="/tmp/mpt_folder.txt" #Contains the name of the folder where files for this test live in case callee (e.e. mega_test) wants it
+STASHING_APP_SIZE="/tmp/manipulate_app_size.txt" #Contains final app size in case callee (e.g. mega_test) wants it
+STASHING_CREATED_PROFILE="/tmp/manipulate_created_profile.txt" #Contains t
+STASHING_COMPILED_ACTIONS="/tmp/manipulate_compiled_actions.txt" #Contains the actions used to compile, in case callee (e.g. mega_test) wants it
+STASHING_FOLDER="/tmp/manipulate_folder.txt" #Contains the name of the folder where files for this test live in case callee (e.e. mega_test) wants it
 COMMAND_SUMMARY="${FOLDER}/command_summary.txt" #contains full summary commands and raw outputs
 SHORT_SUMMARY="${FOLDER}/short_summary.txt" #contains short summary of time data and size of profile/app
-TMP_SHORT_SUMMARY="/tmp/short_summary.txt" #copy of short summary in case callee (e.g. mega_test) wants it
+STASHING_SHORT_SUMMARY="/tmp/manipulate_short_summary.txt" #copy of short summary in case callee (e.g. mega_test) wants it
 SAVED_PROFILE="${FOLDER}/saved_profile.prof" #contains short summary of time data and size of profile/app
 MEDIAN_CLIP="${FOLDER}/median_clip.mp4" #contains a clip of the median run if one is requested
 FULL_CLIP="${FOLDER}/full_video.mp4" #contains a clip of the full run if one is requested
@@ -88,30 +90,47 @@ echo -e $HEADER_FOOTER > $SHORT_SUMMARY
 echo "SIZE DATA:" >> $SHORT_SUMMARY
 echo "" >> $SHORT_SUMMARY
 
+
 echo "Resetting the profile...."
 output=$(spitToFull "adb shell cmd package compile --reset com.google.android.apps.maps")
+
 
 #Get the desired actions into the profile:
 if [ "$COMPILATION_FLAG" = "c" ] || [ "$COMPILATION_FLAG" = "p" ] || [ "$COMPILATION_FLAG" = "f" ] 
 then
 	
+	adb logcat -c
+
 	echo "Adding the desired actions to the profile..."
 	output=$(spitToFull "./runCujNTimes $INPUT_FILE $COMPILATION_FLAG 1")
-		
 
+	echo "Checking which actions were executed"
+	COMPILED_ARR=$(spitToFull "adb logcat -s "actions-run" -v raw -d | sed -n -e '/^\[/p'")
+	echo $COMPILED_ARR > $STASHING_COMPILED_ACTIONS
+	
 	echo "Waiting..."
 	output=$(spitToFull "sleep 60")
 
+	echo "Stashing the profile..."
+	output=$(spitToFull "adb pull $CUR_PROFILE $STASHING_CREATED_PROFILE")
+
+	echo "Finishing the CUJ..."
+	output=$(spitToFull "./runCujNTimes $INPUT_FILE ${COMPILATION_FLAG}r 1")
+	
 	echo "Force stopping Maps..."
 	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
-	
 
+	echo "Pushing the stashed profile..."
+	output=$(spitToFull "adb push $STASHING_CREATED_PROFILE $CUR_PROFILE")
+
+	echo "Restoring profile permissions"
+	output=$(spitToFull "adb shell chmod a+rw $CUR_PROFILE")
+	
 	echo "Saving the profile..."
 	output=$(spitToFull "adb pull $CUR_PROFILE $SAVED_PROFILE")
-
+	
 	echo "Getting profile size..."
-	output=$(spitToFull "adb shell ls -l $CUR_PROFILE")
-	PROFILE_SIZE=$(adb shell stat -c%s $CUR_PROFILE)
+	PROFILE_SIZE=$(spitToFull "adb shell stat -c%s $CUR_PROFILE")
 	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
 	
 	echo "Recompiling profile..."
@@ -119,18 +138,27 @@ then
 
 elif [ "$COMPILATION_FLAG" = "a" ] 
 then 
+	echo "All" > $STASHING_COMPILED_ACTIONS
+
+	echo "Force stopping Maps..."
+	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
+	
 	echo "Compiling everything..."
 	output=$(spitToFull "adb shell cmd package compile -m everything -f com.google.android.apps.maps")
 
 elif [ "$COMPILATION_FLAG" = "e" ]
 then
+	echo "None" > $STASHING_COMPILED_ACTIONS
+
 	echo "Getting profile size..."
-	output=$(spitToFull "adb shell ls -l $CUR_PROFILE")
-	PROFILE_SIZE=$(adb shell stat -c%s $CUR_PROFILE)
+	PROFILE_SIZE=$(spitToFull "adb shell stat -c%s $CUR_PROFILE")
 	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
+
 
 elif [ "$COMPILATION_FLAG" = "u" ]
 then 
+	echo "Those in the Cloud Profile" > $STASHING_COMPILED_ACTIONS
+
 	echo "Pushing the cloud profile..."
 	output=$(spitToFull "adb push $CLOUD_PROFILE $CUR_PROFILE")
 
@@ -141,32 +169,39 @@ then
 	output=$(spitToFull "adb pull $CUR_PROFILE $SAVED_PROFILE")
 
 	echo "Getting profile size..."
-	output=$(spitToFull "adb shell ls -l $CUR_PROFILE")
-	PROFILE_SIZE=$(adb shell stat -c%s $CUR_PROFILE)
+	PROFILE_SIZE=$(spitToFull "adb shell stat -c%s $CUR_PROFILE")
 	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
-	
+		
+	echo "Force stopping Maps..."
+	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
+
 	echo "Recompiling profile..."
 	output=$(spitToFull "adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps")
 
 fi
 
+
+
 echo "Getting app size..." #IS THIS "total" value the proper APP SIZE???
 output=$(spitToFull "adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64")
 APP_SIZE=$(echo $output | awk '{print $2}')
-echo $APP_SIZE > $APP_SIZE_DATA
+echo $APP_SIZE > $STASHING_APP_SIZE
 
 echo "Size of app: $APP_SIZE" >> $SHORT_SUMMARY
 echo "" >> $SHORT_SUMMARY
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" >> $SHORT_SUMMARY
 
+echo "Force stopping Maps..."
+output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
+
 echo "Executing and measuring the CUJ..."
 output=$(spitToFull "./executeCuj $INPUT_FILE")
 
 #Prepare short summary
-cat $TIME_DATA >> $SHORT_SUMMARY
+cat $STASHED_SUMMARY_TABLE >> $SHORT_SUMMARY
 echo -e $HEADER_FOOTER >> $SHORT_SUMMARY
-cat $SHORT_SUMMARY > $TMP_SHORT_SUMMARY
-echo "$FOLDER" > "$MPT_FOLDER"
+cat $SHORT_SUMMARY > $STASHING_SHORT_SUMMARY
+echo "$FOLDER" > "$STASHING_FOLDER"
 
 if [ "$RECORD" = "r" ] && [ -f "median_clip.mp4" ]
 then 

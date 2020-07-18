@@ -602,8 +602,10 @@ public class ShellUtility {
         Action[] cuj = parseStringCUJ(cujStrings);
 
         forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
+
         //caching run
         cacheCUJ(cuj);
+        sleep(1000);
 
         //cached runs:
         int iter = -1;
@@ -622,7 +624,7 @@ public class ShellUtility {
             for (int i = preCUJ.length; i < cuj.length; i++) {
                  allActionStamps[iter][i - preCUJ.length] = cuj[i].executeCachedAction();
              }
-            sleep(recordingBufMs);
+            sleep(1000);
             //stop_recording();
         }
         if (iterations > 0) {
@@ -634,8 +636,11 @@ public class ShellUtility {
     public enum cujFlag {
         ALL,         //entire CUJ
         ALLBUTLAST,  //entire CUJ, except for last action
+        LAST,        //just the last action
         PRE,         //preCUJ
+        POST,        //postCUJ
         FIRST,       //just the first action
+        ALLBUTFIRST //entire CUJ, except for first action
     }
 
     /**
@@ -660,21 +665,36 @@ public class ShellUtility {
                 sectionCUJ = new String[entireCUJ.length - 1];
                 System.arraycopy(entireCUJ, 0, sectionCUJ, 0, entireCUJ.length - 1);
                 break;
+            case LAST:
+                sectionCUJ = new String[] {entireCUJ[entireCUJ.length - 1]};
+                break;
             case PRE:
                 sectionCUJ = preCUJ;
+                break;
+            case POST:
+                sectionCUJ = postCUJ;
                 break;
             case FIRST:
                 sectionCUJ = new String[] {entireCUJ[0]};
                 break;
+            case ALLBUTFIRST:
+                sectionCUJ = new String[entireCUJ.length - 1];
+                System.arraycopy(entireCUJ, 1, sectionCUJ, 0, entireCUJ.length - 1);
+                break;
         }
+
 
         Action[] cuj = parseStringCUJ(sectionCUJ);
         //run n times:
         for (int k = 0; k < n; k++) {
-            forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
+            //For CUJS that never launch an app directly, and thus never otherwise clear recent apps, clear them if we are executing the first action in the CUJ
+            if (flag == cujFlag.ALL || flag == cujFlag.ALLBUTLAST || flag == cujFlag.PRE || flag == cujFlag.FIRST || sectionCUJ.length == entireCUJ.length) forceQuitApps();
             //Run through cuj once (cached data won't actually be used)
             cacheCUJ(cuj);
             sleep(1000);
         }
+
+        Log.i("actions-run", Arrays.toString(sectionCUJ));
+
     }
 }

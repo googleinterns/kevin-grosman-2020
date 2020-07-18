@@ -33,8 +33,8 @@ then
 	RECORD="n"
 fi
 
-OUTPUT_FILE="/tmp/time_data.txt"
-RAW_DURATIONS="/tmp/raw_durations.txt"
+STASHING_SUMMARY_TABLE="/tmp/execute_summary_table.txt"
+STASHING_RAW_DURATIONS="/tmp/execute_raw_durations.txt"
 
 
 #replace other single quotes by the one recognized by the test
@@ -70,22 +70,22 @@ cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userIt
 eval $cmd
 
 LOGGED_DATA=$(adb logcat -s "durations-raw" -v raw -d | sed -n -e '/^\[/p')
-./peelHardBrackets "$LOGGED_DATA" > $RAW_DURATIONS 
+./peelHardBrackets "$LOGGED_DATA" > $STASHING_RAW_DURATIONS 
 
 if [ "$RECORD" = "r" ] 
 then 
 	kill $PID 
 	adb pull sdcard/full_video.mp4 
 	adb pull sdcard/full_video.mp4  #for some reason, the first pull sometimes doesn't always get the "moov" atom, which we need. Pulling twice seems to always do the trick...
-	java dataAggregation.AggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "true"
+	java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "true"
 elif [ "$RECORD" = "f" ]
 then 
 	kill $PID 
 	adb pull sdcard/full_video.mp4 
 	adb pull sdcard/full_video.mp4  #for some reason, the first pull sometimes doesn't always get the "moov" atom, which we need. Pulling twice seems to always do the trick...
-	java dataAggregation.AggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
+	java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
 else
-	java dataAggregation.AggregateExecuteCuj "$RAW_DURATIONS" "$OUTPUT_FILE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
+	java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
 fi	
 
 adb logcat -s "action-completion" -v raw -d | sed -n -e '/^Executed/p'
