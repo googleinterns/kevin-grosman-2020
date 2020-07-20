@@ -1,4 +1,0 @@
-
-['click;Nav to BB', 'clickImage;Close navigation', 'clickImage;Navigate up']
-4
-f

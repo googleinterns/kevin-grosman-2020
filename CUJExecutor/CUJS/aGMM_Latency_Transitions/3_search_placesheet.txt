@@ -1,3 +1,0 @@
-['start;com.google.android.apps.maps', 'edit;Search here;McDonalds Mattis']
-['click;North Mattis Avenue', 'click;Fast Food']
-5

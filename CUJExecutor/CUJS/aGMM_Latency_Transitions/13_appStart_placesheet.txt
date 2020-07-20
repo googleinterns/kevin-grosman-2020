@@ -1,3 +1,0 @@
-['start;com.google.android.keep', 'click;McDonalds Placesheet', 'click;https'] 
-['click;Open', 'click;Fast Food']
-5

@@ -1,3 +1,0 @@
-['start;com.google.android.keep', 'click;McDonalds Search', 'click;https'] 
-['click;Open', 'click;View map']
-5
