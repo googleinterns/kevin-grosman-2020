@@ -62,7 +62,7 @@ echo "force-stopping app..."
 adb shell am force-stop com.google.android.apps.maps
 
 echo "warming up..."
-./runCujNTimes $INPUT_FILE w 0
+#./runCujNTimes $INPUT_FILE w 10
 
 echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
 echo $HEADER_FOOTER 
@@ -85,7 +85,8 @@ do
 		COMPILED_ACTIONS=$(cat $STASHED_COMPILED_ACTIONS)
 		APP_SIZE=$(cat $STASHED_APP_SIZE)
 		MPT_FOLDER=$(cat $STASHED_FOLDER)
-		FOLDERS_WITH_VIDS="$FOLDERS_WITH_VIDS $MPT_FOLDER"
+		MPT_FOLDER=$(echo "$MPT_FOLDER" | xargs)
+		FOLDERS_WITH_VIDS="${FOLDERS_WITH_VIDS} ${MPT_FOLDER}"
 		STRING_DURATIONS=$(cat $STASHED_RAW_DURATIONS)
 		STRING_DURATIONS=$(./peelHardBrackets "$STRING_DURATIONS") #peel off hard brackets
 		if [ $run = "0" ] #Report which actions were compiled for each flag on the first loop through thems
@@ -115,9 +116,11 @@ echo "" >> $AGGREGATED_DATA_FILE
 echo $HEADER_FOOTER >> $AGGREGATED_DATA_FILE
 
 echo "Making sure full videos are deleted......."
-for MPT_FOLDER in "$FOLDERS_WITH_VIDS"
+echo $FOLDERS_WITH_VIDS
+for MPT_FOLDER in $FOLDERS_WITH_VIDS
 do
-	rm ${MPT_FOLDER}/full_video.mp4 #2> /dev/null
+	echo "${MPT_FOLDER}" 
+	rm "${MPT_FOLDER}/full_video.mp4" #2> /dev/null
 done
 
 #Display the summary table

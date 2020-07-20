@@ -262,14 +262,6 @@ public class ShellUtility {
      * clears all recent apps from the recent apps panel
      */
     public void forceQuitApps() throws IOException, InterruptedException, UiObjectNotFoundException, RemoteException {
-        /*Context context = ApplicationProvider.getApplicationContext();
-        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-        homeIntent.addCategory( Intent.CATEGORY_HOME );
-        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        context.startActivity(homeIntent);*/
-
-
-
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         String snapshotResourceId = device.getLauncherPackageName() + ":id/snapshot";
 
@@ -287,37 +279,8 @@ public class ShellUtility {
             maps_button.swipe(Direction.UP, 1f, 10000);
             maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
         }
-
-
-        /*device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
-        Process process = new ProcessBuilder("am", "force-stop", "com.google.android.apps.maps").start();
-        amKillProcess("com.google.android.apps.maps");
-*/
-
-
-        //ActivityManager am = (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
-        //sleep(10000);
-        //sleep(10000);
-
-
     }
 
-
-
-    public void amKillProcess(String process)
-    {
-        Context context = ApplicationProvider.getApplicationContext();
-        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo>  runningProcesses = am.getRunningAppProcesses();
-
-        for(ActivityManager.RunningAppProcessInfo runningProcess : runningProcesses)
-        {
-            if(runningProcess.processName.equals(process))
-            {
-                android.os.Process.sendSignal(runningProcess.pid, android.os.Process.SIGNAL_KILL);
-            }
-        }
-    }
 
 
                                 /******************************
@@ -594,14 +557,14 @@ public class ShellUtility {
     public void iterateAndMeasureCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent, long recstart) throws Exception {
         String[] preCUJ = parseToArray(preActionsStr);
         String[] postCUJ = parseToArray(cujActionsStr);
-        if (postCUJ.length == 1) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
+        if (postCUJ.length <= 1) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
         String[] cujStrings = new String[preCUJ.length + postCUJ.length];
         long recordingBufMs = recordIntent ? 500 : 0;
         System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
         System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
         Action[] cuj = parseStringCUJ(cujStrings);
 
-        forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
+        if (!(cuj[0] instanceof StartAction)) forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
 
         //caching run
         cacheCUJ(cuj);
@@ -624,7 +587,7 @@ public class ShellUtility {
             for (int i = preCUJ.length; i < cuj.length; i++) {
                  allActionStamps[iter][i - preCUJ.length] = cuj[i].executeCachedAction();
              }
-            sleep(1000);
+            sleep(1000); //This is important so that the last action fully registers (if it is a cleanup action!)
             //stop_recording();
         }
         if (iterations > 0) {
@@ -687,8 +650,8 @@ public class ShellUtility {
         Action[] cuj = parseStringCUJ(sectionCUJ);
         //run n times:
         for (int k = 0; k < n; k++) {
-            //For CUJS that never launch an app directly, and thus never otherwise clear recent apps, clear them if we are executing the first action in the CUJ
-            if (flag == cujFlag.ALL || flag == cujFlag.ALLBUTLAST || flag == cujFlag.PRE || flag == cujFlag.FIRST || sectionCUJ.length == entireCUJ.length) forceQuitApps();
+            //For CUJS that don't initially launch an app (and thus don't force quit initially)
+            if (!(cuj[0] instanceof StartAction)) forceQuitApps();
             //Run through cuj once (cached data won't actually be used)
             cacheCUJ(cuj);
             sleep(1000);
