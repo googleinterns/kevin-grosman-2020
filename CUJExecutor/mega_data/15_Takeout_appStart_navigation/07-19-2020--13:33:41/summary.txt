@@ -1,0 +1,32 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['click;Nav to BB', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [click;Nav to BB]
+ACTIONS COMPILED FOR FLAG c: [click;Nav to BB, clickImage;Close navigation]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 100
+NOTE: 4 iterations of data are missing for flag c
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+e                45076    3408              1780                          5188  
+u                53208    3140              1717                          4858  
+f                70040    2582              1545                          4127  
+c                70068    2566              1504                          4071  
+a                170907   2802              1475                          4277  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+e                45076    3387              1784                          5196  
+u                53208    3129              1720                          4865  
+f                70040    2563              1530                          4091  
+c                70020    2563              1505                          4064  
+a                170908   2788              1468                          4267  
+************************************************MEGA TEST SUMMARY:*************************************************
