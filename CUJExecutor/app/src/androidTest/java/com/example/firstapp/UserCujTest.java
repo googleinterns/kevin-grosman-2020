@@ -79,6 +79,12 @@ public class UserCujTest {
             case "fr" : //Rest after leaving off from FIRST
                 flag  = ShellUtility.cujFlag.ALLBUTFIRST;
                 break;
+            case "m" :
+                flag = ShellUtility.cujFlag.MEASURED;
+                break;
+            case "mr" : //Rest after leaving off from measured CUJ
+                flag = ShellUtility.cujFlag.LAST;
+                break;
             default:
                 throw new ShellUtility.InvalidInputException("Invalid section flag provided");
         }

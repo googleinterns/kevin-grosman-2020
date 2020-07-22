@@ -89,7 +89,7 @@ public class ShellUtility {
          * execute the action on the object specified by cachedObject
          * return the time (since epoch) just before the action is performed
          **/
-        abstract long executeCachedAction() throws UiObjectNotFoundException, IOException, InterruptedException, RemoteException;
+        abstract long executeCachedAction() throws Exception;
     }
 
     public class StartAction extends Action {
@@ -224,6 +224,22 @@ public class ShellUtility {
             object.legacySetText(entered);
             logExecuted();
             return getTime();
+        }
+    }
+    public class ClearAction extends Action {
+        public ClearAction(String str) {
+            actionString = str;
+        }
+        @Override
+        void executeUncachedAction() throws Exception {
+            forceQuitApps();
+        }
+
+        @Override
+        long executeCachedAction() throws Exception {
+            long time = getTime();
+            forceQuitApps();
+            return time;
         }
     }
                                 /******************************
@@ -428,9 +444,17 @@ public class ShellUtility {
                 action = new EditAction(tokens[1], tokens[2], strict, timeoutMs, str);
                 break;
 
+            case "clearRecentApps":
+                if (!(tokens.length == 1)) {
+                    throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
+                }
+                action = new ClearAction(str);
+                break;
+
             default:
                 throw new InvalidInputException("input at index " + idx + " has an invalid first token:" + tokens[0]);
         }
+
         return action;
     }
 
@@ -564,7 +588,7 @@ public class ShellUtility {
         System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
         Action[] cuj = parseStringCUJ(cujStrings);
 
-        if (!(cuj[0] instanceof StartAction)) forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
+        //if (!(cuj[0] instanceof StartAction)) forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
 
         //caching run
         cacheCUJ(cuj);
@@ -603,7 +627,8 @@ public class ShellUtility {
         PRE,         //preCUJ
         POST,        //postCUJ
         FIRST,       //just the first action
-        ALLBUTFIRST //entire CUJ, except for first action
+        ALLBUTFIRST, //entire CUJ, except for first action
+        MEASURED     //Measured portion of the CUJ (entire post CUJ except for last action)
     }
 
     /**
@@ -644,6 +669,10 @@ public class ShellUtility {
                 sectionCUJ = new String[entireCUJ.length - 1];
                 System.arraycopy(entireCUJ, 1, sectionCUJ, 0, entireCUJ.length - 1);
                 break;
+            case MEASURED:
+                sectionCUJ = new String[postCUJ.length - 1];
+                System.arraycopy(postCUJ, 0, sectionCUJ, 0, postCUJ.length - 1);
+                break;
         }
 
 
@@ -651,7 +680,7 @@ public class ShellUtility {
         //run n times:
         for (int k = 0; k < n; k++) {
             //For CUJS that don't initially launch an app (and thus don't force quit initially)
-            if (!(cuj[0] instanceof StartAction)) forceQuitApps();
+            //if (!(cuj[0] instanceof StartAction)) forceQuitApps();
             //Run through cuj once (cached data won't actually be used)
             cacheCUJ(cuj);
             sleep(1000);

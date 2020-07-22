@@ -25,7 +25,7 @@ POST_CUJ=$(sed '2q;d' $INPUT_FILE)
 ITERS=$(sed '3q;d' $INPUT_FILE)
 RECORD=$(sed '4q;d' $INPUT_FILE)
 POST_CUJ_STR_ARRAY=$(./peelHardBrackets $POST_CUJ) #peel off hard brackets
-LOOPS=2 #Probably should make this an input
+LOOPS=7 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
@@ -62,7 +62,7 @@ echo "force-stopping app..."
 adb shell am force-stop com.google.android.apps.maps
 
 echo "warming up..."
-#./runCujNTimes $INPUT_FILE w 10
+./runCujNTimes $INPUT_FILE w 10
 
 echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
 echo $HEADER_FOOTER 
@@ -79,7 +79,7 @@ do
 	for COMPILATION_FLAG in "$@"
 	do
 		echo "DOING $COMPILATION_FLAG TEST..." 
-		./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_FLAG
+		./manipulateProfilesAndTest $INPUT_FILE ${COMPILATION_FLAG:0:1} ${COMPILATION_FLAG:1}
 		echo "" >> $AGGREGATED_DATA_FILE
 		cat $STASHED_SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
 		COMPILED_ACTIONS=$(cat $STASHED_COMPILED_ACTIONS)

@@ -35,11 +35,14 @@
 #PARSING INPUTS:
 INPUT_FILE=${1:-input.txt}
 COMPILATION_FLAG=${2?"ERROR: need to specify a compilation flag"} 
-if [ $COMPILATION_FLAG != "e" ] && [ $COMPILATION_FLAG != "p" ] && [ $COMPILATION_FLAG != "c" ] && [ $COMPILATION_FLAG != "a" ] && [ $COMPILATION_FLAG != "f" ] && [ $COMPILATION_FLAG != "u" ] 
+NUM_WARMUP_ITERS=${3:-1} #Number of times we run through the portion of the CUJ if we're doing a f, p, or c test (1 by default)
+if [ $COMPILATION_FLAG != "e" ] && [ $COMPILATION_FLAG != "p" ] && [ $COMPILATION_FLAG != "c" ] && [ $COMPILATION_FLAG != "a" ] && [ $COMPILATION_FLAG != "f" ] && [ $COMPILATION_FLAG != "u" ] && [ $COMPILATION_FLAG != "m" ]  
 then
-	echo "compilation flag invalid. Use one of {e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code, f - compile first action, u - compile using cloud profile}"
+	echo "compilation flag invalid. Use one of {e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code, f - compile first action, u - compile using cloud profile, m - compile only using tthe measured CUJ}"
 	exit 1	
 fi	
+
+echo $COMPILATION_FLAG
 
 #Initializing variables
 INPUT_FILE_NAME="${INPUT_FILE##*/}"
@@ -58,6 +61,7 @@ mkdir $FOLDER 2> /dev/null
 FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
 mkdir $FOLDER 2> /dev/null
 CLOUD_PROFILE="utilityProfiles/cloudProfile.prof" #location of the saved cloud profile
+EMPTY_PROFILE="utilityProfiles/empty.prof" #location of an empty profile
 CUR_PROFILE="/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof" #location of the cloud profile on the device
 STASHING_APP_SIZE="/tmp/manipulate_app_size.txt" #Contains final app size in case callee (e.g. mega_test) wants it
 STASHING_CREATED_PROFILE="/tmp/manipulate_created_profile.txt" #Contains t
@@ -96,19 +100,43 @@ output=$(spitToFull "adb shell cmd package compile --reset com.google.android.ap
 
 
 #Get the desired actions into the profile:
-if [ "$COMPILATION_FLAG" = "c" ] || [ "$COMPILATION_FLAG" = "p" ] || [ "$COMPILATION_FLAG" = "f" ] 
+if [ "$COMPILATION_FLAG" = "c" ] || [ "$COMPILATION_FLAG" = "p" ] || [ "$COMPILATION_FLAG" = "f" ] || [ "$COMPILATION_FLAG" = "m" ]
 then
 	
-	adb logcat -c
 
-	echo "Adding the desired actions to the profile..."
-	output=$(spitToFull "./runCujNTimes $INPUT_FILE $COMPILATION_FLAG 1")
+ 	if [ "$COMPILATION_FLAG" = "c" ] || [ "$COMPILATION_FLAG" = "p" ] || [ "$COMPILATION_FLAG" = "f" ] 	
+	then 
+		adb logcat -c
+		echo "Executing the actions we'd like in the profile..."
+		output=$(spitToFull "./runCujNTimes $INPUT_FILE $COMPILATION_FLAG $NUM_WARMUP_ITERS")
+	elif [ "$COMPILATION_FLAG" = "m" ] 
+	then 
+		echo "Executing preparatory actions.."
+		output=$(spitToFull "./runCujNTimes $INPUT_FILE p $NUM_WARMUP_ITERS")
 
-	echo "Checking which actions were executed"
+		echo "Waiting for prepatory actions to be added to the profile..."
+		output=$(spitToFull "sleep 60")
+
+		adb logcat -c
+		echo "Pushing empty profile..."
+		output=$(spitToFull "adb push $EMPTY_PROFILE $CUR_PROFILE")
+
+		echo "Restoring profile permissions"
+		output=$(spitToFull "adb shell chmod a+rw $CUR_PROFILE")
+
+		echo "PAUSE THIS SHIT NOW"
+		sleep 30
+
+		echo "Executing measured actions..."
+		output=$(spitToFull "./runCujNTimes $INPUT_FILE m $NUM_WARMUP_ITERS")
+	fi
+
+
+	echo "Verifying and logging which actions were executed"
 	COMPILED_ARR=$(spitToFull "adb logcat -s "actions-run" -v raw -d | sed -n -e '/^\[/p'")
 	echo $COMPILED_ARR > $STASHING_COMPILED_ACTIONS
 	
-	echo "Waiting..."
+	echo "Waiting for the desired actions to be added to the profile..."
 	output=$(spitToFull "sleep 60")
 
 	echo "Stashing the profile..."

@@ -26,7 +26,7 @@ echo "CHECKPOINT -5"
 
 INPUT_FILE=${1:-input.txt}
 PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
-POST_CUJ=$(sed '2q;:d' $INPUT_FILE)
+POST_CUJ=$(sed '2q;d' $INPUT_FILE)
 echo "CHECKPOINT -4"
 POST_CUJ_STR_ARRAY=$(./peelHardBrackets $POST_CUJ)
 NUM_ITERS=$(sed '3q;d' $INPUT_FILE)
@@ -94,15 +94,17 @@ then
 	kill $PID 
 	adb pull sdcard/full_video.mp4 
 	adb pull sdcard/full_video.mp4  #for some reason, the first pull sometimes doesn't always get the "moov" atom, which we need. Pulling twice seems to always do the trick...
-	java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "true"
-elif [ "$RECORD" = "f" ]
+	TRIM="true"
+elif [ "$RECORD" = "f" ] 
 then 
 	kill $PID 
 	adb pull sdcard/full_video.mp4 
 	adb pull sdcard/full_video.mp4  #for some reason, the first pull sometimes doesn't always get the "moov" atom, which we need. Pulling twice seems to always do the trick...
-	java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
+	TRIM="false"
 else
-	java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "false"
+	TRIM="false"
 fi	
+
+java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "$TRIM"
 
 adb logcat -s "action-completion" -v raw -d | sed -n -e '/^Executed/p'
