@@ -1,0 +1,3 @@
+['start;com.google.android.apps.maps', 'click;Takeout'] 
+['click;Billy', 'click;REVIEWS']
+5

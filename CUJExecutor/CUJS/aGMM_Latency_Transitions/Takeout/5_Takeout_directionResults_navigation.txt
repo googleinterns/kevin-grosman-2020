@@ -1,0 +1,5 @@
+['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS']
+['click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+3
+f
+
