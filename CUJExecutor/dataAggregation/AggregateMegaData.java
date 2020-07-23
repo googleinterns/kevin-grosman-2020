@@ -1,7 +1,7 @@
 package dataAggregation;
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.File;  
+import java.io.FileNotFoundException;  
+import java.util.Scanner; 
 import java.util.*;
 import java.io.*;
 
@@ -11,7 +11,7 @@ class AggregateMegaData {
 
 	/**
 	 * Parses the test given by myReader, which is formatted as specified by the JAVADOC on the main function of this class.
-	 * Parses each empty-line-seperated paragraph as corresponding to a flag in a cyclic fashion (according to order and flagCount) 
+	 * Parses each empty-line-seperated paragraph as corresponding to a flag in a cyclic fashion (according to order and flagCount).
 	 * Then, indexes into the lists for that flag and adds the parsed iterations
 	 * (We are assuming that the size and fullVideoFolder data will always be present, even if the actual execution of the CUJ fails. Thus, we can assume the cyclic ordering will always hold.)
 	 * 	
@@ -79,7 +79,7 @@ class AggregateMegaData {
 
 
 	/**
-         * parses the passed inputfile and prints a summary of the data, which includes the total number of iterations executed,
+         * Parses the passed inputfile and prints a summary of the data, which includes the total number of iterations executed,
          * and a table with the durations of each action (and the total) for each iteration, as well as averages and medians for
          * each action (and the total). Each column is also labeled by the token used in the file passed to ./executeCUJ and
          * a note is printed detailing what data is missing (if any is).
@@ -179,11 +179,11 @@ class AggregateMegaData {
 			allIterationInfos.add(new ArrayList<>());
 		}
 
-		//parse input file
+		//Parse input file
 		parseInputFile(myReader, flagCount, allIterationInfos);
 
 		
-		//compute average/median durations and sizes. Report missing data
+		//Compute average/median durations and sizes. Report missing data
 		List<List<Integer>> averageActionDurations = new ArrayList<>(flagCount); //i = flag, j = action index
 		List<List<Integer>> medianActionDurations = new ArrayList<>(flagCount);	//i = flag, j = action index
 		List<Integer> averageSizes = new ArrayList<>(flagCount);

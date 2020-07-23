@@ -1,7 +1,7 @@
 package dataAggregation;
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.File;  
+import java.io.FileNotFoundException;  
+import java.util.Scanner; 
 import java.util.*;
 import java.io.*;
 
@@ -9,7 +9,7 @@ class AggregateExecuteCuj {
 	
 
 	/**
-	 * Parses the test given by myReader, which is formatted as specified by the JAVADOC on the main function of this class.
+	 * Parses the test given by myReader, which is formatted as specified {@link #Main()} by the JAVADOC on the main function of this class.
 	 * Adds each parsed iteration to the allIterationInfos list
 	 *
 	 */
@@ -62,13 +62,15 @@ class AggregateExecuteCuj {
 		
 		//Add empty row
 		List<String> emptyRow = new ArrayList<>();
-		for (int i = 0; i < firstRow.size(); i++) emptyRow.add("");
+		for (int i = 0; i < firstRow.size(); i++) {
+			emptyRow.add("");
+		}
 		formattedTable.add(emptyRow);
 
 		//Add with average row
 		List<String> averageRow = new ArrayList<>();
 		averageRow.add("AVERAGE:");
-		for (int i = 0; i < postCUJ.length - 1; i++) { //don't include termination action
+		for (int i = 0; i < postCUJ.length - 1; i++) { //Don't include termination action
 			String averageActionDuration = (averageActionDurations == null) ? "N/A" : String.valueOf(averageActionDurations.get(i));
 			averageRow.add(averageActionDuration);
 		}
@@ -78,7 +80,7 @@ class AggregateExecuteCuj {
 		//Add with median row
 		List<String> medianRow = new ArrayList<>();
 		medianRow.add("MEDIAN:");
-		for (int i = 0; i < postCUJ.length - 1; i++) { //don't include termination action
+		for (int i = 0; i < postCUJ.length - 1; i++) { //Don't include termination action
 			String medianActionDuration = (medianActionDurations == null) ? "N/A" : String.valueOf(medianActionDurations.get(i));
 			medianRow.add(medianActionDuration);
 		}
@@ -91,7 +93,7 @@ class AggregateExecuteCuj {
 
 
 	/**
-	 * parses the passed inputfile and prints a summary of the data, which includes the total number of iterations executed,
+	 * Parses the passed inputfile and prints a summary of the data, which includes the total number of iterations executed,
 	 * and a table with the durations of each action (and the total) for each iteration, as well as averages and medians for
 	 * each action (and the total). Each column is also labeled by the token used in the file passed to ./executeCUJ and
 	 * a note is printed detailing how many iterations of data are missing (if any are).
@@ -140,15 +142,15 @@ class AggregateExecuteCuj {
 		String[] postCUJ = args[2].split("\\s*,\\s*");
 		int totalIters = Integer.parseInt(args[3]);
 		String clipDestinationFolder = args[4];
-		boolean trim = Boolean.parseBoolean(args[5]); //tell us whether we want to trim the video
+		boolean trim = Boolean.parseBoolean(args[5]); //Tell us whether we want to trim the video
 
 		List<Utility.IterationInfo> allIterationInfos = new ArrayList<>();
 
-		//parse input file
+		//Parse input file
 		parseInputFile(myReader, allIterationInfos);
 		
 
-		//compute average/median durations and report missing data
+		//Compute average/median durations and report missing data
 		ps.printf("TOTAL ITERATIONS: " + totalIters + "\n");
 		if (allIterationInfos.size() < totalIters) {
 			ps.printf("\nNOTE: " + (totalIters - allIterationInfos.size()) + " iterations of data are missing\n");

@@ -620,7 +620,7 @@ public class ShellUtility {
     }
 
 
-    public enum cujFlag {
+    public enum CujFlag {
         ALL,         //entire CUJ
         ALLBUTLAST,  //entire CUJ, except for last action
         LAST,        //just the last action
@@ -635,7 +635,7 @@ public class ShellUtility {
     *  walks through a portion of the CUJ n times as specified by the flag:
      *
      */
-    public void walkCujNTimes(String preStr, String cujStr, cujFlag flag, int n) throws Exception {
+    public void walkCujNTimes(String preStr, String cujStr, CujFlag flag, int n) throws Exception {
         String[] preCUJ = parseToArray(preStr);
         String[] postCUJ = parseToArray(cujStr);
         String[] entireCUJ = new String[preCUJ.length + postCUJ.length];

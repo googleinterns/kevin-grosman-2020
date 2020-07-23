@@ -124,9 +124,6 @@ then
 		echo "Restoring profile permissions"
 		output=$(spitToFull "adb shell chmod a+rw $CUR_PROFILE")
 
-		echo "PAUSE THIS SHIT NOW"
-		sleep 30
-
 		echo "Executing measured actions..."
 		output=$(spitToFull "./runCujNTimes $INPUT_FILE m $NUM_WARMUP_ITERS")
 	fi

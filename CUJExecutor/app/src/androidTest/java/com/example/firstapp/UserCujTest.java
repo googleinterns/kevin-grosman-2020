@@ -56,34 +56,34 @@ public class UserCujTest {
         String sectionFlag = extras.getString("include"); //Tells us which section of the CUJ to walk through
         int n = Integer.parseInt(extras.getString("n")); // number of iterations
 
-        ShellUtility.cujFlag flag;
+        ShellUtility.CujFlag flag;
         switch (sectionFlag) {
             case "w" :
-                flag = ShellUtility.cujFlag.ALL;
+                flag = ShellUtility.CujFlag.ALL;
                 break;
             case "c" :
-                flag  = ShellUtility.cujFlag.ALLBUTLAST;
+                flag  = ShellUtility.CujFlag.ALLBUTLAST;
                 break;
             case "cr" : //Rest after leaving off from ALLBUTLAST
-                flag = ShellUtility.cujFlag.LAST;
+                flag = ShellUtility.CujFlag.LAST;
                 break;
             case "p" :
-                flag  = ShellUtility.cujFlag.PRE;
+                flag  = ShellUtility.CujFlag.PRE;
                 break;
             case "pr" : //Rest after leaving off from PRE
-                flag  = ShellUtility.cujFlag.POST;
+                flag  = ShellUtility.CujFlag.POST;
                 break;
             case "f" :
-                flag  = ShellUtility.cujFlag.FIRST;
+                flag  = ShellUtility.CujFlag.FIRST;
                 break;
             case "fr" : //Rest after leaving off from FIRST
-                flag  = ShellUtility.cujFlag.ALLBUTFIRST;
+                flag  = ShellUtility.CujFlag.ALLBUTFIRST;
                 break;
             case "m" :
-                flag = ShellUtility.cujFlag.MEASURED;
+                flag = ShellUtility.CujFlag.MEASURED;
                 break;
             case "mr" : //Rest after leaving off from measured CUJ
-                flag = ShellUtility.cujFlag.LAST;
+                flag = ShellUtility.CujFlag.LAST;
                 break;
             default:
                 throw new ShellUtility.InvalidInputException("Invalid section flag provided");

@@ -1,7 +1,7 @@
 package dataAggregation;
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.File;  
+import java.io.FileNotFoundException;  
+import java.util.Scanner; 
 import java.util.*;
 import java.io.*;
 
@@ -11,77 +11,77 @@ class Utility {
 	/**
 	 * Provides the info necessary to identify a section of a video (a clip)
 	 */
-   static class ClipInfo {
-	private String folder; 			//the folder where the clip is located (should be called "full_video.mp4)
-	private String start; 			//the time at which this clip begins in the video (in the format HH:MM:SS.sss)
-	private String end; 			//the time at which this clip ends in the video (in the format HH:MM:SS.sss)
+  	static class ClipInfo {
+		private String folder; 			//the folder where the clip is located (should be called "full_video.mp4)
+		private String start; 			//the time at which this clip begins in the video (in the format HH:MM:SS.sss)
+		private String end; 			//the time at which this clip ends in the video (in the format HH:MM:SS.sss)
 
-	public ClipInfo (String fldr, String timestamps) {
-		folder = fldr;
-		String[] startEnd = timestamps.split("\\s*,\\s*");
-		start = startEnd[0];
-		end = startEnd[1];
-	}
-	public String getFolder() {
-		return folder;
-	}
-	public String getStart() {
-		return start;
-	}
+		public ClipInfo (String folder, String timestamps) {
+			this.folder = folder;
+			String[] startEnd = timestamps.split("\\s*,\\s*");
+			this.start = startEnd[0];
+			this.end = startEnd[1];
+		}
+		public String getFolder() {
+			return folder;
+		}
+		public String getStart() {
+			return start;
+		}
 
-	public String getEnd() {
-		return end;
-	}
-   }
+		public String getEnd() {
+			return end;
+		}
+   	}
 
    /*
     * Stores all the information relevant to an iteration through a CUJ
     */
-   static class IterationInfo {
-	private ClipInfo clipInfo; 		//Information regarding the clip of this CUJ
-	private List<Integer> durations; 	//The duration of the measurement actions executed
-	private Integer totalDuration; 		//The total duration of this iteration
-	private Integer size; 			//The size of the app when this iteration was run
+  	static class IterationInfo {
+		private ClipInfo clipInfo; 		//Information regarding the clip of this CUJ
+		private List<Integer> durations; 	//The duration of the measurement actions executed
+		private Integer totalDuration; 		//The total duration of this iteration
+		private Integer size; 			//The size of the app when this iteration was run
 
-	public IterationInfo(ClipInfo iterationClipInfo, List<Integer> iterationDurations, Integer iterationSize) {
-		clipInfo = iterationClipInfo;
-		durations = iterationDurations;
-		totalDuration = sum(durations);
-		size = iterationSize;
-	}
+		public IterationInfo(ClipInfo clipInfo, List<Integer> durations, Integer size) {
+			this.clipInfo = clipInfo;
+			this.durations = durations;
+			this.totalDuration = sum(durations);
+			this.size = size;
+		}
 
-	public ClipInfo getClipInfo() {
-		return clipInfo;
-	}
+		public ClipInfo getClipInfo() {
+			return clipInfo;
+		}
 
-	public List<Integer> getDurations() {
-		return durations;
-	}
+		public List<Integer> getDurations() {
+			return durations;
+		}
 
-	public Integer getTotalDuration() {
-		return totalDuration;
-	}
+		public Integer getTotalDuration() {
+			return totalDuration;
+		}
 
-	public Integer getSize() {
-		return size;
-	}
+		public Integer getSize() {
+			return size;
+		}
 	
-   }
+   	}
    
 
 
-   public static Integer sum(List<Integer> list) {
-	   int sum = 0;
-	   for (int n : list) {
-		   sum += n;
-	   }
-	   return sum;
-   }
+   	public static Integer sum(List<Integer> list) {
+		int sum = 0;
+		for (int n : list) {
+			sum += n;
+	   	}
+		return sum;
+   	}
 
-   public static Integer average(List<Integer> list) {
-	   if (list.size() == 0) return null;
-	   return (sum(list) / list.size());
-   }
+   	public static Integer average(List<Integer> list) {
+		if (list.size() == 0) return null;
+		return (sum(list) / list.size());
+   	}
 
 
 	/**
@@ -90,33 +90,33 @@ class Utility {
 	 * if allIterationInfos is empty, returns null
 	 *
 	 */
-    public static List<Integer> averageActionDurations (List<IterationInfo> allIterationInfos) {
-	if (allIterationInfos.size() == 0) return null;
-	List<Integer> averageDurations = new ArrayList<>();
-	int actionCount = allIterationInfos.get(0).getDurations().size();
-	for (int actionIdx = 0; actionIdx < actionCount; actionIdx++) {
-		List<Integer> actionDurations = new ArrayList<>();
-		for (IterationInfo iter : allIterationInfos) {
-			actionDurations.add(iter.getDurations().get(actionIdx));
-		}
-		averageDurations.add(average(actionDurations));
-	}	
-	return averageDurations;
-    }
+   	public static List<Integer> averageActionDurations (List<IterationInfo> allIterationInfos) {
+		if (allIterationInfos.size() == 0) return null;
+		List<Integer> averageDurations = new ArrayList<>();
+		int actionCount = allIterationInfos.get(0).getDurations().size();
+		for (int actionIdx = 0; actionIdx < actionCount; actionIdx++) {
+			List<Integer> actionDurations = new ArrayList<>();
+			for (IterationInfo iter : allIterationInfos) {
+				actionDurations.add(iter.getDurations().get(actionIdx));
+			}
+			averageDurations.add(average(actionDurations));
+		}	
+		return averageDurations;
+    	}
 
 
     /*
      * Returns the average size field for a list of IterationInfos
      * if passed list is empty, returns null
      */
-    public static Integer averageSize(List<IterationInfo> allIterationInfos) {
-	    if (allIterationInfos.size() == 0) return null;
-	    List<Integer> sizes = new ArrayList<>();
-	    for (IterationInfo curIterationInfo : allIterationInfos) {
-		    sizes.add(curIterationInfo.getSize());
-	    }
-	    return average(sizes);
-    }
+    	public static Integer averageSize(List<IterationInfo> allIterationInfos) {
+		if (allIterationInfos.size() == 0) return null;
+		List<Integer> sizes = new ArrayList<>();
+		for (IterationInfo curIterationInfo : allIterationInfos) {
+			sizes.add(curIterationInfo.getSize());
+		}
+		return average(sizes);
+    	}
 
 
 
@@ -124,44 +124,45 @@ class Utility {
     /*
      * Returns the median (with a lean towards the higher value if size is even) in a list of IterationInfos given a comparator
      */
-    private static IterationInfo medianIterationInfo(List<IterationInfo> list, Comparator<IterationInfo> comparator) {
+    	private static IterationInfo medianIterationInfo(List<IterationInfo> list, Comparator<IterationInfo> comparator) {
 	    if (list.size() == 0) return null;
-	    Collections.sort(list, comparator);
-	    return list.get(list.size() / 2);
-    }
+	    List<IterationInfo> copied = new ArrayList<>(list);
+	    Collections.sort(copied, comparator);
+	    return list.get(copied.size() / 2);
+    	}
 
     /*
      * Returns the iterationInfo with the median duration for the action specified by idx
      */
-    public static IterationInfo iterationWithMedianDurationAtIdx(List<IterationInfo> allIterationInfos, int idx) {
-	    return medianIterationInfo(allIterationInfos,  new Comparator<IterationInfo>() {
-			@Override
-			public int compare(IterationInfo a, IterationInfo b) {
-				return a.getDurations().get(idx).compareTo(b.getDurations().get(idx));
-			}});
-    }
+    	public static IterationInfo iterationWithMedianDurationAtIdx(List<IterationInfo> allIterationInfos, int idx) {
+		    return medianIterationInfo(allIterationInfos,  new Comparator<IterationInfo>() {
+				@Override
+				public int compare(IterationInfo a, IterationInfo b) {
+					return a.getDurations().get(idx).compareTo(b.getDurations().get(idx));
+				}});
+    	}
 
     /*
      *  Returns the iterationInfo with the median total duration
      */
-    public static IterationInfo iterationWithMedianTotalDuration(List<IterationInfo> allIterationInfos) {
-	    return medianIterationInfo(allIterationInfos, new Comparator<IterationInfo>() {
-		    @Override
-		    public int compare(IterationInfo a, IterationInfo b) {
-			    return a.getTotalDuration().compareTo(b.getTotalDuration());
-		    }});
-    }
+    	public static IterationInfo iterationWithMedianTotalDuration(List<IterationInfo> allIterationInfos) {
+		    return medianIterationInfo(allIterationInfos, new Comparator<IterationInfo>() {
+			    @Override
+			    public int compare(IterationInfo a, IterationInfo b) {
+				    return a.getTotalDuration().compareTo(b.getTotalDuration());
+			    }});
+    	}
     
     /*
      * Returns the median corresponding app size
      */
-    public static IterationInfo iterationWithMedianSize(List<IterationInfo> allIterationInfos) {
-	    return medianIterationInfo(allIterationInfos, new Comparator<IterationInfo>() {
-		    @Override
-		    public int compare(IterationInfo a, IterationInfo b) {
-			    return a.getSize().compareTo(b.getSize());
-		    }});
-    }
+   	 public static IterationInfo iterationWithMedianSize(List<IterationInfo> allIterationInfos) {
+		    return medianIterationInfo(allIterationInfos, new Comparator<IterationInfo>() {
+			    @Override
+			    public int compare(IterationInfo a, IterationInfo b) {
+				    return a.getSize().compareTo(b.getSize());
+			    }});
+    	}
 
     
 
@@ -172,65 +173,67 @@ class Utility {
      * if allIterationInfos is empty, returns null
      */
 
-    public static List<Integer> medianActionDurations (List<IterationInfo> allIterationInfos) {
-	if (allIterationInfos.size() == 0) return null;
-	int actionCount = allIterationInfos.get(0).getDurations().size();
-	List<Integer> medianDurations = new ArrayList<>();
-	for (int actionIdx = 0; actionIdx < actionCount; actionIdx++) {
-		IterationInfo medianForIdx = iterationWithMedianDurationAtIdx(allIterationInfos, actionIdx);		 	    
-		medianDurations.add(medianForIdx.getDurations().get(actionIdx));
-	}
-	return medianDurations;
-    }
+    	public static List<Integer> medianActionDurations (List<IterationInfo> allIterationInfos) {
+		if (allIterationInfos.size() == 0) return null;
+		int actionCount = allIterationInfos.get(0).getDurations().size();
+		List<Integer> medianDurations = new ArrayList<>();
+		for (int actionIdx = 0; actionIdx < actionCount; actionIdx++) {
+			IterationInfo medianForIdx = iterationWithMedianDurationAtIdx(allIterationInfos, actionIdx);		 	    
+			medianDurations.add(medianForIdx.getDurations().get(actionIdx));
+		}
+		return medianDurations;
+    	}
 
     /*
      * Returns the median app size out of all of the passed iterations
      * if the passed list is empty, returns null
      */
-    public static Integer medianSize(List<IterationInfo> allIterationInfos) {
-	if (allIterationInfos.size() == 0) return null;
-	return iterationWithMedianSize(allIterationInfos).getSize();
-    }
+    	public static Integer medianSize(List<IterationInfo> allIterationInfos) {
+		if (allIterationInfos.size() == 0) return null;
+		return iterationWithMedianSize(allIterationInfos).getSize();
+    	}
 
 
 
     /*
-     * Prints str to the provided printStream in a column with the width specified by alignment
+     * Returns an alignment string for the specified width
      */
-    public static void printWithAlignment(PrintStream ps, int alignment, String str) {
-	ps.printf("%-" + (alignment + 1) + "s", str);
-    }
+    	public static String alignmentStr(int width) {
+		return "%-" + width + "s";
+    	}
 
 
 
 
     /*
-     * prints the provided (possible non-rectangular) list of lists specified by table in a grid, such that
+     * Prints the provided (possible non-rectangular) list of lists specified by table in a grid, such that
      * the width of each column is 1 greater than the longest string in that column (and each row has a height of 1)
      */
-    public static void printFormattedTable(List<List<String>> table, PrintStream ps) {
+    	public static void printFormattedTable(List<List<String>> table, PrintStream ps) {
 	    	//calculate number of columns
 		int cols = 0;
-		for (List<String> row : table) cols = Math.max(cols, row.size());
+		for (List<String> row : table) {
+			cols = Math.max(cols, row.size());
+		}
 
 		//Calculate widest string in each column
-		int[] colAlignment = new int[cols];
-		Arrays.fill(colAlignment, 0);
+		int[] colWidth = new int[cols];
+		Arrays.fill(colWidth, 0);
 		for (int i = 0; i < table.size(); i++) {
 			for (int j = 0; j < table.get(i).size(); j++) {
-				colAlignment[j] = Math.max(colAlignment[j], table.get(i).get(j).length());
+				colWidth[j] = Math.max(colWidth[j], table.get(i).get(j).length());
 			}
 		}
 
 		for (int i = 0; i < table.size(); i++) {
 			ps.append('\n');
 			for (int j = 0; j < table.get(i).size(); j++) {
-				printWithAlignment(ps, colAlignment[j], table.get(i).get(j));
+				ps.printf(alignmentStr(colWidth[j] + 1), table.get(i).get(j));
 			}
 		}
 
 
-    }
+    	}
 
 
 
@@ -264,57 +267,41 @@ class Utility {
 	}
 
 
-    public static void executeShellCommand(String str) {
-	ProcessBuilder processBuilder = new ProcessBuilder();
+    	public static void executeShellCommand(String str) {
+		ProcessBuilder processBuilder = new ProcessBuilder();
 
-	// -- Linux --
+		String[] args = str.split("\\s+");
+		System.out.println(Arrays.toString(args));
 
-	// Run a shell command
-	String[] args = str.split("\\s+");
-	System.out.println(Arrays.toString(args));
+		processBuilder.command(Arrays.asList(args));
 
-	processBuilder.command(Arrays.asList(args));
-	// Run a shell script
-	//processBuilder.command("path/to/hello.sh");
+		try {
 
+			Process process = processBuilder.start();
+			StringBuilder output = new StringBuilder();
+			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				output.append(line + "\n");
+			}
+			int exitVal = process.waitFor();
+			if (exitVal == 0) {
+				System.out.println("Success!");
+				System.out.println(output);
+			} else {
+				//Abnormal...
+			}
 
-	try {
-
-	Process process = processBuilder.start();
-
-	StringBuilder output = new StringBuilder();
-
-	BufferedReader reader = new BufferedReader(
-			new InputStreamReader(process.getInputStream()));
-
-	String line;
-	while ((line = reader.readLine()) != null) {
-		output.append(line + "\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
-	int exitVal = process.waitFor();
-	if (exitVal == 0) {
-		System.out.println("Success!");
-		System.out.println(output);
-		//System.exit(0);
-	} else {
-		//abnormal...
-	}
 
-	} catch (IOException e) {
-		e.printStackTrace();
-	} catch (InterruptedException e) {
-		e.printStackTrace();
-	}
-    }
-
-
-    public static void executeFFmpegTrim(String source, String from, String to, String destination) {
-	executeShellCommand("ffmpeg -i " + source + " -force_key_frames:v " + from + "," + to + " -acodec copy -map 0 -f segment -segment_times " + from + "," + to + " -reset_timestamps 1 -y temp%d.mp4");
-	executeShellCommand("mv temp1.mp4 " + destination);
-    }
-
-
-
-
+    	public static void executeFFmpegTrim(String source, String from, String to, String destination) {
+		executeShellCommand("ffmpeg -i " + source + " -force_key_frames:v " + from + "," + to + " -acodec copy -map 0 -f segment -segment_times " + from + "," + to + " -reset_timestamps 1 -y temp%d.mp4");
+		executeShellCommand("mv temp1.mp4 " + destination);
+    	}
 }
