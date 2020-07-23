@@ -10,28 +10,25 @@ class AggregateMegaData {
 
 
 	/**
-	 * parses the test given by myReader, which is formatted as specified by the JAVADOC on the main function of this class.
-	 * parses each empty-line-seperated paragraph as corresponding to a flag in a cyclic fashion (according to order and flagCount)
-	 * Then, indexes into the data-structures for that flag and adds the parsed 
-	 *  - durations to the actionDurationsList, 
-	 *  - sizes to the sizeData list 
-	 *  - clipInfo object to the totalDurationsToClipinfo map.
+	 * Parses the test given by myReader, which is formatted as specified by the JAVADOC on the main function of this class.
+	 * Parses each empty-line-seperated paragraph as corresponding to a flag in a cyclic fashion (according to order and flagCount) 
+	 * Then, indexes into the lists for that flag and adds the parsed iterations
+	 * (We are assuming that the size and fullVideoFolder data will always be present, even if the actual execution of the CUJ fails. Thus, we can assume the cyclic ordering will always hold.)
+	 * 	
 	 *
 	 */
-	public static void parseInputFile (Scanner myReader, int flagCount, List<List<List<Integer>>> actionDurations, List<List<Integer>> sizeData, List<Map<Integer, Utility.clipInfo>> totalDurationToClipInfo) {
+	public static void parseInputFile (Scanner myReader, int flagCount, List<List<Utility.IterationInfo>> allIterationInfos) {
 		//Parse Input file:
 		int flagIdx = 0;
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
 			if (!line.equals("")) {
 				int size = Integer.parseInt(line);
-				sizeData.get(flagIdx).add(size);
-
 				String fullVideoFolder = myReader.nextLine();
 				
-				//Read all duration/timestamp pairs/ 
+				//Read all duration/timestamp pairs
 				while (!(line = myReader.nextLine()).equals("")) {
-					Utility.readDurationTimePair(line, myReader.nextLine(), fullVideoFolder, actionDurations.get(flagIdx), totalDurationToClipInfo.get(flagIdx)); //Two consequtive lines containing a duration list and a time start/end
+					Utility.readDurationTimePair(line, myReader.nextLine(), size, fullVideoFolder, allIterationInfos.get(flagIdx)); //Two consequtive lines containing a duration list and a time start/end
 				}
 				flagIdx = (flagIdx + 1) % flagCount;
 			}
@@ -48,7 +45,7 @@ class AggregateMegaData {
 	 * @param postCUJ - an array of Strings representing the post
 	 * @param compilationFlags - a list of the compilation flags used for this test
 	 * @param sizes - a list of size compilationFlags.length. (could contain nulls if no data is recorded for that flag)
-	 * @param actionDurations - list of size compilationFlags.length, where each non-null sublist has length postCUJ.length (could contain nulls if no data is recorded for that flag)
+	 * @param actionDurations - list of size compilationFlags.length, where each non-null sublist has length postCUJ.length  - 1 (inner lists could be null if no data is recorded for that flag)
 	 *
 	 */
 	public static List<List<String>> formatTable(String[] postCUJ, String[] compilationFlags, List<Integer> sizes, List<List<Integer>> actionDurations) {
@@ -71,9 +68,10 @@ class AggregateMegaData {
 			List<String> row = new ArrayList<>();
 			row.add(compilationFlags[flagIdx]);
 			row.add(sizes.get(flagIdx) == null ? "N/A" : String.valueOf(sizes.get(flagIdx)));
-			for (int action = 0; action < postCUJ.length; action++) {
+			for (int action = 0; action < postCUJ.length - 1; action++) { //Don't have data for termination action
 				row.add(actionDurations.get(flagIdx) == null ? "N/A" : String.valueOf(actionDurations.get(flagIdx).get(action)));
 			}
+			row.add(actionDurations.get(flagIdx) == null ? "N/A" : String.valueOf(Utility.sum(actionDurations.get(flagIdx))));
 			formattedTable.add(row); 
 		}
 		return formattedTable;
@@ -173,45 +171,36 @@ class AggregateMegaData {
 		String[] compilationFlags = args[5].split(" ");
 
 		int flagCount = compilationFlags.length;
-		int actionCount = postCUJ.length - 1;
 
-		List<List<List<Integer>>> actionDurations = new ArrayList<>(flagCount);//3D list : i = flag, j = test index, k = action index
-		List<List<Integer>> sizeData = new ArrayList<>(flagCount); //3D list : i = flag, j = test index
-		List<Map<Integer, Utility.clipInfo>> totalDurationToClipInfo = new ArrayList<>(flagCount); //Mapping from durations to videoclip infos for every flag
+
+		List<List<Utility.IterationInfo>> allIterationInfos = new ArrayList<>();
 
 		for (int i = 0; i < flagCount; i++) {
-			actionDurations.add(new ArrayList<>());
-			sizeData.add(new ArrayList<>());
-			totalDurationToClipInfo.add(new HashMap<>());
+			allIterationInfos.add(new ArrayList<>());
 		}
 
 		//parse input file
-		parseInputFile(myReader, flagCount, actionDurations, sizeData, totalDurationToClipInfo);
+		parseInputFile(myReader, flagCount, allIterationInfos);
 
 		
-		//compute average/median durations and report missing data
+		//compute average/median durations and sizes. Report missing data
 		List<List<Integer>> averageActionDurations = new ArrayList<>(flagCount); //i = flag, j = action index
 		List<List<Integer>> medianActionDurations = new ArrayList<>(flagCount);	//i = flag, j = action index
-
-		ps.printf("TOTAL ITERATIONS PER FLAG: " + totalIters);
-		for (int flagIdx = 0; flagIdx < flagCount; flagIdx++) {
-			List<List<Integer>> flagData = actionDurations.get(flagIdx);
-			if (flagData.size() < totalIters) {
-				ps.printf("\nNOTE: " + (totalIters - flagData.size()) + " iterations of data are missing for flag " + compilationFlags[flagIdx]);
-			}
-			averageActionDurations.add(Utility.averageColumns(flagData));
-			medianActionDurations.add(Utility.medianColumns(flagData));
-		}
-
-		//compute average/median app sizess and report missing data
 		List<Integer> averageSizes = new ArrayList<>(flagCount);
 		List<Integer> medianSizes = new ArrayList<>(flagCount);
 
-
-		for (List<Integer> flagSize : sizeData) {
-			averageSizes.add(Utility.average(flagSize));
-			medianSizes.add(Utility.median(flagSize));
+		ps.printf("TOTAL ITERATIONS PER FLAG: " + totalIters);
+		for (int flagIdx = 0; flagIdx < flagCount; flagIdx++) {
+			List<Utility.IterationInfo> flagData = allIterationInfos.get(flagIdx);
+			if (flagData.size() < totalIters) {
+				ps.printf("\nNOTE: " + (totalIters - flagData.size()) + " iterations of data are missing for flag " + compilationFlags[flagIdx]);
+			}
+			averageActionDurations.add(Utility.averageActionDurations(flagData));
+			medianActionDurations.add(Utility.medianActionDurations(flagData));
+			averageSizes.add(Utility.averageSize(flagData));
+			medianSizes.add(Utility.medianSize(flagData));
 		}
+
 
 		
 		//Print summary
@@ -226,11 +215,9 @@ class AggregateMegaData {
 
 		//Trim and save all videos
 		for (int flagIdx = 0; flagIdx < flagCount; flagIdx++) {
-			List<Integer> flagMedianActionDurations = medianActionDurations.get(flagIdx);
-			Map<Integer, Utility.clipInfo> flagTotalDurationToClipInfo = totalDurationToClipInfo.get(flagIdx);
-			if (flagMedianActionDurations != null) {
-				Integer flagMedianTotalDuration = flagMedianActionDurations.get(flagMedianActionDurations.size() - 1);
-				Utility.clipInfo flagMedianClip = flagTotalDurationToClipInfo.get(flagMedianTotalDuration);
+			List<Utility.IterationInfo> flagData = allIterationInfos.get(flagIdx);
+			if (flagData.size() != 0) {
+				Utility.ClipInfo flagMedianClip = Utility.iterationWithMedianTotalDuration(flagData).getClipInfo();
 				Utility.trimClip(flagMedianClip, clipDestinationFolder + "/" + compilationFlags[flagIdx] + "_median_clip.mp4");
 			}
 		}

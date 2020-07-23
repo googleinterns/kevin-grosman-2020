@@ -11,12 +11,12 @@ class Utility {
 	/**
 	 * Provides the info necessary to identify a section of a video (a clip)
 	 */
-   static class clipInfo {
-	String folder; //the folder where the clip is located (should be called "full_video.mp4)
-	String start; //the time at which this clip begins in the video (in the format HH:MM:SS.sss)
-	String end; //the time at which this clip ends in the video (in the format HH:MM:SS.sss)
+   static class ClipInfo {
+	private String folder; 			//the folder where the clip is located (should be called "full_video.mp4)
+	private String start; 			//the time at which this clip begins in the video (in the format HH:MM:SS.sss)
+	private String end; 			//the time at which this clip ends in the video (in the format HH:MM:SS.sss)
 
-	public clipInfo (String fldr, String timestamps) {
+	public ClipInfo (String fldr, String timestamps) {
 		folder = fldr;
 		String[] startEnd = timestamps.split("\\s*,\\s*");
 		start = startEnd[0];
@@ -32,6 +32,40 @@ class Utility {
 	public String getEnd() {
 		return end;
 	}
+   }
+
+   /*
+    * Stores all the information relevant to an iteration through a CUJ
+    */
+   static class IterationInfo {
+	private ClipInfo clipInfo; 		//Information regarding the clip of this CUJ
+	private List<Integer> durations; 	//The duration of the measurement actions executed
+	private Integer totalDuration; 		//The total duration of this iteration
+	private Integer size; 			//The size of the app when this iteration was run
+
+	public IterationInfo(ClipInfo iterationClipInfo, List<Integer> iterationDurations, Integer iterationSize) {
+		clipInfo = iterationClipInfo;
+		durations = iterationDurations;
+		totalDuration = sum(durations);
+		size = iterationSize;
+	}
+
+	public ClipInfo getClipInfo() {
+		return clipInfo;
+	}
+
+	public List<Integer> getDurations() {
+		return durations;
+	}
+
+	public Integer getTotalDuration() {
+		return totalDuration;
+	}
+
+	public Integer getSize() {
+		return size;
+	}
+	
    }
    
 
@@ -49,62 +83,118 @@ class Utility {
 	   return (sum(list) / list.size());
    }
 
- /**
-   * calculates the average of each column
-   * ith entry of returned array is average of ith column of input
-   */
-    public static List<Integer> averageColumns(List<List<Integer>> mat) {
-	if (mat.size() == 0) return null;
-	List<Integer> averages = new ArrayList<>();
-        for (int j = 0; j < mat.get(0).size(); j++) {
-            int sum = 0;
-            for (int i = 0; i < mat.size(); i++) {
-                sum += mat.get(i).get(j);
-            }
-            averages.add(sum / mat.size());
-        }
-        return averages;
+
+	/**
+	 *
+	 * Given a list of IterationInfos containing "durations" lists of the same length (data for the same number of actions), returns a list of the average duration for each action
+	 * if allIterationInfos is empty, returns null
+	 *
+	 */
+    public static List<Integer> averageActionDurations (List<IterationInfo> allIterationInfos) {
+	if (allIterationInfos.size() == 0) return null;
+	List<Integer> averageDurations = new ArrayList<>();
+	int actionCount = allIterationInfos.get(0).getDurations().size();
+	for (int actionIdx = 0; actionIdx < actionCount; actionIdx++) {
+		List<Integer> actionDurations = new ArrayList<>();
+		for (IterationInfo iter : allIterationInfos) {
+			actionDurations.add(iter.getDurations().get(actionIdx));
+		}
+		averageDurations.add(average(actionDurations));
+	}	
+	return averageDurations;
     }
 
-    /**
-     * Returns the median of the provided list
-     * If list is even, returns the greater of the two middle elements
-     * if list is empty, return null
+
+    /*
+     * Returns the average size field for a list of IterationInfos
+     * if passed list is empty, returns null
      */
-    public static Integer median(List<Integer> list) {
+    public static Integer averageSize(List<IterationInfo> allIterationInfos) {
+	    if (allIterationInfos.size() == 0) return null;
+	    List<Integer> sizes = new ArrayList<>();
+	    for (IterationInfo curIterationInfo : allIterationInfos) {
+		    sizes.add(curIterationInfo.getSize());
+	    }
+	    return average(sizes);
+    }
+
+
+
+
+    /*
+     * Returns the median (with a lean towards the higher value if size is even) in a list of IterationInfos given a comparator
+     */
+    private static IterationInfo medianIterationInfo(List<IterationInfo> list, Comparator<IterationInfo> comparator) {
 	    if (list.size() == 0) return null;
-	    Collections.sort(list);
+	    Collections.sort(list, comparator);
 	    return list.get(list.size() / 2);
-	    
-	    /*if (list.size() % 2 == 1) {
-	    } else {
-		    return (list.get(list.size() / 2 - 1) + list.get(list.size() / 2)) / 2;
-	    }*/
     }
 
-   /**
-     * calculates the median of each column
-     * ith entry of returned array is median of ith column of input
+    /*
+     * Returns the iterationInfo with the median duration for the action specified by idx
      */
-    public static List<Integer> medianColumns(List<List<Integer>> mat) {
-        if (mat.size() == 0) return null;
-	List<Integer> medians = new ArrayList<>();
-        for (int j = 0; j < mat.get(0).size(); j++) {
-            int[] column = new int[mat.size()];
-            for (int i = 0; i < mat.size(); i++) {
-                column[i] = mat.get(i).get(j);
-            }
-            Arrays.sort(column);
-            medians.add(column[column.length / 2]);
-            /*if (column.length % 2 == 1) {
-            } else {
-                medians.add((column[column.length / 2] + column[(column.length / 2) - 1]) / 2);
-            }*/
-        }
-        return medians;
-    }	
+    public static IterationInfo iterationWithMedianDurationAtIdx(List<IterationInfo> allIterationInfos, int idx) {
+	    return medianIterationInfo(allIterationInfos,  new Comparator<IterationInfo>() {
+			@Override
+			public int compare(IterationInfo a, IterationInfo b) {
+				return a.getDurations().get(idx).compareTo(b.getDurations().get(idx));
+			}});
+    }
+
+    /*
+     *  Returns the iterationInfo with the median total duration
+     */
+    public static IterationInfo iterationWithMedianTotalDuration(List<IterationInfo> allIterationInfos) {
+	    return medianIterationInfo(allIterationInfos, new Comparator<IterationInfo>() {
+		    @Override
+		    public int compare(IterationInfo a, IterationInfo b) {
+			    return a.getTotalDuration().compareTo(b.getTotalDuration());
+		    }});
+    }
     
-    /**
+    /*
+     * Returns the median corresponding app size
+     */
+    public static IterationInfo iterationWithMedianSize(List<IterationInfo> allIterationInfos) {
+	    return medianIterationInfo(allIterationInfos, new Comparator<IterationInfo>() {
+		    @Override
+		    public int compare(IterationInfo a, IterationInfo b) {
+			    return a.getSize().compareTo(b.getSize());
+		    }});
+    }
+
+    
+
+
+	
+    /*
+     * Given a list of IterationInfos containing "durations" lists of the same length (data for the same number of actions), returns a list of the median duration for each action
+     * if allIterationInfos is empty, returns null
+     */
+
+    public static List<Integer> medianActionDurations (List<IterationInfo> allIterationInfos) {
+	if (allIterationInfos.size() == 0) return null;
+	int actionCount = allIterationInfos.get(0).getDurations().size();
+	List<Integer> medianDurations = new ArrayList<>();
+	for (int actionIdx = 0; actionIdx < actionCount; actionIdx++) {
+		IterationInfo medianForIdx = iterationWithMedianDurationAtIdx(allIterationInfos, actionIdx);		 	    
+		medianDurations.add(medianForIdx.getDurations().get(actionIdx));
+	}
+	return medianDurations;
+    }
+
+    /*
+     * Returns the median app size out of all of the passed iterations
+     * if the passed list is empty, returns null
+     */
+    public static Integer medianSize(List<IterationInfo> allIterationInfos) {
+	if (allIterationInfos.size() == 0) return null;
+	return iterationWithMedianSize(allIterationInfos).getSize();
+    }
+
+
+
+    /*
      * Prints str to the provided printStream in a column with the width specified by alignment
      */
     public static void printWithAlignment(PrintStream ps, int alignment, String str) {
@@ -114,7 +204,7 @@ class Utility {
 
 
 
-    /**
+    /*
      * prints the provided (possible non-rectangular) list of lists specified by table in a grid, such that
      * the width of each column is 1 greater than the longest string in that column (and each row has a height of 1)
      */
@@ -145,32 +235,26 @@ class Utility {
 
 
     /**
-     * Parses the list specified durations and adds it to the allDurations list.
-     * Also creates a clipInfo object for the CUJ iteration in question and maps the iteration's total duration to 
-     * this clipInfo object in the passed totalDurationToClipInfo map.
+     * Parses the passed data into an IterationInfo object holding a clipInfo object and then adds it to the allIterationInfos list
      *
      * @param durations - a comma-seperated list of durations of each measured action for this particular iteration through the CUJ.
      * @param timestamps - a comma-seperated pair of timestamps specifying the beginning and end of this iteration through the CUJ in the full video of it (located at fullVideoFolder).
+     * @param size - the size of the app on this particular run through the CUJ
      * @param fullVideoFolder the folder holding the full video that contains the iteration in question (if such a recording exists)
-     * @param allDurations[out] - a list duration-lists, to which the data held by durations is to be added.
-     * @param totalDurationToClipInfo[out] - a map from total iteration durations to clipInfos of clips with that total duration. The data from the iteration in question is to be added to this map.
+     * @param allIterationInfos[out] - a list of IterationInfo objects
      *
      */
-    public static void readDurationTimePair(String durations, String timestamps, String fullVideoFolder, List<List<Integer>> allDurations, Map<Integer, clipInfo> totalDurationToClipInfo) {
+    	public static void readDurationTimePair(String durations, String timestamps, Integer size, String fullVideoFolder, List<IterationInfo> allIterationInfos) {
 		String[] durationArr = durations.split("\\s*,\\s*");
 		List<Integer> durationList = new ArrayList<>();
 		for (String s : durationArr) {
 			durationList.add(Integer.parseInt(s.trim()));
 		}
-		Integer totalDuration = sum(durationList);
-		durationList.add(totalDuration);
-
-		allDurations.add(durationList);
-		clipInfo curClipInfo = new clipInfo(fullVideoFolder, timestamps);
-		totalDurationToClipInfo.put(totalDuration, curClipInfo);
+		ClipInfo curClipInfo = new ClipInfo(fullVideoFolder, timestamps);
+		allIterationInfos.add(new IterationInfo(curClipInfo, durationList, size));
 	}
 
-	public static void trimClip(clipInfo clip, String destinationFile) {
+	public static void trimClip(ClipInfo clip, String destinationFile) {
 		String fullClipLoc = clip.getFolder() + "/full_video.mp4";
 		File fullClip = new File(fullClipLoc);
 		System.out.println("Picked with length starting at " + clip.getStart() + " and ending at " + clip.getEnd());

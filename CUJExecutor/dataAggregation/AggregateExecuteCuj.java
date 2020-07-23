@@ -9,19 +9,17 @@ class AggregateExecuteCuj {
 	
 
 	/**
-	 * parses the test given by myReader, which is formatted as specified by the JAVADOC on the main function of this class.
-	 * Adds the parsed 
-	 *  - durations to the actionDurationsList, 
-	 *  - clipInfo object to the totalDurationsToClipinfo map.
+	 * Parses the test given by myReader, which is formatted as specified by the JAVADOC on the main function of this class.
+	 * Adds each parsed iteration to the allIterationInfos list
 	 *
 	 */
-	public static void parseInputFile (Scanner myReader, List<List<Integer>> actionDurations,  Map<Integer, Utility.clipInfo> totalDurationToClipInfo) {
+	public static void parseInputFile (Scanner myReader, List<Utility.IterationInfo> allIterationInfos) {
 		//Parse Input file:
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
 			if (!line.equals("")) {
 				//Read all duration/timestamp pairs
-				Utility.readDurationTimePair(line, myReader.nextLine(), ".", actionDurations, totalDurationToClipInfo); //Two consequtive lines containing a duration list and a time start/end
+				Utility.readDurationTimePair(line, myReader.nextLine(), null, ".", allIterationInfos); //Two consequtive lines containing a duration list and a time start/end
 			}
 		}
 		myReader.close();
@@ -33,17 +31,17 @@ class AggregateExecuteCuj {
 	 *  
 	 * @param postCUJ - an array of Strings representing the post
 	 * @param actionDurations - list of lists, each of which holds durations for each of the actions in the measured-actions list, as well as a final total duration
-	 * @param averageActionDurations - the average duration for each action (may contain nulls if no data is recorded for that action)
-	 * @param medianActionDurations - the mediane duration for each action (may contain nulls if no data is recorded for that action)
+	 * @param averageActionDurations - the average duration for each action (may be null if no data is recorded)
+	 * @param medianActionDurations - the median duration for each action (may be null if no data is recorded)
 	 *
 	 */
-	public static List<List<String>> formatTable (String[] postCUJ, List<List<Integer>> actionDurations, List<Integer> averageActionDurations, List<Integer> medianActionDurations) {
+	public static List<List<String>> formatTable (String[] postCUJ, List<Utility.IterationInfo> allIterationInfos, List<Integer> averageActionDurations, List<Integer> medianActionDurations) {
 		List<List<String>> formattedTable = new ArrayList<>();
 
 		//Add with first row
 		List<String> firstRow = new ArrayList<>();
 		firstRow.add("");
-		for (int i = 0; i < postCUJ.length - 1; i++) {
+		for (int i = 0; i < postCUJ.length - 1; i++) { // Don't include the termination action!
 			String action = postCUJ[i];
 			firstRow.add(String.valueOf(action));
 		}
@@ -52,10 +50,13 @@ class AggregateExecuteCuj {
 		
 		//Add with raw data rows
 		int iter = 1;
-		for (List<Integer> iterationActionDurations: actionDurations) {
+		for (Utility.IterationInfo curIterationInfo : allIterationInfos) {
 			List<String> row = new ArrayList<>();
 			row.add("ITERATION " + iter++ + ": ");
-			for (Integer time : iterationActionDurations) row.add(String.valueOf(time));
+			for (Integer duration : curIterationInfo.getDurations()) {
+				row.add(String.valueOf(duration));
+			}
+			row.add(String.valueOf(curIterationInfo.getTotalDuration()));
 			formattedTable.add(row);
 		}
 		
@@ -67,19 +68,21 @@ class AggregateExecuteCuj {
 		//Add with average row
 		List<String> averageRow = new ArrayList<>();
 		averageRow.add("AVERAGE:");
-		for (int i = 0; i < postCUJ.length; i++) { //don't include termination action
+		for (int i = 0; i < postCUJ.length - 1; i++) { //don't include termination action
 			String averageActionDuration = (averageActionDurations == null) ? "N/A" : String.valueOf(averageActionDurations.get(i));
 			averageRow.add(averageActionDuration);
 		}
+		averageRow.add((averageActionDurations == null) ? "N/A" : String.valueOf(Utility.sum(averageActionDurations)));
 		formattedTable.add(averageRow);
 
 		//Add with median row
 		List<String> medianRow = new ArrayList<>();
 		medianRow.add("MEDIAN:");
-		for (int i = 0; i < postCUJ.length; i++) { //don't include termination action
+		for (int i = 0; i < postCUJ.length - 1; i++) { //don't include termination action
 			String medianActionDuration = (medianActionDurations == null) ? "N/A" : String.valueOf(medianActionDurations.get(i));
 			medianRow.add(medianActionDuration);
 		}
+		medianRow.add((medianActionDurations == null) ? "N/A" : String.valueOf(Utility.sum(medianActionDurations)));
 		formattedTable.add(medianRow);
 
 		return formattedTable;
@@ -139,34 +142,31 @@ class AggregateExecuteCuj {
 		String clipDestinationFolder = args[4];
 		boolean trim = Boolean.parseBoolean(args[5]); //tell us whether we want to trim the video
 
-		List<List<Integer>> actionDurations = new ArrayList<>(totalIters);//2D list : j = test index, k = action index
-		Map<Integer, Utility.clipInfo> totalDurationToClipInfo = new HashMap<>(); //Mapping from durations to videoclip infos for every flag
+		List<Utility.IterationInfo> allIterationInfos = new ArrayList<>();
 
 		//parse input file
-		parseInputFile(myReader, actionDurations, totalDurationToClipInfo);
+		parseInputFile(myReader, allIterationInfos);
 		
 
 		//compute average/median durations and report missing data
 		ps.printf("TOTAL ITERATIONS: " + totalIters + "\n");
-		if (actionDurations.size() < totalIters) {
-			ps.printf("\nNOTE: " + (totalIters - actionDurations.size()) + " iterations of data are missing\n");
+		if (allIterationInfos.size() < totalIters) {
+			ps.printf("\nNOTE: " + (totalIters - allIterationInfos.size()) + " iterations of data are missing\n");
 		}
-		List<Integer> averageActionDurations = Utility.averageColumns(actionDurations);
-		List<Integer> medianActionDurations = Utility.medianColumns(actionDurations);
-
+		List<Integer> averageActionDurations = Utility.averageActionDurations(allIterationInfos);
+		List<Integer> medianActionDurations = Utility.medianActionDurations(allIterationInfos);
 
 		
 		//Print summary
-		List<List<String>> formattedSummary = formatTable(postCUJ, actionDurations, averageActionDurations, medianActionDurations);
+		List<List<String>> formattedSummary = formatTable(postCUJ, allIterationInfos, averageActionDurations, medianActionDurations);
 		Utility.printFormattedTable(formattedSummary, ps);
 
 		ps.printf(headerFooter);
 
 
 		//Trim and save all videos
-		if (medianActionDurations != null && trim) {
-			Integer medianTotalDuration = medianActionDurations.get(medianActionDurations.size() - 1);
-			Utility.clipInfo medianClip = totalDurationToClipInfo.get(medianTotalDuration);
+		if (allIterationInfos.size() != 0 && trim) {
+			Utility.ClipInfo medianClip = Utility.iterationWithMedianTotalDuration(allIterationInfos).getClipInfo();
 			Utility.trimClip(medianClip, clipDestinationFolder + "/median_clip.mp4");
 		}
 	}
