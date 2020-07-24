@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+
+let "i = 0"
+
+BIT=$(adb shell "cat /sys/devices/system/cpu/cpu${i}/online 2> /dev/null")
+ERR=$?
+res=$BIT
+while [ $ERR == 0 ] 
+do
+	let "i = $i + 1"
+	BIT=$(adb shell "cat /sys/devices/system/cpu/cpu${i}/online 2> /dev/null")
+	ERR=$?
+	res="$res $BIT"
+done
+
+echo $res

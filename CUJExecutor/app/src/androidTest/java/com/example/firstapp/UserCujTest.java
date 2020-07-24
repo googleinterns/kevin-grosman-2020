@@ -30,7 +30,7 @@ import java.util.logging.LogManager;
 
 public class UserCujTest {
 
-    private static long TIMEOUTMS = 15000;
+    private static long TIMEOUTMS = 30000;
 
     @Test
     public void userIterateAndMeasureCuj() throws Exception {
@@ -38,23 +38,57 @@ public class UserCujTest {
         String preCUJ = extras.getString("pre");
         String postCUJ = extras.getString("post");
         int iterations = Integer.parseInt(extras.getString("iters"));
-        boolean recordIntent = "r".equals(extras.getString("rec"));
+        String recStr = extras.getString("rec");
+        boolean recordIntent = ("r".equals(recStr) || "f".equals(recStr)); //r -> we want median clip, f -> we want full recording only
+        long recstart =  Long.parseLong(extras.getString("recstart"));
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, iterations, recordIntent);
+        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, iterations, recordIntent, recstart);
     }
 
     @Test
     public void userWalkCujNTimes() throws Exception {
+        ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
 
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
         String postCUJ = extras.getString("post");
-        String include = extras.getString("include");
-        int n = Integer.parseInt(extras.getString("n"));
-        boolean includeMeasured = "c".equals(include); //tells us whether we should execute the the entire CUJ or just prepatory actions
+        String sectionFlag = extras.getString("include"); //Tells us which section of the CUJ to walk through
+        int n = Integer.parseInt(extras.getString("n")); // number of iterations
 
-        ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.walkCujNTimes(preCUJ, postCUJ, includeMeasured, n);
+        ShellUtility.CujFlag flag;
+        switch (sectionFlag) {
+            case "w" :
+                flag = ShellUtility.CujFlag.ALL;
+                break;
+            case "c" :
+                flag  = ShellUtility.CujFlag.ALLBUTLAST;
+                break;
+            case "cr" : //Rest after leaving off from ALLBUTLAST
+                flag = ShellUtility.CujFlag.LAST;
+                break;
+            case "p" :
+                flag  = ShellUtility.CujFlag.PRE;
+                break;
+            case "pr" : //Rest after leaving off from PRE
+                flag  = ShellUtility.CujFlag.POST;
+                break;
+            case "f" :
+                flag  = ShellUtility.CujFlag.FIRST;
+                break;
+            case "fr" : //Rest after leaving off from FIRST
+                flag  = ShellUtility.CujFlag.ALLBUTFIRST;
+                break;
+            case "m" :
+                flag = ShellUtility.CujFlag.MEASURED;
+                break;
+            case "mr" : //Rest after leaving off from measured CUJ
+                flag = ShellUtility.CujFlag.LAST;
+                break;
+            default:
+                throw new ShellUtility.InvalidInputException("Invalid section flag provided");
+        }
+
+        shellUtility.walkCujNTimes(preCUJ, postCUJ, flag, n);
     }
 }

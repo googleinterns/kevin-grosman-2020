@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+
+
+let "i = 0"
+
+for BIT in "$@"
+do
+	adb shell "echo $BIT > /sys/devices/system/cpu/cpu${i}/online 2> /dev/null"
+	ERR=$?
+	let "i = $i + 1"
+done
+

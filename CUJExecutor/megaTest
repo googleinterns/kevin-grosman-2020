@@ -2,7 +2,7 @@
 
 ##
 # Loops through all provided compilation flags 5 times, each time recompiling aGMM as specified and measuring the desired portion of the CUJ specified by INPUT_FILE.
-# Appends the SHORT_SUMMARY from each run to the AGGREGATED_DATA_FILE for the specified INPUT_FILE.
+# Appends the STASHED_SHORT_SUMMARY from each run to the AGGREGATED_DATA_FILE for the specified INPUT_FILE.
 # Stores the following files at /mega_data/<INPUT_FILE_NAME>/<DATE>/:
 # - (all_data.txt) a log containing formatted data from each measurement (acquired via a call to manipulateProfilesAndTest).
 # - (summary.txt) a summary containing average action durations for each compilation flag (over all iterations).
@@ -19,24 +19,27 @@
 
 
 
-
-
 INPUT_FILE=${1:-input.txt}
+PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
 POST_CUJ=$(sed '2q;d' $INPUT_FILE)
 ITERS=$(sed '3q;d' $INPUT_FILE)
 RECORD=$(sed '4q;d' $INPUT_FILE)
-POST_CUJ_STR_ARRAY=$(echo $POST_CUJ | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
-IFS=', ' read -r -a POST_CUJ_ARRAY <<< "$POST_CUJ_STR_ARRAY" #Read data to an array
-LOOPS=1 #Probably should make this an input
+POST_CUJ_STR_ARRAY=$(./peelHardBrackets $POST_CUJ) #peel off hard brackets
+LOOPS=7 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
-SHORT_SUMMARY="/tmp/short_summary.txt" #location where ./manipulateProfilesAndTest will dump a short summary of time data and size of profile/app
-APP_SIZE_DATA="/tmp/app_size.txt" #location where ./manipulateProfilesAndTest will dump the app size
+STASHED_SHORT_SUMMARY="/tmp/manipulate_short_summary.txt" #location where ./manipulateProfilesAndTest will dump a short summary of time data and size of profile/app
+STASHED_APP_SIZE="/tmp/manipulate_app_size.txt" #location where ./manipulateProfilesAndTest will dump the app size
+STASHED_FOLDER="/tmp/manipulate_folder.txt" #location where ./manipulateProfilesAndTest will dump its folder
+STASHED_COMPILED_ACTIONS="/tmp/manipulate_compiled_actions.txt"
+STASHED_RAW_DURATIONS="/tmp/execute_raw_durations.txt"
+STASHING_DUMPED_DATA="/tmp/mega_dumped_data.txt"
+STASHING_SUMMARY_TABLES="/tmp/mega_summary_tables.txt"
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
-RAW_AVERAGES="/tmp/raw_averages.txt"
-INPUT_FILE_NAME="${INPUT_FILE##*/}"
-INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}"
+INPUT_FILE_NAME="${INPUT_FILE##*/}" #remove folders from file name
+INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}" #remove file extension from file name
+
 #Create the folder hierarchy for the data produced by the test, if it doesn't exist
 FOLDER="mega_data/${INPUT_FILE_NAME}"
 mkdir $FOLDER  2> /dev/null
@@ -45,99 +48,81 @@ mkdir $FOLDER  2> /dev/null
 AGGREGATED_DATA_FILE="${FOLDER}/all_data.txt"
 TEST_SUMMARY="${FOLDER}/summary.txt"
 CPU_STATUSES=$(./getCPUs)
-declare -A averages
-declare -A sizes
+FOLDERS_WITH_VIDS=""
 shift ##shift args such that remaining args are the compilation settings
-ROWS=$#
-ARGS=("$@")
 
 #Headers/Footers
 HEADER_FOOTER="-----------------------------------------------------------------CPU STATUSES: $CPU_STATUSES----------COMPILATION FLAGS: $@----------$DATE-----------------------------------------------------------------" 
-SUMMARY_HF="************************************************MEGA TEST SUMMARY:*************************************************"
+SUMMARY_HF="\n************************************************MEGA TEST SUMMARY:*************************************************"
+SECTION_SPLITTER="~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
-echo "forc-stopping app..."
+echo "" > $STASHING_DUMPED_DATA
+
+echo "force-stopping app..."
 adb shell am force-stop com.google.android.apps.maps
+
 echo "warming up..."
-./runCujNTimes $INPUT_FILE c 5 
+./runCujNTimes $INPUT_FILE w 10
 
 echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
+echo $HEADER_FOOTER 
+
+echo -e $SUMMARY_HF > $TEST_SUMMARY
+echo "PRE CUJ:      $PRE_CUJ" >> $TEST_SUMMARY
+echo "MEASURED CUJ: $POST_CUJ" >> $TEST_SUMMARY
+echo "" >> $TEST_SUMMARY
+echo "$SECTION_SPLITTER" >> $TEST_SUMMARY
+
 
 for ((run=0;run<$LOOPS;run++))
 do
-	let i=0
 	for COMPILATION_FLAG in "$@"
 	do
 		echo "DOING $COMPILATION_FLAG TEST..." 
-		./manipulateProfilesAndTest $INPUT_FILE $COMPILATION_FLAG
+		./manipulateProfilesAndTest $INPUT_FILE ${COMPILATION_FLAG:0:1} ${COMPILATION_FLAG:1}
 		echo "" >> $AGGREGATED_DATA_FILE
-		cat $SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
-		APP_SIZE=$(cat $APP_SIZE_DATA)
-		STRING_AVERAGES=$(cat $RAW_AVERAGES)
-		STRING_AVERAGES=$(echo $STRING_AVERAGES | cut -d "[" -f2 | cut -d "]" -f1) #peel off hard brackets
-		IFS=', ' read -r -a ARRAY <<< "$STRING_AVERAGES" #Read data to an array
-		COLS=${#ARRAY[@]}
-		for ((j=0;j<COLS;j++)) do
-			((averages[$i,$j]=averages[$i,$j] + ARRAY[$j])) 
-   	 	done
-		((sizes[$i]=sizes[$i] + APP_SIZE)) 
-
-		let i++
+		cat $STASHED_SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
+		COMPILED_ACTIONS=$(cat $STASHED_COMPILED_ACTIONS)
+		APP_SIZE=$(cat $STASHED_APP_SIZE)
+		MPT_FOLDER=$(cat $STASHED_FOLDER)
+		MPT_FOLDER=$(echo "$MPT_FOLDER" | xargs)
+		FOLDERS_WITH_VIDS="${FOLDERS_WITH_VIDS} ${MPT_FOLDER}"
+		STRING_DURATIONS=$(cat $STASHED_RAW_DURATIONS)
+		STRING_DURATIONS=$(./peelHardBrackets "$STRING_DURATIONS") #peel off hard brackets
+		if [ $run = "0" ] #Report which actions were compiled for each flag on the first loop through thems
+		then
+			echo "ACTIONS COMPILED FOR FLAG ${COMPILATION_FLAG}: $COMPILED_ACTIONS" >> $TEST_SUMMARY
+		fi
+		echo $APP_SIZE >> $STASHING_DUMPED_DATA
+		echo $MPT_FOLDER >> $STASHING_DUMPED_DATA
+		echo "$STRING_DURATIONS" >> $STASHING_DUMPED_DATA
+		echo "" >> $STASHING_DUMPED_DATA
 	done
 done
 
-echo "Generating mega test summary..."
-
-#Set up print formatting
-w1="%-18s" #Column width for first col in first row
-w2="%-19s" #Column width for first col in subsequent rows
-MAX_WIDTH=8
-for ((j=0;j<COLS;j++)) do
-	str=${POST_CUJ_ARRAY[$j]} 
-	len=$(expr length $str)
-	MAX_WIDTH=$(($len > $MAX_WIDTH ? $len : $MAX_WIDTH))
-done
-let "BUF_MAX_WIDTH=$MAX_WIDTH + 1"
-w3="%-${BUF_MAX_WIDTH}s" #column width for all other cols
-
-#Print header info
-echo $SUMMARY_HF >> $TEST_SUMMARY
-echo "AVERAGES OVER $TOTAL_ITERS ITERATIONS:" >> $TEST_SUMMARY
 echo "" >> $TEST_SUMMARY
+echo "$SECTION_SPLITTER" >> $TEST_SUMMARY
 
-#Print first row of table
-printf "$w2" "Compilation flag" >> $TEST_SUMMARY
-printf "%-${MAX_WIDTH}s" "App size"  >> $TEST_SUMMARY #Justify one to the left of w3 for better allignment
+echo "Generating mega test summary..."
+java dataAggregation.AggregateMegaData "$STASHING_DUMPED_DATA" "$STASHING_SUMMARY_TABLES" "$POST_CUJ_STR_ARRAY" "$TOTAL_ITERS" "$FOLDER" "$*"
 
-for ((j=0;j<COLS;j++)) do
-    printf "$w3" ${POST_CUJ_ARRAY[$j]} >> $TEST_SUMMARY 
-done
-printf "%6s" "TOTAL" >> $TEST_SUMMARY #Justify "TOTAL" to be in line with numbers below
 
-#Print data rows and totals
-for ((i=0;i<ROWS;i++)) do
-	echo "" >> $TEST_SUMMARY
-	let "arg=$i+1"
-	printf "$w2" ${!arg} >> $TEST_SUMMARY
-	((sizes[$i]=sizes[$i] / $LOOPS)) 
-	printf "$w3" ${sizes[$i]} >> $TEST_SUMMARY
-	total=0
-    	for ((j=0;j<COLS;j++)) do
-		((averages[$i,$j]=averages[$i,$j] / $LOOPS))
-        	let "total=$total + ${averages[$i,$j]}"
-		printf "$w3" ${averages[$i,$j]} >> $TEST_SUMMARY
-    	done
-	printf "$w3" "$total" >> $TEST_SUMMARY
-
-done
+cat $STASHING_SUMMARY_TABLES >> $TEST_SUMMARY
+echo -e $SUMMARY_HF >> $TEST_SUMMARY
 
 #format spacing and cat data summary to aggregated data file
-echo "" >> $TEST_SUMMARY
-echo "" >> $TEST_SUMMARY
-echo $SUMMARY_HF >> $TEST_SUMMARY
-echo "" >> $AGGREGATED_DATA_FILE
 cat $TEST_SUMMARY >> $AGGREGATED_DATA_FILE
 echo "" >> $AGGREGATED_DATA_FILE
 echo $HEADER_FOOTER >> $AGGREGATED_DATA_FILE
 
+echo "Making sure full videos are deleted......."
+echo $FOLDERS_WITH_VIDS
+for MPT_FOLDER in $FOLDERS_WITH_VIDS
+do
+	echo "${MPT_FOLDER}" 
+	rm "${MPT_FOLDER}/full_video.mp4" #2> /dev/null
+done
+
 #Display the summary table
 cat $TEST_SUMMARY
+echo $HEADER_FOOTER 

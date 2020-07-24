@@ -1,0 +1,3 @@
+['start;com.google.android.apps.maps']
+['click;Search here', 'click;Home;strict']
+5

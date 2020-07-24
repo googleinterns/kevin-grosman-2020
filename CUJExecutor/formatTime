@@ -20,7 +20,7 @@ MILLIS=${1?ERROR: no number given}
 
 (printf "%02d" $((MILLIS / 3600000))) > /tmp/time.txt
 (printf ":") >> /tmp/time.txt
-MILLIS=$((MILLIS % 360000))
+MILLIS=$((MILLIS % 3600000))
 (printf "%02d" $((MILLIS / 60000))) >> /tmp/time.txt
 (printf ":") >> /tmp/time.txt
 MILLIS=$((MILLIS % 60000)) 

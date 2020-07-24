@@ -20,9 +20,9 @@
 
 INPUT_FILE=${1:-input.txt}
 EXECUTION_FLAG=${2?"ERROR: need to specify an execution flag"}
-if [ $EXECUTION_FLAG != "p" ] && [ $EXECUTION_FLAG != "c" ]
+if [ $EXECUTION_FLAG != "p" ] && [ $EXECUTION_FLAG != "c" ] && [ $EXECUTION_FLAG != "f" ] && [ $EXECUTION_FLAG != "m" ] && [ $EXECUTION_FLAG != "w" ] && [ $EXECUTION_FLAG != "pr" ] && [ $EXECUTION_FLAG != "cr" ] && [ $EXECUTION_FLAG != "fr" ] && [ $EXECUTION_FLAG != "mr" ]
 then
-	echo "EXECUTION FLAG INVALID: Use one of {p - execute actions in Pre-CUJ, c - execute entire CUJ}"
+	echo "EXECUTION FLAG INVALID: Use one of {p - execute actions in Pre-CUJ, c - execute all but the last action in the CUJ, w - execute entire CUJ}"
 	exit 1	
 fi	
 

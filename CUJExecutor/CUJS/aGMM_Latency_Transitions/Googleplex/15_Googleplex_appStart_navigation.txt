@@ -1,0 +1,3 @@
+['start;com.google.android.apps.maps', 'clearRecentApps']
+['click;Nav to GP', 'clickImage;Close navigation', 'clickImage;Navigate up']
+5

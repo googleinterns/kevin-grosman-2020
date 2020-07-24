@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+
+echo "$@" | cut -d "[" -f2 | cut -d "]" -f1

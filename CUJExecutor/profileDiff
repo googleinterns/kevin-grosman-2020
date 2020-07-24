@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+
+#INPUT: 2 .prof files stored locally (A, B) and a path to dump the new profile
+#OUTPUT: a new .prof stored at the desired location (whose class/object dump should be A\B)
+
+
+A=${1?"ERROR: need to specify a first profile"} 
+B=${2?"ERROR: need to specify a second profile"} 
+OUTFILE=${3?"ERROR: need to specify an output file"}
+
+A_DUMP_SORTED="/tmp/profileDiff_a_dump_sorted.txt"
+B_DUMP_SORTED="/tmp/profileDiff_b_dump_sorted.txt"
+A_DIFF_B_DUMP_SORTED="/tmp/profileDiff_a_diff_b_dump_sorted.txt"
+
+PHONE_A_PROFILE="/sdcard/profiles/a.prof"
+PHONE_B_PROFILE="/sdcard/profiles/b.prof"
+
+PHONE_A_DIFF_B_DUMP_SORTED="/sdcard/profiles/a_diff_b_dump_sorted.txt"
+PHONE_A_DIFF_B_PROFILE="/sdcard/profiles/a_diff_b.prof"
+
+
+APK_LOCATION=$(adb shell "ls /data/app/com.google.android.apps.maps*/base.apk")
+
+adb push $A $PHONE_A_PROFILE
+adb push $B $PHONE_B_PROFILE
+
+adb shell "profman --dump-classes-and-methods --profile-file=$PHONE_A_PROFILE --apk=$APK_LOCATION" | sort > $A_DUMP_SORTED
+adb shell "profman --dump-classes-and-methods --profile-file=$PHONE_B_PROFILE --apk=$APK_LOCATION" | sort > $B_DUMP_SORTED
+
+comm -23  $A_DUMP_SORTED $B_DUMP_SORTED > $A_DIFF_B_DUMP_SORTED #Returns lines in the first file and not in the second (only works if the common elements have the same order in either file, which is why we sorted)
+
+adb push $A_DIFF_B_DUMP_SORTED $PHONE_A_DIFF_B_DUMP_SORTED
+
+adb shell "profman --create-profile-from=$PHONE_A_DIFF_B_DUMP_SORTED --apk=$APK_LOCATION --dex-location=base.apk --reference-profile-file=$PHONE_A_DIFF_B_PROFILE"
+
+adb pull $PHONE_A_DIFF_B_PROFILE $OUTFILE
+
