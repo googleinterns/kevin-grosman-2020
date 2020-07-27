@@ -16,7 +16,11 @@
 
 
 ##
-# Compiles aGMM according to the COMPILATION_FLAG and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
+# Compiles aGMM according to the COMPILATION_FLAG_SEQ and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
+# If COMPILATION_FLAG_SEQ is just the location of a profile, this profile is used to compile the app. 
+# If the passed value is a sequence of compilation flags, the first indicates the base profile (a- all, e - empty, u - cloud, s - startup) 
+# and all subsequent flags represent actions to be added to the profile (f - first action, p - preCUJ, m - measuredCUJ, c - preCUJ + measuredCUJ)
+#
 # Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_FLAG>/<DATE>/:
 # - (command_summary.txt) a log of each run command and their output.
 # - (short_summary.txt) a formatted summary including the profile used for compilation, resulting app size and measurements of the MEASURED_CUJ (acquired via a call to executeCUJ). A copy is stored in /tmp for the callee.
@@ -24,10 +28,17 @@
 # - (median_clip.mp4) a recording of the median iteration (if requested).
 #
 # @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, MEASURED_CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
-# @param COMPILATION_FLAG (e - empty profile, m - compile measured CUJ, u - compile with a cloud profile, f- compile first action, p - compile actions in Pre-CUJ, c - compile pre and measured CUJS, a - compile all code).
-#  	 Optionally, if f, p, c, or m are followed by a number, n, (e.g. m12), that portion of the CUJ will be run through n times during the creation of the profile. If a, e or u are followed by a number, that number will be ignored.
-
-# Result: Will reset the profile attempt to add actions in the pre-CUJ to it. Then re-compiles the app according to that profile and measures the CUJ specified by CUJS/takeout.txt.
+# @param COMPILATION_FLAG_SEQ - can either be the location of a .prof file or a sequence of compilation flags for building a new profile, where:
+#				the first specifies the base profile (one of a - all, e - empty, s - startup, or u - cloud)
+#				and all subsequent flags specify an ordered list of sections of the CUJ to be added to the profile (one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
+# e.g: 
+# 
+# ./megaTest CUJS/takeout.txt utilityProfiles/cloudProfile.prof
+# 	Result: runs a with the cloud profile compiled
+# 
+# ./megaTest CUJS/takeout.txt smmp
+# 	Result: A profile is built by starting with the startup profile and adding to it by executing the measuredCUJ twice and then the preCUJ once (with appropriate waits after all 3 sections of the CUJ are completed). 
+#		Then, this profile is used to compile the app and execute/measure the CUJ.
 
 
 
@@ -35,11 +46,6 @@
 #PARSING INPUTS:
 INPUT_FILE=${1?"ERROR: need to specify an input file and compilation flag"}
 COMPILATION_FLAG=${2?"ERROR: need to specify an input file and compilation flag"} 
-#if [ $COMPILATION_FLAG != "e" ] && [ $COMPILATION_FLAG != "p" ] && [ $COMPILATION_FLAG != "c" ] && [ $COMPILATION_FLAG != "a" ] && [ $COMPILATION_FLAG != "f" ] && [ $COMPILATION_FLAG != "u" ] && [ $COMPILATION_FLAG != "m" ]  
-#then
-#	echo "compilation flag invalid. Use one of {e - empty profile, p - compile actions in Pre-CUJ, c - compile pre and measured CUJS, a - compile all code, f - compile first action, u - compile using cloud profile, m - compile only using the measured CUJ}"
-#	exit 1	
-#fi	
 
 echo $COMPILATION_FLAG
 
