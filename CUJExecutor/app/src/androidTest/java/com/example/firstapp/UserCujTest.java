@@ -36,6 +36,7 @@ public class UserCujTest {
     public void userIterateAndMeasureCuj() throws Exception {
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
+        String measuredCUJ = extras.getString("measured");
         String postCUJ = extras.getString("post");
         int iterations = Integer.parseInt(extras.getString("iters"));
         String recStr = extras.getString("rec");
@@ -43,7 +44,7 @@ public class UserCujTest {
         long recstart =  Long.parseLong(extras.getString("recstart"));
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, iterations, recordIntent, recstart);
+        shellUtility.iterateAndMeasureCuj(preCUJ, measuredCUJ, postCUJ, iterations, recordIntent, recstart);
     }
 
     @Test
@@ -52,43 +53,11 @@ public class UserCujTest {
 
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
+        String measuredCUJ = extras.getString("measured");
         String postCUJ = extras.getString("post");
         String sectionFlag = extras.getString("include"); //Tells us which section of the CUJ to walk through
         int n = Integer.parseInt(extras.getString("n")); // number of iterations
 
-        ShellUtility.CujFlag flag;
-        switch (sectionFlag) {
-            case "w" :
-                flag = ShellUtility.CujFlag.ALL;
-                break;
-            case "c" :
-                flag  = ShellUtility.CujFlag.ALLBUTLAST;
-                break;
-            case "cr" : //Rest after leaving off from ALLBUTLAST
-                flag = ShellUtility.CujFlag.LAST;
-                break;
-            case "p" :
-                flag  = ShellUtility.CujFlag.PRE;
-                break;
-            case "pr" : //Rest after leaving off from PRE
-                flag  = ShellUtility.CujFlag.POST;
-                break;
-            case "f" :
-                flag  = ShellUtility.CujFlag.FIRST;
-                break;
-            case "fr" : //Rest after leaving off from FIRST
-                flag  = ShellUtility.CujFlag.ALLBUTFIRST;
-                break;
-            case "m" :
-                flag = ShellUtility.CujFlag.MEASURED;
-                break;
-            case "mr" : //Rest after leaving off from measured CUJ
-                flag = ShellUtility.CujFlag.LAST;
-                break;
-            default:
-                throw new ShellUtility.InvalidInputException("Invalid section flag provided");
-        }
-
-        shellUtility.walkCujNTimes(preCUJ, postCUJ, flag, n);
+       shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionFlag, n);
     }
 }

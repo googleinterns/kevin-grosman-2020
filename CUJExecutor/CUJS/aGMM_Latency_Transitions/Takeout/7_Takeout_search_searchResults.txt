@@ -1,3 +1,4 @@
 ['start;com.google.android.apps.maps']
-['click;Takeout',  'click;View map']
-5
+['click;Takeout']
+['click;View map']
+9

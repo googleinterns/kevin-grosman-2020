@@ -1,4 +1,5 @@
 ['start;com.google.android.apps.maps', 'clearRecentApps']
-['click;Nav to BB', 'clickImage;Close navigation', 'clickImage;Navigate up']
+['click;Nav to BB'] 
+['clickImage;Close navigation', 'clickImage;Navigate up']
 5
 
