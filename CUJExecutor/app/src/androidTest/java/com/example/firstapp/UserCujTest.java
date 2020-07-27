@@ -30,34 +30,31 @@ import java.util.logging.LogManager;
 
 public class UserCujTest {
 
-    private static long TIMEOUTMS = 30000;
+    private static long TIMEOUTMS = 15000;
 
     @Test
     public void userIterateAndMeasureCuj() throws Exception {
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
-        String measuredCUJ = extras.getString("measured");
         String postCUJ = extras.getString("post");
         int iterations = Integer.parseInt(extras.getString("iters"));
-        String recStr = extras.getString("rec");
-        boolean recordIntent = ("r".equals(recStr) || "f".equals(recStr)); //r -> we want median clip, f -> we want full recording only
-        long recstart =  Long.parseLong(extras.getString("recstart"));
+        boolean recordIntent = "r".equals(extras.getString("rec"));
 
         ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
-        shellUtility.iterateAndMeasureCuj(preCUJ, measuredCUJ, postCUJ, iterations, recordIntent, recstart);
+        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, iterations, recordIntent);
     }
 
     @Test
     public void userWalkCujNTimes() throws Exception {
-        ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
 
         Bundle extras = InstrumentationRegistry.getArguments();
         String preCUJ = extras.getString("pre");
-        String measuredCUJ = extras.getString("measured");
         String postCUJ = extras.getString("post");
-        String sectionFlag = extras.getString("include"); //Tells us which section of the CUJ to walk through
-        int n = Integer.parseInt(extras.getString("n")); // number of iterations
+        String include = extras.getString("include");
+        int n = Integer.parseInt(extras.getString("n"));
+        boolean includeMeasured = "c".equals(include); //tells us whether we should execute the the entire CUJ or just prepatory actions
 
-       shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionFlag, n);
+        ShellUtility shellUtility = new ShellUtility(TIMEOUTMS);
+        shellUtility.walkCujNTimes(preCUJ, postCUJ, includeMeasured, n);
     }
 }
