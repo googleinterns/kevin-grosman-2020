@@ -1,0 +1,1389 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e em emmm u um ummm s sm smmm a----------07-26-2020--23:29:59-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-26-2020--23:32:51-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3262            3262  
+ITERATION 2:  3288            3288  
+ITERATION 3:  3188            3188  
+ITERATION 4:  3154            3154  
+ITERATION 5:  3100            3100  
+ITERATION 6:  3097            3097  
+ITERATION 7:  3143            3143  
+ITERATION 8:  3251            3251  
+ITERATION 9:  3108            3108  
+                                    
+AVERAGE:      3176            3176  
+MEDIAN:       3154            3154  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-26-2020--23:32:51-------------------------------
+
+
+--------------------------------COMPILATION SETTING: em----------07-26-2020--23:35:16-------------------------------
+SIZE DATA:
+
+Size of profile: 25956
+Size of app: 48076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2720            2720  
+ITERATION 2:  2899            2899  
+ITERATION 3:  2907            2907  
+ITERATION 4:  2767            2767  
+ITERATION 5:  2836            2836  
+ITERATION 6:  2763            2763  
+ITERATION 7:  2738            2738  
+ITERATION 8:  2884            2884  
+ITERATION 9:  3335            3335  
+                                    
+AVERAGE:      2872            2872  
+MEDIAN:       2836            2836  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: em----------07-26-2020--23:35:16-------------------------------
+
+
+--------------------------------COMPILATION SETTING: emmm----------07-26-2020--23:40:03-------------------------------
+SIZE DATA:
+
+Size of profile: 36124
+Size of app: 48728
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2692            2692  
+ITERATION 2:  2802            2802  
+ITERATION 3:  2871            2871  
+ITERATION 4:  2751            2751  
+ITERATION 5:  2869            2869  
+ITERATION 6:  2871            2871  
+ITERATION 7:  2871            2871  
+ITERATION 8:  2773            2773  
+ITERATION 9:  2774            2774  
+                                    
+AVERAGE:      2808            2808  
+MEDIAN:       2802            2802  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: emmm----------07-26-2020--23:40:03-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-26-2020--23:50:54-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3427            3427  
+ITERATION 2:  3143            3143  
+ITERATION 3:  3157            3157  
+ITERATION 4:  3223            3223  
+ITERATION 5:  3313            3313  
+ITERATION 6:  3292            3292  
+ITERATION 7:  3245            3245  
+ITERATION 8:  3345            3345  
+ITERATION 9:  3158            3158  
+                                    
+AVERAGE:      3255            3255  
+MEDIAN:       3245            3245  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-26-2020--23:50:54-------------------------------
+
+
+--------------------------------COMPILATION SETTING: um----------07-26-2020--23:53:26-------------------------------
+SIZE DATA:
+
+Size of profile: 56695
+Size of app: 55448
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2906            2906  
+ITERATION 2:  2902            2902  
+ITERATION 3:  2978            2978  
+ITERATION 4:  2924            2924  
+ITERATION 5:  2922            2922  
+ITERATION 6:  2970            2970  
+ITERATION 7:  2939            2939  
+ITERATION 8:  2904            2904  
+ITERATION 9:  2863            2863  
+                                    
+AVERAGE:      2923            2923  
+MEDIAN:       2922            2922  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: um----------07-26-2020--23:53:26-------------------------------
+
+
+--------------------------------COMPILATION SETTING: ummm----------07-26-2020--23:58:45-------------------------------
+SIZE DATA:
+
+Size of profile: 62883
+Size of app: 55800
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3000            3000  
+ITERATION 2:  2923            2923  
+ITERATION 3:  2876            2876  
+ITERATION 4:  2793            2793  
+ITERATION 5:  2811            2811  
+ITERATION 6:  2801            2801  
+ITERATION 7:  2757            2757  
+ITERATION 8:  2851            2851  
+ITERATION 9:  2890            2890  
+                                    
+AVERAGE:      2855            2855  
+MEDIAN:       2851            2851  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: ummm----------07-26-2020--23:58:45-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--00:09:26-------------------------------
+SIZE DATA:
+
+Size of profile: 45454
+Size of app: 59528
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2941            2941  
+ITERATION 2:  2914            2914  
+ITERATION 3:  2925            2925  
+ITERATION 4:  2851            2851  
+ITERATION 5:  2971            2971  
+ITERATION 6:  2817            2817  
+ITERATION 7:  2859            2859  
+ITERATION 8:  2847            2847  
+ITERATION 9:  2778            2778  
+                                    
+AVERAGE:      2878            2878  
+MEDIAN:       2859            2859  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--00:09:26-------------------------------
+
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--00:11:54-------------------------------
+SIZE DATA:
+
+Size of profile: 57152
+Size of app: 60220
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2742            2742  
+ITERATION 2:  2788            2788  
+ITERATION 3:  2801            2801  
+ITERATION 4:  2718            2718  
+ITERATION 5:  2732            2732  
+ITERATION 6:  2788            2788  
+ITERATION 7:  2748            2748  
+ITERATION 8:  2725            2725  
+ITERATION 9:  2706            2706  
+                                    
+AVERAGE:      2749            2749  
+MEDIAN:       2742            2742  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--00:11:54-------------------------------
+
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--00:17:23-------------------------------
+SIZE DATA:
+
+Size of profile: 61563
+Size of app: 60352
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2880            2880  
+ITERATION 2:  2760            2760  
+ITERATION 3:  2927            2927  
+ITERATION 4:  2776            2776  
+ITERATION 5:  2790            2790  
+ITERATION 6:  2824            2824  
+ITERATION 7:  2734            2734  
+ITERATION 8:  2765            2765  
+ITERATION 9:  2866            2866  
+                                    
+AVERAGE:      2813            2813  
+MEDIAN:       2790            2790  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--00:17:23-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--00:28:29-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2670            2670  
+ITERATION 2:  2681            2681  
+ITERATION 3:  2562            2562  
+ITERATION 4:  2567            2567  
+ITERATION 5:  2529            2529  
+ITERATION 6:  2609            2609  
+ITERATION 7:  2703            2703  
+ITERATION 8:  2648            2648  
+ITERATION 9:  2704            2704  
+                                    
+AVERAGE:      2630            2630  
+MEDIAN:       2648            2648  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--00:28:29-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--00:31:06-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3397            3397  
+ITERATION 2:  3398            3398  
+ITERATION 3:  3496            3496  
+ITERATION 4:  3581            3581  
+ITERATION 5:  3558            3558  
+ITERATION 6:  8292            8292  
+ITERATION 7:  3635            3635  
+ITERATION 8:  3483            3483  
+ITERATION 9:  3475            3475  
+                                    
+AVERAGE:      4035            4035  
+MEDIAN:       3496            3496  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--00:31:06-------------------------------
+
+
+--------------------------------COMPILATION SETTING: em----------07-27-2020--00:33:46-------------------------------
+SIZE DATA:
+
+Size of profile: 30541
+Size of app: 48004
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2979            2979  
+ITERATION 2:  3004            3004  
+ITERATION 3:  3054            3054  
+ITERATION 4:  3137            3137  
+ITERATION 5:  3508            3508  
+ITERATION 6:  3059            3059  
+ITERATION 7:  3134            3134  
+ITERATION 8:  3087            3087  
+ITERATION 9:  3346            3346  
+                                    
+AVERAGE:      3145            3145  
+MEDIAN:       3087            3087  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: em----------07-27-2020--00:33:46-------------------------------
+
+
+--------------------------------COMPILATION SETTING: emmm----------07-27-2020--00:39:11-------------------------------
+SIZE DATA:
+
+Size of profile: 28398
+Size of app: 48296
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2954            2954  
+ITERATION 2:  2865            2865  
+ITERATION 3:  2886            2886  
+ITERATION 4:  2856            2856  
+ITERATION 5:  2859            2859  
+ITERATION 6:  3003            3003  
+ITERATION 7:  2983            2983  
+ITERATION 8:  2864            2864  
+ITERATION 9:  2989            2989  
+                                    
+AVERAGE:      2917            2917  
+MEDIAN:       2886            2886  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: emmm----------07-27-2020--00:39:11-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-27-2020--00:49:24-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3418            3418  
+ITERATION 2:  3185            3185  
+ITERATION 3:  3326            3326  
+ITERATION 4:  3387            3387  
+ITERATION 5:  3536            3536  
+ITERATION 6:  3535            3535  
+ITERATION 7:  3568            3568  
+ITERATION 8:  3584            3584  
+ITERATION 9:  3375            3375  
+                                    
+AVERAGE:      3434            3434  
+MEDIAN:       3418            3418  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-27-2020--00:49:24-------------------------------
+
+
+--------------------------------COMPILATION SETTING: um----------07-27-2020--00:52:02-------------------------------
+SIZE DATA:
+
+Size of profile: 57027
+Size of app: 55464
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2855            2855  
+ITERATION 2:  2876            2876  
+ITERATION 3:  2935            2935  
+ITERATION 4:  2908            2908  
+ITERATION 5:  3031            3031  
+ITERATION 6:  3170            3170  
+ITERATION 7:  2999            2999  
+ITERATION 8:  3072            3072  
+ITERATION 9:  3078            3078  
+                                    
+AVERAGE:      2991            2991  
+MEDIAN:       2999            2999  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: um----------07-27-2020--00:52:02-------------------------------
+
+
+--------------------------------COMPILATION SETTING: ummm----------07-27-2020--00:57:08-------------------------------
+SIZE DATA:
+
+Size of profile: 63968
+Size of app: 55652
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3665            3665  
+ITERATION 2:  2850            2850  
+ITERATION 3:  2882            2882  
+ITERATION 4:  2948            2948  
+ITERATION 5:  3259            3259  
+ITERATION 6:  2865            2865  
+ITERATION 7:  2914            2914  
+ITERATION 8:  3037            3037  
+ITERATION 9:  2869            2869  
+                                    
+AVERAGE:      3032            3032  
+MEDIAN:       2914            2914  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: ummm----------07-27-2020--00:57:08-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--01:08:32-------------------------------
+SIZE DATA:
+
+Size of profile: 45454
+Size of app: 59528
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2878            2878  
+ITERATION 2:  2859            2859  
+ITERATION 3:  2852            2852  
+ITERATION 4:  2873            2873  
+ITERATION 5:  2895            2895  
+ITERATION 6:  2965            2965  
+ITERATION 7:  2958            2958  
+ITERATION 8:  2739            2739  
+ITERATION 9:  3026            3026  
+                                    
+AVERAGE:      2893            2893  
+MEDIAN:       2878            2878  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--01:08:32-------------------------------
+
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--01:10:57-------------------------------
+SIZE DATA:
+
+Size of profile: 52431
+Size of app: 60044
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2908            2908  
+ITERATION 2:  2985            2985  
+ITERATION 3:  2878            2878  
+ITERATION 4:  2807            2807  
+ITERATION 5:  2801            2801  
+ITERATION 6:  2827            2827  
+ITERATION 7:  2945            2945  
+ITERATION 8:  2958            2958  
+ITERATION 9:  3032            3032  
+                                    
+AVERAGE:      2904            2904  
+MEDIAN:       2908            2908  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--01:10:57-------------------------------
+
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--01:16:06-------------------------------
+SIZE DATA:
+
+Size of profile: 60857
+Size of app: 60392
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2721            2721  
+ITERATION 2:  2894            2894  
+ITERATION 3:  2805            2805  
+ITERATION 4:  2919            2919  
+ITERATION 5:  2724            2724  
+ITERATION 6:  2739            2739  
+ITERATION 7:  2805            2805  
+ITERATION 8:  2845            2845  
+ITERATION 9:  2872            2872  
+                                    
+AVERAGE:      2813            2813  
+MEDIAN:       2805            2805  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--01:16:06-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--01:26:46-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2506            2506  
+ITERATION 2:  2589            2589  
+ITERATION 3:  2738            2738  
+ITERATION 4:  2626            2626  
+ITERATION 5:  2713            2713  
+ITERATION 6:  2876            2876  
+ITERATION 7:  2611            2611  
+ITERATION 8:  2654            2654  
+ITERATION 9:  2657            2657  
+                                    
+AVERAGE:      2663            2663  
+MEDIAN:       2654            2654  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--01:26:46-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--01:29:23-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3487            3487  
+ITERATION 2:  3471            3471  
+ITERATION 3:  3414            3414  
+ITERATION 4:  3606            3606  
+ITERATION 5:  3445            3445  
+ITERATION 6:  3882            3882  
+ITERATION 7:  3449            3449  
+ITERATION 8:  3891            3891  
+ITERATION 9:  3914            3914  
+                                    
+AVERAGE:      3617            3617  
+MEDIAN:       3487            3487  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--01:29:23-------------------------------
+
+
+--------------------------------COMPILATION SETTING: em----------07-27-2020--01:31:53-------------------------------
+SIZE DATA:
+
+Size of profile: 22264
+Size of app: 47676
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2732            2732  
+ITERATION 2:  3017            3017  
+ITERATION 3:  3018            3018  
+ITERATION 4:  2943            2943  
+ITERATION 5:  2985            2985  
+ITERATION 6:  2992            2992  
+ITERATION 7:  3263            3263  
+ITERATION 8:  3050            3050  
+ITERATION 9:  3093            3093  
+                                    
+AVERAGE:      3010            3010  
+MEDIAN:       3017            3017  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: em----------07-27-2020--01:31:53-------------------------------
+
+
+--------------------------------COMPILATION SETTING: emmm----------07-27-2020--01:37:15-------------------------------
+SIZE DATA:
+
+Size of profile: 33286
+Size of app: 48456
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2851            2851  
+ITERATION 2:  2863            2863  
+ITERATION 3:  2971            2971  
+ITERATION 4:  2866            2866  
+ITERATION 5:  2932            2932  
+ITERATION 6:  2897            2897  
+ITERATION 7:  2963            2963  
+ITERATION 8:  3002            3002  
+ITERATION 9:  3138            3138  
+                                    
+AVERAGE:      2942            2942  
+MEDIAN:       2932            2932  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: emmm----------07-27-2020--01:37:15-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-27-2020--01:48:22-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3525            3525  
+ITERATION 2:  3235            3235  
+ITERATION 3:  3269            3269  
+ITERATION 4:  3210            3210  
+ITERATION 5:  3352            3352  
+ITERATION 6:  3507            3507  
+ITERATION 7:  3517            3517  
+ITERATION 8:  3355            3355  
+ITERATION 9:  3365            3365  
+                                    
+AVERAGE:      3370            3370  
+MEDIAN:       3355            3355  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-27-2020--01:48:22-------------------------------
+
+
+--------------------------------COMPILATION SETTING: um----------07-27-2020--01:50:55-------------------------------
+SIZE DATA:
+
+Size of profile: 55990
+Size of app: 55324
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2865            2865  
+ITERATION 2:  2787            2787  
+ITERATION 3:  3011            3011  
+ITERATION 4:  14650           14650 
+ITERATION 5:  2891            2891  
+ITERATION 6:  2853            2853  
+ITERATION 7:  2940            2940  
+ITERATION 8:  2898            2898  
+ITERATION 9:  2793            2793  
+                                    
+AVERAGE:      4187            4187  
+MEDIAN:       2891            2891  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: um----------07-27-2020--01:50:55-------------------------------
+
+
+--------------------------------COMPILATION SETTING: ummm----------07-27-2020--01:56:34-------------------------------
+SIZE DATA:
+
+Size of profile: 63825
+Size of app: 55852
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+NOTE: 9 iterations of data are missing
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: ummm----------07-27-2020--01:56:34-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--02:07:15-------------------------------
+SIZE DATA:
+
+Size of profile: 45454
+Size of app: 59528
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2742            2742  
+ITERATION 2:  2947            2947  
+ITERATION 3:  3157            3157  
+ITERATION 4:  2849            2849  
+ITERATION 5:  2957            2957  
+ITERATION 6:  2879            2879  
+ITERATION 7:  2943            2943  
+ITERATION 8:  2843            2843  
+ITERATION 9:  3005            3005  
+                                    
+AVERAGE:      2924            2924  
+MEDIAN:       2943            2943  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--02:07:15-------------------------------
+
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--02:09:54-------------------------------
+SIZE DATA:
+
+Size of profile: 55744
+Size of app: 60176
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2536            2536  
+ITERATION 2:  2753            2753  
+ITERATION 3:  2790            2790  
+ITERATION 4:  2726            2726  
+ITERATION 5:  2793            2793  
+ITERATION 6:  2815            2815  
+ITERATION 7:  2924            2924  
+ITERATION 8:  2825            2825  
+ITERATION 9:  2956            2956  
+                                    
+AVERAGE:      2790            2790  
+MEDIAN:       2793            2793  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--02:09:54-------------------------------
+
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--02:14:49-------------------------------
+SIZE DATA:
+
+Size of profile: 59815
+Size of app: 60340
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  26956           26956 
+ITERATION 2:  2625            2625  
+ITERATION 3:  2794            2794  
+ITERATION 4:  2721            2721  
+ITERATION 5:  2749            2749  
+ITERATION 6:  2797            2797  
+ITERATION 7:  2729            2729  
+ITERATION 8:  2844            2844  
+ITERATION 9:  2803            2803  
+                                    
+AVERAGE:      5446            5446  
+MEDIAN:       2794            2794  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--02:14:49-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--02:25:13-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2777            2777  
+ITERATION 2:  2521            2521  
+ITERATION 3:  2542            2542  
+ITERATION 4:  2556            2556  
+ITERATION 5:  2586            2586  
+ITERATION 6:  2666            2666  
+ITERATION 7:  2709            2709  
+ITERATION 8:  2558            2558  
+ITERATION 9:  2575            2575  
+                                    
+AVERAGE:      2610            2610  
+MEDIAN:       2575            2575  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--02:25:13-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--02:27:46-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3407            3407  
+ITERATION 2:  3462            3462  
+ITERATION 3:  3526            3526  
+ITERATION 4:  3812            3812  
+ITERATION 5:  3428            3428  
+ITERATION 6:  3279            3279  
+ITERATION 7:  3422            3422  
+ITERATION 8:  3374            3374  
+ITERATION 9:  3300            3300  
+                                    
+AVERAGE:      3445            3445  
+MEDIAN:       3422            3422  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--02:27:46-------------------------------
+
+
+--------------------------------COMPILATION SETTING: em----------07-27-2020--02:30:09-------------------------------
+SIZE DATA:
+
+Size of profile: 25679
+Size of app: 48064
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2902            2902  
+ITERATION 2:  2799            2799  
+ITERATION 3:  2916            2916  
+ITERATION 4:  3011            3011  
+ITERATION 5:  3153            3153  
+ITERATION 6:  3153            3153  
+ITERATION 7:  2909            2909  
+ITERATION 8:  2933            2933  
+ITERATION 9:  2899            2899  
+                                    
+AVERAGE:      2963            2963  
+MEDIAN:       2916            2916  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: em----------07-27-2020--02:30:09-------------------------------
+
+
+--------------------------------COMPILATION SETTING: emmm----------07-27-2020--02:35:02-------------------------------
+SIZE DATA:
+
+Size of profile: 34818
+Size of app: 48592
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2795            2795  
+ITERATION 2:  2747            2747  
+ITERATION 3:  2793            2793  
+ITERATION 4:  2818            2818  
+ITERATION 5:  2640            2640  
+ITERATION 6:  2720            2720  
+ITERATION 7:  2755            2755  
+ITERATION 8:  2777            2777  
+ITERATION 9:  2748            2748  
+                                    
+AVERAGE:      2754            2754  
+MEDIAN:       2755            2755  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: emmm----------07-27-2020--02:35:02-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-27-2020--02:45:31-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3226            3226  
+ITERATION 2:  3231            3231  
+ITERATION 3:  3253            3253  
+ITERATION 4:  3095            3095  
+ITERATION 5:  3202            3202  
+ITERATION 6:  3170            3170  
+ITERATION 7:  3168            3168  
+ITERATION 8:  3202            3202  
+ITERATION 9:  3169            3169  
+                                    
+AVERAGE:      3190            3190  
+MEDIAN:       3202            3202  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-27-2020--02:45:31-------------------------------
+
+
+--------------------------------COMPILATION SETTING: um----------07-27-2020--02:48:07-------------------------------
+SIZE DATA:
+
+Size of profile: 59286
+Size of app: 55360
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2751            2751  
+ITERATION 2:  2711            2711  
+ITERATION 3:  2870            2870  
+ITERATION 4:  2895            2895  
+ITERATION 5:  2797            2797  
+ITERATION 6:  2935            2935  
+ITERATION 7:  2754            2754  
+ITERATION 8:  2804            2804  
+ITERATION 9:  2691            2691  
+                                    
+AVERAGE:      2800            2800  
+MEDIAN:       2797            2797  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: um----------07-27-2020--02:48:07-------------------------------
+
+
+--------------------------------COMPILATION SETTING: ummm----------07-27-2020--02:53:23-------------------------------
+SIZE DATA:
+
+Size of profile: 63961
+Size of app: 55832
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2836            2836  
+ITERATION 2:  2853            2853  
+ITERATION 3:  2732            2732  
+ITERATION 4:  2739            2739  
+ITERATION 5:  2797            2797  
+ITERATION 6:  2749            2749  
+ITERATION 7:  2819            2819  
+ITERATION 8:  2788            2788  
+ITERATION 9:  2782            2782  
+                                    
+AVERAGE:      2788            2788  
+MEDIAN:       2788            2788  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: ummm----------07-27-2020--02:53:23-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--03:04:13-------------------------------
+SIZE DATA:
+
+Size of profile: 45454
+Size of app: 59524
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2770            2770  
+ITERATION 2:  2724            2724  
+ITERATION 3:  2717            2717  
+ITERATION 4:  2753            2753  
+ITERATION 5:  2790            2790  
+ITERATION 6:  2750            2750  
+ITERATION 7:  2701            2701  
+ITERATION 8:  2804            2804  
+ITERATION 9:  2769            2769  
+                                    
+AVERAGE:      2753            2753  
+MEDIAN:       2753            2753  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--03:04:13-------------------------------
+
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--03:06:52-------------------------------
+SIZE DATA:
+
+Size of profile: 55822
+Size of app: 60228
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2676            2676  
+ITERATION 2:  2891            2891  
+ITERATION 3:  2678            2678  
+ITERATION 4:  2734            2734  
+ITERATION 5:  2750            2750  
+ITERATION 6:  2782            2782  
+ITERATION 7:  2888            2888  
+ITERATION 8:  2686            2686  
+ITERATION 9:  2817            2817  
+                                    
+AVERAGE:      2766            2766  
+MEDIAN:       2750            2750  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--03:06:52-------------------------------
+
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--03:11:56-------------------------------
+SIZE DATA:
+
+Size of profile: 59931
+Size of app: 60352
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2674            2674  
+ITERATION 2:  2710            2710  
+ITERATION 3:  2823            2823  
+ITERATION 4:  2578            2578  
+ITERATION 5:  2633            2633  
+ITERATION 6:  2727            2727  
+ITERATION 7:  2912            2912  
+ITERATION 8:  2758            2758  
+ITERATION 9:  2641            2641  
+                                    
+AVERAGE:      2717            2717  
+MEDIAN:       2710            2710  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--03:11:56-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--03:23:31-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2572            2572  
+ITERATION 2:  2548            2548  
+ITERATION 3:  2637            2637  
+ITERATION 4:  2619            2619  
+ITERATION 5:  2611            2611  
+ITERATION 6:  2478            2478  
+ITERATION 7:  2534            2534  
+ITERATION 8:  2567            2567  
+ITERATION 9:  2554            2554  
+                                    
+AVERAGE:      2568            2568  
+MEDIAN:       2567            2567  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--03:23:31-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--03:26:03-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3254            3254  
+ITERATION 2:  3302            3302  
+ITERATION 3:  3234            3234  
+ITERATION 4:  3147            3147  
+ITERATION 5:  3183            3183  
+ITERATION 6:  3377            3377  
+ITERATION 7:  3399            3399  
+ITERATION 8:  3313            3313  
+ITERATION 9:  3305            3305  
+                                    
+AVERAGE:      3279            3279  
+MEDIAN:       3302            3302  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--03:26:03-------------------------------
+
+
+--------------------------------COMPILATION SETTING: em----------07-27-2020--03:28:36-------------------------------
+SIZE DATA:
+
+Size of profile: 30474
+Size of app: 48076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2823            2823  
+ITERATION 2:  3342            3342  
+ITERATION 3:  2815            2815  
+ITERATION 4:  2806            2806  
+ITERATION 5:  2899            2899  
+ITERATION 6:  2974            2974  
+ITERATION 7:  2918            2918  
+ITERATION 8:  2952            2952  
+ITERATION 9:  2934            2934  
+                                    
+AVERAGE:      2940            2940  
+MEDIAN:       2918            2918  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: em----------07-27-2020--03:28:36-------------------------------
+
+
+--------------------------------COMPILATION SETTING: emmm----------07-27-2020--03:33:56-------------------------------
+SIZE DATA:
+
+Size of profile: 34748
+Size of app: 48488
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2807            2807  
+ITERATION 2:  2911            2911  
+ITERATION 3:  2765            2765  
+ITERATION 4:  2769            2769  
+ITERATION 5:  2770            2770  
+ITERATION 6:  2720            2720  
+ITERATION 7:  2774            2774  
+ITERATION 8:  3142            3142  
+ITERATION 9:  2622            2622  
+                                    
+AVERAGE:      2808            2808  
+MEDIAN:       2770            2770  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: emmm----------07-27-2020--03:33:56-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-27-2020--03:45:16-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2839            2839  
+ITERATION 2:  3123            3123  
+ITERATION 3:  3203            3203  
+ITERATION 4:  3119            3119  
+ITERATION 5:  3147            3147  
+ITERATION 6:  3046            3046  
+ITERATION 7:  3137            3137  
+ITERATION 8:  3038            3038  
+ITERATION 9:  3183            3183  
+                                    
+AVERAGE:      3092            3092  
+MEDIAN:       3123            3123  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-27-2020--03:45:16-------------------------------
+
+
+--------------------------------COMPILATION SETTING: um----------07-27-2020--03:47:52-------------------------------
+SIZE DATA:
+
+Size of profile: 57800
+Size of app: 55612
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  4569            4569  
+ITERATION 2:  2695            2695  
+ITERATION 3:  2755            2755  
+ITERATION 4:  2888            2888  
+ITERATION 5:  2761            2761  
+ITERATION 6:  2947            2947  
+ITERATION 7:  2718            2718  
+ITERATION 8:  2795            2795  
+ITERATION 9:  2924            2924  
+                                    
+AVERAGE:      3005            3005  
+MEDIAN:       2795            2795  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: um----------07-27-2020--03:47:52-------------------------------
+
+
+--------------------------------COMPILATION SETTING: ummm----------07-27-2020--03:53:03-------------------------------
+SIZE DATA:
+
+Size of profile: 59362
+Size of app: 55792
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2697            2697  
+ITERATION 2:  2863            2863  
+ITERATION 3:  3129            3129  
+ITERATION 4:  2724            2724  
+ITERATION 5:  2767            2767  
+ITERATION 6:  2725            2725  
+ITERATION 7:  2798            2798  
+ITERATION 8:  2864            2864  
+ITERATION 9:  2691            2691  
+                                    
+AVERAGE:      2806            2806  
+MEDIAN:       2767            2767  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: ummm----------07-27-2020--03:53:03-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--04:03:12-------------------------------
+SIZE DATA:
+
+Size of profile: 45454
+Size of app: 59528
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2855            2855  
+ITERATION 2:  2818            2818  
+ITERATION 3:  2825            2825  
+ITERATION 4:  2713            2713  
+ITERATION 5:  2871            2871  
+ITERATION 6:  2919            2919  
+ITERATION 7:  2845            2845  
+ITERATION 8:  2846            2846  
+ITERATION 9:  3042            3042  
+                                    
+AVERAGE:      2859            2859  
+MEDIAN:       2846            2846  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s----------07-27-2020--04:03:12-------------------------------
+
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--04:05:37-------------------------------
+SIZE DATA:
+
+Size of profile: 55738
+Size of app: 60192
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2692            2692  
+ITERATION 2:  2742            2742  
+ITERATION 3:  2735            2735  
+ITERATION 4:  2665            2665  
+ITERATION 5:  2775            2775  
+ITERATION 6:  2946            2946  
+ITERATION 7:  2768            2768  
+ITERATION 8:  2651            2651  
+ITERATION 9:  2779            2779  
+                                    
+AVERAGE:      2750            2750  
+MEDIAN:       2742            2742  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: sm----------07-27-2020--04:05:37-------------------------------
+
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--04:10:40-------------------------------
+SIZE DATA:
+
+Size of profile: 60434
+Size of app: 60272
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2740            2740  
+ITERATION 2:  2659            2659  
+ITERATION 3:  2656            2656  
+ITERATION 4:  2764            2764  
+ITERATION 5:  2687            2687  
+ITERATION 6:  2830            2830  
+ITERATION 7:  2672            2672  
+ITERATION 8:  2757            2757  
+ITERATION 9:  2697            2697  
+                                    
+AVERAGE:      2718            2718  
+MEDIAN:       2697            2697  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: smmm----------07-27-2020--04:10:40-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--04:21:00-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2526            2526  
+ITERATION 2:  2559            2559  
+ITERATION 3:  2574            2574  
+ITERATION 4:  2668            2668  
+ITERATION 5:  2572            2572  
+ITERATION 6:  2520            2520  
+ITERATION 7:  2618            2618  
+ITERATION 8:  2592            2592  
+ITERATION 9:  2526            2526  
+                                    
+AVERAGE:      2572            2572  
+MEDIAN:       2572            2572  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--04:21:00-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG emmm: Base: Empty, Actions: [click;Takeout] [click;Takeout] [click;Takeout]
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG um: Base: Cloud, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG ummm: Base: Cloud, Actions: [click;Takeout] [click;Takeout] [click;Takeout]
+ACTIONS COMPILED FOR FLAG s: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG sm: Base: Startup, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG smmm: Base: Startup, Actions: [click;Takeout] [click;Takeout] [click;Takeout]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 45
+NOTE: 9 iterations of data are missing for flag ummm
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+e                45076    3510            3510  
+em               47979    2986            2986  
+emmm             48512    2846            2846  
+u                53208    3268            3268  
+um               55441    3181            3181  
+ummm             55769    2870            2870  
+s                59527    2861            2861  
+sm               60172    2792            2792  
+smmm             60341    3301            3301  
+a                170904   2609            2609  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+e                45076    3399            3399  
+em               48064    2952            2952  
+emmm             48488    2856            2856  
+u                53208    3231            3231  
+um               55448    2898            2898  
+ummm             55800    2850            2850  
+s                59528    2852            2852  
+sm               60192    2782            2782  
+smmm             60352    2760            2760  
+a                170904   2589            2589  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e em emmm u um ummm s sm smmm a----------07-26-2020--23:29:59-----------------------------------------------------------------

@@ -1,0 +1,48 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'start;com.google.android.keep', 'click;Directions to GP', 'click;https'] 
+MEASURED CUJ: ['click;Open']
+POST CUJ:     ['click;Steps & more']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Open]
+ACTIONS COMPILED FOR FLAG emmm: Base: Empty, Actions: [click;Open] [click;Open] [click;Open]
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG um: Base: Cloud, Actions: [click;Open]
+ACTIONS COMPILED FOR FLAG ummm: Base: Cloud, Actions: [click;Open] [click;Open] [click;Open]
+ACTIONS COMPILED FOR FLAG s: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG sm: Base: Startup, Actions: [click;Open]
+ACTIONS COMPILED FOR FLAG smmm: Base: Startup, Actions: [click;Open] [click;Open] [click;Open]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 45
+NOTE: 9 iterations of data are missing for flag emmm
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    4408         4408  
+em               70217    3315         3315  
+emmm             70638    3362         3362  
+u                53208    4181         4181  
+um               71374    3297         3297  
+ummm             71540    3305         3305  
+s                59528    3686         3686  
+sm               70712    3491         3491  
+smmm             71040    3295         3295  
+a                170904   3579         3579  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    4446         4446  
+em               70212    3504         3504  
+emmm             70708    3685         3685  
+u                53208    4077         4077  
+um               71540    3500         3500  
+ummm             71552    3562         3562  
+s                59528    3699         3699  
+sm               70676    3615         3615  
+smmm             71072    3514         3514  
+a                170904   3831         3831  
+************************************************MEGA TEST SUMMARY:*************************************************
