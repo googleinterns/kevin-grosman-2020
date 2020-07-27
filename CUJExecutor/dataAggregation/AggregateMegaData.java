@@ -38,25 +38,25 @@ class AggregateMegaData {
 
 	/**
 	 * Formats a table where the columns, in order, are: compilationFlags, Sizes, col 1 of actionDurations, col 2 of actionDurations, ..., col n of actionDurations.
-	 * Each column is labeled by the data in that column (COMPILATION FLAG, APP SIZE, or in the case of an actionDuration column, the corresponding token in the postCUJ array).
+	 * Each column is labeled by the data in that column (COMPILATION FLAG, APP SIZE, or in the case of an actionDuration column, the corresponding token in the measuredCUJ array).
 	 * If there is no data to place in a table entry, "N/A" is entered.
 	 * This is intended to be helper method for printing measures of central tendency for our data (where the entries in sizes and actionDurations are actually averages, medians, or some other statistic calculated over raw data).
 	 *  
-	 * @param postCUJ - an array of Strings representing the post
+	 * @param measuredCUJ - an array of Strings representing the measured
 	 * @param compilationFlags - a list of the compilation flags used for this test
 	 * @param sizes - a list of size compilationFlags.length. (could contain nulls if no data is recorded for that flag)
-	 * @param actionDurations - list of size compilationFlags.length, where each non-null sublist has length postCUJ.length  - 1 (inner lists could be null if no data is recorded for that flag)
+	 * @param actionDurations - list of size compilationFlags.length, where each non-null sublist has length measuredtCUJ.length (inner lists could be null if no data is recorded for that flag)
 	 *
 	 */
-	public static List<List<String>> formatTable(String[] postCUJ, String[] compilationFlags, List<Integer> sizes, List<List<Integer>> actionDurations) {
+	public static List<List<String>> formatTable(String[] measuredCUJ, String[] compilationFlags, List<Integer> sizes, List<List<Integer>> actionDurations) {
 		List<List<String>> formattedTable = new ArrayList<>();
 
 		//Add first row
 		List<String> firstRow = new ArrayList<>();
 		firstRow.add("COMPILATION FLAG");
 		firstRow.add("APP SIZE");
-		for (int i = 0; i < postCUJ.length - 1; i++) {
-                        String action = postCUJ[i];
+		for (int i = 0; i < measuredCUJ.length; i++) {
+                        String action = measuredCUJ[i];
                         firstRow.add(String.valueOf(action));
                 }
 		firstRow.add("TOTAL");
@@ -68,7 +68,7 @@ class AggregateMegaData {
 			List<String> row = new ArrayList<>();
 			row.add(compilationFlags[flagIdx]);
 			row.add(sizes.get(flagIdx) == null ? "N/A" : String.valueOf(sizes.get(flagIdx)));
-			for (int action = 0; action < postCUJ.length - 1; action++) { //Don't have data for termination action
+			for (int action = 0; action < measuredCUJ.length; action++) { //Don't have data for termination action
 				row.add(actionDurations.get(flagIdx) == null ? "N/A" : String.valueOf(actionDurations.get(flagIdx).get(action)));
 			}
 			row.add(actionDurations.get(flagIdx) == null ? "N/A" : String.valueOf(Utility.sum(actionDurations.get(flagIdx))));
@@ -147,7 +147,7 @@ class AggregateMegaData {
 	 *                    An example file is provided at dataAggregation/mockFiles/mockMegaTestOutput.txt.
          *                   
          * @param outputStream - the location of the file where we should dump the summary table produced by parsing the given data
-         * @param postCUJ - a comma-seperated list of actions of the form specified by the ./executeCuj script
+         * @param measuredCUJ - a comma-seperated list of actions of the form specified by the ./executeCuj script
          * @param totalIters - the total number of iterations expected to have been executed for each flag
          * @param clipDestinationFolder - the folder where we should store the output clip if one is produced
          * @param compilationFlags - a comma-separated list of the compilation flags used in this megaTest
@@ -165,7 +165,7 @@ class AggregateMegaData {
 			System.out.println(s);
 		}
 		
-		String[] postCUJ = args[2].split("\\s*,\\s*");
+		String[] measuredCUJ = args[2].split("\\s*,\\s*");
 		int totalIters = Integer.parseInt(args[3]);
 		String clipDestinationFolder = args[4];
 		String[] compilationFlags = args[5].split(" ");
@@ -205,11 +205,11 @@ class AggregateMegaData {
 		
 		//Print summary
 		ps.printf("\n\nAVERAGED DATA:");
-		List<List<String>> averageFormattedSummary = formatTable(postCUJ, compilationFlags, averageSizes, averageActionDurations);
+		List<List<String>> averageFormattedSummary = formatTable(measuredCUJ, compilationFlags, averageSizes, averageActionDurations);
 		Utility.printFormattedTable(averageFormattedSummary, ps);
 
 		ps.printf("\n\nMEDIANED DATA:");
-		List<List<String>> medianFormattedSummary = formatTable(postCUJ, compilationFlags, medianSizes, medianActionDurations);
+		List<List<String>> medianFormattedSummary = formatTable(measuredCUJ, compilationFlags, medianSizes, medianActionDurations);
 		Utility.printFormattedTable(medianFormattedSummary, ps);
 
 

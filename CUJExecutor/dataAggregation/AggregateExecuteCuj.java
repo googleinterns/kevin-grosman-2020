@@ -29,20 +29,20 @@ class AggregateExecuteCuj {
 	 * Formats a table which includes the duration for each action (plus the total duration) for each iteration, as well as averages and medians over all iterations.
 	 * If there is no data to enter in a table entry, "N/A" is entered.
 	 *  
-	 * @param postCUJ - an array of Strings representing the post
+	 * @param measuredCUJ - an array of Strings representing the measured CUJ
 	 * @param actionDurations - list of lists, each of which holds durations for each of the actions in the measured-actions list, as well as a final total duration
 	 * @param averageActionDurations - the average duration for each action (may be null if no data is recorded)
 	 * @param medianActionDurations - the median duration for each action (may be null if no data is recorded)
 	 *
 	 */
-	public static List<List<String>> formatTable (String[] postCUJ, List<Utility.IterationInfo> allIterationInfos, List<Integer> averageActionDurations, List<Integer> medianActionDurations) {
+	public static List<List<String>> formatTable (String[] measuredCUJ, List<Utility.IterationInfo> allIterationInfos, List<Integer> averageActionDurations, List<Integer> medianActionDurations) {
 		List<List<String>> formattedTable = new ArrayList<>();
 
 		//Add with first row
 		List<String> firstRow = new ArrayList<>();
 		firstRow.add("");
-		for (int i = 0; i < postCUJ.length - 1; i++) { // Don't include the termination action!
-			String action = postCUJ[i];
+		for (int i = 0; i < measuredCUJ.length; i++) {
+			String action = measuredCUJ[i];
 			firstRow.add(String.valueOf(action));
 		}
 		firstRow.add("TOTAL");
@@ -70,7 +70,7 @@ class AggregateExecuteCuj {
 		//Add with average row
 		List<String> averageRow = new ArrayList<>();
 		averageRow.add("AVERAGE:");
-		for (int i = 0; i < postCUJ.length - 1; i++) { //Don't include termination action
+		for (int i = 0; i < measuredCUJ.length; i++) {
 			String averageActionDuration = (averageActionDurations == null) ? "N/A" : String.valueOf(averageActionDurations.get(i));
 			averageRow.add(averageActionDuration);
 		}
@@ -80,7 +80,7 @@ class AggregateExecuteCuj {
 		//Add with median row
 		List<String> medianRow = new ArrayList<>();
 		medianRow.add("MEDIAN:");
-		for (int i = 0; i < postCUJ.length - 1; i++) { //Don't include termination action
+		for (int i = 0; i < measuredCUJ.length; i++) {
 			String medianActionDuration = (medianActionDurations == null) ? "N/A" : String.valueOf(medianActionDurations.get(i));
 			medianRow.add(medianActionDuration);
 		}
@@ -122,7 +122,7 @@ class AggregateExecuteCuj {
 	 *	              dataAggregation/mockFiles/mockExecuteCujOutput.txt.
 	 *	             
 	 * @param outputStream - the location of the file where we should dump the summary table produced by parsing the given data
-	 * @param postCUJ - a comma-seperated list of actions of the form specified by the ./executeCuj script
+	 * @param measuredCUJ - a comma-seperated list of actions of the form specified by the ./executeCuj script
 	 * @param totalIters - the total number of iterations expected to have been executed
 	 * @param clipDestinationFolder - the folder where we should store the output clip if one is produced
 	 * @param trim - "true" or "false", telling us whether we should produce a trimmed clip
@@ -139,7 +139,7 @@ class AggregateExecuteCuj {
 			System.out.println(s);
 		}
 
-		String[] postCUJ = args[2].split("\\s*,\\s*");
+		String[] measuredCUJ = args[2].split("\\s*,\\s*");
 		int totalIters = Integer.parseInt(args[3]);
 		String clipDestinationFolder = args[4];
 		boolean trim = Boolean.parseBoolean(args[5]); //Tell us whether we want to trim the video
@@ -160,7 +160,7 @@ class AggregateExecuteCuj {
 
 		
 		//Print summary
-		List<List<String>> formattedSummary = formatTable(postCUJ, allIterationInfos, averageActionDurations, medianActionDurations);
+		List<List<String>> formattedSummary = formatTable(measuredCUJ, allIterationInfos, averageActionDurations, medianActionDurations);
 		Utility.printFormattedTable(formattedSummary, ps);
 
 		ps.printf(headerFooter);
