@@ -21,7 +21,7 @@
 # If the passed value is a sequence of compilation flags, the first indicates the base profile (a- all, e - empty, u - cloud, s - startup) 
 # and all subsequent flags represent actions to be added to the profile (f - first action, p - preCUJ, m - measuredCUJ, c - preCUJ + measuredCUJ)
 #
-# Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_FLAG>/<DATE>/:
+# Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_FLAG_SEQ>/<DATE>/:
 # - (command_summary.txt) a log of each run command and their output.
 # - (short_summary.txt) a formatted summary including the profile used for compilation, resulting app size and measurements of the MEASURED_CUJ (acquired via a call to executeCUJ). A copy is stored in /tmp for the callee.
 # - (saved_profile.prof) the profile used to compile the app (if applicable). 
@@ -45,9 +45,9 @@
 
 #PARSING INPUTS:
 INPUT_FILE=${1?"ERROR: need to specify an input file and compilation flag"}
-COMPILATION_FLAG=${2?"ERROR: need to specify an input file and compilation flag"} 
+COMPILATION_FLAG_SEQ=${2?"ERROR: need to specify an input file and compilation flag"} 
 
-echo $COMPILATION_FLAG
+echo $COMPILATION_FLAG_SEQ
 
 #Initializing variables
 INPUT_FILE_NAME="${INPUT_FILE##*/}"
@@ -56,13 +56,13 @@ RECORD=$(sed '5q;d' $INPUT_FILE)
 
 #PREPARING OUTPUTS:
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
-HEADER_FOOTER="\n--------------------------------COMPILATION SETTING: ${COMPILATION_FLAG}----------${DATE}-------------------------------"
+HEADER_FOOTER="\n--------------------------------COMPILATION SETTING: ${COMPILATION_FLAG_SEQ}----------${DATE}-------------------------------"
 #Generate the appropriate folder hierarchy if it doesn't already exist
 FOLDER="profile_test_data/${INPUT_FILE_NAME}"
 mkdir $FOLDER 2> /dev/null
-FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG_SEQ}"
 mkdir $FOLDER 2> /dev/null
-FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG}/${DATE}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG_SEQ}/${DATE}"
 mkdir $FOLDER 2> /dev/null
 CLOUD_PROFILE="utilityProfiles/cloudProfile.prof" #location of the saved cloud profile
 EMPTY_PROFILE="utilityProfiles/empty.prof" #location of an empty profile
@@ -106,7 +106,7 @@ echo "" >> $SHORT_SUMMARY
 
 
 
-if [ "$COMPILATION_FLAG" = "a" ] 
+if [ "$COMPILATION_FLAG_SEQ" = "a" ] 
 then 
 	echo "All" > $STASHING_COMPILED_ACTIONS
 
@@ -118,7 +118,7 @@ then
 
 else 	#default case is to attempt to build the profile
 	echo "Building the profile..."
-	output=$(spitToFull "./buildProfile $INPUT_FILE $COMPILATION_FLAG")
+	output=$(spitToFull "./buildProfile $INPUT_FILE $COMPILATION_FLAG_SEQ")
 	
 	echo "Force stopping Maps..."
 	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
