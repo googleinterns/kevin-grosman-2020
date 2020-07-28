@@ -16,21 +16,21 @@
 
 
 ##
-# Compiles aGMM according to the COMPILATION_FLAG_SEQ and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
-# If COMPILATION_FLAG_SEQ is just the location of a profile, this profile is used to compile the app. 
-# If the passed value is a sequence of compilation flags, the first indicates the base profile (a- all, e - empty, u - cloud, s - startup) 
+# Compiles aGMM according to the COMPILATION_SETTING and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
+# If COMPILATION_SETTING is "a", the entire app is compiled.
+# Otherwise, the text before the colon specifies a base profile (e - empty, u - cloud, s - startup, or an arbitrary .prof file) 
 # and all subsequent flags represent actions to be added to the profile (f - first action, p - preCUJ, m - measuredCUJ, c - preCUJ + measuredCUJ)
 #
-# Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_FLAG_SEQ>/<DATE>/:
+# Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_SETTING>/<DATE>/:
 # - (command_summary.txt) a log of each run command and their output.
 # - (short_summary.txt) a formatted summary including the profile used for compilation, resulting app size and measurements of the MEASURED_CUJ (acquired via a call to executeCUJ). A copy is stored in /tmp for the callee.
 # - (saved_profile.prof) the profile used to compile the app (if applicable). 
 # - (median_clip.mp4) a recording of the median iteration (if requested).
 #
 # @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, MEASURED_CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
-# @param COMPILATION_FLAG_SEQ - can either be the location of a .prof file or a sequence of compilation flags for building a new profile, where:
-#				the first specifies the base profile (one of a - all, e - empty, s - startup, or u - cloud)
-#				and all subsequent flags specify an ordered list of sections of the CUJ to be added to the profile (one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
+# @param COMPILATION_SETTING - can either be "a" to specifty that you'd like to compile the entire app or a base profile followed by a colon and then a sequence of compilation flags for building a new profile, where:
+#				the base profile is followed by a colon (e - empty, s - startup, u - cloud, or a .prof file location)
+#				and the (possibly empty sequence following the colon) specifies an ordered list of sections of the CUJ to be added to the profile (each is one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
 # e.g: 
 # 
 # ./megaTest CUJS/takeout.txt utilityProfiles/cloudProfile.prof
@@ -45,25 +45,25 @@
 
 #PARSING INPUTS:
 INPUT_FILE=${1?"ERROR: need to specify an input file and compilation flag"}
-COMPILATION_FLAG_SEQ=${2?"ERROR: need to specify an input file and compilation flag"} 
+COMPILATION_SETTING=${2?"ERROR: need to specify an input file and compilation flag"} 
 
 #Initializing variables
 INPUT_FILE_NAME="${INPUT_FILE##*/}"
 INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}"
 
-COMPILATION_FLAG_SEQ_NAME="${COMPILATION_FLAG_SEQ##*/}"
-COMPILATION_FLAG_SEQ_NAME="${COMPILATION_FLAG_SEQ_NAME%.*}"
+COMPILATION_SETTING_NAME="${COMPILATION_SETTING##*/}"
+COMPILATION_SETTING_NAME="${COMPILATION_SETTING_NAME%.*}"
 RECORD=$(sed '5q;d' $INPUT_FILE)
 
 #PREPARING OUTPUTS:
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
-HEADER_FOOTER="\n--------------------------------COMPILATION SETTING: ${COMPILATION_FLAG_SEQ}----------${DATE}-------------------------------"
+HEADER_FOOTER="\n--------------------------------COMPILATION SETTING: ${COMPILATION_SETTING}----------${DATE}-------------------------------"
 #Generate the appropriate folder hierarchy if it doesn't already exist
 FOLDER="profile_test_data/${INPUT_FILE_NAME}"
 mkdir $FOLDER 2> /dev/null
-FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG_SEQ_NAME}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_SETTING_NAME}"
 mkdir $FOLDER 2> /dev/null
-FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG_SEQ_NAME}/${DATE}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_SETTING_NAME}/${DATE}"
 mkdir $FOLDER 2> /dev/null
 CLOUD_PROFILE="utilityProfiles/cloudProfile.prof" #location of the saved cloud profile
 EMPTY_PROFILE="utilityProfiles/empty.prof" #location of an empty profile
@@ -105,7 +105,7 @@ echo "" >> $SHORT_SUMMARY
 
 
 
-if [ "$COMPILATION_FLAG_SEQ" = "a" ] 
+if [ "$COMPILATION_SETTING" = "a" ] 
 then 
 	echo "All" > $STASHING_COMPILED_ACTIONS
 
@@ -117,7 +117,7 @@ then
 
 else 	#default case is to attempt to build the profile
 	echo "Building the profile..."
-	output=$(spitToFull "./buildProfile $INPUT_FILE $COMPILATION_FLAG_SEQ $STASHED_CREATED_PROFILE")
+	output=$(spitToFull "./buildProfile $INPUT_FILE $COMPILATION_SETTING $STASHED_CREATED_PROFILE")
 	
 	echo "Force stopping Maps..."
 	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")

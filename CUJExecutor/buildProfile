@@ -3,23 +3,20 @@
 
 
 
-# Stashes a profile built based on the passed COMPILATION_FLAG_SEQ. 
-# If the passed value is just the location of a profile, we just save that profile to the stashing location.
-# If the passed value is a sequence of compilation flags, the first is used as the base profile and all subsequent flags determine which actions are to be executed in order to add to the profile.
+# Stashes a profile built based on the passed COMPILATION_SETTING.
+# which is a base profile, followed by a colon, and then a (possibly empty) sequence of compliation flagse
 # 
 # e.g: 
 # 
-# ./buildProfile CUJS/takeout.txt utilityProfiles/cloudProfile.prof
-# 	Result: the cloud profile is copied to /tmp/build_created_profile.txt
+# ./buildProfile CUJS/takeout.txt utilityProfiles/cloudProfile.prof:f
+# 	Result: the cloud profile is copied to /tmp/build_created_profile.txt and then the first action in the cuj is added to the profile
 # 
-# ./buildProfile CUJS/takeout.txt smmp
+# ./buildProfile CUJS/takeout.txt s:mmp
 # 	Result: A profile is built by starting with the startup profile and adding to it by executing the measuredCUJ twice and then the preCUJ once (with appropriate waits after all 3 sections of the CUJ are completed)..
 #
 #
 # @param INPUT_FILE - Formatted with the following on consecutive lines: PRE-CUJ, MEASURED_CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
-# @param COMPILATION_FLAG_SEQ - can either be the location of a .prof file or a sequence of compilation flags for building a new profile, where:
-#				the first specifies the base profile (one of a - all, e - empty, s - startup, or u - cloud)
-#				and all subsequent flags specify an ordered list of sections of the CUJ to be added to the profile (one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
+# @param COMPILATION_SETTING - a base profile (one of a - all, e - empty, s - startup, u - cloud, or a .prof file location) followed by a colon and then an ordered list of sections of the CUJ to be added to the profile (one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
 #
 INPUT_FILE=${1?"ERROR: need to provide an input file and a compilation flag sequence (e.g. amppc)"}
 COMPILATION_SETTING=${2?"ERROR: need to provide an input file and a compilation setting"}
