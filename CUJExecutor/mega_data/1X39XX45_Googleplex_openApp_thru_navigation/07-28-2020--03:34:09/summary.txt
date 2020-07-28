@@ -1,0 +1,32 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG ef: Base: Empty, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG ec: Base: Empty, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 20
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e                45072    4311                                 1238                          2170            1671                       1515               1228                    4449                         2392          18974 
+u                53204    4158                                 1272                          2104            1616                       1465               1235                    4363                         2253          18466 
+ef               59118    3933                                 1177                          1987            1623                       1468               1199                    4252                         2100          17739 
+ec               61432    3823                                 1167                          1887            1566                       1451               1197                    4310                         1944          17345 
+a                170904   4090                                 1157                          1714            1571                       1444               1188                    4166                         1973          17303 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e                45072    4347                                 1381                          2119            1676                       1505               1235                    4493                         2495          19251 
+u                53204    4121                                 1379                          2078            1598                       1457               1235                    4295                         2182          18345 
+ef               59108    3894                                 1280                          1895            1614                       1470               1214                    4300                         2189          17856 
+ec               61400    3730                                 1245                          1826            1585                       1435               1204                    4390                         1890          17305 
+a                170904   3790                                 1221                          1746            1557                       1453               1183                    4208                         2035          17193 
+************************************************MEGA TEST SUMMARY:*************************************************

@@ -1,0 +1,32 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Delivery']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof: Base: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/7_Takeout_search_searchResults/em.prof: Base: utilityProfiles/7_Takeout_search_searchResults/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/delivery_em+takeout_em.prof: Base: utilityProfiles/delivery_em+takeout_em.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 45
+
+AVERAGED DATA:
+COMPILATION FLAG                                                APP SIZE 'click;Delivery' TOTAL 
+e                                                               45075    3354             3354  
+utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof 47992    2952             2952  
+utilityProfiles/7_Takeout_search_searchResults/em.prof          47736    2971             2971  
+utilityProfiles/delivery_em+takeout_em.prof                     48072    2950             2950  
+a                                                               170904   2601             2601  
+
+MEDIANED DATA:
+COMPILATION FLAG                                                APP SIZE 'click;Delivery' TOTAL 
+e                                                               45076    3355             3355  
+utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof 47992    2944             2944  
+utilityProfiles/7_Takeout_search_searchResults/em.prof          47736    2961             2961  
+utilityProfiles/delivery_em+takeout_em.prof                     48072    2951             2951  
+a                                                               170904   2599             2599  
+************************************************MEGA TEST SUMMARY:*************************************************
