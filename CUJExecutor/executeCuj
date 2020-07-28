@@ -26,11 +26,18 @@ echo "CHECKPOINT -5"
 
 INPUT_FILE=${1:-input.txt}
 PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
-POST_CUJ=$(sed '2q;d' $INPUT_FILE)
-echo "CHECKPOINT -4"
-POST_CUJ_STR_ARRAY=$(./peelHardBrackets $POST_CUJ)
-NUM_ITERS=$(sed '3q;d' $INPUT_FILE)
-RECORD=$(sed '4q;d' $INPUT_FILE)
+MEASURED_CUJ=$(sed '2q;d' $INPUT_FILE)
+POST_CUJ=$(sed '3q;d' $INPUT_FILE)
+NUM_ITERS=$(sed '4q;d' $INPUT_FILE)
+RECORD=$(sed '5q;d' $INPUT_FILE)
+
+MEASURED_CUJ_STR_ARRAY=$(./peelHardBrackets $MEASURED_CUJ)
+PRE_CUJ=$(./formatString "$PRE_CUJ")
+MEASURED_CUJ=$(./formatString "$MEASURED_CUJ")
+POST_CUJ=$(./formatString "$POST_CUJ")
+STASHING_SUMMARY_TABLE="/tmp/execute_summary_table.txt"
+STASHING_RAW_DURATIONS="/tmp/execute_raw_durations.txt"
+
 echo "CHECKPOINT -3"
 
 if [ "$RECORD" != "r" ] && [ "$RECORD" != "f" ]
@@ -40,50 +47,26 @@ fi
 
 echo "CHECKPOINT -2"
 
-STASHING_SUMMARY_TABLE="/tmp/execute_summary_table.txt"
-STASHING_RAW_DURATIONS="/tmp/execute_raw_durations.txt"
-
-
-echo "CHECKPOINT -1"
-
-#replace other single quotes by the one recognized by the test
-PRE_CUJ=${PRE_CUJ//\‘/\'}
-PRE_CUJ=${PRE_CUJ//\’/\'}
-POST_CUJ=${POST_CUJ//\‘/\'}
-POST_CUJ=${POST_CUJ//\’/\'}
-
-echo "CHECKPOINT 0"
-
-#use escape char to allow special characters (which would terminate the argument in the am instrument command or do other undesirable things).
-SpecialChars=(";"  "'" "&" "%" "(" ")" "^" "#" "@" "!" "+")
-for char in ${SpecialChars[@]}; do
-	exp="\\${char}"
-	PRE_CUJ=${PRE_CUJ//$exp/\\$char}
-	POST_CUJ=${POST_CUJ//$exp/\\$char}
-done
-# Wrap strings in \" to allow for spaces within them. 
-PRE_CUJ="\\\"$PRE_CUJ\\\""
-POST_CUJ="\\\"$POST_CUJ\\\""
 
 adb logcat -c
 
-echo "CHECKPOINT 1"
+echo "CHECKPOINT -1"
 
 ./gradlew installDebugAndroidTest
 
-echo "CHECKPOINT 2"
+echo "CHECKPOINT 0"
 RECSTART=$(( $(adb shell date '+%s%N') / 1000000))
 if [ "$RECORD" = "r" ] || [ "$RECORD" = "f" ] 
 then 
 	adb shell "screenrecord /sdcard/full_video.mp4" &
-	echo "CHECKPOINT 3"
+	echo "CHECKPOINT 2"
 	PID=$!
 fi 
 
-echo "CHECKPOINT 4"
+echo "CHECKPOINT 1"
 
 #adb shell am force-stop com.google.android.apps.maps
-cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userIterateAndMeasureCuj -e pre $PRE_CUJ -e post $POST_CUJ -e iters $NUM_ITERS -e rec $RECORD -e recstart $RECSTART com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
+cmd="adb shell am instrument -w -e class com.example.firstapp.UserCujTest#userIterateAndMeasureCuj -e pre $PRE_CUJ -e measured $MEASURED_CUJ -e post $POST_CUJ -e iters $NUM_ITERS -e rec $RECORD -e recstart $RECSTART com.example.firstapp.test/androidx.test.runner.AndroidJUnitRunner"
 eval $cmd
 
 LOGGED_DATA=$(adb logcat -s "durations-raw" -v raw -d | sed -n -e '/^\[/p')
@@ -105,6 +88,6 @@ else
 	TRIM="false"
 fi	
 
-java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$POST_CUJ_STR_ARRAY" "$NUM_ITERS" "." "$TRIM"
+java dataAggregation.AggregateExecuteCuj "$STASHING_RAW_DURATIONS" "$STASHING_SUMMARY_TABLE" "$MEASURED_CUJ_STR_ARRAY" "$NUM_ITERS" "." "$TRIM"
 
 adb logcat -s "action-completion" -v raw -d | sed -n -e '/^Executed/p'
