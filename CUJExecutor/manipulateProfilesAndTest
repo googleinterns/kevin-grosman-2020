@@ -47,11 +47,12 @@
 INPUT_FILE=${1?"ERROR: need to specify an input file and compilation flag"}
 COMPILATION_FLAG_SEQ=${2?"ERROR: need to specify an input file and compilation flag"} 
 
-echo $COMPILATION_FLAG_SEQ
-
 #Initializing variables
 INPUT_FILE_NAME="${INPUT_FILE##*/}"
 INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}"
+
+COMPILATION_FLAG_SEQ_NAME="${COMPILATION_FLAG_SEQ##*/}"
+COMPILATION_FLAG_SEQ_NAME="${COMPILATION_FLAG_SEQ_NAME%.*}"
 RECORD=$(sed '5q;d' $INPUT_FILE)
 
 #PREPARING OUTPUTS:
@@ -60,23 +61,24 @@ HEADER_FOOTER="\n--------------------------------COMPILATION SETTING: ${COMPILAT
 #Generate the appropriate folder hierarchy if it doesn't already exist
 FOLDER="profile_test_data/${INPUT_FILE_NAME}"
 mkdir $FOLDER 2> /dev/null
-FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG_SEQ}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG_SEQ_NAME}"
 mkdir $FOLDER 2> /dev/null
-FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG_SEQ}/${DATE}"
+FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_FLAG_SEQ_NAME}/${DATE}"
 mkdir $FOLDER 2> /dev/null
 CLOUD_PROFILE="utilityProfiles/cloudProfile.prof" #location of the saved cloud profile
 EMPTY_PROFILE="utilityProfiles/empty.prof" #location of an empty profile
 CUR_PROFILE="/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof" #location of the cur profile on the device
 REF_PROFILE="/data/misc/profiles/ref/com.google.android.apps.maps/primary.prof" #location of the ref profile on the device
 STASHED_SUMMARY_TABLE="/tmp/execute_summary_table.txt"
-STASHED_CREATED_PROFILE="/tmp/build_created_profile.txt"
+STASHED_CREATED_PROFILE="/tmp/build_created_profile.prof"
 STASHING_APP_SIZE="/tmp/manipulate_app_size.txt" #Contains final app size in case callee (e.g. mega_test) wants it
 STASHING_USED_PROFILE="/tmp/manipulate_created_profile.txt" #Contains the profile used to compile
 STASHING_COMPILED_ACTIONS="/tmp/manipulate_compiled_actions.txt" #Contains the actions used to compile, in case callee (e.g. mega_test) wants it
 STASHING_FOLDER="/tmp/manipulate_folder.txt" #Contains the name of the folder where files for this test live in case callee (e.e. mega_test) wants it
+STASHING_SHORT_SUMMARY="/tmp/manipulate_short_summary.txt" #copy of short summary in case callee (e.g. mega_test) wants it
+TEMP_PHONE_PROFILE="/sdcard/temp_profile.prof"
 COMMAND_SUMMARY="${FOLDER}/command_summary.txt" #contains full summary commands and raw outputs
 SHORT_SUMMARY="${FOLDER}/short_summary.txt" #contains short summary of time data and size of profile/app
-STASHING_SHORT_SUMMARY="/tmp/manipulate_short_summary.txt" #copy of short summary in case callee (e.g. mega_test) wants it
 SAVED_PROFILE="${FOLDER}/saved_profile.prof" #contains short summary of time data and size of profile/app
 MEDIAN_CLIP="${FOLDER}/median_clip.mp4" #contains a clip of the median run if one is requested
 FULL_CLIP="${FOLDER}/full_video.mp4" #contains a clip of the full run if one is requested
@@ -103,9 +105,6 @@ echo "" >> $SHORT_SUMMARY
 
 
 
-
-
-
 if [ "$COMPILATION_FLAG_SEQ" = "a" ] 
 then 
 	echo "All" > $STASHING_COMPILED_ACTIONS
@@ -118,22 +117,22 @@ then
 
 else 	#default case is to attempt to build the profile
 	echo "Building the profile..."
-	output=$(spitToFull "./buildProfile $INPUT_FILE $COMPILATION_FLAG_SEQ")
+	output=$(spitToFull "./buildProfile $INPUT_FILE $COMPILATION_FLAG_SEQ $STASHED_CREATED_PROFILE")
 	
 	echo "Force stopping Maps..."
 	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
 
 	echo "Pushing the created profile..."
-	output=$(spitToFull "adb push $STASHED_CREATED_PROFILE $CUR_PROFILE")
+	output=$(spitToFull "adb push $STASHED_CREATED_PROFILE $TEMP_PHONE_PROFILE")
 
 	echo "Restoring profile permissions"
-	output=$(spitToFull "adb shell chmod a+rw $CUR_PROFILE")
-	
-	echo "Saving the profile..."
-	output=$(spitToFull "adb pull $CUR_PROFILE $SAVED_PROFILE")
+	output=$(spitToFull "adb shell cp $TEMP_PHONE_PROFILE $CUR_PROFILE")
 	
 	echo "Recompiling profile..."  
 	output=$(spitToFull "adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps")
+
+	echo "Saving the profile..."
+	output=$(spitToFull "adb pull $REF_PROFILE $SAVED_PROFILE")
 
 	echo "Getting profile size..."
 	PROFILE_SIZE=$(spitToFull "adb shell stat -c%s $REF_PROFILE")

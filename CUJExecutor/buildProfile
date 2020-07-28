@@ -22,62 +22,59 @@
 #				and all subsequent flags specify an ordered list of sections of the CUJ to be added to the profile (one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
 #
 INPUT_FILE=${1?"ERROR: need to provide an input file and a compilation flag sequence (e.g. amppc)"}
-COMPILATION_FLAG_SEQ=${2?"ERROR: need to provide an input file and a compilation flag"}
+COMPILATION_SETTING=${2?"ERROR: need to provide an input file and a compilation setting"}
+CREATED_PROFILE=${3?"ERROR: need to provide an output location"}
 COMMAND_SUMMARY="/tmp/build_command_summary.txt"
 CLOUD_PROFILE="utilityProfiles/cloudProfile.prof" #location of the saved cloud profile
 EMPTY_PROFILE="utilityProfiles/empty.prof" #location of an empty profile
 STARTUP_PROFILE="utilityProfiles/startup.prof" #location of an startup profile
 CUR_PROFILE="/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof" #location of the cloud profile on the device
+TEMP_PHONE_PROFILE="/sdcard/temp_profile.prof"
 STASHING_COMPILED_ACTIONS="/tmp/manipulate_compiled_actions.txt" #Contains the actions used to compile, in case callee wants it
-BASE_PROFILE=${COMPILATION_FLAG_SEQ:0:1}
-STASHING_CREATED_PROFILE="/tmp/build_created_profile.txt"
+BASE_PROFILE="${COMPILATION_SETTING%:*}"
+if [ "$BASE_PROFILE" = "$COMPILATION_SETTING" ]
+then
+	COMPILATION_FLAG_SEQ=""
+else
+	COMPILATION_FLAG_SEQ="${COMPILATION_SETTING#*:}"
+fi
+
+echo $BASE_PROFILE
+echo $COMPILATION_FLAG_SEQ
+
 
 echo "" > $COMMAND_SUMMARY
-
-
-
-
 
 
 echo "Resetting the profile...."
 adb shell cmd package compile --reset com.google.android.apps.maps
 
 echo "Setting the base profile..."
-#If we're given a file name, set that to be the profile we use and exit
-if [ -f "$COMPILATION_FLAG_SEQ" ] 
-then 
-	
-	FILE_EXTENSION="${COMPILATION_FLAG_SEQ##*.}"
-	echo $FILE_EXTENSION
-	if [ "$FILE_EXTENSION" = "prof" ]
-	then
-		cp $COMPILATION_FLAG_SEQ $STASHING_CREATED_PROFILE
-		echo -n "Base: $COMPILATION_FLAG_SEQ, Actions:" > $STASHING_COMPILED_ACTIONS
-		exit 0
-	fi
-	
-fi
-
-#Otherwise, depending on the flag specified by the first character, set the base profile and build the profile based on each subsequent profile
-if [ "$BASE_PROFILE" = "e" ]
+#If we're given a file name as the base, copy it to the working profile
+if [ -f "$BASE_PROFILE" ] && [ "${BASE_PROFILE##*.}" = "prof" ]
 then
-	cp $EMPTY_PROFILE $STASHING_CREATED_PROFILE
+	cp $BASE_PROFILE $CREATED_PROFILE
+	echo -n "Base: $BASE_PROFILE, Actions:" > $STASHING_COMPILED_ACTIONS
+#Otherwise, set the working profile depending on the flag specified by the base represented by first character
+elif [ "$BASE_PROFILE" = "e" ]
+then
+	cp $EMPTY_PROFILE $CREATED_PROFILE
 	echo -n "Base: Empty, Actions:" > $STASHING_COMPILED_ACTIONS
 elif [ "$BASE_PROFILE" = "u" ]
 then
-	cp $CLOUD_PROFILE $STASHING_CREATED_PROFILE	
+	cp $CLOUD_PROFILE $CREATED_PROFILE	
 	echo -n "Base: Cloud, Actions:" > $STASHING_COMPILED_ACTIONS
 elif [ "$BASE_PROFILE" = "s" ]
 then
-	cp $STARTUP_PROFILE $STASHING_CREATED_PROFILE	
+	cp $STARTUP_PROFILE $CREATED_PROFILE	
 	echo -n "Base: Startup, Actions:" > $STASHING_COMPILED_ACTIONS
 else
-	echo "ERROR: invalid base profile"
+	echo "ERROR: invalid base profile: \"${BASE_PROFILE}\""
 	exit 1
 fi
 
 
-for ((i=1; i<${#COMPILATION_FLAG_SEQ}; i++))
+for ((i=0; i<${#COMPILATION_FLAG_SEQ}; i++))
 do
 	COMPILATION_FLAG="${COMPILATION_FLAG_SEQ:$i:1}"
 
@@ -98,11 +95,11 @@ do
 	fi
 	
 
-	echo "Pushing our working profile"
-	adb push $STASHING_CREATED_PROFILE $CUR_PROFILE
+	echo "Pushing our working profile to the device.."
+	adb push $CREATED_PROFILE $TEMP_PHONE_PROFILE
 
-	echo "Restoring profile permissions"
-	adb shell chmod a+rw $CUR_PROFILE
+	echo "Setting the working profile to be the cur profile"
+	adb shell cp $TEMP_PHONE_PROFILE $CUR_PROFILE
 
 	adb logcat -c
 
@@ -117,7 +114,7 @@ do
 	echo -n " ${COMPILED_ARR}" >> $STASHING_COMPILED_ACTIONS
 
 	echo "Pulling the current profile"
-	adb pull $CUR_PROFILE $STASHING_CREATED_PROFILE
+	adb pull $CUR_PROFILE $CREATED_PROFILE
 
 	echo "Getting profile size..."
 	adb shell stat -c%s $CUR_PROFILE
