@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 
-#INPUT: 2 .prof files stored locally (A, B) and a path to dump the new profile
-#OUTPUT: a new .prof stored at the desired location (whose class/object dump should be A U B)
+#INPUT: any number of .prof files stored locally
+#OUTPUT: a new .prof stored at /tmp/profileUnion_union.prof (whose class/object dump is the union of the dumps of alll passed profiles)
 
 
 PHONE_PROF="/sdcard/profiles/profileUnion_prof_dump.prof"
