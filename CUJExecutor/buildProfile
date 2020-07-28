@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+	
+
+
+
+# Stashes a profile built based on the passed COMPILATION_SETTING.
+# which is a base profile, followed by a colon, and then a (possibly empty) sequence of compliation flagse
+# 
+# e.g: 
+# 
+# ./buildProfile CUJS/takeout.txt utilityProfiles/cloudProfile.prof:f
+# 	Result: the cloud profile is copied to /tmp/build_created_profile.txt and then the first action in the cuj is added to the profile
+# 
+# ./buildProfile CUJS/takeout.txt s:mmp
+# 	Result: A profile is built by starting with the startup profile and adding to it by executing the measuredCUJ twice and then the preCUJ once (with appropriate waits after all 3 sections of the CUJ are completed)..
+#
+#
+# @param INPUT_FILE - Formatted with the following on consecutive lines: PRE-CUJ, MEASURED_CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
+# @param COMPILATION_SETTING - a base profile (one of a - all, e - empty, s - startup, u - cloud, or a .prof file location) followed by a colon and then an ordered list of sections of the CUJ to be added to the profile (one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
+#
+INPUT_FILE=${1?"ERROR: need to provide an input file and a compilation flag sequence (e.g. amppc)"}
+COMPILATION_SETTING=${2?"ERROR: need to provide an input file and a compilation setting"}
+CREATED_PROFILE=${3?"ERROR: need to provide an output location"}
+COMMAND_SUMMARY="/tmp/build_command_summary.txt"
+CLOUD_PROFILE="utilityProfiles/cloudProfile.prof" #location of the saved cloud profile
+EMPTY_PROFILE="utilityProfiles/empty.prof" #location of an empty profile
+STARTUP_PROFILE="utilityProfiles/startup.prof" #location of an startup profile
+CUR_PROFILE="/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof" #location of the cloud profile on the device
+TEMP_PHONE_PROFILE="/sdcard/temp_profile.prof"
+STASHING_COMPILED_ACTIONS="/tmp/manipulate_compiled_actions.txt" #Contains the actions used to compile, in case callee wants it
+BASE_PROFILE="${COMPILATION_SETTING%:*}"
+if [ "$BASE_PROFILE" = "$COMPILATION_SETTING" ]
+then
+	COMPILATION_FLAG_SEQ=""
+else
+	COMPILATION_FLAG_SEQ="${COMPILATION_SETTING#*:}"
+fi
+
+echo $BASE_PROFILE
+echo $COMPILATION_FLAG_SEQ
+
+
+echo "" > $COMMAND_SUMMARY
+
+
+echo "Resetting the profile...."
+adb shell cmd package compile --reset com.google.android.apps.maps
+
+echo "Setting the base profile..."
+#If we're given a file name as the base, copy it to the working profile
+if [ -f "$BASE_PROFILE" ] && [ "${BASE_PROFILE##*.}" = "prof" ]
+then
+	cp $BASE_PROFILE $CREATED_PROFILE
+	echo -n "Base: $BASE_PROFILE, Actions:" > $STASHING_COMPILED_ACTIONS
+#Otherwise, set the working profile depending on the flag specified by the base represented by first character
+elif [ "$BASE_PROFILE" = "e" ]
+then
+	cp $EMPTY_PROFILE $CREATED_PROFILE
+	echo -n "Base: Empty, Actions:" > $STASHING_COMPILED_ACTIONS
+elif [ "$BASE_PROFILE" = "u" ]
+then
+	cp $CLOUD_PROFILE $CREATED_PROFILE	
+	echo -n "Base: Cloud, Actions:" > $STASHING_COMPILED_ACTIONS
+elif [ "$BASE_PROFILE" = "s" ]
+then
+	cp $STARTUP_PROFILE $CREATED_PROFILE	
+	echo -n "Base: Startup, Actions:" > $STASHING_COMPILED_ACTIONS
+else
+	echo "ERROR: invalid base profile: \"${BASE_PROFILE}\""
+	exit 1
+fi
+
+
+for ((i=0; i<${#COMPILATION_FLAG_SEQ}; i++))
+do
+	COMPILATION_FLAG="${COMPILATION_FLAG_SEQ:$i:1}"
+
+	if [ "$COMPILATION_FLAG" != "c" ] && [ "$COMPILATION_FLAG" != "p" ] && [ "$COMPILATION_FLAG" != "f" ] && [ "$COMPILATION_FLAG" != "m" ] 
+	then	
+		echo "Builder actions flag: $COMPILATION_FLAG is invalid"
+		exit 1
+	fi
+
+	if [ "$COMPILATION_FLAG" = "m" ] 
+	then 
+		
+		echo "Executing preparatory actions.."
+		./runCujNTimes $INPUT_FILE p 1
+
+		echo "Waiting for prepatory actions to be added to the profile..."
+		sleep 60
+	fi
+	
+
+	echo "Pushing our working profile to the device.."
+	adb push $CREATED_PROFILE $TEMP_PHONE_PROFILE
+
+	echo "Setting the working profile to be the cur profile"
+	adb shell cp $TEMP_PHONE_PROFILE $CUR_PROFILE
+
+	adb logcat -c
+
+	echo "Executing the actions we'd like in the profile..."
+	./runCujNTimes $INPUT_FILE $COMPILATION_FLAG 1
+	
+	echo "Waiting for the desired actions to be added to the profile..."
+	sleep 60
+
+	echo "Verifying and logging which actions were executed"
+	COMPILED_ARR=$(adb logcat -s "actions-run" -v raw -d | sed -n -e '/^\[/p')
+	echo -n " ${COMPILED_ARR}" >> $STASHING_COMPILED_ACTIONS
+
+	echo "Pulling the current profile"
+	adb pull $CUR_PROFILE $CREATED_PROFILE
+
+	echo "Getting profile size..."
+	adb shell stat -c%s $CUR_PROFILE
+
+	#When a flag is followed by r, runCUjNTimes will execute the rest of the profile leaving off from the section specified by the flag.
+	echo "Finishing the CUJ..." 
+	./runCujNTimes $INPUT_FILE ${COMPILATION_FLAG}r 1
+
+
+	#Want to make sure that app is stopped when we mess with the profiles at start of the loop in callee
+	echo "Force stopping Maps..." 
+	adb shell am force-stop com.google.android.apps.maps
+done
+
+
+
