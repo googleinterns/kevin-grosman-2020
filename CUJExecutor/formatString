@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+STR=${1?"ERROR: no string provided"}
+
+
+
+
+
+STR=${STR//\‘/\'}
+STR=${STR//\‘/\'}
+
+#use escape char to allow special characters (which would terminate the argument in the am instrument command or do other undesirable things).
+SpecialChars=(";"  "'" "&" "%" "(" ")" "^" "#" "@" "!" "+")
+for char in ${SpecialChars[@]}; do
+	exp="\\${char}"
+	STR=${STR//$exp/\\$char}
+done
+# Wrap strings in \" to allow for spaces within them. 
+STR="\\\"$STR\\\""
+
+
+echo "$STR"
+
