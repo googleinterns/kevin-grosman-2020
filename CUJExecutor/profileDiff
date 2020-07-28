@@ -22,7 +22,6 @@ PHONE_A_DIFF_B_PROFILE="/sdcard/profiles/a_diff_b.prof"
 
 APK_LOCATION=$(adb shell "ls /data/app/com.google.android.apps.maps*/base.apk")
 
-echo $APK_LOCATION
 adb push $A $PHONE_A_PROFILE
 adb push $B $PHONE_B_PROFILE
 
