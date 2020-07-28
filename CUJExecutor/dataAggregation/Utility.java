@@ -128,7 +128,7 @@ class Utility {
 	    if (list.size() == 0) return null;
 	    List<IterationInfo> copied = new ArrayList<>(list);
 	    Collections.sort(copied, comparator);
-	    return list.get(copied.size() / 2);
+	    return copied.get(copied.size() / 2);
     	}
 
     /*
