@@ -670,7 +670,7 @@ public class ShellUtility {
 
 
 
-    public void parseUserWalkCujNTimes(String preCUJ, String measuredCUJ, String postCUJ, String sectionFlag, int n) throws Exception {
+    public void parseAndWalkCujNTimes(String preCUJ, String measuredCUJ, String postCUJ, String sectionFlag, int n) throws Exception {
         ShellUtility.CujFlag flag;
         switch (sectionFlag) {
             case "w" :

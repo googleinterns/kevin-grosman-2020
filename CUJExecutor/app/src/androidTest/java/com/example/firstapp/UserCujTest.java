@@ -58,6 +58,6 @@ public class UserCujTest {
         String sectionFlag = extras.getString("include"); //Tells us which section of the CUJ to walk through
         int n = Integer.parseInt(extras.getString("n")); // number of iterations
 
-       shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionFlag, n);
+       shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionFlag, n);
     }
 }
