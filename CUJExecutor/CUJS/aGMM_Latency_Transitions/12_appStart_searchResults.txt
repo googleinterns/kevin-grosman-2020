@@ -1,3 +1,4 @@
 ['start;com.google.android.apps.maps', 'start;com.google.android.keep', 'click;McDonalds Search', 'click;https'] 
-['click;Open', 'click;View map']
+['click;Open']
+['click;View map']
 5

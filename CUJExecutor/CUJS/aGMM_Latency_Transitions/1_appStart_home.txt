@@ -1,4 +1,5 @@
 
-['start;com.google.android.apps.maps', 'click;Takeout']
+['start;com.google.android.apps.maps']
+['click;Takeout']
 10
 

@@ -1,4 +1,5 @@
-['start;com.google.android.apps.maps', 'edit;Search here;Google Office near Mountainview'] 
-['click;Search for', 'click;View map']
+['start;com.google.android.apps.maps', 'edit;Search here;Google Office nearountainview'] 
+['click;google']
+['click;View map']
 5
-f
+

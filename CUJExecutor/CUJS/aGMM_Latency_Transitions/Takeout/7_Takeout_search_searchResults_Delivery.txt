@@ -1,4 +1,4 @@
 ['start;com.google.android.apps.maps']
-['click;Takeout']
+['click;Delivery']
 ['click;View map']
 9

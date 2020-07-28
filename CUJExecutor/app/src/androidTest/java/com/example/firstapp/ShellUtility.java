@@ -65,6 +65,11 @@ public class ShellUtility {
         long actionTimeout;
         String actionString;
 
+        public Action (long actionTimeout, String actionString) {
+            this.actionTimeout = actionTimeout;
+            this.actionString = actionString;
+        }
+
         void setCachedObject(UiObject object) {
             cachedObject = object;
         }
@@ -95,10 +100,9 @@ public class ShellUtility {
     public class StartAction extends Action {
         String pkg;
 
-        public StartAction(String p, long timeoutMillis, String str) {
+        public StartAction(long timeoutMillis, String str, String p) {
+            super(timeoutMillis, str);
             pkg = p;
-            actionTimeout = timeoutMillis;
-            actionString = str;
         }
 
         @Override
@@ -119,11 +123,12 @@ public class ShellUtility {
     public class ClickAction extends Action {
         String text;
         Boolean strict;
-        public ClickAction(String t, Boolean s, long timeoutMillis, String str) {
-            text = t;
-            strict = s;
-            actionTimeout = timeoutMillis;
-            actionString = str;
+        Boolean noop;
+        public ClickAction(long timeoutMillis, String str, String text, Boolean strict, Boolean noop) {
+            super(timeoutMillis, str);
+            this.text = text;
+            this.strict = strict;
+            this.noop = noop;
         }
 
         @Override
@@ -137,7 +142,7 @@ public class ShellUtility {
             }
             if (object2 == null) throw new Exception();
             UiObject object = castToObject(object2);
-            object.click();
+            if (!noop) object.click();
             setCachedObject(object);
             logExecuted();
         }
@@ -146,7 +151,7 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            object.click();
+            if (!noop) object.click();
             logExecuted();
             return getTime();
         }
@@ -155,11 +160,12 @@ public class ShellUtility {
     public class ClickImageAction extends Action {
         String description;
         Boolean strict;
-        public ClickImageAction(String d, Boolean s, long timeoutMillis, String str) {
-            description = d;
-            strict = s;
-            actionTimeout = timeoutMillis;
-            actionString = str;
+        Boolean noop;
+        public ClickImageAction(long timeoutMillis, String str, String description, Boolean strict, Boolean noop) {
+            super(timeoutMillis, str);
+            this.description = description;
+            this.strict = strict;
+            this.noop = noop;
         }
 
         @Override
@@ -173,7 +179,7 @@ public class ShellUtility {
             }
             if (object2 == null) throwImageContentDescriptions(description, actionTimeout);
             UiObject object = castToObject(object2);
-            object.click();
+            if (!noop) object.click();
             setCachedObject(object);
             logExecuted();
         }
@@ -182,7 +188,7 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            object.click();
+            if (!noop) object.click();
             logExecuted();
             return getTime();
         }
@@ -192,12 +198,13 @@ public class ShellUtility {
         String text;
         String entered;
         Boolean strict;
-        public EditAction(String t, String e, Boolean s, long timeoutMillis, String str) {
-            text = t;
-            entered = e;
-            strict = s;
-            actionTimeout = timeoutMillis;
-            actionString = str;
+        Boolean noop;
+        public EditAction(long timeoutMillis, String str, String text, String entered, Boolean strict, Boolean noop) {
+            super(timeoutMillis, str);
+            this.text = text;
+            this.entered = entered;
+            this.strict = strict;
+            this.noop = noop;
         }
 
         @Override
@@ -212,7 +219,7 @@ public class ShellUtility {
             if (object2 == null) throw new Exception();
             UiObject object = getEditableObject(object2);
             object.waitForExists(actionTimeout);
-            object.legacySetText(entered);
+            if (!noop) object.legacySetText(entered);
             setCachedObject(object);
             logExecuted();
         }
@@ -221,14 +228,14 @@ public class ShellUtility {
         long executeCachedAction() throws UiObjectNotFoundException {
             UiObject object = getCachedObject();
             object.waitForExists(actionTimeout);
-            object.legacySetText(entered);
+            if (!noop) object.legacySetText(entered);
             logExecuted();
             return getTime();
         }
     }
     public class ClearAction extends Action {
-        public ClearAction(String str) {
-            actionString = str;
+        public ClearAction(long timeoutMillis, String str) {
+            super(timeoutMillis, str);
         }
         @Override
         void executeUncachedAction() throws Exception {
@@ -242,6 +249,7 @@ public class ShellUtility {
             return time;
         }
     }
+
                                 /******************************
                                  *    APP LIFECYCLE HELPERS
                                  ******************************/
@@ -281,19 +289,19 @@ public class ShellUtility {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         String snapshotResourceId = device.getLauncherPackageName() + ":id/snapshot";
 
-        UiObject2 maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
+        UiObject2 maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 500);
         if (maps_button == null) { //if recent apps page is not already opened, open it
             device.pressRecentApps();
         }
 
-        maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
+        maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 500);
         if (maps_button == null) { //if there are no recent apps, exit recent apps
             device.pressBack();
             return;
         }
         while (maps_button != null) { //clear all recent apps (after last one is cleared, we will be returned to the home screen
             maps_button.swipe(Direction.UP, 1f, 10000);
-            maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 1000);
+            maps_button = device.wait(Until.findObject(By.clazz("android.view.View").res(snapshotResourceId)), 500);
         }
     }
 
@@ -414,41 +422,49 @@ public class ShellUtility {
     public Action parseStringAction(String str, int idx) throws InvalidInputException {
         String[] tokens = str.split(";");
         Action action;
-        boolean strict = tokens[tokens.length - 1].equals("strict");
+        boolean strict = false;
+        boolean noop = false;
+        if (tokens[tokens.length - 1].contains("+")) { //read the flags:
+            for (String flag : tokens[tokens.length - 1].split("\\+")) {
+                if (flag.equals("strict")) strict = true;
+                if (flag.equals("noop")) noop = true;
+            }
+
+        }
         switch (tokens[0]) {
             case "start":
                 if (!(tokens.length == 2)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new StartAction(tokens[1], timeoutMs, str);
+                action = new StartAction(timeoutMs, str, tokens[1]);
                 break;
 
             case "click":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickAction(tokens[1], strict, timeoutMs, str);
+                action = new ClickAction(timeoutMs, str, tokens[1], strict, noop);
                 break;
 
             case "clickImage":
                 if (!(2 <= tokens.length && tokens.length <= 3)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClickImageAction(tokens[1], strict, timeoutMs, str);
+                action = new ClickImageAction(timeoutMs, str, tokens[1], strict, noop);
                 break;
 
             case "edit":
                 if (!(3 <= tokens.length && tokens.length <= 4)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new EditAction(tokens[1], tokens[2], strict, timeoutMs, str);
+                action = new EditAction(timeoutMs, str, tokens[1], tokens[2], strict, noop);
                 break;
 
             case "clearRecentApps":
                 if (!(tokens.length == 1)) {
                     throw new ShellUtility.InvalidInputException("input at index " + idx + " is of an invalid length");
                 }
-                action = new ClearAction(str);
+                action = new ClearAction(timeoutMs, str);
                 break;
 
             default:
@@ -564,6 +580,23 @@ public class ShellUtility {
         }
     }
 
+    /**
+     * Takes >= 1 non-null arrays of strings and concatenates them into one large array
+     */
+    public String[] concat(String[]... arrays) {
+        int totalLen = 0;
+        for (String[] arr : arrays) {
+            totalLen += arr.length;
+        }
+        String[] concatenated = new String[totalLen];
+        int currentPos = 0;
+        for (String[] arr : arrays) {
+            System.arraycopy(arr, 0, concatenated, currentPos, arr.length);
+            currentPos += arr.length;
+        }
+        return concatenated;
+    }
+
 
     /******************************************************************************
      * Executes a CUJ, caches data and then runs through it again iterations times
@@ -577,42 +610,46 @@ public class ShellUtility {
      *
      * @param iterations The number of times to run through and measure the CUJ
      * @param recordIntent Whether the user intends to record the test
+     * @param recstart The time at which the recording began
      ******************************************************************************/
-    public void iterateAndMeasureCuj(String preActionsStr, String cujActionsStr, int iterations, boolean recordIntent, long recstart) throws Exception {
+    public void iterateAndMeasureCuj(String preActionsStr, String measuredActionsStr, String postActionsStr, int iterations, boolean recordIntent, long recstart) throws Exception {
         String[] preCUJ = parseToArray(preActionsStr);
-        String[] postCUJ = parseToArray(cujActionsStr);
-        if (postCUJ.length <= 1) throw new InvalidInputException("Measured CUJ must have length >= 2. Make sure you have a final 'termination' action");
-        String[] cujStrings = new String[preCUJ.length + postCUJ.length];
+        String[] measuredCUJ = parseToArray(measuredActionsStr);
+        String[] postCUJ = parseToArray(postActionsStr);
+        if (postCUJ.length < 1) throw new InvalidInputException("Post CUJ must have length >= 1 in order to measure the last measured action");
+        String[] cujStrings = concat(preCUJ, measuredCUJ, postCUJ);
         long recordingBufMs = recordIntent ? 500 : 0;
-        System.arraycopy(preCUJ, 0, cujStrings, 0, preCUJ.length);
-        System.arraycopy(postCUJ, 0, cujStrings, preCUJ.length, postCUJ.length);
-        Action[] cuj = parseStringCUJ(cujStrings);
 
-        //if (!(cuj[0] instanceof StartAction)) forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
+        Action[] cuj = parseStringCUJ(cujStrings);
 
         //caching run
         cacheCUJ(cuj);
-        sleep(1000);
+        sleep(2000);
 
         //cached runs:
         int iter = -1;
-        long[][] allActionStamps = new long[iterations][postCUJ.length];
-        while (++iter < iterations) {
+        long[][] allActionStamps = new long[iterations][measuredCUJ.length + 1];
 
-            forceQuitApps(); //For CUJS that never launch an app directly, and thus never otherwise clear recent apps
+        while (++iter < iterations) {
             //Execute preparatory actions:
             for (int i = 0; i < preCUJ.length; i++) {
                 cuj[i].executeCachedAction();
             }
 
-            //execute recorded actions:
+            //execute measured actions:
             //start_recording()
             sleep(recordingBufMs);
-            for (int i = preCUJ.length; i < cuj.length; i++) {
+            for (int i = preCUJ.length; i < preCUJ.length + measuredCUJ.length + 1; i++) { //record a time stamp for the first postCUJ action, so we get measuredCUJ.length + 1 timestamps
                  allActionStamps[iter][i - preCUJ.length] = cuj[i].executeCachedAction();
              }
-            sleep(1000); //This is important so that the last action fully registers (if it is a cleanup action!)
             //stop_recording();
+
+            //Execute cleanup actions
+            for (int i = preCUJ.length + measuredCUJ.length + 1; i < cuj.length; i++) {
+                cuj[i].executeCachedAction();
+            }
+            sleep(2000);
+            //This is important so that the last action fully registers (if it is a cleanup action!)
         }
         if (iterations > 0) {
             logData(allActionStamps, recstart);
@@ -621,46 +658,82 @@ public class ShellUtility {
 
 
     public enum CujFlag {
-        ALL,         //entire CUJ
-        ALLBUTLAST,  //entire CUJ, except for last action
-        LAST,        //just the last action
-        PRE,         //preCUJ
-        POST,        //postCUJ
+        PRE,          //preCUJ
+        MEASURED,     //measuredCUJ
+        POST,         //postCUJ
+        PREMEASURED,  //preCUJ + measuredCUJ
+        MEASUREDPOST, //measuredCUJ + postCUJ
         FIRST,       //just the first action
         ALLBUTFIRST, //entire CUJ, except for first action
-        MEASURED     //Measured portion of the CUJ (entire post CUJ except for last action)
+        ALL,          //entire CUJ
     }
 
+
+
+    public void parseUserWalkCujNTimes(String preCUJ, String measuredCUJ, String postCUJ, String sectionFlag, int n) throws Exception {
+        ShellUtility.CujFlag flag;
+        switch (sectionFlag) {
+            case "w" :
+                flag = ShellUtility.CujFlag.ALL;
+                break;
+            case "c" :
+                flag  = ShellUtility.CujFlag.PREMEASURED;
+                break;
+            case "cr" : //Rest after leaving off from PREMEASURED
+                flag = ShellUtility.CujFlag.POST;
+                break;
+            case "p" :
+                flag  = ShellUtility.CujFlag.PRE;
+                break;
+            case "pr" : //Rest after leaving off from PRE
+                flag  = ShellUtility.CujFlag.MEASUREDPOST;
+                break;
+            case "f" :
+                flag  = ShellUtility.CujFlag.FIRST;
+                break;
+            case "fr" : //Rest after leaving off from FIRST
+                flag  = ShellUtility.CujFlag.ALLBUTFIRST;
+                break;
+            case "m" :
+                flag = ShellUtility.CujFlag.MEASURED;
+                break;
+            case "mr" : //Rest after leaving off from MEASURED
+                flag = ShellUtility.CujFlag.POST;
+                break;
+            default:
+                throw new ShellUtility.InvalidInputException("Invalid section flag provided");
+        }
+
+        walkCujNTimes(preCUJ, measuredCUJ, postCUJ, flag, n);
+    }
     /**
-    *  walks through a portion of the CUJ n times as specified by the flag:
+     * walks through a portion of the CUJ n times as specified by the flag:
      *
      */
-    public void walkCujNTimes(String preStr, String cujStr, CujFlag flag, int n) throws Exception {
-        String[] preCUJ = parseToArray(preStr);
-        String[] postCUJ = parseToArray(cujStr);
-        String[] entireCUJ = new String[preCUJ.length + postCUJ.length];
-        System.arraycopy(preCUJ, 0, entireCUJ, 0, preCUJ.length);
-        System.arraycopy(postCUJ, 0, entireCUJ, preCUJ.length, postCUJ.length);
+    public void walkCujNTimes(String preActionsStr, String measuredActionsStr, String postActionsStr, CujFlag flag, int n) throws Exception {
+        String[] preCUJ = parseToArray(preActionsStr);
+        String[] measuredCUJ = parseToArray(measuredActionsStr);
+        String[] postCUJ = parseToArray(postActionsStr);
+        String[] entireCUJ = concat(preCUJ, measuredCUJ, postCUJ);
 
 
         String[] sectionCUJ = null;
 
         switch (flag) {
-            case ALL:
-                sectionCUJ = entireCUJ;
-                break;
-            case ALLBUTLAST:
-                sectionCUJ = new String[entireCUJ.length - 1];
-                System.arraycopy(entireCUJ, 0, sectionCUJ, 0, entireCUJ.length - 1);
-                break;
-            case LAST:
-                sectionCUJ = new String[] {entireCUJ[entireCUJ.length - 1]};
-                break;
             case PRE:
                 sectionCUJ = preCUJ;
                 break;
+            case MEASURED:
+                sectionCUJ = measuredCUJ;
+                break;
             case POST:
                 sectionCUJ = postCUJ;
+                break;
+            case PREMEASURED:
+                sectionCUJ = concat(preCUJ, measuredCUJ);
+                break;
+            case MEASUREDPOST:
+                sectionCUJ = concat(measuredCUJ, postCUJ);
                 break;
             case FIRST:
                 sectionCUJ = new String[] {entireCUJ[0]};
@@ -669,9 +742,8 @@ public class ShellUtility {
                 sectionCUJ = new String[entireCUJ.length - 1];
                 System.arraycopy(entireCUJ, 1, sectionCUJ, 0, entireCUJ.length - 1);
                 break;
-            case MEASURED:
-                sectionCUJ = new String[postCUJ.length - 1];
-                System.arraycopy(postCUJ, 0, sectionCUJ, 0, postCUJ.length - 1);
+            case ALL:
+                sectionCUJ = entireCUJ;
                 break;
         }
 
@@ -679,11 +751,9 @@ public class ShellUtility {
         Action[] cuj = parseStringCUJ(sectionCUJ);
         //run n times:
         for (int k = 0; k < n; k++) {
-            //For CUJS that don't initially launch an app (and thus don't force quit initially)
-            //if (!(cuj[0] instanceof StartAction)) forceQuitApps();
             //Run through cuj once (cached data won't actually be used)
             cacheCUJ(cuj);
-            sleep(1000);
+            sleep(2000); //This is important so that the last action fully registers (if it is a cleanup action!)
         }
 
         Log.i("actions-run", Arrays.toString(sectionCUJ));
