@@ -382,7 +382,7 @@ public class ShellUtilityTest {
         int n = 2;
 
         String sectionCUJ = "w";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, one);
     }
@@ -396,13 +396,13 @@ public class ShellUtilityTest {
         int n = 1;
 
         String sectionCUJ = "c";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, one);
 
 
         sectionCUJ = "cr";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 zero = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);
         assertNotEquals(null, zero);
     }
@@ -415,12 +415,12 @@ public class ShellUtilityTest {
         int n = 1;
 
         String sectionCUJ = "p";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, one);
 
         sectionCUJ = "pr";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 zero = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);
         assertNotEquals(null, zero);
     }
@@ -433,12 +433,12 @@ public class ShellUtilityTest {
         int n = 1;
 
         String sectionCUJ = "f";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 zero = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);
         assertNotEquals(null, zero);
 
         sectionCUJ = "fr";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 three = shellUtility.device.wait(Until.findObject(By.text("3")), TIMEOUT);
         assertNotEquals(null, three);
     }
@@ -451,18 +451,18 @@ public class ShellUtilityTest {
         int n = 1;
 
         String sectionCUJ = "p";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, one);
 
         sectionCUJ = "m";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 two = shellUtility.device.wait(Until.findObject(By.text("2")), TIMEOUT);
         assertNotEquals(null, two);
 
 
         sectionCUJ = "mr";
-        shellUtility.parseUserWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 three = shellUtility.device.wait(Until.findObject(By.text("3")), TIMEOUT);
         assertNotEquals(null, three);
     }
