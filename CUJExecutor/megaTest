@@ -7,11 +7,12 @@
 # - (all_data.txt) a log containing formatted data from each measurement (acquired via a call to manipulateProfilesAndTest).
 # - (summary.txt) a summary containing average action durations for each compilation flag (over all iterations).
 #
-# @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
-# @param COMPILATION_FLAGS (all arguments after INPUT_FILE, e - empty profile, p - compile actions in Pre-CUJ, c - compile entire CUJ, a - compile all code).
+# @param INPUT_FILE (Formatted with the following on consecutive lines: PRE-CUJ, MEASURED_CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
+# @param COMPILATION_FLAGS (all arguments after INPUT_FILE, e - empty profile, m - compile measured CUJ, u - compile with a cloud profile, f- compile first action, p - compile actions in Pre-CUJ, c - compile pre and measured CUJS, a - compile all code). 
+#        Optionally, if f, p, c, or m are followed by a number, n, (e.g. m12), that portion of the CUJ will be run through n times during the creation of the profile. If a, e or u are followed by a number, that number will be ignored.
 
 # Example: ./megaTest CUJS/takeout.txt e p c a 
-# Result: Will loop through compiling on an empty profile, one containing the pre-CUJ, one containing the entire CUJ and one containing all of aGMM, measuring the desired CUJ each time (as specified by the takeout file).
+# Result: Will loop through compiling on an empty profile, one containing the pre-CUJ, one containing the pre and measured CUJs and one containing all of aGMM, measuring the desired CUJ each time (as specified by the takeout file).
 #
 # Example: ./megaTest CUJS/takeout.txt a e
 # Result: Will alternate between compiling all of aGMM and compiling nothing, measuring the desired CUJ each time (as specified by the takeout file).
@@ -21,11 +22,12 @@
 
 INPUT_FILE=${1:-input.txt}
 PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
-POST_CUJ=$(sed '2q;d' $INPUT_FILE)
-ITERS=$(sed '3q;d' $INPUT_FILE)
-RECORD=$(sed '4q;d' $INPUT_FILE)
-POST_CUJ_STR_ARRAY=$(./peelHardBrackets $POST_CUJ) #peel off hard brackets
-LOOPS=7 #Probably should make this an input
+MEASURED_CUJ=$(sed '2q;d' $INPUT_FILE)
+POST_CUJ=$(sed '3q;d' $INPUT_FILE)
+ITERS=$(sed '4q;d' $INPUT_FILE)
+RECORD=$(sed '5q;d' $INPUT_FILE)
+MEASURED_CUJ_STR_ARRAY=$(./peelHardBrackets $MEASURED_CUJ) #peel off hard brackets
+LOOPS=5 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
@@ -34,7 +36,6 @@ STASHED_APP_SIZE="/tmp/manipulate_app_size.txt" #location where ./manipulateProf
 STASHED_FOLDER="/tmp/manipulate_folder.txt" #location where ./manipulateProfilesAndTest will dump its folder
 STASHED_COMPILED_ACTIONS="/tmp/manipulate_compiled_actions.txt"
 STASHED_RAW_DURATIONS="/tmp/execute_raw_durations.txt"
-STASHING_DUMPED_DATA="/tmp/mega_dumped_data.txt"
 STASHING_SUMMARY_TABLES="/tmp/mega_summary_tables.txt"
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
 INPUT_FILE_NAME="${INPUT_FILE##*/}" #remove folders from file name
@@ -45,6 +46,7 @@ FOLDER="mega_data/${INPUT_FILE_NAME}"
 mkdir $FOLDER  2> /dev/null
 FOLDER="mega_data/${INPUT_FILE_NAME}/${DATE}"
 mkdir $FOLDER  2> /dev/null
+STASHING_DUMPED_DATA="${FOLDER}/mega_dumped_data.txt"
 AGGREGATED_DATA_FILE="${FOLDER}/all_data.txt"
 TEST_SUMMARY="${FOLDER}/summary.txt"
 CPU_STATUSES=$(./getCPUs)
@@ -69,7 +71,8 @@ echo $HEADER_FOOTER
 
 echo -e $SUMMARY_HF > $TEST_SUMMARY
 echo "PRE CUJ:      $PRE_CUJ" >> $TEST_SUMMARY
-echo "MEASURED CUJ: $POST_CUJ" >> $TEST_SUMMARY
+echo "MEASURED CUJ: $MEASURED_CUJ" >> $TEST_SUMMARY
+echo "POST CUJ:     $POST_CUJ" >> $TEST_SUMMARY
 echo "" >> $TEST_SUMMARY
 echo "$SECTION_SPLITTER" >> $TEST_SUMMARY
 
@@ -79,7 +82,7 @@ do
 	for COMPILATION_FLAG in "$@"
 	do
 		echo "DOING $COMPILATION_FLAG TEST..." 
-		./manipulateProfilesAndTest $INPUT_FILE ${COMPILATION_FLAG:0:1} ${COMPILATION_FLAG:1}
+		./manipulateProfilesAndTest "$INPUT_FILE" "$COMPILATION_FLAG"
 		echo "" >> $AGGREGATED_DATA_FILE
 		cat $STASHED_SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
 		COMPILED_ACTIONS=$(cat $STASHED_COMPILED_ACTIONS)
@@ -104,7 +107,7 @@ echo "" >> $TEST_SUMMARY
 echo "$SECTION_SPLITTER" >> $TEST_SUMMARY
 
 echo "Generating mega test summary..."
-java dataAggregation.AggregateMegaData "$STASHING_DUMPED_DATA" "$STASHING_SUMMARY_TABLES" "$POST_CUJ_STR_ARRAY" "$TOTAL_ITERS" "$FOLDER" "$*"
+java dataAggregation.AggregateMegaData "$STASHING_DUMPED_DATA" "$STASHING_SUMMARY_TABLES" "$MEASURED_CUJ_STR_ARRAY" "$TOTAL_ITERS" "$FOLDER" "$*"
 
 
 cat $STASHING_SUMMARY_TABLES >> $TEST_SUMMARY

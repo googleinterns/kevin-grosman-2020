@@ -73,7 +73,7 @@ public class ShellUtilityTest {
     public void gettingClickableAncestor() throws ShellUtility.InvalidInputException, UiObjectNotFoundException, InterruptedException, RemoteException, IOException {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         //grab a view that is not clickable (but which has a an ancestor which is)
-        UiObject2 alsoRandomButton = shellUtility.device.wait(Until.findObject(By.textContains("ALSO RANDOM")),TIMEOUT);
+        UiObject2 alsoRandomButton = shellUtility.device.wait(Until.findObject(By.textContains("ALSO RANDOM")), TIMEOUT);
         assertEquals(false, alsoRandomButton.isClickable());
 
         //click on the ancestor
@@ -82,7 +82,7 @@ public class ShellUtilityTest {
         clickable_button.click();
 
         //check whether the desired action took place (previous button should be visible)
-        UiObject2 previousButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")),TIMEOUT);
+        UiObject2 previousButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")), TIMEOUT);
         assertNotEquals(null, previousButton);
     }
 
@@ -95,7 +95,7 @@ public class ShellUtilityTest {
         randomButtonCasted.click();
 
         //ensure that button click worked properly (previous button should be visible)
-        UiObject2 previousButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")),TIMEOUT);
+        UiObject2 previousButton = shellUtility.device.wait(Until.findObject(By.res(BASIC_SAMPLE_PACKAGE, "button_second")), TIMEOUT);
         assertNotEquals(null, previousButton);
     }
 
@@ -103,7 +103,7 @@ public class ShellUtilityTest {
     @Test
     public void gettingEditableAncestor() throws ShellUtility.InvalidInputException, UiObjectNotFoundException, InterruptedException, RemoteException, IOException {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
-        UiObject2 search_text_view = shellUtility.device.wait(Until.findObject(By.textContains("How does this app")),TIMEOUT);
+        UiObject2 search_text_view = shellUtility.device.wait(Until.findObject(By.textContains("How does this app")), TIMEOUT);
         UiObject clickable = shellUtility.getEditableObject(search_text_view);
         clickable.waitForExists(TIMEOUT);
         clickable.legacySetText(entered_text);
@@ -157,34 +157,52 @@ public class ShellUtilityTest {
 
         //Uncached:
         action.executeUncachedAction();
-        UiObject2 zero = shellUtility.device.wait(Until.findObject(By.textContains("0")),TIMEOUT);
+        UiObject2 zero = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);
         assertNotEquals(null, zero);
 
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
-        UiObject2 zeroCached = shellUtility.device.wait(Until.findObject(By.textContains("0")),TIMEOUT);
+        UiObject2 zeroCached = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);
         assertNotEquals(null, zeroCached);
     }
 
     @Test
     public void executingClickActionStrict() throws Exception {
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
-        String str = "click;COUNT;strict";
+        String str = "click;COUNT;+strict";
         ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
 
         //Uncached:
         action.executeUncachedAction();
-        UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
+        UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, one);
 
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
-        UiObject2 oneCached = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
+        UiObject2 oneCached = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, oneCached);
+    }
+
+    @Test
+    public void executingClickActionNoop() throws Exception {
+        String str = "click;RANDOM;+noop";
+        ShellUtility.Action action = shellUtility.parseStringAction(str, 0);
+
+        //Uncached:
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
+        action.executeUncachedAction();
+        UiObject2 count = shellUtility.device.wait(Until.findObject(By.text("COUNT")), TIMEOUT);
+        assertNotEquals(null, count);
+
+        //Cached:
+        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
+        action.executeCachedAction();
+        UiObject2 countCached = shellUtility.device.wait(Until.findObject(By.text("COUNT")), TIMEOUT);
+        assertNotEquals(null, countCached);
     }
 
     @Test
@@ -195,14 +213,14 @@ public class ShellUtilityTest {
 
         //Uncached:
         action.executeUncachedAction();
-        UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
+        UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, one);
 
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
-        UiObject2 oneCached = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
+        UiObject2 oneCached = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, oneCached);
     }
 
@@ -254,14 +272,14 @@ public class ShellUtilityTest {
 
         //Uncached:
         action.executeUncachedAction();
-        UiObject2 one = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
+        UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")),TIMEOUT);
         assertNotEquals(null, one);
 
         shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
 
         //Cached:
         action.executeCachedAction();
-        UiObject2 oneCached = shellUtility.device.wait(Until.findObject(By.textContains("1")),TIMEOUT);
+        UiObject2 oneCached = shellUtility.device.wait(Until.findObject(By.text("1")),TIMEOUT);
         assertNotEquals(null, oneCached);
     }
 
@@ -288,6 +306,16 @@ public class ShellUtilityTest {
         assertEquals("03:25:45.678", shellUtility.milisecondsToTime(time));
     }
 
+    @Test
+    public void concatting() {
+        String[] a = new String[] {"one", "two"};
+        String[] b = new String[0];
+        String[] c = new String[] {"three"};
+
+        assertArrayEquals(new String[]{"one", "two", "three"}, shellUtility.concat(a, b, c));
+
+    }
+
     /**
      * Caching CUJ tests
      */
@@ -295,33 +323,36 @@ public class ShellUtilityTest {
     //Basic clicking test
     @Test
     public void clickTest() throws Exception {
-        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "[]";
+        String measuredCUJ = "[]";
         String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
-        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, 0,false, 0);
-        UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
+
+        shellUtility.iterateAndMeasureCuj(preCUJ, measuredCUJ, postCUJ, 1, false, 0);
+        UiObject2 five = shellUtility.device.wait(Until.findObject(By.text("5")), TIMEOUT);
         assertNotEquals(null, five);
     }
 
     //test Non-empty preCUJ (and shortest acceptable postCUJ), strict matching
 
     @Test
-    public void nonEmptyPreCUJStrictMatching() throws Exception {
-        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
-        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT;strict', 'click;COUNT', 'click;COUNT']";
-        String postCUJ = "['click;COUNT',  'click;COUNT;strict']";
-        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, 0, false, 0);
-        UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
+    public void allCujsNonEmptyStrictMatching() throws Exception {
+        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "']";
+        String measuredCUJ = "['click;COUNT;+strict', 'click;COUNT', 'click;COUNT']";
+        String postCUJ = "['click;COUNT',  'click;COUNT;+strict']";
+
+        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, measuredCUJ, 2, false, 0);
+        UiObject2 five = shellUtility.device.wait(Until.findObject(By.text("5")), TIMEOUT);
         assertNotEquals(null, five);
     }
 
     //test clicking on non-clickables, editing text, using proper substring for matching
     @Test
     public void properSubstringAndClickingOnNonClickables() throws Exception {
-        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
-        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "']";
+        String preCUJ = "";
+        String measuredCUJ =  "['start;" + BASIC_SAMPLE_PACKAGE + "']";
         String postCUJ =  "['click;ALSO RAND', 'click;PREVIOUS', 'edit;How does;Good!']";
-        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, 0, false,  0);
+
+        shellUtility.iterateAndMeasureCuj(preCUJ, measuredCUJ, postCUJ, 1, false,  0);
     }
 
     /**
@@ -331,11 +362,108 @@ public class ShellUtilityTest {
 
     @Test
     public void clickTestCached() throws Exception {
-        shellUtility.launchApp(BASIC_SAMPLE_PACKAGE);
         String preCUJ = "";
-        String postCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
-        shellUtility.iterateAndMeasureCuj(preCUJ, postCUJ, 1,false, 0);
-        UiObject2 five = shellUtility.device.wait(Until.findObject(By.textContains("5")), TIMEOUT);
+        String measuredCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT', 'click;COUNT', 'click;COUNT', 'click;COUNT']";
+        String postCUJ = "['click;COUNT']";
+
+        shellUtility.iterateAndMeasureCuj(preCUJ, measuredCUJ, postCUJ, 1, false, 0);
+        UiObject2 five = shellUtility.device.wait(Until.findObject(By.text("5")), TIMEOUT);
         assertNotEquals(null, five);
     }
-}
+
+    /**
+     * Walk CUJ Tests
+     */
+    @Test
+    public void walkCujW() throws Exception {
+        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "']";
+        String measuredCUJ = "['click;RANDOM']";
+        String postCUJ = "['click;PREVIOUS', 'click;COUNT']";
+        int n = 2;
+
+        String sectionCUJ = "w";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
+        assertNotEquals(null, one);
+    }
+
+
+    @Test
+    public void walkCuj_C_CR() throws Exception {
+        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "']";
+        String measuredCUJ = "['click;COUNT']";
+        String postCUJ = "['click;RANDOM', 'click;PREVIOUS']";
+        int n = 1;
+
+        String sectionCUJ = "c";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
+        assertNotEquals(null, one);
+
+
+        sectionCUJ = "cr";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 zero = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);
+        assertNotEquals(null, zero);
+    }
+
+    @Test
+    public void walkCuj_P_PR() throws Exception {
+        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT']";
+        String measuredCUJ = "['click;COUNT']";
+        String postCUJ = "['click;PREVIOUS']";
+        int n = 1;
+
+        String sectionCUJ = "p";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
+        assertNotEquals(null, one);
+
+        sectionCUJ = "pr";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 zero = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);
+        assertNotEquals(null, zero);
+    }
+
+    @Test
+    public void walkCuj_F_FR() throws Exception {
+        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT']";
+        String measuredCUJ = "['click;COUNT']";
+        String postCUJ = "['click;COUNT']";
+        int n = 1;
+
+        String sectionCUJ = "f";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 zero = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);
+        assertNotEquals(null, zero);
+
+        sectionCUJ = "fr";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 three = shellUtility.device.wait(Until.findObject(By.text("3")), TIMEOUT);
+        assertNotEquals(null, three);
+    }
+
+    @Test
+    public void walkCuj_P_M_MR() throws Exception {
+        String preCUJ = "['start;" + BASIC_SAMPLE_PACKAGE + "', 'click;COUNT']";
+        String measuredCUJ = "['click;COUNT']";
+        String postCUJ = "['click;COUNT']";
+        int n = 1;
+
+        String sectionCUJ = "p";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
+        assertNotEquals(null, one);
+
+        sectionCUJ = "m";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 two = shellUtility.device.wait(Until.findObject(By.text("2")), TIMEOUT);
+        assertNotEquals(null, two);
+
+
+        sectionCUJ = "mr";
+        shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
+        UiObject2 three = shellUtility.device.wait(Until.findObject(By.text("3")), TIMEOUT);
+        assertNotEquals(null, three);
+    }
+}   
