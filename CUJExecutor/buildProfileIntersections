@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# The script performs builds new (non-cached) profiles for your CUJ and compilation profile until the utilityProfiles folder  has enough to create the intersection you want. 
+# Then it performs the intersections up the number you specify, dumping intersections of the first (as ordered by date) i profiles for all  1 <= i <= $NUM_INTERSECTIONS. 
+# The files will be stored in the utilityProfiles folder in the sub-folder corresponding to your CUJ and will be named ${COMPILATION_SETTING}-INTERSECTED_${i}.prof
+#
+# @param INPUT_FILE - Formatted with the following on consecutive lines: PRE-CUJ, MEASURED_CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
+# @param COMPILATION_SETTING - a base profile (one of a - all, e - empty, s - startup, u - cloud, or a .prof file location) followed by a colon and then an ordered list of sections of the CUJ to be added to the profile (one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
+# @param NUM_INTERSECTIONS - the number of intersections you'd like to perform for the given input file and compilation setting
+
+
+INPUT_FILE=${1?"ERROR: need to provide an input file and a compilation flag sequence (e.g. amppc)"}
+COMPILATION_SETTING=${2?"ERROR: need to provide an input file and a compilation setting"}
+NUM_INTERSECTIONS=${3?"ERROR:need to provide a number of intersections you'd like"}
+INPUT_FILE_NAME="${INPUT_FILE##*/}" #remove folders from file name
+INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}" #remove file extension from file name
+SAVED_UTILITY_FOLDER="utilityProfiles/${INPUT_FILE_NAME}"
+mkdir -p $SAVED_UTILITY_FOLDER
+while [ $(ls ${SAVED_UTILITY_FOLDER}/${COMPILATION_SETTING}-NC-* | wc -w) -lt  $NUM_INTERSECTIONS ]
+do
+	echo "Building a new profile"
+	./buildProfile -NC $INPUT_FILE $COMPILATION_SETTING
+done
+
+echo "${SAVED_UTILITY_FOLDER}/${COMPILATION_SETTING}"
+
+./intersectNonCachedProfiles "${SAVED_UTILITY_FOLDER}/${COMPILATION_SETTING}"
+
+
+

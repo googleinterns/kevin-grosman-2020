@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+#Given the prefix file location, we take the list of all non-cached .prof files (files with -NC- after the prefix) with that prefix and take the intersection of each prefix of this list, storing the resulting profiles in the same location that was passed (and with the number of intersections in the file name)
+# 
+# e.g:
+# if the following files exist:
+# - utilityProfiles/start+takeout/e:m-NC-07-30-2020--12:06:50.prof
+# - utilityProfiles/start+takeout/e:m-NC-07-30-2020--12:11:18.prof
+# - utilityProfiles/start+takeout/e:m-NC-07-30-2020--12:23:59.prof
+#
+# And we execute:
+# ./intersectNonCachedProfiles utilityProfiles/start+takeout/e\:m
+#
+# In the folder utilityProfiles/start+takeout, we will see 3 new files:
+# - e:m-INTERSECTED-1.prof, the first file translated to its method/class dump and back
+# - e:m-INTERSECTED-2.prof, the intersection of the first two profiles
+# - e:m-INTERSECTED-3.prof, the intersection of all three profiles
+
+
+
+PREFIX=${1?"Error: no file prefix provided"}
+
+
+FILES=$(ls ${PREFIX}-NC-*)
+
+CURRENT_FILE_LIST=""
+i=0
+for FILE in $FILES
+do
+	CURRENT_FILE_LIST="${CURRENT_FILE_LIST} ${FILE}"
+	((i++))
+	./generalizedProfIntersection $CURRENT_FILE_LIST > ${PREFIX}-INTERSECTED-${i}.prof
+
+	echo "profile intersection for $CURRENT_FILE_LIST has size $(stat -c%s ${PREFIX}-INTERSECTED-${i}.prof)"
+
+done
+
+

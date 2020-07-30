@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+
+#INPUT: any number of .prof files stored locally
+#OUTPUT: a new .prof catted to stdout (whose class/object dump is the intersection of the dumps of all passed profiles)
+
+
+PROF_DUMP="/tmp/profileIntersection_prof_dump.txt"
+INTERSECTION_DUMP="/tmp/profileIntersection_intersection_dump.txt"
+TEMP_INTERSECTION_DUMP="/tmp/profileIntersection_temp_intersection_dump.txt"
+INTERSECTION_PROF="/tmp/profileIntersection_intersection.prof"
+
+
+APK_LOCATION=$(adb shell "ls /data/app/com.google.android.apps.maps*/base.apk")
+
+FIRST="true"
+echo -n "" > $INTERSECTION_DUMP
+for PROF in "$@"
+do
+	./profileToDump $PROF $PROF_DUMP 2>&1 >/dev/null
+	grep '^H' $PROF_DUMP | sed 's/^H//' >> $PROF_DUMP #Inlclude the non-hot versions of all hot methods
+	sort -o $PROF_DUMP $PROF_DUMP #Sort PROF_DUMP
+	#sort -o $INTERSECTION_DUMP $INTERSECTION_DUMP #Sort PROF_DUMP
+
+	#If the intersection dump is empty, set it to be this dump. Otherwise, set it to be the intersection of the current intersection with this dump
+	if [ $FIRST = "true" ]
+	then
+		FIRST="false"
+		cat $PROF_DUMP >> $INTERSECTION_DUMP
+	else
+		comm --check-order -12 $INTERSECTION_DUMP $PROF_DUMP > $TEMP_INTERSECTION_DUMP
+		cat $TEMP_INTERSECTION_DUMP > $INTERSECTION_DUMP
+	fi
+done
+
+
+./dumpToProfile $INTERSECTION_DUMP $INTERSECTION_PROF 2>&1 >/dev/null
+cat $INTERSECTION_PROF
+
+
