@@ -20,14 +20,14 @@
 
 
 
-INPUT_FILE=${1:-input.txt}
+INPUT_FILE=${1?"ERROR: need to provide an input file"}
 PRE_CUJ=$(sed '1q;d' $INPUT_FILE)
 MEASURED_CUJ=$(sed '2q;d' $INPUT_FILE)
 POST_CUJ=$(sed '3q;d' $INPUT_FILE)
 ITERS=$(sed '4q;d' $INPUT_FILE)
 RECORD=$(sed '5q;d' $INPUT_FILE)
 MEASURED_CUJ_STR_ARRAY=$(./peelHardBrackets $MEASURED_CUJ) #peel off hard brackets
-LOOPS=5 #Probably should make this an input
+LOOPS=13 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
@@ -42,10 +42,8 @@ INPUT_FILE_NAME="${INPUT_FILE##*/}" #remove folders from file name
 INPUT_FILE_NAME="${INPUT_FILE_NAME%.*}" #remove file extension from file name
 
 #Create the folder hierarchy for the data produced by the test, if it doesn't exist
-FOLDER="mega_data/${INPUT_FILE_NAME}"
-mkdir $FOLDER  2> /dev/null
 FOLDER="mega_data/${INPUT_FILE_NAME}/${DATE}"
-mkdir $FOLDER  2> /dev/null
+mkdir -p $FOLDER
 STASHING_DUMPED_DATA="${FOLDER}/mega_dumped_data.txt"
 AGGREGATED_DATA_FILE="${FOLDER}/all_data.txt"
 TEST_SUMMARY="${FOLDER}/summary.txt"

@@ -5,30 +5,20 @@
 #OUTPUT: a new .prof stored at /tmp/profileUnion_union.prof (whose class/object dump is the union of the dumps of alll passed profiles)
 
 
-PHONE_PROF="/sdcard/profiles/profileUnion_prof_dump.prof"
 PROF_DUMP="/tmp/profileUnion_prof_dump.txt"
 UNION_DUMP="/tmp/profileUnion_union_dump.txt"
-PHONE_UNION_DUMP="/sdcard/profiles/profileUnion_union_dump.txt"
 UNION_PROF="/tmp/profileUnion_union.prof"
-PHONE_UNION_PROF="/sdcard/profiles/profileUnion_union.prof"
 
-
-APK_LOCATION=$(adb shell "ls /data/app/com.google.android.apps.maps*/base.apk")
+MAPS_PACKAGE="com.google.android.apps.maps"
+APK_LOCATION=$(adb shell "ls /data/app/${MAPS_PACKAGE}*/base.apk")
 
 echo "" > $UNION_DUMP
 for PROF in "$@"
 do
-	adb push $PROF $PHONE_PROF
-	adb shell "profman --dump-classes-and-methods --profile-file=$PHONE_PROF --apk=$APK_LOCATION" > $PROF_DUMP
+	./profileToDump $MAPS_PACKAGE $PROF $PROF_DUMP 2>&1 >/dev/null
 	cat $PROF_DUMP >> $UNION_DUMP
 done
 
-echo "$UNION_DUMP"
-echo $PHONE_UNION_DUMP
 
-adb push $UNION_DUMP $PHONE_UNION_DUMP
-adb shell "profman --create-profile-from=$PHONE_UNION_DUMP --apk=$APK_LOCATION --dex-location=base.apk --reference-profile-file=$PHONE_UNION_PROF"
-adb pull $PHONE_UNION_PROF $UNION_PROF
-
-
-
+./dumpToProfile $MAPS_PACKAGE $UNION_DUMP $UNION_PROF 2>&1 >/dev/null
+cat $UNION_PROF

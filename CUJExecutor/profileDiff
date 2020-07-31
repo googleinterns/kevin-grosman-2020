@@ -20,7 +20,11 @@ PHONE_A_DIFF_B_DUMP_SORTED="/sdcard/profiles/a_diff_b_dump_sorted.txt"
 PHONE_A_DIFF_B_PROFILE="/sdcard/profiles/a_diff_b.prof"
 
 
-APK_LOCATION=$(adb shell "ls /data/app/com.google.android.apps.maps*/base.apk")
+MAPS_PACKAGE="com.google.android.apps.maps"
+
+APK_LOCATION=$(adb shell "ls /data/app/${MAPS_PACKAGE}*/base.apk")
+
+
 
 adb push $A $PHONE_A_PROFILE
 adb push $B $PHONE_B_PROFILE
@@ -30,9 +34,5 @@ adb shell "profman --dump-classes-and-methods --profile-file=$PHONE_B_PROFILE --
 
 comm -23  $A_DUMP_SORTED $B_DUMP_SORTED > $A_DIFF_B_DUMP_SORTED #Returns lines in the first file and not in the second (only works if the common elements have the same order in either file, which is why we sorted)
 
-adb push $A_DIFF_B_DUMP_SORTED $PHONE_A_DIFF_B_DUMP_SORTED
 
-adb shell "profman --create-profile-from=$PHONE_A_DIFF_B_DUMP_SORTED --apk=$APK_LOCATION --dex-location=base.apk --reference-profile-file=$PHONE_A_DIFF_B_PROFILE"
-
-adb pull $PHONE_A_DIFF_B_PROFILE $OUTFILE
-
+./dumpToProfile $MAPS_PACKAGE $A_DIFF_B_DUMP_SORTED $OUTFILE
