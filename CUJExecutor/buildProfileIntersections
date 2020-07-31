@@ -5,7 +5,7 @@
 # i profiles for all  1 <= i <= $NUM_INTERSECTIONS. 
 #
 # The files will be stored in the utilityProfiles folder in the sub-folder corresponding to your CUJ and will be named 
-# ${COMPILATION_SETTING}-INTERSECTED_${i}.prof
+# ${COMPILATION_SETTING}-INTERSECTED-${i}.prof
 #
 # @param INPUT_FILE - Formatted with the following on consecutive lines: PRE-CUJ, MEASURED_CUJ, POST_CUJ, NUM_ITERS, and optionally RECORD (a line 
 # with an "r" to indicate that you'd like to record). See CUJS/ for an example file.

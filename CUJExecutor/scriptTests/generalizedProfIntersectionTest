@@ -1,0 +1,141 @@
+#!/usr/bin/env bash
+
+#Scripts won't work properly if not run from their directory...
+cd .. 
+
+
+										#S - A set of classes and methods.
+										#X - A subset of S.
+
+COLD_DUMP="scriptTests/scriptTestFiles/cold_dump.txt"                     	#Contains S. All cold.
+COLD_PROF="/tmp/test_cold.prof"
+COLD_P1_DUMP="scriptTests/scriptTestFiles/cold_p1_dump.txt" 			#Contains X. All cold.
+COLD_P1_PROF="/tmp/test_cold_p1.prof"
+COLD_P2_DUMP="scriptTests/scriptTestFiles/cold_p2_dump.txt" 			#Contains S\X. All cold
+COLD_P2_PROF="/tmp/test_cold_p2.prof"
+HOT_DUMP="scriptTests/scriptTestFiles/hot_dump.txt" 				#Contains S. All hot.
+HOT_PROF="/tmp/test_hot.prof"
+HOT_P1_DUMP="scriptTests/scriptTestFiles/hot_p1_dump.txt"			#Contains X. All hot
+HOT_P1_PROF="/tmp/test_hot_p1.prof"
+HOT_P2_DUMP="scriptTests/scriptTestFiles/hot_p2_dump.txt"			#Contains S\X. All hot.
+HOT_P2_PROF="/tmp/test_hot_p2.prof"
+HOT_P1_COLD_P2_DUMP="scriptTests/scriptTestFiles/hot_p1_cold_p2_dump.txt"	#Contains X hot and S\X cold.
+HOT_P1_COLD_P2_PROF="/tmp/test_hot_p1_cold_p2.prof"
+INTERSECTION_PROF="/tmp/test_intersection.prof"
+INTERSECTION_DUMP="/tmp/test_intersection_dump.txt"
+EMPTY_DUMP="scriptTests/scriptTestFiles/empty.txt"
+EMPTY_PROF="utilityProfiles/empty.prof"
+MAPS_PACKAGE="com.google.android.apps.maps"
+
+
+./dumpToProfile $COLD_DUMP > $COLD_PROF
+./dumpToProfile $HOT_DUMP > $HOT_PROF
+./dumpToProfile $HOT_P1_DUMP > $HOT_P1_PROF
+./dumpToProfile $HOT_P2_DUMP > $HOT_P2_PROF
+./dumpToProfile $COLD_P1_DUMP > $COLD_P1_PROF
+./dumpToProfile $COLD_P2_DUMP > $COLD_P2_PROF
+./dumpToProfile $HOT_P1_COLD_P2_DUMP > $HOT_P1_COLD_P2_PROF
+
+function assertSetEquals() {
+	FILE1=${1}
+	FILE2=${2}
+	TEST_IDX=${3}
+
+	diff <(sort $FILE1) <(sort $FILE2)
+	EXIT_CODE=$?
+
+	if [ $EXIT_CODE = 0 ]
+	then
+		echo "Test $TEST_IDX Passed!"
+	else
+		echo "TEST $TEST_IDX Failed! Dumps differ."
+		exit 1
+	fi
+}
+
+# TEST 1:
+# Tests whether an intersection with an empty profile will be empty (for a hot profile)
+
+./generalizedProfIntersection $HOT_PROF $EMPTY_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+assertSetEquals $INTERSECTION_DUMP $EMPTY_DUMP 1
+
+# TEST 2:
+# Tests whether a intersection with an empty profile will remain unchanged
+
+./generalizedProfIntersection $COLD_PROF $EMPTY_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+assertSetEquals $INTERSECTION_DUMP $EMPTY_DUMP 2
+
+# TEST 3:
+# Ensures that the intersection of a profile with itself is the original profile (with hot and cold methods)
+
+./generalizedProfIntersection $HOT_P1_COLD_P2_PROF $HOT_P1_COLD_P2_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+
+assertSetEquals $INTERSECTION_DUMP $HOT_P1_COLD_P2_DUMP	3
+
+
+# TEST 4:
+# Ensures that a method that is hot in one profile and cold in another will become cold in the intersection
+
+./generalizedProfIntersection $COLD_PROF $HOT_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+assertSetEquals $INTERSECTION_DUMP $COLD_DUMP 4
+
+
+
+# TEST 5:
+# Ensures that he intersection of two profiles with disjoint class/method dumps works as expected when all methods/classes are all hot
+
+./generalizedProfIntersection $HOT_P1_PROF $HOT_P2_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+assertSetEquals $INTERSECTION_DUMP $EMPTY_DUMP 5
+
+# TEST 6:
+# Ensures that he intersection of two profiles with disjoint class/method dumps works as expected when some methods are cold, some are hot
+
+./generalizedProfIntersection $HOT_P1_PROF $COLD_P2_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+assertSetEquals $INTERSECTION_DUMP $EMPTY_DUMP 6
+
+
+# TEST 7:
+# Ensures that he intersection of two profiles with non-disjoint class/method dumps works as expected
+
+./generalizedProfIntersection $HOT_P1_PROF $COLD_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+assertSetEquals $INTERSECTION_DUMP $COLD_P1_DUMP 7
+
+# TEST 8:
+# Ensures that he intersection of two profiles with non-disjoint class/method dumps works as expected
+
+./generalizedProfIntersection $COLD_P1_PROF $HOT_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+assertSetEquals $INTERSECTION_DUMP $COLD_P1_DUMP 8
+
+# TEST 9:
+# Ensures that he intersection of two profiles with non-disjoint class/method dumps works as expected
+
+./generalizedProfIntersection $COLD_P1_PROF $HOT_PROF > $INTERSECTION_PROF
+
+./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+
+assertSetEquals $INTERSECTION_DUMP $COLD_P1_DUMP 9
+

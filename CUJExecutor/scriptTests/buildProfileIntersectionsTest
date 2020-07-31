@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+
+cd ..
+STARTUP_CUJ="CUJS/startup.txt"
+PROF_FOLDER="utilityProfiles/startup"
+NUM_INTERSECTIONS=5
+INTERSECTION_PROF="/tmp/test_intersection.prof"
+INTERSECTION_DUMP="/tmp/test_intersection_dump.txt"
+cur_PROF_DUMP="/tmp_test_cur_dump.txt"
+next_PROF_DUMP="/tmp_test_next_dump.txt"
+UNION_PROF="/tmp/test_union.prof"
+UNION_DUMP="/tmp/test_union_dump.txt"
+EMPTY_DUMP="scriptTests/scriptTestFiles/empty.txt"
+EMPTY_PROF="utilityProfiles/empty.prof"
+
+function assertSetEquals() {
+        FILE1=${1}
+        FILE2=${2}
+        TEST_IDX=${3}
+
+        diff <(sort $FILE1) <(sort $FILE2)
+        EXIT_CODE=$?
+
+        if [ $EXIT_CODE = 0 ]
+        then
+                echo "Test $TEST_IDX Passed!"
+        else
+                echo "TEST $TEST_IDX Failed! Dumps differ."
+                exit 1
+        fi
+}
+
+
+
+./buildProfileIntersections $STARTUP_CUJ e:m $NUM_INTERSECTIONS
+
+#Test 1: dump of the first intersection should be the same as the dump 
+
+
+
+for ((i=1;i<$NUM_INTERSECTIONS;i++))
+do
+	cur=$i
+	next=$(($i+1))
+	cur_PROF=${PROF_FOLDER}/e:m-INTERSECTED-${cur}.prof
+	next_PROF=${PROF_FOLDER}/e:m-INTERSECTED-${next}.prof
+
+	./profileToDump $cur_PROF > $cur_PROF_DUMP
+	./profileToDump $next_PROF > $next_PROF_DUMP
+
+	#We expect each profile to be a superset of the next profile (since the next profile should be an intersection of it with another profile)
+
+
+	#Test 1: Intersection is the first profile
+	./generalizedProfIntersection $cur_PROF $next_PROF > $INTERSECTION_PROF
+	./profileToDump $INTERSECTION_PROF > $INTERSECTION_DUMP
+	assertSetEquals $INTERSECTION_DUMP $next_PROF_DUMP "asserting that $cur_PROF is a superset of $next_PROF via a set intersection"
+
+	#Test 2: Union is the second profile
+	./generalizedProfUnion $cur_PROF $next_PROF > $UNION_PROF
+	./profileToDump $UNION_PROF > $UNION_DUMP
+	assertSetEquals $UNION_DUMP $cur_PROF_DUMP "asserting that $cur_PROF is a superset of $next_PROF via a intersection"
+
+
+
+
+done
+
+
+
