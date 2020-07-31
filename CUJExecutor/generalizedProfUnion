@@ -9,16 +9,16 @@ PROF_DUMP="/tmp/profileUnion_prof_dump.txt"
 UNION_DUMP="/tmp/profileUnion_union_dump.txt"
 UNION_PROF="/tmp/profileUnion_union.prof"
 
-
-APK_LOCATION=$(adb shell "ls /data/app/com.google.android.apps.maps*/base.apk")
+MAPS_PACKAGE="com.google.android.apps.maps"
+APK_LOCATION=$(adb shell "ls /data/app/${MAPS_PACKAGE}*/base.apk")
 
 echo "" > $UNION_DUMP
 for PROF in "$@"
 do
-	./profileToDump $PROF $PROF_DUMP
+	./profileToDump $MAPS_PACKAGE $PROF $PROF_DUMP 2>&1 >/dev/null
 	cat $PROF_DUMP >> $UNION_DUMP
 done
 
 
-./dumpToProfile $UNION_DUMP $UNION_PROF
+./dumpToProfile $MAPS_PACKAGE $UNION_DUMP $UNION_PROF 2>&1 >/dev/null
 cat $UNION_PROF

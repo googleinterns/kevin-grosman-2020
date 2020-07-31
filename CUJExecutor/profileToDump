@@ -3,13 +3,13 @@
 #INPUT: a profile and a location for the dump
 #OUTPUT: puts the clases-and-methods dump at the location
 
-PROFILE=${1?"ERROR: need to provide a .prof filepath for the resulting profile"}
-DUMP=${2?"ERROR: need to provide a dump file"}
+PACKAGE=${1?"ERROR: need to provide a package name for the app"}
+PROFILE=${2?"ERROR: need to provide a .prof filepath for the resulting profile"}
+DUMP=${3?"ERROR: need to provide a dump file"}
 PHONE_PROFILE="/sdcard/profiles/profileIntersection_intersection.prof"
 
 
-APK_LOCATION=$(adb shell "ls /data/app/com.google.android.apps.maps*/base.apk")
-
+APK_LOCATION=$(adb shell "ls /data/app/${PACKAGE}*/base.apk")
 
 
 adb push $PROFILE $PHONE_PROFILE
