@@ -17,16 +17,16 @@ EMPTY_PROF="utilityProfiles/empty.prof"
 function assertSetEquals() {
         FILE1=${1}
         FILE2=${2}
-        TEST_IDX=${3}
+        TEST_NAME=${3}
 
         diff <(sort $FILE1) <(sort $FILE2)
         EXIT_CODE=$?
 
         if [ $EXIT_CODE = 0 ]
         then
-                echo "Test $TEST_IDX Passed!"
+                echo "Test $TEST_NAME Passed!"
         else
-                echo "TEST $TEST_IDX Failed! Dumps differ."
+                echo "TEST $TEST_NAME Failed! Dumps differ."
                 exit 1
         fi
 }
