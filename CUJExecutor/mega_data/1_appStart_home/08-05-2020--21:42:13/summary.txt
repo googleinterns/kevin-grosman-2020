@@ -1,0 +1,76 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps']
+POST CUJ:     ['click;Takeout']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG e:m_keep_L:
+Base: utilityProfiles/1_appStart_home/e:m_keep_L.prof, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 8133; 
+
+INFO FOR FLAG e:m_keep_HSPL:
+Base: utilityProfiles/1_appStart_home/e:m_keep_HSPL.prof, Actions:
+Profile tag counts: HSPL: 17451; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG e:m_keep_HSPL_HPL:
+Base: utilityProfiles/1_appStart_home/e:m_keep_HSPL_HPL.prof, Actions:
+Profile tag counts: HSPL: 17451; HPL: 249; PL: 0; L: 0; 
+
+INFO FOR FLAG e:m_keep_HSPL_HPL_L:
+Base: utilityProfiles/1_appStart_home/e:m_keep_HSPL_HPL_L.prof, Actions:
+Profile tag counts: HSPL: 17451; HPL: 249; PL: 0; L: 8133; 
+
+INFO FOR FLAG e:m:
+Base: utilityProfiles/1_appStart_home/e:m.prof, Actions:
+Profile tag counts: HSPL: 17451; HPL: 249; PL: 8888; L: 8133; 
+
+INFO FOR FLAG e:m_HnoL:
+Base: utilityProfiles/1_appStart_home/e:m_HnoL.prof, Actions:
+Profile tag counts: HSPL: 17451; HPL: 9137; PL: 0; L: 0; 
+
+INFO FOR FLAG e:mh:
+Base: utilityProfiles/1_appStart_home/e:mh.prof, Actions:
+Profile tag counts: HSPL: 17451; HPL: 9137; PL: 0; L: 8133; 
+
+INFO FOR FLAG e:m_conv_to_HSPL_keep_L:
+Base: utilityProfiles/1_appStart_home/e:m_conv_to_HSPL_keep_L.prof, Actions:
+Profile tag counts: HSPL: 26588; HPL: 0; PL: 0; L: 8133; 
+
+INFO FOR FLAG a:
+All
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 287
+
+AVERAGED DATA:
+COMPILATION FLAG        APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:                      45076    2070                                 2070  
+e:m_keep_L              47524    2020                                 2020  
+e:m_keep_HSPL           56080    1710                                 1710  
+e:m_keep_HSPL_HPL       56388    1658                                 1658  
+e:m_keep_HSPL_HPL_L     58884    1598                                 1598  
+e:m                     58964    1598                                 1598  
+e:m_HnoL                61916    1593                                 1593  
+e:mh                    64420    1530                                 1530  
+e:m_conv_to_HSPL_keep_L 64516    1536                                 1536  
+a                       170908   1602                                 1602  
+
+MEDIANED DATA:
+COMPILATION FLAG        APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:                      45076    2046                                 2046  
+e:m_keep_L              47524    1995                                 1995  
+e:m_keep_HSPL           56080    1700                                 1700  
+e:m_keep_HSPL_HPL       56388    1642                                 1642  
+e:m_keep_HSPL_HPL_L     58884    1588                                 1588  
+e:m                     58964    1584                                 1584  
+e:m_HnoL                61916    1583                                 1583  
+e:mh                    64420    1522                                 1522  
+e:m_conv_to_HSPL_keep_L 64516    1526                                 1526  
+a                       170908   1587                                 1587  
+************************************************MEGA TEST SUMMARY:*************************************************
