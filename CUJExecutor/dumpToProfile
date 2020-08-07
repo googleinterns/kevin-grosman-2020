@@ -5,6 +5,13 @@
 
 DUMP=${1?"ERROR: need to provide a dump file"}
 PACKAGE=${2:-com.google.android.apps.maps}
+
+if [ ! -f "$DUMP" ]  || [ "${DUMP##*.}" != "txt" ]
+then
+	>&2 echo "ERROR: provided dump is not a valid .txt file"
+	exit 1
+fi
+
 PHONE_DUMP="/sdcard/profiles/dump.txt"
 PHONE_PROFILE="/sdcard/profiles/profileIntersection_intersection.prof"
 

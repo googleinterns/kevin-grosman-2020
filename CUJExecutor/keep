@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#Prints out a profile which only keeps the dump entries with the passed tags (all arguments after the profile are interpretted as an entry tag
+
+PROFILE=${1}
+echo -n "" > hotDump.txt
+shift
+for KEEP in $@
+do
+	./profileToDump $PROFILE | grep "^${KEEP}"  >> hotDump.txt
+done
+./dumpToProfile hotDump.txt

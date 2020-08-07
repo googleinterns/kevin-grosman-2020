@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+PROFILE=${1?"ERROR: need to provide a profile"}
+DUMP="/tmp/back_dump.txt"
+
+./profileToDump $PROFILE > $DUMP
+
+shift
+for TAG in $@
+do
+	grep "^${TAG}" $DUMP | sed 's/->.*//' | sed "s/^${TAG}/L/" >> $DUMP
+done
+
+
+./dumpToProfile $DUMP

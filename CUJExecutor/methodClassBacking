@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+FILE=${1?"ERROR: need to provide a file"}
+
+#If we are provided a profile, convert it to it's dump. If we were given a text file, interpret it as the dump
+if [ "${FILE##*.}" = "prof" ]
+then
+	DUMP="/tmp/methodClassBacking_dump.txt"
+	./profileToDump $FILE > $DUMP
+elif [ "${FILE##*.}" = "txt" ]
+then
+	DUMP=$FILE
+else
+	echo "ERROR: file must have extension txt or prof"
+	exit 1
+fi
+
+
+
+NON_BACKED="/tmp/methodClassBacking_non_backed.txt"
+BACKED="/tmp/methodClassBacking_backed.txt"
+echo -n "" > $NON_BACKED
+echo -n "" > $BACKED
+
+
+for CLASS in $(sed 's/^[HSPL]*//' $DUMP | sed 's/->.*//' | sort -u) #Iterate through the classes attached to each entry
+do
+	L_ENTRY=$(grep "^L${CLASS}" $DUMP)
+	#HSPL_ENTRY=$(grep "^HSPL${CLASS}" $DUMP)
+	#HPL_ENTRY=$(grep "^HPL${CLASS}" $DUMP)
+	#PL_ENTRY=$(grep "^PL${CLASS}" $DUMP)
+	#if [ "$HSPL_ENTRY" = "" ] && [ "$HPL_ENTRY" = "" ] && [ "$PL_ENTRY" != "" ]
+	#then
+	#	echo "interesting class... $CLASS"
+	#	if [ "$L_ENTRY" = "" ]
+	#	then
+	#		echo "NOT BACKED!"
+	#	else
+	#		echo "BACKED"
+	#	fi
+	#fi
+	if [ "$L_ENTRY" = "" ]
+	then
+
+		grep "^[HSPL]*${CLASS}" $DUMP >> $NON_BACKED
+		#echo "NO L ENTRIES FOR CLASS $CLASS"
+		#echo "The following entries do exist:"
+		#echo -e $entries
+		#echo -e $entries >> $NON_BACKED
+		#echo ""
+	else 
+		grep "^[HSPL]*${CLASS}" $DUMP >> $BACKED
+
+	fi
+
+done
+echo "NON_BACKED SUMMARY:"
+./dumpSummary $NON_BACKED
+echo ""
+echo "BACKED SUMMARY:"
+./dumpSummary $BACKED
+echo ""
+

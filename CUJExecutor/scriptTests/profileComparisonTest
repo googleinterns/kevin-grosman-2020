@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+#Scripts won't work properly if not run from their directory...
+cd .. 
+
+
+PROFILE_A="/tmp/test_profile_a.prof"
+PROFILE_B="/tmp/test_profile_b.prof"
+COMPARISON="/tmp/test_comparison.prof"
+
+DUMP_A1="scriptTests/scriptTestFiles/dump_a1.txt"
+DUMP_B1="scriptTests/scriptTestFiles/dump_b1.txt"
+EXPECTED_COMPARISON_1="scriptTests/scriptTestFiles/expected_comparison_1.txt"
+
+DUMP_A2="scriptTests/scriptTestFiles/dump_a2.txt"
+DUMP_B2="scriptTests/scriptTestFiles/dump_b2.txt"
+EXPECTED_COMPARISON_2="scriptTests/scriptTestFiles/expected_comparison_2.txt"
+
+function assertContentEquals() {
+	FILE1=${1}
+	FILE2=${2}
+	TEST_NAME=${3}
+
+	diff $FILE1 $FILE2
+	EXIT_CODE=$?
+
+	if [ $EXIT_CODE = 0 ]
+	then
+		echo "Test $TEST_NAME Passed!"
+	else
+		echo "TEST $TEST_NAME Files differ!"
+		exit 1
+	fi
+}
+
+
+#TEST 1: Identical profiles (ensures that it can properly count number of entries for each tag)
+
+./dumpToProfile $DUMP_A1 > $PROFILE_A
+./dumpToProfile $DUMP_B1 > $PROFILE_B
+./profileComparison $PROFILE_A $PROFILE_B > $COMPARISON
+
+assertContentEquals $EXPECTED_COMPARISON_1 $COMPARISON 1
+
+#TEST 1: Different profiles, with two non-empty set differences and entries moving in opposite directions (e.g. L -> NA + NA -> L)
+
+./dumpToProfile $DUMP_A2 > $PROFILE_A
+./dumpToProfile $DUMP_B2 > $PROFILE_B
+./profileComparison $PROFILE_A $PROFILE_B > $COMPARISON
+
+assertContentEquals $EXPECTED_COMPARISON_2 $COMPARISON 2

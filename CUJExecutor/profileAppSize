@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+PROFILE=${1?"ERROR: need to provide a profile"}
+DUMP="/tmp/profSummaries_dump.txt"
+CHURNED_PROFILE="/tmp/profSummaries_churned_profile.txt"
+
+adb shell cmd package compile --reset com.google.android.apps.maps 2>&1 >/dev/null
+adb push $PROFILE /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof 2>&1 >/dev/null
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps 2>&1 >/dev/null
+SIZE_DATA=$(adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64)
+APP_SIZE=$(echo $SIZE_DATA | awk '{print $2}')
+
+
+echo $APP_SIZE

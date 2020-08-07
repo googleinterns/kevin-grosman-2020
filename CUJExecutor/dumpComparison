@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+DUMP1=${1?"ERROR: need to provide two dumps"}
+DUMP2=${2?"ERROR: need to provide two dumps"}
+
+
+i=0
+sort -o $DUMP1 $DUMP1
+sort -o $DUMP2 $DUMP2
+
+
+for VAL in  $(comm -3 $DUMP1 $DUMP2 | sed 's/^[[:blank:]]*[HSPL]*//' | sort -u) #Iterate through a unique, sorted list of all methods/classes not shared by both dumps
+do
+	SpecialChars=("["  "]")
+	for char in ${SpecialChars[@]}; do
+		exp="\\${char}"
+		VAL=${VAL//$exp/\\$char}
+	done
+
+	#Find the lines in either dump which contain this class/method
+	LINE1=$(grep "^[HSPL]*${VAL}$" $DUMP1)  
+	LINE2=$(grep "^[HSPL]*${VAL}$" $DUMP2) 
+
+	#Extract the tags. If the tags are empty (method/class does not exist in this dump), set the tag to be NA
+	TAG1=$(echo $LINE1 | grep -o "^[HSPL]*")
+	if [ "$TAG1" = "" ] 
+	then
+		TAG1="NA"
+	fi
+
+	TAG2=$(echo $LINE2 | grep -o "^[HSPL]*")
+	if [ "$TAG2" = "" ] 
+	then
+		TAG2="NA"
+	fi
+
+	#Increment the counter for the corresponding transition
+	((${TAG1}_to_${TAG2}++))
+	
+	#echo LINE: $LINE TAG: $TAG VAL: $VAL LINE1: $LINE1 LINE2: $LINE2 TAG1: $TAG1 TAG2: $TAG2
+	#echo ""
+done
+
+
+for LINE in  $(comm -12 $DUMP1 $DUMP2) #Iterate through classes/methods for which both dumps have the same tag
+do
+	TAG=$(echo "$LINE" | grep -o "^[HSPL]*")
+	((${TAG}_to_${TAG}++))
+done
+
+
+
+
+TAGS="HSPL HPL PL L NA"
+for TAG1 in $TAGS
+do
+	#shift $TAGS
+	for TAG2 in $TAGS
+	do
+		varname="${TAG1}_to_${TAG2}"
+		echo "$TAG1 to $TAG2: ${!varname}"
+	done
+done
+
+

@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 
-#INPUT: a profile and a location for the dump
-#OUTPUT: puts the clases-and-methods dump at the location
+#INPUT: a profile
+#OUTPUT: prints the classes-and-methods dump to stdout
 
-PROFILE=${1?"ERROR: need to provide a .prof filepath for the resulting profile"}
+PROFILE=${1?"ERROR: need to provide an input .prof file"}
 PACKAGE=${2:-com.google.android.apps.maps}
+
+if [ ! -f "$PROFILE" ]  || [ "${PROFILE##*.}" != "prof" ]
+then
+        >&2 echo "ERROR: provided profile is not a valid .prof file"
+        exit 1
+fi
+
+
 PHONE_PROFILE="/sdcard/profiles/profileIntersection_intersection.prof"
 
 

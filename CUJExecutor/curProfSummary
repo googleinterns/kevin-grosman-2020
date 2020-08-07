@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+
+adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof

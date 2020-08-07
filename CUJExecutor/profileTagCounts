@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+PROFILE=${1?"ERROR: need to provide a profile"}
+
+DUMP="/tmp/profileComparison_dump1.txt"
+
+
+
+./profileToDump $PROFILE > $DUMP
+
+counts=$(grep -o "^[HSPL]*" $DUMP | uniq -c)
+
+
+i=0
+for data in $counts
+do
+	if [ $(($i%2)) = "0" ]
+	then	
+		count=$data
+	else 
+		tag=$data
+		((${tag}=$count))
+	fi
+	((i++))
+done 
+
+TAGS="HSPL HPL PL L"
+for TAG in $TAGS
+do
+	echo -n "${TAG}: ${!TAG:-0}; "
+done
+echo ""
