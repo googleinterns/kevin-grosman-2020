@@ -18,10 +18,12 @@ FIRST="true"
 echo -n "" > $INTERSECTION_DUMP
 for PROF in "$@"
 do
-	./profileToDump $MAPS_PACKAGE $PROF $PROF_DUMP 2>&1 >/dev/null
+	./profileToDump $PROF > $PROF_DUMP
+
 	#Include the non-hot versions of all hot methods so that an intersection will contain 
 	grep '^H' $PROF_DUMP | sed 's/^H//' >> $PROF_DUMP 
-	#Sort PROF_DUMP
+	
+#Sort PROF_DUMP
 	sort -o $PROF_DUMP $PROF_DUMP 
 
 	#If the intersection dump is empty, set it to be this dump. Otherwise, set it to be the intersection of the current intersection with this dump
@@ -36,7 +38,5 @@ do
 done
 
 
-./dumpToProfile $MAPS_PACKAGE $INTERSECTION_DUMP $INTERSECTION_PROF 2>&1 >/dev/null
-cat $INTERSECTION_PROF
-
+./dumpToProfile $INTERSECTION_DUMP
 

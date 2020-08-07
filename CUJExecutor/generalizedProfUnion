@@ -12,13 +12,10 @@ UNION_PROF="/tmp/profileUnion_union.prof"
 MAPS_PACKAGE="com.google.android.apps.maps"
 APK_LOCATION=$(adb shell "ls /data/app/${MAPS_PACKAGE}*/base.apk")
 
-echo "" > $UNION_DUMP
+echo -n "" > $UNION_DUMP
 for PROF in "$@"
 do
-	./profileToDump $MAPS_PACKAGE $PROF $PROF_DUMP 2>&1 >/dev/null
-	cat $PROF_DUMP >> $UNION_DUMP
+	./profileToDump $PROF >> $UNION_DUMP
 done
 
-
-./dumpToProfile $MAPS_PACKAGE $UNION_DUMP $UNION_PROF 2>&1 >/dev/null
-cat $UNION_PROF
+./dumpToProfile $UNION_DUMP

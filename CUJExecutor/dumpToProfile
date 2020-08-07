@@ -3,15 +3,14 @@
 #INPUT: a dump file corersponding to the specified package and a location for the created profile
 #OUTPUT: creates a profile from the classes-and-methods dump and places it at the specified location 
 
-PACKAGE=${1?"ERROR: need to provide a package name for the app"}
-DUMP=${2?"ERROR: need to provide a dump file"}
-PROFILE=${3?"ERROR: need to provide a .prof filepath for the resulting profile"}
+DUMP=${1?"ERROR: need to provide a dump file"}
+PACKAGE=${2:-com.google.android.apps.maps}
 PHONE_DUMP="/sdcard/profiles/dump.txt"
 PHONE_PROFILE="/sdcard/profiles/profileIntersection_intersection.prof"
 
 
 APK_LOCATION=$(adb shell "ls /data/app/${PACKAGE}*/base.apk")
-adb push $DUMP $PHONE_DUMP
-adb shell "profman --create-profile-from=$PHONE_DUMP --apk=$APK_LOCATION --dex-location=base.apk --reference-profile-file=$PHONE_PROFILE"
-adb pull $PHONE_PROFILE $PROFILE
+adb push $DUMP $PHONE_DUMP 2>&1 >/dev/null
+adb shell "profman --create-profile-from=$PHONE_DUMP --apk=$APK_LOCATION --dex-location=base.apk --reference-profile-file=$PHONE_PROFILE" 2>&1 >/dev/null
+adb shell cat $PHONE_PROFILE
 
