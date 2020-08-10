@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-PROFILE=${1?"ERROR: need to provide a profile"}
 
-DUMP="/tmp/profileComparison_dump1.txt"
+# INPUT: a profile or a profile dump
+# OUTPUT: the counts of dump entries in the following order: HSPL, HPL, PL, L
+
+FILE=${1?"ERROR: need to provide a file"}
+
+DUMP="/tmp/profileTagCounts_dump.txt"
 
 
-
-./profileToDump $PROFILE > $DUMP
+./fileToDump $FILE > $DUMP
 
 counts=$(grep -o "^[HSPL]*" $DUMP | uniq -c)
 

@@ -19,7 +19,7 @@
 # Compiles aGMM according to the COMPILATION_SETTING and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
 # If COMPILATION_SETTING is "a", the entire app is compiled.
 # Otherwise, the text before the colon specifies a base profile (e - empty, u - cloud, s - startup, or an arbitrary .prof file) 
-# and all subsequent flags represent actions to be added to the profile (f - first action, p - preCUJ, m - measuredCUJ, c - preCUJ + measuredCUJ)
+# and all subsequent flags represent actions to be added to the profile (f - first action, p - preCUJ, m - measuredCUJ, c - preCUJ + measuredCUJ) or a way to modify the existing profile (h - tags all methods as hot)
 #
 # Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_SETTING>/<DATE>/:
 # - (command_summary.txt) a log of each run command and their output.
@@ -35,7 +35,7 @@
 #			       sequence of compilation flags for building a new profile, where:
 #			       the base profile is one of (e - empty, s - startup, u - cloud, or a .prof file location)
 #			       and the (possibly empty sequence following the colon) specifies an ordered list of sections of the CUJ to be added to 
-#                              the profile (each is one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
+#                              the profile (each is one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ) or ways to modify the existing profile (h - tags all methods in the profile as hot).
 # e.g: 
 # 
 # ./megaTest CUJS/takeout.txt utilityProfiles/cloudProfile.prof:f

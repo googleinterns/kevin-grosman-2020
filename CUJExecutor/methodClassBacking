@@ -29,7 +29,7 @@ do
 	#HSPL_ENTRY=$(grep "^HSPL${CLASS}" $DUMP)
 	#HPL_ENTRY=$(grep "^HPL${CLASS}" $DUMP)
 	#PL_ENTRY=$(grep "^PL${CLASS}" $DUMP)
-	#if [ "$HSPL_ENTRY" = "" ] && [ "$HPL_ENTRY" = "" ] && [ "$PL_ENTRY" != "" ]
+	#if [ "$HSPL_ENTRY" = "" ] && [ "$HPL_ENTRY" = "" ] && [ "$PL_ENTRY" = "" ] && [ "$L_ENTRY" != "" ] 
 	#then
 	#	echo "interesting class... $CLASS"
 	#	if [ "$L_ENTRY" = "" ]

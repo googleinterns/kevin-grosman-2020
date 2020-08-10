@@ -2,7 +2,7 @@
 
 #Prints out a version of this profile where everything is hot
 
-PROFILE=${1?"ERROR:NEED TO PROVIDFE A PROFILE"}
+PROFILE=${1?"ERROR:NEED TO PROVIDE A PROFILE"}
 
 DUMP="/tmp/stableProfile_dump.txt"
 

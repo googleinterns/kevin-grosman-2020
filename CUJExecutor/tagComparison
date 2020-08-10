@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
-DUMP1=${1?"ERROR: need to provide two dumps"}
-DUMP2=${2?"ERROR: need to provide two dumps"}
+FILE1=${1?"ERROR: need to provide two files"}
+FILE2=${2?"ERROR: need to provide two files"}
+
+DUMP1="/tmp/comparison_dump1.txt"
+DUMP2="/tmp/comparison_dump2.txt"
+
+
+./fileToDump $FILE1 > $DUMP1 
+./fileToDump $FILE2 > $DUMP2
+
 
 
 i=0

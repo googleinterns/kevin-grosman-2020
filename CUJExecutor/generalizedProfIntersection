@@ -20,8 +20,10 @@ for PROF in "$@"
 do
 	./profileToDump $PROF > $PROF_DUMP
 
-	#Include the non-hot versions of all hot methods so that an intersection will contain 
-	grep '^H' $PROF_DUMP | sed 's/^H//' >> $PROF_DUMP 
+	# Tests have shown that there are three function tags with increasing levels of priority (i.e. if my function is tagged with several of these, the highest prioity one will stay when we compile the app).
+	# Thus, we add all lower versions of the method so the intersection will include the lowest priority for each function, over all passed profiles
+	grep '^HSPL' $PROF_DUMP | sed 's/^HSPL/HPL/' >> $PROF_DUMP 
+	grep '^HPL' $PROF_DUMP | sed 's/^HPL/PL/' >> $PROF_DUMP 
 	
 #Sort PROF_DUMP
 	sort -o $PROF_DUMP $PROF_DUMP 

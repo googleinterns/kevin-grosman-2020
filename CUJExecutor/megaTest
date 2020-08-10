@@ -27,7 +27,7 @@ POST_CUJ=$(sed '3q;d' $INPUT_FILE)
 ITERS=$(sed '4q;d' $INPUT_FILE)
 RECORD=$(sed '5q;d' $INPUT_FILE)
 MEASURED_CUJ_STR_ARRAY=$(./peelHardBrackets $MEASURED_CUJ) #peel off hard brackets
-LOOPS=49 #Probably should make this an input
+LOOPS=35 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables

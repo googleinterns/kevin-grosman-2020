@@ -40,7 +40,7 @@
 #		      with an "r" to indicate that you'd like to record). See CUJS/ for an example file.
 # @param COMPILATION_SETTING - a base profile (one of a - all, e - empty, s - startup, u - cloud, or a .prof file location) followed by a colon and 
 # 		      then an ordered list of sections of the CUJ to be added to the profile (one of f - first action, p - preCUJ, m - measuredCUJ, 
-#		      or c - preCUJ + measuredCUJ).
+#		      or c - preCUJ + measuredCUJ, h - tags all methods in the profile as hot).
 # @param (optional) CREATED_PROFILE - the location where we'd like the created profile. By default, the created profile will be located at 
 #			              "/tmp/build_created_profile.prof"
 #
