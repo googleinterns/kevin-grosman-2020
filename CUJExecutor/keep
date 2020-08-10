@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-#Prints out a profile which only keeps the dump entries with the passed tags (all arguments after the profile are interpretted as an entry tag
+# INPUT: a .prof file and any number of tags in {HSPL, HPL, PL, L}
+# OUTPUT: echos a profile which only keeps the dump entries with the passed tags (all arguments after the profile are interpretted as an entry tag
 
 PROFILE=${1}
 echo -n "" > hotDump.txt

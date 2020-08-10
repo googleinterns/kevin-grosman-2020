@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 
-#INPUT: any number of .prof files stored locally
-#OUTPUT: a new .prof catted to stdout (whose class/object dump is the intersection of the dumps of all passed profiles)
+#INPUT: any number of .prof files 
+#OUTPUT: echos a new .prof file whose class/object dump is the intersection of the dumps of all passed profiles
 
 
 PROF_DUMP="/tmp/profileIntersection_prof_dump.txt"

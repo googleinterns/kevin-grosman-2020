@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# INPUT: two .prof files or profile dumps
+# OUTPUT: a summary of how methods/classes are tagged differently in either profile.
+#         eg: if the output contains the lines:
+#         	"HPL to PL: 23", then there are 23 methods that were tagged HPL in the first profile and PL in the second profile
+# 		"L to NA: 5", then there are 5 classes that were included in the first profile but not the second
+
+
 FILE1=${1?"ERROR: need to provide two files"}
 FILE2=${2?"ERROR: need to provide two files"}
 
@@ -15,7 +22,6 @@ DUMP2="/tmp/comparison_dump2.txt"
 i=0
 sort -o $DUMP1 $DUMP1
 sort -o $DUMP2 $DUMP2
-
 
 for VAL in  $(comm -3 $DUMP1 $DUMP2 | sed 's/^[[:blank:]]*[HSPL]*//' | sort -u) #Iterate through a unique, sorted list of all methods/classes not shared by both dumps
 do
@@ -44,9 +50,6 @@ do
 
 	#Increment the counter for the corresponding transition
 	((${TAG1}_to_${TAG2}++))
-	
-	#echo LINE: $LINE TAG: $TAG VAL: $VAL LINE1: $LINE1 LINE2: $LINE2 TAG1: $TAG1 TAG2: $TAG2
-	#echo ""
 done
 
 

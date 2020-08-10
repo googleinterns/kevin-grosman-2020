@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
+# returns size information of the aGMM cur profile
 
 adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof

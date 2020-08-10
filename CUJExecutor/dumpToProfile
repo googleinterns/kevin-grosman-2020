@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-#INPUT: a dump file corersponding to the specified package and a location for the created profile
-#OUTPUT: creates a profile from the classes-and-methods dump and places it at the specified location 
+#INPUT: a dump file corresponding to the specified package (or maps default)
+#OUTPUT: creates a profile from the classes-and-methods dump and echos it
 
 DUMP=${1?"ERROR: need to provide a dump file"}
 PACKAGE=${2:-com.google.android.apps.maps}

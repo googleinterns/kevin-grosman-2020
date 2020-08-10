@@ -2,6 +2,11 @@
 
 FILE=${1?"ERROR: need to provide a file"}
 
+# INPUT: a .prof file or a method-class dump of a .prof file
+# OUTPUT: stores two dump files, one with all of the dump entries that have their corresponding class in the original profile and the other which holds all other entries
+#         echos the number of entries with each tag in each file
+
+
 #If we are provided a profile, convert it to it's dump. If we were given a text file, interpret it as the dump
 if [ "${FILE##*.}" = "prof" ]
 then
@@ -26,28 +31,9 @@ echo -n "" > $BACKED
 for CLASS in $(sed 's/^[HSPL]*//' $DUMP | sed 's/->.*//' | sort -u) #Iterate through the classes attached to each entry
 do
 	L_ENTRY=$(grep "^L${CLASS}" $DUMP)
-	#HSPL_ENTRY=$(grep "^HSPL${CLASS}" $DUMP)
-	#HPL_ENTRY=$(grep "^HPL${CLASS}" $DUMP)
-	#PL_ENTRY=$(grep "^PL${CLASS}" $DUMP)
-	#if [ "$HSPL_ENTRY" = "" ] && [ "$HPL_ENTRY" = "" ] && [ "$PL_ENTRY" = "" ] && [ "$L_ENTRY" != "" ] 
-	#then
-	#	echo "interesting class... $CLASS"
-	#	if [ "$L_ENTRY" = "" ]
-	#	then
-	#		echo "NOT BACKED!"
-	#	else
-	#		echo "BACKED"
-	#	fi
-	#fi
 	if [ "$L_ENTRY" = "" ]
 	then
-
 		grep "^[HSPL]*${CLASS}" $DUMP >> $NON_BACKED
-		#echo "NO L ENTRIES FOR CLASS $CLASS"
-		#echo "The following entries do exist:"
-		#echo -e $entries
-		#echo -e $entries >> $NON_BACKED
-		#echo ""
 	else 
 		grep "^[HSPL]*${CLASS}" $DUMP >> $BACKED
 

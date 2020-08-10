@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
-#recompiles the app with the passed profile and echos the ref profile
+# INPUT: a .prof file
+# OUTPUT: recompiles the app with the passed profile and returns the ref profile (which might differ from the passed profile)
 
 PROFILE=${1?"ERROR:NEED TO PROVIDFE A PROFILE"}
 
 
 CHURNED_PROFILE="/tmp/churn_churned_profile.txt"
 
-adb shell cmd package compile --reset com.google.android.apps.maps 2>&1 >/dev/null
-adb push $PROFILE /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof 2>&1 >/dev/null
-adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps 2>&1 >/dev/null
+./compileWith $PROFILE
 adb pull /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof $CHURNED_PROFILE 2>&1 >/dev/null
 cat $CHURNED_PROFILE

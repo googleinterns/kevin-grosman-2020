@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-#Prints out a version of this profile where everything is hot
+# INPUT: a .prof file
+# OUTPUT: a message saying whether the profile is stable.
+#         (a profile is stable if, when the app is compiled with it, the dump of the ref profile contains the same entries as the dump of the original profile).
 
-PROFILE=${1?"ERROR:NEED TO PROVIDE A PROFILE"}
+PROFILE=${1?"ERROR: need to provide a .prof file"}
 
 DUMP="/tmp/stableProfile_dump.txt"
 
@@ -22,6 +24,6 @@ then
 	echo "STABLE!"
 	exit 0
 else 
-	echo "BAD!"
+	echo "NOT STABLE!"
 	exit 1
 fi
