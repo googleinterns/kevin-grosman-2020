@@ -1,0 +1,101 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps']
+POST CUJ:     ['click;Takeout']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL.prof, Actions:
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 0; L: 6589; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL.prof, Actions:
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 8059; L: 8285; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L.prof, Actions:
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 8059; L: 8451; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL.prof, Actions:
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 8059; L: 11318; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L_back_HPL_PL:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L_back_HPL_PL.prof, Actions:
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 8059; L: 11472; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL.prof, Actions:
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 0; L: 6536; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_PL_back_HSPL_HPL_PL:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_PL_back_HSPL_HPL_PL.prof, Actions:
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 9262; L: 9870; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof, Actions:
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 9262; L: 8277; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01_back_HPL_PL:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01_back_HPL_PL.prof, Actions:
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 9262; L: 11597; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01_back_HPL_PL_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01_back_HPL_PL_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L.prof, Actions:
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 9262; L: 11667; 
+
+INFO FOR FLAG e:mmmmm-NC-08-01-2020--13:33:01:
+Base: utilityProfiles/1_appStart_home/e:mmmmm-NC-08-01-2020--13:33:01.prof, Actions:
+Profile tag counts: HSPL: 18458; HPL: 219; PL: 8894; L: 8451; 
+
+INFO FOR FLAG e:mmmmm-NC-08-01-2020--13:33:01mmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:mmmmm-NC-08-01-2020--13:33:01mmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18644; HPL: 229; PL: 8754; L: 8563; 
+
+INFO FOR FLAG e:mmmmm-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:mmmmm-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18797; HPL: 212; PL: 8620; L: 8586; 
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 287
+
+AVERAGED DATA:
+COMPILATION FLAG                                                                                                                         APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:                                                                                                                                       45076    2136                                 2136  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL                              58236    1649                                 1649  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL                                                59668    1628                                 1628  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L             59748    1630                                 1630  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL                                    60240    1602                                 1602  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L_back_HPL_PL 60300    1602                                 1602  
+e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL                                                                                  58064    1670                                 1670  
+e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_PL_back_HSPL_HPL_PL                                                                            58456    1652                                 1652  
+e:m-NC-08-01-2020--13:33:01                                                                                                              59604    1635                                 1635  
+e:m-NC-08-01-2020--13:33:01_back_HPL_PL                                                                                                  60132    1614                                 1614  
+e:m-NC-08-01-2020--13:33:01_back_HPL_PL_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L                                                     60172    1624                                 1624  
+e:mmmmm-NC-08-01-2020--13:33:01                                                                                                          59932    1623                                 1623  
+e:mmmmm-NC-08-01-2020--13:33:01mmmmmmmmmm                                                                                                60124    1622                                 1622  
+e:mmmmm-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmmmm                                                                                      60204    1634                                 1634  
+
+MEDIANED DATA:
+COMPILATION FLAG                                                                                                                         APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:                                                                                                                                       45076    2158                                 2158  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL                              58236    1647                                 1647  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL                                                59668    1622                                 1622  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L             59748    1617                                 1617  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL                                    60240    1589                                 1589  
+e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L_back_HPL_PL 60300    1591                                 1591  
+e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL                                                                                  58064    1659                                 1659  
+e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_PL_back_HSPL_HPL_PL                                                                            58456    1645                                 1645  
+e:m-NC-08-01-2020--13:33:01                                                                                                              59604    1621                                 1621  
+e:m-NC-08-01-2020--13:33:01_back_HPL_PL                                                                                                  60132    1597                                 1597  
+e:m-NC-08-01-2020--13:33:01_back_HPL_PL_UNION_e:mmmmm-NC-08-01-2020--13:33:01_keep_L                                                     60172    1612                                 1612  
+e:mmmmm-NC-08-01-2020--13:33:01                                                                                                          59932    1617                                 1617  
+e:mmmmm-NC-08-01-2020--13:33:01mmmmmmmmmm                                                                                                60124    1616                                 1616  
+e:mmmmm-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmmmm                                                                                      60204    1631                                 1631  
+************************************************MEGA TEST SUMMARY:*************************************************
