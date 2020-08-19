@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+
+
+#Scripts won't work properly if not run from their directory...
+cd .. 
+										#S - A set of classes and methods.
+										#X - A subset of S.
+
+COLD_DUMP="scriptTests/scriptTestFiles/cold_dump.txt"                     	#Contains S. All cold.
+COLD_PROF="/tmp/test_cold.prof"
+COLD_P1_DUMP="scriptTests/scriptTestFiles/cold_p1_dump.txt" 			#Contains X. All cold.
+COLD_P1_PROF="/tmp/test_cold_p1.prof"
+COLD_P2_DUMP="scriptTests/scriptTestFiles/cold_p2_dump.txt" 			#Contains S\X. All cold
+COLD_P2_PROF="/tmp/test_cold_p2.prof"
+HOT_DUMP="scriptTests/scriptTestFiles/hot_dump.txt" 				#Contains S. All hot.
+HOT_PROF="/tmp/test_hot.prof"
+HOT_P1_DUMP="scriptTests/scriptTestFiles/hot_p1_dump.txt"			#Contains X. All hot
+HOT_P1_PROF="/tmp/test_hot_p1.prof"
+HOT_P2_DUMP="scriptTests/scriptTestFiles/hot_p2_dump.txt"			#Contains S\X. All hot.
+HOT_P2_PROF="/tmp/test_hot_p2.prof"
+HOT_P1_COLD_P2_DUMP="scriptTests/scriptTestFiles/hot_p1_cold_p2_dump.txt"	#Contains X hot and S\X cold.
+HOT_P1_COLD_P2_PROF="/tmp/test_hot_p1_cold_p2.prof"
+UNION_PROF="/tmp/test_union.prof"
+UNION_DUMP="/tmp/test_union_dump.txt"
+EMPTY_PROF="/utilityProfiles/empty.prof"
+
+./dumpToProfile $COLD_DUMP > $COLD_PROF
+./dumpToProfile $HOT_DUMP > $HOT_PROF
+./dumpToProfile $HOT_P1_DUMP > $HOT_P1_PROF
+./dumpToProfile $HOT_P2_DUMP > $HOT_P2_PROF
+./dumpToProfile $COLD_P1_DUMP > $COLD_P1_PROF
+./dumpToProfile $COLD_P2_DUMP > $COLD_P2_PROF
+./dumpToProfile $HOT_P1_COLD_P2_DUMP > $HOT_P1_COLD_P2_PROF
+
+
+
+
+function assertSetEquals() {
+        FILE1=${1}
+        FILE2=${2}
+        TEST_NAME=${3}
+
+        diff <(sort $FILE1) <(sort $FILE2)
+        EXIT_CODE=$?
+
+        if [ $EXIT_CODE = 0 ]
+        then
+                echo "Test $TEST_NAME Passed!"
+        else
+                echo "TEST $TEST_NAME Failed! Dumps differ."
+                exit 1
+        fi
+}
+
+
+
+# TEST 1:
+# Tests whether a union with an empty profile will leave a hot profile unchanged
+
+./generalizedProfUnion $HOT_PROF $EMPTY_PROF > $UNION_PROF
+
+./profileToDump $UNION_PROF > $UNION_DUMP
+
+assertSetEquals $UNION_DUMP $HOT_DUMP 1
+
+
+# TEST 2:
+# Tests whether a union with an empty profile will leave a cold profile unchanged 
+
+./generalizedProfUnion $COLD_PROF $EMPTY_PROF > $UNION_PROF
+
+./profileToDump $UNION_PROF > $UNION_DUMP
+
+assertSetEquals $UNION_DUMP $COLD_DUMP 2
+
+# TEST 3:
+# Ensures that a method that is hot in one profile and cold in another will become hot in the union
+
+./generalizedProfUnion $COLD_PROF $HOT_PROF > $UNION_PROF
+
+./profileToDump $UNION_PROF > $UNION_DUMP
+
+assertSetEquals $UNION_DUMP $HOT_DUMP 3
+
+# TEST 4:
+# Ensures that he union of two profiles with disjoint class/method dumps works as expected when all methods/classes are hot
+
+./generalizedProfUnion $HOT_P1_PROF $HOT_P2_PROF > $UNION_PROF
+
+./profileToDump $UNION_PROF > $UNION_DUMP
+
+assertSetEquals $UNION_DUMP $HOT_DUMP 4
+
+# TEST 5:
+# Ensures that he union of two profiles with disjoint class/method dumps works as expected when some methods are cold, some are hot
+
+./generalizedProfUnion $HOT_P1_PROF $COLD_P2_PROF > $UNION_PROF
+
+./profileToDump $UNION_PROF > $UNION_DUMP
+
+assertSetEquals $UNION_DUMP $HOT_P1_COLD_P2_DUMP 5
+
+# TEST 6:
+# Ensures that he union of two profiles with non-disjoing class/method dumps works as expected
+
+./generalizedProfUnion $HOT_P1_PROF $COLD_PROF > $UNION_PROF
+
+./profileToDump $UNION_PROF > $UNION_DUMP
+
+assertSetEquals $UNION_DUMP $HOT_P1_COLD_P2_DUMP 6
