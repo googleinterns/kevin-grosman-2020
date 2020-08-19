@@ -17,14 +17,17 @@ where input file is formatted as follows (all on seperate lines):
 ```
 <preparatory_actions> 
 <measured_actions> 
+<post_actions>
+<cleanup_actions> 
 <num_iterations> 
 <r?>
 ```
 
 preparatory_actions consists of actions to be performed prior to the CUJ 
-in question and measured actions consists of the CUJ in question plus a final 
-"termination" action, which can only be performed once the last action in the 
-CUJ has fully terminated. num_iterations denotes the number of iterations 
+in question, measured actions consists of the CUJ you'd like to measure, and post 
+actions consist of cleanup actions you'd like to be performed after the CUJ 
+(this segment cannot be left empty in order for the script to be able to identify
+when the last measured action has terminated). num_iterations denotes the number of iterations 
 you'd like the test to run through your CUJ. Optionally, end the input with 
 the line "r" to signify that you'd like the run of median length to be outputted 
 by the program. (Note that if you'd like to record, you need to have **ffmpeg 
@@ -53,16 +56,20 @@ text in a particular textbox. Actions are represented in one of the following fo
 
      
 Note that all text fields are case and space sensitive. Additionally, if an action 
-of form 2, 3, or 4 is followed by “;strict” the search for a corresponding view 
-will enforce that an exact match is found for text_displayed (in cases 2 or 3) or
-text_description (in case 4).
+of form 2, 3, or 4 is followed by semi-colon and then any number of flags.
+The "+strict" flag, enforces that an exact match is found for text_displayed 
+(in cases 2 or 3) or text_description (in case 4). 
+The "+noop" flag causes the action to not be executed, but rather will simply wait for 
+the relevant view to appear (adding a no-op action after an action can be helpful 
+for fine tuning the appearance of the view which signals the end of that action). 
 
 
 #### Example:
 A text file you would feed to ``executeCuj`` might look like (also available in CUJExecutor/directions_to_googleplex.txt):
 ```
 ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphitheatre']
-['click;Directions;strict', 'click;Choose starting', 'click;Your location;strict', 'click;Steps & more;strict']
+['click;Directions;strict', 'click;Choose starting', 'click;Your location;strict']
+['click;Steps & more;strict']
 5
 r
 ```
@@ -72,10 +79,7 @@ Here, the CUJ in question starts after the user has searched for and selected Go
 2. click on "Choose starting location"
 3. click on "Your location"
 
-To signal when the last action in the CUJ has terminated, the input also includes the "termination" action
-
-4. click on "Steps & more"  
-
+To signal when the last action in the measured CUJ has terminated, the input also includes the post-CUJ, which consists of the action "click on 'Steps & more'".
 This signifies that action 3 is over once the Steps & more button is clickable, which occurs only once the directions have fully loaded.
 
 The file additionally specifies that it would like the CUJ to run 5 times and that it would like the script to return a clip of the run that took the median total length
