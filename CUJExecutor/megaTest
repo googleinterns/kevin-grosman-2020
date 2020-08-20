@@ -27,14 +27,14 @@ POST_CUJ=$(sed '3q;d' $INPUT_FILE)
 ITERS=$(sed '4q;d' $INPUT_FILE)
 RECORD=$(sed '5q;d' $INPUT_FILE)
 MEASURED_CUJ_STR_ARRAY=$(./peelHardBrackets $MEASURED_CUJ) #peel off hard brackets
-LOOPS=13 #Probably should make this an input
+LOOPS=51 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
 STASHED_SHORT_SUMMARY="/tmp/manipulate_short_summary.txt" #location where ./manipulateProfilesAndTest will dump a short summary of time data and size of profile/app
 STASHED_APP_SIZE="/tmp/manipulate_app_size.txt" #location where ./manipulateProfilesAndTest will dump the app size
 STASHED_FOLDER="/tmp/manipulate_folder.txt" #location where ./manipulateProfilesAndTest will dump its folder
-STASHED_COMPILED_ACTIONS="/tmp/manipulate_compiled_actions.txt"
+STASHED_MPT_INFO="/tmp/manipulate_info.txt"
 STASHED_RAW_DURATIONS="/tmp/execute_raw_durations.txt"
 STASHING_SUMMARY_TABLES="/tmp/mega_summary_tables.txt"
 DATE=$(date '+%m-%d-%Y--%H:%M:%S')
@@ -62,7 +62,7 @@ echo "force-stopping app..."
 adb shell am force-stop com.google.android.apps.maps
 
 echo "warming up..."
-./runCujNTimes $INPUT_FILE w 10
+./runCujNTimes $INPUT_FILE w 20
 
 echo $HEADER_FOOTER > $AGGREGATED_DATA_FILE
 echo $HEADER_FOOTER 
@@ -77,13 +77,14 @@ echo "$SECTION_SPLITTER" >> $TEST_SUMMARY
 
 for ((run=0;run<$LOOPS;run++))
 do
+	echo "DOING LOOP #${run}"
 	for COMPILATION_FLAG in "$@"
 	do
 		echo "DOING $COMPILATION_FLAG TEST..." 
 		./manipulateProfilesAndTest "$INPUT_FILE" "$COMPILATION_FLAG"
 		echo "" >> $AGGREGATED_DATA_FILE
 		cat $STASHED_SHORT_SUMMARY >> $AGGREGATED_DATA_FILE
-		COMPILED_ACTIONS=$(cat $STASHED_COMPILED_ACTIONS)
+		INFO=$(cat $STASHED_MPT_INFO)
 		APP_SIZE=$(cat $STASHED_APP_SIZE)
 		MPT_FOLDER=$(cat $STASHED_FOLDER)
 		MPT_FOLDER=$(echo "$MPT_FOLDER" | xargs)
@@ -92,7 +93,9 @@ do
 		STRING_DURATIONS=$(./peelHardBrackets "$STRING_DURATIONS") #peel off hard brackets
 		if [ $run = "0" ] #Report which actions were compiled for each flag on the first loop through thems
 		then
-			echo "ACTIONS COMPILED FOR FLAG ${COMPILATION_FLAG}: $COMPILED_ACTIONS" >> $TEST_SUMMARY
+			echo "INFO FOR FLAG ${COMPILATION_FLAG}:" >> $TEST_SUMMARY
+			echo "${INFO}" >> $TEST_SUMMARY
+			echo "" >> $TEST_SUMMARY
 		fi
 		echo $APP_SIZE >> $STASHING_DUMPED_DATA
 		echo $MPT_FOLDER >> $STASHING_DUMPED_DATA
@@ -121,7 +124,7 @@ echo $FOLDERS_WITH_VIDS
 for MPT_FOLDER in $FOLDERS_WITH_VIDS
 do
 	echo "${MPT_FOLDER}" 
-	rm "${MPT_FOLDER}/full_video.mp4" #2> /dev/null
+	rm "${MPT_FOLDER}/full_video.mp4" 2> /dev/null
 done
 
 #Display the summary table

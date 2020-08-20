@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# INPUT: a .prof file
+# OUTPUT: a message saying whether the profile is stable. (A profile is stable if, when the app is compiled with it, 
+#         the dump of the ref profile contains the same entries as the dump of the original profile).
+
+PROFILE=${1?"ERROR: need to provide a .prof file"}
+PACKAGE=${2-com.google.android.apps.maps}
+
+DUMP="/tmp/stableProfile_dump.txt"
+
+CHURNED_DUMP="/tmp/stableProfile_churned_dump.txt"
+CHURNED_PROFILE="/tmp/stableProfile_churned_profile.prof"
+
+./ARTProfileInterpretation $PROFILE $PACKAGE > $CHURNED_PROFILE
+
+./profileToDump $CHURNED_PROFILE $PACKAGE | sort > $CHURNED_DUMP
+./profileToDump $PROFILE $PACKAGE | sort > $DUMP
+
+diff $DUMP $CHURNED_DUMP
+EXIT_CODE=$?
+
+if [ $EXIT_CODE = "0" ]
+then
+	echo "STABLE!"
+	exit 0
+else 
+	echo "NOT STABLE!"
+	exit 1
+fi

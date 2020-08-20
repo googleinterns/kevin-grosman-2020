@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#Prints, in order, entry counts for HSPL, HPL, PL, L
+DUMP=${1}
+
+
+
+TOTAL=$(cat $DUMP | wc -l)
+echo "HSPL HPL PL L"
+HSPL=$(grep "^HSPL" $DUMP | wc -l)
+echo -n "$HSPL "
+
+HPL=$(grep "^HPL" $DUMP | wc -l)
+echo -n "$HPL "
+
+PL=$(grep "^PL" $DUMP | wc -l)
+echo -n "$PL "
+
+L=$(grep "^L" $DUMP | wc -l)
+echo -n "$L "
+
+
+NA=$(($TOTAL - $HSPL - $HPL - $PL - $L))
+if [ $NA != "0" ]
+then
+	echo "WARNING: $NA entries were not identified as HSPL, HPL, PL, or L"
+fi
+

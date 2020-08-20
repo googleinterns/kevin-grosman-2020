@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+#Prints out a version of this profile where all profman classes-and-method dump entries with the tag $FROM are switched to having the tag $TO
+
+PROFILE=${1?"ERROR: need to provide a profile and two tags"}
+FROM=${2?"ERROR: need to provide a profile and two tags"}
+TO=${3?"ERROR: need to provide a profile and two tags"}
+
+DUMP="/tmp/convertProfileTags_dump.txt"
+HOT_DUMP="/tmp/convertProfileTags_hot_dump.txt"
+
+./profileToDump $PROFILE > $DUMP
+cat $DUMP | sed "s/^${FROM}/${TO}/" > $HOT_DUMP
+
+./dumpToProfile $HOT_DUMP

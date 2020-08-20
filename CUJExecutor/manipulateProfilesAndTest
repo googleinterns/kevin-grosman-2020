@@ -19,7 +19,7 @@
 # Compiles aGMM according to the COMPILATION_SETTING and then measures the CUJ specified by the INPUT_FILE (as specified by executeCUJ).
 # If COMPILATION_SETTING is "a", the entire app is compiled.
 # Otherwise, the text before the colon specifies a base profile (e - empty, u - cloud, s - startup, or an arbitrary .prof file) 
-# and all subsequent flags represent actions to be added to the profile (f - first action, p - preCUJ, m - measuredCUJ, c - preCUJ + measuredCUJ)
+# and all subsequent flags represent actions to be added to the profile (f - first action, p - preCUJ, m - measuredCUJ, c - preCUJ + measuredCUJ) or a way to modify the existing profile (h - tags all methods as hot)
 #
 # Stores the following files at /profile_test_data/<INPUT_FILE_NAME>/<COMPILATION_SETTING>/<DATE>/:
 # - (command_summary.txt) a log of each run command and their output.
@@ -35,7 +35,7 @@
 #			       sequence of compilation flags for building a new profile, where:
 #			       the base profile is one of (e - empty, s - startup, u - cloud, or a .prof file location)
 #			       and the (possibly empty sequence following the colon) specifies an ordered list of sections of the CUJ to be added to 
-#                              the profile (each is one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ).
+#                              the profile (each is one of f - first action, p - preCUJ, m - measuredCUJ, or c - preCUJ + measuredCUJ) or ways to modify the existing profile (h - tags all methods in the profile as hot).
 # e.g: 
 # 
 # ./megaTest CUJS/takeout.txt utilityProfiles/cloudProfile.prof:f
@@ -47,20 +47,7 @@
 # 		with appropriate waits after all 3 sections of the CUJ are completed). Then, this profile is used to compile the app and 
 # 		execute/measure the CUJ
 
-
-
-
-#PARSING INPUTS:
-
-#If we want to force this profile to be built from scratch, we can use --force-new as the first argument, and a signature will be applied to all created profiles (so that they are distinct from pre-used versions and cannot be reused on later calls
-if [ $1 = "--no-caching" ] || [ $1 = "-N" ] 
-then
-	SIGNATURE=$(date '+%m-%d-%Y--%H:%M:%S')
-	shift
-fi
-
-
-
+PACKAGE="com.google.android.apps.maps"
 
 INPUT_FILE=${1?"ERROR: need to specify an input file and compilation flag"}
 COMPILATION_SETTING=${2?"ERROR: need to specify an input file and compilation flag"} 
@@ -81,13 +68,13 @@ FOLDER="profile_test_data/${INPUT_FILE_NAME}/${COMPILATION_SETTING_NAME}/${DATE}
 mkdir -p $FOLDER
 CLOUD_PROFILE="utilityProfiles/cloudProfile.prof" #location of the saved cloud profile
 EMPTY_PROFILE="utilityProfiles/empty.prof" #location of an empty profile
-CUR_PROFILE="/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof" #location of the cur profile on the device
-REF_PROFILE="/data/misc/profiles/ref/com.google.android.apps.maps/primary.prof" #location of the ref profile on the device
+CUR_PROFILE="/data/misc/profiles/cur/0/${PACKAGE}/primary.prof" #location of the cur profile on the device
+REF_PROFILE="/data/misc/profiles/ref/${PACKAGE}/primary.prof" #location of the ref profile on the device
 STASHED_SUMMARY_TABLE="/tmp/execute_summary_table.txt"
 STASHED_CREATED_PROFILE="/tmp/build_created_profile.prof"
 STASHING_APP_SIZE="/tmp/manipulate_app_size.txt" #Contains final app size in case callee (e.g. mega_test) wants it
 STASHING_USED_PROFILE="/tmp/manipulate_created_profile.txt" #Contains the profile used to compile
-STASHING_COMPILED_ACTIONS="/tmp/manipulate_compiled_actions.txt" #Contains the actions used to compile, in case callee (e.g. mega_test) wants it
+STASHING_MANIPULATE_INFO="/tmp/manipulate_info.txt" #Contains the actions used to compile, in case callee (e.g. mega_test) wants it
 STASHING_FOLDER="/tmp/manipulate_folder.txt" #Contains the name of the folder where files for this test live in case callee (e.e. mega_test) wants it
 STASHING_SHORT_SUMMARY="/tmp/manipulate_short_summary.txt" #copy of short summary in case callee (e.g. mega_test) wants it
 TEMP_PHONE_PROFILE="/sdcard/profiles/temp_profile.prof"
@@ -121,20 +108,23 @@ echo "" >> $SHORT_SUMMARY
 
 if [ "$COMPILATION_SETTING" = "a" ] 
 then 
-	echo "All" > $STASHING_COMPILED_ACTIONS
+	echo "All" > $STASHING_MANIPULATE_INFO
+
+	echo "Resetting the profile...."
+	output=$(spitToFull "adb shell cmd package compile --reset ${PACKAGE}")
 
 	echo "Force stopping Maps..."
-	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
+	output=$(spitToFull "adb shell am force-stop ${PACKAGE}")
 	
 	echo "Compiling everything..."
-	output=$(spitToFull "adb shell cmd package compile -m everything -f com.google.android.apps.maps")
+	output=$(spitToFull "adb shell cmd package compile -m everything -f ${PACKAGE}")
 
 else 	#default case is to attempt to build the profile
 	echo "Building the profile..."
 	output=$(spitToFull "./buildProfile $INPUT_FILE $COMPILATION_SETTING $STASHED_CREATED_PROFILE")
 	
 	echo "Force stopping Maps..."
-	output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
+	output=$(spitToFull "adb shell am force-stop ${PACKAGE}")
 
 	echo "Pushing the created profile..."
 	output=$(spitToFull "adb push $STASHED_CREATED_PROFILE $TEMP_PHONE_PROFILE")
@@ -143,7 +133,7 @@ else 	#default case is to attempt to build the profile
 	output=$(spitToFull "adb shell cp $TEMP_PHONE_PROFILE $CUR_PROFILE")
 	
 	echo "Recompiling profile..."  
-	output=$(spitToFull "adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps")
+	output=$(spitToFull "adb shell cmd package compile -m speed-profile -f ${PACKAGE}")
 
 	echo "Saving the profile..."
 	output=$(spitToFull "adb pull $REF_PROFILE $SAVED_PROFILE")
@@ -151,19 +141,26 @@ else 	#default case is to attempt to build the profile
 	echo "Getting profile size..."
 	PROFILE_SIZE=$(spitToFull "adb shell stat -c%s $REF_PROFILE")
 	echo "Size of profile: $PROFILE_SIZE" >> $SHORT_SUMMARY
+
+	echo "Getting profile tag counts..."
+	output=$(spitToFull "./tagCounts $SAVED_PROFILE")
+	echo "Profile tag counts: $output" >> $SHORT_SUMMARY
+	echo "Profile tag counts: $output" >> $STASHING_MANIPULATE_INFO
+
 fi
 
 
 echo "Force stopping Maps..."
-output=$(spitToFull "adb shell am force-stop com.google.android.apps.maps")
+output=$(spitToFull "adb shell am force-stop ${PACKAGE}")
 
 echo "Getting app size..." 
-output=$(spitToFull "adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64")
+output=$(spitToFull "adb shell ls -l /data/app/${PACKAGE}*/oat/arm64")
 APP_SIZE=$(echo $output | awk '{print $2}')
 echo $APP_SIZE > $STASHING_APP_SIZE
 
 echo "Size of app: $APP_SIZE" >> $SHORT_SUMMARY
-echo "" >> $SHORT_SUMMARY
+
+
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" >> $SHORT_SUMMARY
 
 echo "Executing and measuring the CUJ..."

@@ -400,7 +400,6 @@ public class ShellUtilityTest {
         UiObject2 one = shellUtility.device.wait(Until.findObject(By.text("1")), TIMEOUT);
         assertNotEquals(null, one);
 
-
         sectionCUJ = "cr";
         shellUtility.parseAndWalkCujNTimes(preCUJ, measuredCUJ, postCUJ, sectionCUJ, n);
         UiObject2 zero = shellUtility.device.wait(Until.findObject(By.text("0")), TIMEOUT);

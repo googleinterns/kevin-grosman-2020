@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+PROFILE=${1?"ERROR: need to provide a profile"}
+PACKAGE=${2-com.google.android.apps.maps}
+DUMP="/tmp/profSummaries_dump.txt"
+CHURNED_PROFILE="/tmp/profSummaries_churned_profile.txt"
+
+./compileWithProfile $PROFILE
+SIZE_DATA=$(adb shell ls -l /data/app/${PACKAGE}*/oat/arm64)
+APP_SIZE=$(echo $SIZE_DATA | awk '{print $2}')
+
+echo $APP_SIZE

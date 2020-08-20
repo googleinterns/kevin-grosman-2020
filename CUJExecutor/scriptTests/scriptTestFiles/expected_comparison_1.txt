@@ -1,0 +1,25 @@
+HSPL to HSPL: 3
+HSPL to HPL: 
+HSPL to PL: 
+HSPL to L: 
+HSPL to NA: 
+HPL to HSPL: 
+HPL to HPL: 2
+HPL to PL: 
+HPL to L: 
+HPL to NA: 
+PL to HSPL: 
+PL to HPL: 
+PL to PL: 4
+PL to L: 
+PL to NA: 
+L to HSPL: 
+L to HPL: 
+L to PL: 
+L to L: 1
+L to NA: 
+NA to HSPL: 
+NA to HPL: 
+NA to PL: 
+NA to L: 
+NA to NA: 

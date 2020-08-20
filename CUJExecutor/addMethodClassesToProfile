@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# INPUT: a .prof file followed by any number of tags in {HSPL, HPL, PL}
+# OUTPUT: a new profile in which all methods with the provided tags have their corresponding classes included in the profile (these methods are backed by their classes).
+
+PROFILE=${1?"ERROR: need to provide a profile"}
+DUMP="/tmp/addMethodClassesToProfile_dump.txt"
+
+./profileToDump $PROFILE > $DUMP
+
+shift
+for TAG in $@
+do
+	grep "^${TAG}" $DUMP | sed 's/->.*//' | sed "s/^${TAG}/L/" >> $DUMP
+done
+
+
+./dumpToProfile $DUMP

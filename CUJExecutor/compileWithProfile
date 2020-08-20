@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# INPUT: a .prof file
+# OUTPUT: compiles aGMM with the passed profile
+
+
+PROFILE=${1?"ERROR: need to provie a .prof file"}
+PACKAGE=${2-com.google.android.apps.maps}
+
+adb shell cmd package compile --reset $PACKAGE 2>&1 >/dev/null
+adb push $PROFILE /data/misc/profiles/cur/0/${PACKAGE}/primary.prof 2>&1 >/dev/null
+adb shell cmd package compile -m speed-profile -f $PACKAGE 2>&1 >/dev/null

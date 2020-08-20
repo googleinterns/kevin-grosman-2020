@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# INPUT: a .prof file
+# OUTPUT: recompiles the app with the passed profile and returns the ref profile (which might differ from the passed profile)
+
+PROFILE=${1?"ERROR: need to provide a profile"}
+PACKAGE=${2-com.google.android.apps.maps}
+
+CHURNED_PROFILE="/tmp/ARTProfileInterpretation_churned_profile.txt"
+echo -n "" > "$CHURNED_PROFILE" 
+
+./compileWithProfile $PROFILE
+adb pull /data/misc/profiles/ref/${PACKAGE}/primary.prof $CHURNED_PROFILE 2>&1 >/dev/null
+cat $CHURNED_PROFILE

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# INPUT: a .prof file and any number of tags in {HSPL, HPL, PL, L}
+# OUTPUT: echos a profile which only keeps the dump entries with the passed tags (all arguments after the profile are interpretted as an entry tag)
+
+PROFILE=${1}
+FILTERED_DUMP="/tmp/keepProfileTags_filtered_dump.txt"
+echo -n "" > $FILTERED_DUMP
+shift
+for TAG_COMBINATION in $@
+do
+	./profileToDump $PROFILE | grep "^${TAG_COMBINATION}"  >> $FILTERED_DUMP
+done
+./dumpToProfile $FILTERED_DUMP

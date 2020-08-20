@@ -259,6 +259,7 @@ public class ShellUtility {
      */
     public long launchApp(String pkg) throws InterruptedException, IOException, RemoteException, UiObjectNotFoundException {
         forceQuitApps();
+
         //Start from the home screen
         final String launcherPackage = device.getLauncherPackageName();
         Assert.assertThat(launcherPackage, CoreMatchers.notNullValue());
@@ -266,8 +267,6 @@ public class ShellUtility {
 
 
         // Launch the app
-        //Process process = new ProcessBuilder("am", "start", pkg).start();
-
         Context context = ApplicationProvider.getApplicationContext();
         final Intent intent = context.getPackageManager().getLaunchIntentForPackage(pkg);
 
@@ -649,7 +648,7 @@ public class ShellUtility {
                 cuj[i].executeCachedAction();
             }
             sleep(2000);
-            //This is important so that the last action fully registers (if it is a cleanup action!)
+            //This is important so that the last action fully registers (if it is a cleanup action!) and to prevent crashes
         }
         if (iterations > 0) {
             logData(allActionStamps, recstart);
@@ -749,11 +748,10 @@ public class ShellUtility {
 
 
         Action[] cuj = parseStringCUJ(sectionCUJ);
-        //run n times:
         for (int k = 0; k < n; k++) {
             //Run through cuj once (cached data won't actually be used)
             cacheCUJ(cuj);
-            sleep(2000); //This is important so that the last action fully registers (if it is a cleanup action!)
+            sleep(2000); //This is important so that the last action fully registers (if it is a cleanup action!) and to prevent crashes
         }
 
         Log.i("actions-run", Arrays.toString(sectionCUJ));
