@@ -1,0 +1,37 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting']
+MEASURED CUJ: ['click;Your location;strict', 'click;Step']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG m: 1X[click;Your location;strict]
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: 1X[start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: 1X[start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;strict, click;DIRECTIONS, click;Choose starting]
+ACTIONS COMPILED FOR FLAG c: 1X[start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 35
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' TOTAL 
+e                45076    4464                         4464  
+m                49413    4333                         4333  
+u                53208    4422                         4422  
+f                59074    4367                         4367  
+p                60104    4351                         4351  
+c                60216    4386                         4386  
+a                170904   4318                         4318  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' TOTAL 
+e                45076    4453                         4453  
+m                49320    4477                         4477  
+u                53208    4272                         4272  
+f                58744    4544                         4544  
+p                59668    4413                         4413  
+c                60240    4998                         4998  
+a                170904   4478                         4478  
+************************************************MEGA TEST SUMMARY:*************************************************

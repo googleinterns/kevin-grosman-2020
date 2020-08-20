@@ -1,0 +1,21 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof:----------08-17-2020--01:23:57-------------------------------
+SIZE DATA:
+
+Size of profile: 48746
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 9262; L: 8277; 
+Size of app: 59604
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  2873            2298          2363               1885          9419  
+ITERATION 2:  2817            1837          2093               1823          8570  
+ITERATION 3:  2809            1812          1960               1831          8412  
+ITERATION 4:  2775            1892          2568               1855          9090  
+                                                                                   
+AVERAGE:      2818            1959          2246               1848          8871  
+MEDIAN:       2817            1892          2363               1855          8927  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof:----------08-17-2020--01:23:57-------------------------------

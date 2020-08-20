@@ -1,0 +1,38 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting']
+MEASURED CUJ: ['click;Your location;+strict']
+POST CUJ:     ['click;Step']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Your location;+strict]
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG ef: Base: Empty, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG ep: Base: Empty, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting]
+ACTIONS COMPILED FOR FLAG ec: Base: Empty, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;+strict]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 35
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;+strict' TOTAL 
+e                45076    4530                          4530  
+em               49138    4402                          4402  
+u                53208    4541                          4541  
+ef               59128    4520                          4520  
+ep               59859    4490                          4490  
+ec               60188    4497                          4497  
+a                170904   4526                          4526  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;+strict' TOTAL 
+e                45076    4808                          4808  
+em               49360    4045                          4045  
+u                53208    4856                          4856  
+ef               59220    4190                          4190  
+ep               60452    4635                          4635  
+ec               60124    4144                          4144  
+a                170904   4413                          4413  
+************************************************MEGA TEST SUMMARY:*************************************************

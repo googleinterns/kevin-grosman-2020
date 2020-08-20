@@ -1,0 +1,5 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy']
+MEASURED CUJ: ['click;DIRECTIONS', 'clickImage;Navigate up']
+

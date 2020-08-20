@@ -1,0 +1,41 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps'] 
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;Open now']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG um: Base: Cloud, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG ec: Base: Empty, Actions: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG uc: Base: Cloud, Actions: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG ep: Base: Empty, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG up: Base: Cloud, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG ef: Base: Empty, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG uf: Base: Cloud, Actions: [start;com.google.android.apps.maps]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 3
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+em               47992    2589            2589  
+um               55476    2878            2878  
+ec               59036    2643            2643  
+uc               62268    2546            2546  
+ep               59404    2674            2674  
+up               61808    2676            2676  
+ef               59704    2765            2765  
+uf               61976    2620            2620  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+em               47992    2591            2591  
+um               55476    2990            2990  
+ec               59036    2453            2453  
+uc               62268    2517            2517  
+ep               59404    2739            2739  
+up               61808    2754            2754  
+ef               59704    2672            2672  
+uf               61976    2657            2657  
+************************************************MEGA TEST SUMMARY:*************************************************

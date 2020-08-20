@@ -1,0 +1,15 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+./runCujNTimes CUJS/aGMM_Latency_Transitions/Takeout/4_Takeout_placesheet_directionResults.txt f 1
+RAW OUTPUT: 
+EXECUTION FLAG INVALID: Use one of {p - execute actions in Pre-CUJ, c - execute all but the last action in the CUJ, w - execute entire CUJ}
+----------------------------------
+EXECUTING COMMAND:
+sleep 60
+RAW OUTPUT: 

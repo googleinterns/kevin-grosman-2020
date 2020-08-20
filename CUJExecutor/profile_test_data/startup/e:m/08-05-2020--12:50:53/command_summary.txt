@@ -1,0 +1,59 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/startup.txt utilityProfiles/1_appStart_home/e:m.prof /tmp/build_created_profile.prof
+RAW OUTPUT: 
+BASE PROFILE:      utilityProfiles/1_appStart_home/e
+COMPILATION FLAGS: m.prof
+Resetting the profile....
+Success
+Setting the inital working profile...
+No prefix profile found. Starting from scratch.
+ERROR: invalid base profile: "utilityProfiles/1_appStart_home/e"
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb push /tmp/build_created_profile.prof /sdcard/profiles/temp_profile.prof
+RAW OUTPUT: 
+/tmp/build_created_profile.prof: 1 file pushed, 0 skipped.
+----------------------------------
+EXECUTING COMMAND:
+adb shell cp /sdcard/profiles/temp_profile.prof /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof profile_test_data/startup/e:m/08-05-2020--12:50:53/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/ref/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped.
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+23419
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 55932
+-rw-r----- 1 system all_a245   151552 2020-08-05 12:51 base.art
+-rw-r----- 1 system all_a245 12685112 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44375192 2020-08-05 12:51 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/startup.txt
+RAW OUTPUT: 

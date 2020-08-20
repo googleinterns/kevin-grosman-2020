@@ -1,0 +1,31 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'start;com.google.android.keep', 'click;McDonalds Placesheet', 'click;https'] 
+MEASURED CUJ: ['click;Open', 'click;Fast Food']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, start;com.google.android.keep, click;McDonalds Placesheet, click;https, click;Open]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 35
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    2711         2711  
+u                53208    2537         2537  
+f                58717    2206         2206  
+c                68977    2077         2077  
+a                170904   2060         2060  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    2650         2650  
+u                53208    2510         2510  
+f                58752    2136         2136  
+c                68792    2053         2053  
+a                170904   2011         2011  
+************************************************MEGA TEST SUMMARY:*************************************************

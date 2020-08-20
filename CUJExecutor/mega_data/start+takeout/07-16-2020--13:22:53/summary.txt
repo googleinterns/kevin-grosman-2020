@@ -1,0 +1,18 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+TOTAL ITERATIONS PER FLAG: 2
+
+AVERAGED DATA:
+
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+p                45076    2222                                 2883            5105  
+c                59002    1755                                 2527            4282  
+u                45076    2219                                 2821            5040  
+
+MEDIANED DATA:
+
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+p                45076    2254                                 2925            5115  
+c                59080    1764                                 2585            4331  
+u                45076    2230                                 2860            5090  
+************************************************MEGA TEST SUMMARY:*************************************************

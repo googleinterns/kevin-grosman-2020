@@ -1,0 +1,26 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'click;Takeout'] 
+MEASURED CUJ: ['click;Billy', 'click;REVIEWS']
+
+TOTAL ITERATIONS PER FLAG: 10
+NOTE: 5 iterations of data are missing for flag f
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Billy' TOTAL 
+e                45076    2307          2307  
+u                53208    2160          2160  
+f                45080    2200          2200  
+p                59308    1955          1955  
+c                59730    1950          1950  
+a                170904   1888          1888  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Billy' TOTAL 
+e                45076    2310          2310  
+u                53208    2173          2173  
+f                45080    2213          2213  
+p                59408    1971          1971  
+c                59736    1941          1941  
+a                170904   1891          1891  
+************************************************MEGA TEST SUMMARY:*************************************************

@@ -1,0 +1,63 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/Takeout/1X7945_Takeout_openApp_thru_navigation.txt e:mmmmm-NC-08-13-2020--19:30:59_UNION_s /tmp/build_created_profile.prof
+RAW OUTPUT: 
+BASE PROFILE:      e:mmmmm-NC-08-13-2020--19:30
+COMPILATION FLAGS: 59_UNION_s
+Resetting the profile....
+Success
+Setting the inital working profile...
+Prefix profile utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:mmmmm-NC-08-13-2020--19:30:59_UNION_s.prof found! Now executing actions starting from index 10.
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb push /tmp/build_created_profile.prof /sdcard/profiles/temp_profile.prof
+RAW OUTPUT: 
+/tmp/build_created_profile.prof: 1 file pushed, 0 skipped.
+----------------------------------
+EXECUTING COMMAND:
+adb shell cp /sdcard/profiles/temp_profile.prof /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof profile_test_data/1X7945_Takeout_openApp_thru_navigation/e:mmmmm-NC-08-13-2020--19:30:59_UNION_s/08-14-2020--21:37:21/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/ref/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped.
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+49808
+----------------------------------
+EXECUTING COMMAND:
+./tagCounts profile_test_data/1X7945_Takeout_openApp_thru_navigation/e:mmmmm-NC-08-13-2020--19:30:59_UNION_s/08-14-2020--21:37:21/saved_profile.prof
+RAW OUTPUT: 
+HSPL: 18066; HPL: 2095; PL: 28314; L: 8277; 
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 61664
+-rw-r----- 1 system all_a245  2887680 2020-08-14 21:37 base.art
+-rw-r----- 1 system all_a245 15896064 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44297460 2020-08-14 21:37 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/Takeout/1X7945_Takeout_openApp_thru_navigation.txt
+RAW OUTPUT: 

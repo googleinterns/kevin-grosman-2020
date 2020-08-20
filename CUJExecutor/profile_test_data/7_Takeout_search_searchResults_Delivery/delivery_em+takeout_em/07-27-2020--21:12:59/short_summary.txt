@@ -1,0 +1,17 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/delivery_em+takeout_em.prof----------07-27-2020--21:12:59-------------------------------
+SIZE DATA:
+
+Size of profile: 17825
+Size of app: 48072
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Delivery' TOTAL 
+                                
+AVERAGE: N/A              N/A   
+MEDIAN:  N/A              N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/delivery_em+takeout_em.prof----------07-27-2020--21:12:59-------------------------------

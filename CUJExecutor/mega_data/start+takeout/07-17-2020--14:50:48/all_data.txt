@@ -1,0 +1,39 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e----------07-17-2020--14:50:48-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--14:50:53-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 2
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  2054                                 2668            4722  
+ITERATION 2:  2081                                 2756            4837  
+                                                                         
+AVERAGE:      2067                                 2712            4779  
+MEDIAN:       2081                                 2756            4837  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--14:50:53-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout',  'click;Open now']
+
+ACTIONS COMPILED FOR FLAG e: None
+TOTAL ITERATIONS PER FLAG: 2
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+e                45076    2067                                 2712            4779  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+e                45076    2081                                 2756            4837  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e----------07-17-2020--14:50:48-----------------------------------------------------------------

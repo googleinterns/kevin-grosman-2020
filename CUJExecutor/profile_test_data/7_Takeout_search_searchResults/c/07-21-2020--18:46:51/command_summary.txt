@@ -1,0 +1,10 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+./runCujNTimes CUJS/aGMM_Latency_Transitions/Takeout/7_Takeout_search_searchResults.txt c 1
+RAW OUTPUT: 

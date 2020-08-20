@@ -1,0 +1,8 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m_conv_to_HSPL.prof:----------08-05-2020--13:02:07-------------------------------
+SIZE DATA:
+
+Size of profile: 44611
+Size of app: 62016
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,11 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps'] 
+MEASURED CUJ: ['edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+

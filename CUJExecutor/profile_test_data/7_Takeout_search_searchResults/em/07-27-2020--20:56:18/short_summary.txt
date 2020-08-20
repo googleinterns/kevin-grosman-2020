@@ -1,0 +1,17 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof----------07-27-2020--20:56:18-------------------------------
+SIZE DATA:
+
+Size of profile: 28836
+Size of app: 48556
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof----------07-27-2020--20:56:18-------------------------------

@@ -1,0 +1,63 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/1_appStart_home.txt e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmm /tmp/build_created_profile.prof
+RAW OUTPUT: 
+BASE PROFILE:      e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33
+COMPILATION FLAGS: 01_back_HSPL_back_HPL_PLmmm
+Resetting the profile....
+Success
+Setting the inital working profile...
+Prefix profile utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmm.prof found! Now executing actions starting from index 27.
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb push /tmp/build_created_profile.prof /sdcard/profiles/temp_profile.prof
+RAW OUTPUT: 
+/tmp/build_created_profile.prof: 1 file pushed, 0 skipped. 58.5 MB/s (43619 bytes in 0.001s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell cp /sdcard/profiles/temp_profile.prof /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof profile_test_data/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmm/08-14-2020--01:21:40/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/ref/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped. 3.1 MB/s (43619 bytes in 0.013s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+43619
+----------------------------------
+EXECUTING COMMAND:
+./tagCounts profile_test_data/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmm/08-14-2020--01:21:40/saved_profile.prof
+RAW OUTPUT: 
+HSPL: 18574; HPL: 227; PL: 8927; L: 11460; 
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 60452
+-rw-r----- 1 system all_a245  3530752 2020-08-14 01:21 base.art
+-rw-r----- 1 system all_a245 13962752 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44346588 2020-08-14 01:21 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/1_appStart_home.txt
+RAW OUTPUT: 

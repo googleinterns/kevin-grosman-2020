@@ -1,0 +1,22 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+TOTAL ITERATIONS: 21
+
+AVERAGED DATA:
+Compilation flag App size 'click;North Mattis Avenue'  TOTAL 
+e                45076    2306                         2306  
+u                53208    2126                         2126  
+f                59426    1965                         1965  
+p                59031    1967                         1967  
+c                59509    1906                         1906  
+a                170904   1933                         1933  
+
+MEDIANED DATA:
+Compilation flag App size 'click;North Mattis Avenue'  TOTAL 
+e                45076    2387                         2387  
+u                53208    2225                         2225  
+f                59440    1891                         1891  
+p                58940    1870                         1870  
+c                59392    1832                         1832  
+a                170904   1996                         1996  
+************************************************MEGA TEST SUMMARY:*************************************************

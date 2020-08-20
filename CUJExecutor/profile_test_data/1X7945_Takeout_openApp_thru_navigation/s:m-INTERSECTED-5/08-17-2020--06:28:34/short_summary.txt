@@ -1,0 +1,21 @@
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5----------08-17-2020--06:28:34-------------------------------
+SIZE DATA:
+
+Size of profile: 48755
+Profile tag counts: HSPL: 18066; HPL: 1190; PL: 29077; L: 8277; 
+Size of app: 60644
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  2704            1876          1929               1926          8435  
+ITERATION 2:  2853            1847          1926               1547          8173  
+ITERATION 3:  2888            1880          1891               1523          8182  
+ITERATION 4:  2986            1836          1941               1525          8288  
+                                                                                   
+AVERAGE:      2857            1859          1921               1630          8267  
+MEDIAN:       2888            1876          1929               1547          8240  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5----------08-17-2020--06:28:34-------------------------------

@@ -1,0 +1,5 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile demoFiles/1X39XX45_Googleplex_openApp_thru_navigation.txt e: /tmp/build_created_profile.prof
+RAW OUTPUT: 

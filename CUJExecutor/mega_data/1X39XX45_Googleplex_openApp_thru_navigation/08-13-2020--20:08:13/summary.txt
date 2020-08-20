@@ -1,0 +1,28 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps'] 
+MEASURED CUJ: ['edit;Try gas;Googleplex', 'click;Amphitheatre', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG a:
+All
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 3
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'edit;Try gas;Googleplex' 'click;Amphitheatre' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:               45076    1190                      2563                 2005                       1747               1362                    4727                         3322          16916 
+a                170904   1097                      2213                 1700                       1504               1162                    4515                         2738          14929 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'edit;Try gas;Googleplex' 'click;Amphitheatre' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:               45076    1026                      2654                 1946                       1576               1365                    4754                         3291          16612 
+a                170904   1038                      2191                 1652                       1508               1153                    4429                         2752          14723 
+************************************************MEGA TEST SUMMARY:*************************************************

@@ -1,0 +1,56 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG e:m: Base: Empty, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG e:mmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:m.prof, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG e:mmmmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:mmm.prof, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG u:m: Base: Cloud, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG u:mmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/u:m.prof, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG u:mmmmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/u:mmm.prof, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG s: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:m: Base: Startup, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG s:mmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/s:m.prof, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG s:mmmmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/s:mmm.prof, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 36
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:               45072    4457                                 1353                          2148            1772                       1618               1262                    4502                         2788          19900 
+e:m              61256    4019                                 1147                          2065            1693                       1515               1179                    4451                         2313          18382 
+e:mmm            62228    3889                                 1198                          2019            1770                       1552               1220                    4401                         2201          18250 
+e:mmmmm          62416    4038                                 1157                          2086            1764                       1520               1179                    4465                         2242          18451 
+u                53208    4326                                 1307                          2114            1881                       1571               1230                    4554                         2509          19492 
+u:m              63936    3931                                 1097                          2143            1777                       1527               1206                    4520                         2154          18355 
+u:mmm            64192    3969                                 1184                          2040            1716                       1499               1222                    4453                         2115          18198 
+u:mmmmm          64264    4047                                 1091                          2095            1773                       1533               1188                    4608                         2215          18550 
+s                59528    4014                                 1162                          2114            1793                       1534               1241                    4465                         2339          18662 
+s:m              61996    3907                                 1211                          2003            1725                       1550               1223                    4478                         2110          18207 
+s:mmm            62736    3952                                 1161                          2096            1817                       1521               1200                    4449                         2134          18330 
+s:mmmmm          62984    3857                                 1199                          2031            1789                       1515               1261                    4525                         2234          18411 
+a                170904   4012                                 1196                          1945            1683                       1514               1206                    4523                         2227          18306 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:               45072    4353                                 1466                          2067            1783                       1566               1255                    4570                         2749          19809 
+e:m              61256    3790                                 1075                          2106            1690                       1508               1158                    4434                         2235          17996 
+e:mmm            62228    3793                                 1277                          2074            1730                       1500               1204                    4392                         2179          18149 
+e:mmmmm          62416    3821                                 1070                          2123            1720                       1494               1182                    4472                         2191          18073 
+u                53208    4258                                 1397                          2071            1782                       1542               1229                    4565                         2434          19278 
+u:m              63936    3751                                 1026                          2144            1700                       1511               1167                    4544                         2115          17958 
+u:mmm            64192    3791                                 1248                          2057            1717                       1501               1202                    4419                         2124          18059 
+u:mmmmm          64264    3886                                 1041                          2128            1723                       1508               1178                    4535                         2170          18169 
+s                59528    3849                                 1041                          2147            1790                       1521               1185                    4367                         2276          18176 
+s:m              61996    3774                                 1277                          1979            1706                       1510               1202                    4518                         2090          18056 
+s:mmm            62736    3838                                 1062                          2125            1706                       1495               1193                    4489                         2109          18017 
+s:mmmmm          62984    3711                                 1276                          2048            1686                       1502               1240                    4487                         2169          18119 
+a                170904   3805                                 1262                          1955            1666                       1497               1187                    4506                         2167          18045 
+************************************************MEGA TEST SUMMARY:*************************************************

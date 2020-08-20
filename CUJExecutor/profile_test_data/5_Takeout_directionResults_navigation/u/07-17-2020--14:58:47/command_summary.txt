@@ -1,0 +1,43 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb push utilityProfiles/cloudProfile.prof /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+utilityProfiles/cloudProfile.prof: 1 file pushed, 0 skipped. 43.7 MB/s (38680 bytes in 0.001s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell chmod a+rw /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof profile_test_data/5_Takeout_directionResults_navigation/u/07-17-2020--14:58:47/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped. 5.5 MB/s (38680 bytes in 0.007s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+-rw-rw-rw- 1 root root 38680 2020-07-16 11:54 /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 53208
+-rw-r----- 1 system all_a245  1937408 2020-07-17 14:59 base.art
+-rw-r----- 1 system all_a245  8005272 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44483948 2020-07-17 14:59 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/Takeout/5_Takeout_directionResults_navigation.txt
+RAW OUTPUT: 

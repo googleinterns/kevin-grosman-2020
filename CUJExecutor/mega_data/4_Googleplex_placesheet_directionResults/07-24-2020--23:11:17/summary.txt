@@ -1,0 +1,45 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting']
+MEASURED CUJ: ['click;Your location;strict']
+POST CUJ:     ['click;Step']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG m: None
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG f: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG p: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG c: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 35
+NOTE: 35 iterations of data are missing for flag e
+NOTE: 35 iterations of data are missing for flag m
+NOTE: 35 iterations of data are missing for flag u
+NOTE: 35 iterations of data are missing for flag f
+NOTE: 35 iterations of data are missing for flag p
+NOTE: 35 iterations of data are missing for flag c
+NOTE: 35 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' TOTAL 
+e                N/A      N/A                          N/A   
+m                N/A      N/A                          N/A   
+u                N/A      N/A                          N/A   
+f                N/A      N/A                          N/A   
+p                N/A      N/A                          N/A   
+c                N/A      N/A                          N/A   
+a                N/A      N/A                          N/A   
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' TOTAL 
+e                N/A      N/A                          N/A   
+m                N/A      N/A                          N/A   
+u                N/A      N/A                          N/A   
+f                N/A      N/A                          N/A   
+p                N/A      N/A                          N/A   
+c                N/A      N/A                          N/A   
+a                N/A      N/A                          N/A   
+************************************************MEGA TEST SUMMARY:*************************************************

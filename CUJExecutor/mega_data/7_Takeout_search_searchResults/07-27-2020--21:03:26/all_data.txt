@@ -1,0 +1,166 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e utilityProfiles/7_Takeout_search_searchResults/em.prof utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof utilityProfiles/takeout_em+billy_em.prof utilityProfiles/delivery_em+takeout_em.prof a----------07-27-2020--21:03:26-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--21:03:27-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--21:03:27-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults/em.prof----------07-27-2020--21:03:58-------------------------------
+SIZE DATA:
+
+Size of profile: 25708
+Size of app: 47736
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults/em.prof----------07-27-2020--21:03:58-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof----------07-27-2020--21:04:31-------------------------------
+SIZE DATA:
+
+Size of profile: 26629
+Size of app: 47992
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof----------07-27-2020--21:04:31-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof----------07-27-2020--21:05:04-------------------------------
+SIZE DATA:
+
+Size of profile: 28836
+Size of app: 48556
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof----------07-27-2020--21:05:04-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/takeout_em+billy_em.prof----------07-27-2020--21:05:36-------------------------------
+SIZE DATA:
+
+Size of profile: 21162
+Size of app: 48876
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/takeout_em+billy_em.prof----------07-27-2020--21:05:36-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/delivery_em+takeout_em.prof----------07-27-2020--21:06:08-------------------------------
+SIZE DATA:
+
+Size of profile: 17825
+Size of app: 48072
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/delivery_em+takeout_em.prof----------07-27-2020--21:06:08-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--21:06:44-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--21:06:44-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/7_Takeout_search_searchResults/em.prof: Base: utilityProfiles/7_Takeout_search_searchResults/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof: Base: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof: Base: utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/takeout_em+billy_em.prof: Base: utilityProfiles/takeout_em+billy_em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/delivery_em+takeout_em.prof: Base: utilityProfiles/delivery_em+takeout_em.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 0
+
+AVERAGED DATA:
+COMPILATION FLAG                                                APP SIZE 'click;Takeout' TOTAL 
+e                                                               N/A      N/A             N/A   
+utilityProfiles/7_Takeout_search_searchResults/em.prof          N/A      N/A             N/A   
+utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof N/A      N/A             N/A   
+utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof      N/A      N/A             N/A   
+utilityProfiles/takeout_em+billy_em.prof                        N/A      N/A             N/A   
+utilityProfiles/delivery_em+takeout_em.prof                     N/A      N/A             N/A   
+a                                                               N/A      N/A             N/A   
+
+MEDIANED DATA:
+COMPILATION FLAG                                                APP SIZE 'click;Takeout' TOTAL 
+e                                                               N/A      N/A             N/A   
+utilityProfiles/7_Takeout_search_searchResults/em.prof          N/A      N/A             N/A   
+utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof N/A      N/A             N/A   
+utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof      N/A      N/A             N/A   
+utilityProfiles/takeout_em+billy_em.prof                        N/A      N/A             N/A   
+utilityProfiles/delivery_em+takeout_em.prof                     N/A      N/A             N/A   
+a                                                               N/A      N/A             N/A   
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e utilityProfiles/7_Takeout_search_searchResults/em.prof utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof utilityProfiles/takeout_em+billy_em.prof utilityProfiles/delivery_em+takeout_em.prof a----------07-27-2020--21:03:26-----------------------------------------------------------------

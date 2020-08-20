@@ -1,0 +1,56 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG e:m: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:mmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG u:m: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/u:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG u:mmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/u:mmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG u:mmmmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/u:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG s: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:m: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/s:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:mmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/s:mmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:mmmmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/s:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 36
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:               45073    4607                                 1487                          2128            1914                       1604               1325                    4967                         2048          20080 
+e:m              61228    3945                                 1131                          2173            1584                       1568               1269                    4844                         1831          18345 
+e:mmm            61756    3975                                 1152                          2115            1581                       1544               1262                    4788                         1807          18224 
+e:mmmmm          61824    3946                                 1179                          2149            1681                       1558               1231                    4675                         1806          18225 
+u                53208    4453                                 1347                          2198            1823                       1531               1297                    4768                         2209          19626 
+u:m              63756    3904                                 1130                          2174            1660                       1558               1260                    5108                         1763          18557 
+u:mmm            64204    3880                                 1189                          2107            1600                       1532               1255                    4689                         1815          18067 
+u:mmmmm          64316    3930                                 1133                          2175            1677                       1538               1224                    4764                         1832          18273 
+s                59528    4021                                 1108                          2248            1699                       1533               1247                    4908                         1821          18585 
+s:m              61740    3952                                 1199                          2058            1708                       1548               1288                    4974                         1875          18602 
+s:mmm            62152    4013                                 1170                          2136            1644                       1567               1263                    4682                         1744          18219 
+s:mmmmm          62404    3943                                 1129                          2204            1590                       1585               1227                    5375                         1721          18774 
+a                170904   3954                                 1195                          2014            1617                       1530               1272                    4880                         1695          18157 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:               45072    4494                                 1554                          2090            1814                       1582               1320                    4975                         2040          19869 
+e:m              61228    3947                                 1041                          2252            1582                       1556               1239                    4707                         1800          18124 
+e:mmm            61756    3923                                 1024                          2188            1586                       1546               1223                    4723                         1864          18077 
+e:mmmmm          61824    3847                                 1054                          2135            1614                       1544               1207                    4756                         1768          17925 
+u                53208    4384                                 1500                          2102            1731                       1526               1276                    4803                         2155          19477 
+u:m              63756    3882                                 1026                          2244            1596                       1555               1233                    4682                         1815          18033 
+u:mmm            64204    3850                                 1302                          2130            1573                       1537               1232                    4690                         1783          18097 
+u:mmmmm          64316    3873                                 1041                          2243            1590                       1544               1215                    4738                         1805          18049 
+s                59528    4038                                 1023                          2323            1681                       1544               1214                    5060                         1878          18761 
+s:m              61740    3902                                 1325                          1966            1623                       1547               1274                    4927                         1847          18411 
+s:mmm            62152    3909                                 1043                          2196            1589                       1543               1245                    4776                         1701          18002 
+s:mmmmm          62404    3866                                 1041                          2228            1588                       1553               1215                    4884                         1675          18050 
+a                170904   3936                                 1280                          2008            1606                       1531               1255                    4886                         1680          18182 
+************************************************MEGA TEST SUMMARY:*************************************************

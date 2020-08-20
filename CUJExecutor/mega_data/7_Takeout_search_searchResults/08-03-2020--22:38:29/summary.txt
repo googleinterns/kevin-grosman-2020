@@ -1,0 +1,60 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG u:: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG s:: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:hot: Base: utilityProfiles/7_Takeout_search_searchResults/s:hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-5: Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-5_hot: Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-5_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m: Base: utilityProfiles/7_Takeout_search_searchResults/s:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m_hot: Base: utilityProfiles/7_Takeout_search_searchResults/s:m_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:mmmmm: Base: utilityProfiles/7_Takeout_search_searchResults/s:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:mmmmm_hot: Base: utilityProfiles/7_Takeout_search_searchResults/s:mmmmm_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 231
+NOTE: 21 iterations of data are missing for flag e:
+NOTE: 14 iterations of data are missing for flag s:
+NOTE: 21 iterations of data are missing for flag s:hot
+NOTE: 21 iterations of data are missing for flag s:m-INTERSECTED-5
+NOTE: 7 iterations of data are missing for flag s:m-INTERSECTED-5_hot
+NOTE: 14 iterations of data are missing for flag s:m
+NOTE: 7 iterations of data are missing for flag s:m_hot
+NOTE: 35 iterations of data are missing for flag s:mmmmm
+NOTE: 7 iterations of data are missing for flag s:mmmmm_hot
+NOTE: 14 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG      APP SIZE 'click;Takeout' TOTAL 
+e:                    45076    3370            3370  
+u:                    53208    3440            3440  
+s:                    59524    2924            2924  
+s:hot                 61844    2911            2911  
+s:m-INTERSECTED-5     59848    2885            2885  
+s:m-INTERSECTED-5_hot 65420    2833            2833  
+s:m                   60208    2878            2878  
+s:m_hot               65456    2937            2937  
+s:mmmmm               60348    2813            2813  
+s:mmmmm_hot           65748    2769            2769  
+a                     170904   2807            2807  
+
+MEDIANED DATA:
+COMPILATION FLAG      APP SIZE 'click;Takeout' TOTAL 
+e:                    45076    3298            3298  
+u:                    53208    3237            3237  
+s:                    59524    2879            2879  
+s:hot                 61844    2853            2853  
+s:m-INTERSECTED-5     59848    2820            2820  
+s:m-INTERSECTED-5_hot 65420    2612            2612  
+s:m                   60208    2795            2795  
+s:m_hot               65456    2620            2620  
+s:mmmmm               60348    2772            2772  
+s:mmmmm_hot           65748    2621            2621  
+a                     170904   2631            2631  
+************************************************MEGA TEST SUMMARY:*************************************************

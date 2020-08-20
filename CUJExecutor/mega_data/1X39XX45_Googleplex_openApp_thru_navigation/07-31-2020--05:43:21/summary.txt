@@ -1,0 +1,45 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-1: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:m-INTERSECTED-1.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-3: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:m-INTERSECTED-3.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-1: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/s:m-INTERSECTED-1.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-3: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/s:m-INTERSECTED-3.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-5: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/s:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 52
+NOTE: 4 iterations of data are missing for flag s:m-INTERSECTED-1
+
+AVERAGED DATA:
+COMPILATION FLAG  APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:                45072    4468                                 1467                          2221            2019                       1592               1266                    4501                         2254          19788 
+e:m-INTERSECTED-1 60276    3932                                 1181                          2174            1898                       1505               1205                    4461                         1883          18239 
+e:m-INTERSECTED-3 59460    3982                                 1561                          2233            1853                       1513               1199                    4475                         1972          18788 
+e:m-INTERSECTED-5 59200    4042                                 1158                          2232            1962                       1521               1199                    4490                         1994          18598 
+s:                59528    4041                                 1207                          2253            1946                       1550               1207                    4489                         2072          18765 
+s:m-INTERSECTED-1 61644    3890                                 1149                          2228            2013                       1504               1200                    4469                         1913          18366 
+s:m-INTERSECTED-3 61200    3991                                 1211                          2118            1918                       1525               1206                    4416                         1959          18344 
+s:m-INTERSECTED-5 61088    3894                                 1154                          2184            1984                       1509               1202                    4537                         1904          18368 
+a                 170904   3961                                 1187                          2043            1909                       1496               1183                    4455                         1909          18143 
+
+MEDIANED DATA:
+COMPILATION FLAG  APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:                45072    4406                                 1561                          2132            1952                       1542               1275                    4520                         2233          19621 
+e:m-INTERSECTED-1 60276    3845                                 1069                          2249            1856                       1497               1186                    4516                         1857          18075 
+e:m-INTERSECTED-3 59460    3942                                 1059                          2277            1825                       1498               1185                    4530                         1967          18283 
+e:m-INTERSECTED-5 59200    3985                                 1059                          2302            1904                       1504               1182                    4519                         1976          18431 
+s:                59528    3955                                 1058                          2316            1943                       1503               1193                    4516                         2022          18506 
+s:m-INTERSECTED-1 61644    3822                                 1063                          2288            1937                       1494               1176                    4488                         1881          18149 
+s:m-INTERSECTED-3 61200    3915                                 1225                          2125            1880                       1494               1199                    4510                         1935          18283 
+s:m-INTERSECTED-5 61088    3859                                 1060                          2243            1890                       1494               1187                    4541                         1901          18175 
+a                 170904   3894                                 1228                          2050            1865                       1486               1181                    4552                         1922          18178 
+************************************************MEGA TEST SUMMARY:*************************************************

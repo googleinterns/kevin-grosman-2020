@@ -1,0 +1,22 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['click;Nav to BB', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG c1: [click;Nav to BB, clickImage;Close navigation]
+ACTIONS COMPILED FOR FLAG c5: [click;Nav to BB, clickImage;Close navigation]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 25
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+c1               69228    2846              1401                          4248  
+c5               70261    3780              1384                          5165  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+c1               70224    2657              1395                          3982  
+c5               70224    2559              1367                          3928  
+************************************************MEGA TEST SUMMARY:*************************************************

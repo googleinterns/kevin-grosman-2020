@@ -1,0 +1,23 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps'] 
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;Open now']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG emm: Base: Empty, Actions: [click;Takeout] [click;Takeout]
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Takeout]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 3
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+emm              48140    2881            2881  
+em               48016    2659            2659  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+emm              48140    2684            2684  
+em               48016    2681            2681  
+************************************************MEGA TEST SUMMARY:*************************************************

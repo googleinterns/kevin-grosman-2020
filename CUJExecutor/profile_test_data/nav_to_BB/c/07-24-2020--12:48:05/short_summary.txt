@@ -1,0 +1,19 @@
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--12:48:05-------------------------------
+SIZE DATA:
+
+Size of profile: 55825
+Size of app: 60508
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 2
+
+              'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1592                                 2829            1878          2194               1213          1524                          11230 
+ITERATION 2:  1610                                 2807            5006          2139               1292          1399                          14253 
+                                                                                                                                                      
+AVERAGE:      1601                                 2818            3442          2166               1252          1461                          12740 
+MEDIAN:       1610                                 2807            5006          2139               1292          1399                          14253 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--12:48:05-------------------------------

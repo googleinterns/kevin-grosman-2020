@@ -1,0 +1,394 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f c a----------07-24-2020--06:18:04-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-24-2020--06:24:34-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4253                                 992                           2378            1877                      1573               1263                    5188                         1514          2966                          22004 
+ITERATION 2:  4385                                 1429                          1858            1786                      1488               1299                    4611                         1495          2065                          20416 
+ITERATION 3:  4385                                 1513                          1744            1815                      1511               1275                    5440                         2121          1653                          21457 
+ITERATION 4:  4597                                 1544                          1816            1854                      1556               1293                    5105                         1662          2073                          21500 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4405                                 1369                          1949            1833                      1532               1282                    5086                         1698          2189                          21343 
+MEDIAN:       4385                                 1513                          1744            1815                      1511               1275                    5440                         2121          1653                          21457 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-24-2020--06:24:34-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-24-2020--06:27:20-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4337                                 1511                          1743            1866                      1587               1353                    5268                         1262          2716                          21643 
+ITERATION 2:  4277                                 1007                          2269            1763                      1461               1238                    5220                         1737          2049                          21021 
+ITERATION 3:  4259                                 960                           2239            1887                      1534               1212                    5009                         1766          1655                          20521 
+ITERATION 4:  4247                                 1396                          2303            1834                      1613               1232                    4858                         1727          2004                          21214 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4280                                 1218                          2138            1837                      1548               1258                    5088                         1623          2106                          21096 
+MEDIAN:       4259                                 960                           2239            1887                      1534               1212                    5009                         1766          1655                          20521 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-24-2020--06:27:20-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-24-2020--06:30:19-------------------------------
+SIZE DATA:
+
+Size of profile: 44316
+Size of app: 58732
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3799                                 1045                          2270            1712                      1598               1215                    4929                         1377          2025                          19970 
+ITERATION 2:  3877                                 1480                          1762            1685                      1513               1208                    4064                         2135          1816                          19540 
+ITERATION 3:  3896                                 926                           2116            1742                      1592               1173                    5127                         1571          2399                          20542 
+ITERATION 4:  3970                                 1025                          2138            1674                      1535               1197                    11295                        1592          1713                          26139 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3885                                 1119                          2071            1703                      1559               1198                    6353                         1668          1988                          21544 
+MEDIAN:       3896                                 926                           2116            1742                      1592               1173                    5127                         1571          2399                          20542 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-24-2020--06:30:19-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--06:35:11-------------------------------
+SIZE DATA:
+
+Size of profile: 57711
+Size of app: 60592
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3806                                 998                           2298            1821                      1464               1145                    4847                         1427          1987                          19793 
+ITERATION 2:  3857                                 955                           2180            1692                      1547               1179                    4377                         1993          1853                          19633 
+ITERATION 3:  3787                                 1375                          1703            1593                      1552               1247                    4573                         1804          1921                          19555 
+ITERATION 4:  3853                                 1400                          1732            1610                      1547               1198                    4501                         2093          1800                          19734 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3825                                 1182                          1978            1679                      1527               1192                    4574                         1829          1890                          19676 
+MEDIAN:       3787                                 1375                          1703            1593                      1552               1247                    4573                         1804          1921                          19555 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--06:35:11-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--06:39:54-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3929                                 975                           2036            1638                      1551               1157                    4069                         1807          2441                          19603 
+ITERATION 2:  3749                                 922                           2036            1516                      1549               1190                    3982                         2244          1880                          19068 
+ITERATION 3:  3810                                 1342                          1708            1600                      1541               1208                    4165                         1862          1907                          19143 
+ITERATION 4:  3914                                 1385                          1671            1497                      1530               1265                    4150                         2209          1973                          19594 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3850                                 1156                          1862            1562                      1542               1205                    4091                         2030          2050                          19348 
+MEDIAN:       3810                                 1342                          1708            1600                      1541               1208                    4165                         1862          1907                          19143 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--06:39:54-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-24-2020--06:43:05-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45072
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4342                                 1628                          1905            1756                      1566               1360                    5041                         1453          2273                          21324 
+ITERATION 2:  4471                                 1477                          1909            1941                      1599               1391                    4112                         2433          2113                          21446 
+ITERATION 3:  4356                                 1538                          1796            1748                      1550               1365                    4865                         1627          2342                          21187 
+ITERATION 4:  4471                                 1520                          1819            1788                      1586               1350                    5017                         1801          2225                          21577 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4410                                 1540                          1857            1808                      1575               1366                    4758                         1828          2238                          21380 
+MEDIAN:       4356                                 1538                          1796            1748                      1550               1365                    4865                         1627          2342                          21187 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-24-2020--06:43:05-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-24-2020--06:45:54-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4183                                 1027                          2361            1710                      1454               1225                    5028                         2010          2598                          21596 
+ITERATION 2:  4214                                 977                           2383            1821                      1559               1275                    5233                         1811          2178                          21451 
+ITERATION 3:  4453                                 1481                          1811            1854                      1597               1458                    5094                         1628          2427                          21803 
+ITERATION 4:  4438                                 1492                          1667            1956                      1521               1300                    5063                         1938          2261                          21636 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4322                                 1244                          2055            1835                      1532               1314                    5104                         1846          2366                          21618 
+MEDIAN:       4453                                 1481                          1811            1854                      1597               1458                    5094                         1628          2427                          21803 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-24-2020--06:45:54-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-24-2020--06:48:58-------------------------------
+SIZE DATA:
+
+Size of profile: 46162
+Size of app: 59604
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3761                                 1006                          2255            1723                      1556               1159                    5135                         1449          2813                          20857 
+ITERATION 2:  3732                                 1348                          1770            1812                      1563               1240                    5088                         1117          2237                          19907 
+ITERATION 3:  3954                                 1447                          1744            1761                      1574               1319                    4370                         2126          2234                          20529 
+ITERATION 4:  3827                                 1345                          1764            1777                      1508               1266                    4962                         1822          1877                          20148 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3818                                 1286                          1883            1768                      1550               1246                    4888                         1628          2290                          20357 
+MEDIAN:       3954                                 1447                          1744            1761                      1574               1319                    4370                         2126          2234                          20529 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-24-2020--06:48:58-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--06:53:54-------------------------------
+SIZE DATA:
+
+Size of profile: 59279
+Size of app: 61092
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3727                                 1386                          1672            1605                      1527               1209                    4429                         2033          2442                          20030 
+ITERATION 2:  3831                                 991                           2376            1566                      1449               1150                    5368                         2416          1872                          21019 
+ITERATION 3:  3821                                 1339                          1675            1747                      1547               1269                    4122                         2468          1920                          19908 
+ITERATION 4:  3725                                 1356                          1737            1676                      1570               1199                    4894                         1728          1901                          19786 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3776                                 1268                          1865            1648                      1523               1206                    4703                         2161          2033                          20183 
+MEDIAN:       3821                                 1339                          1675            1747                      1547               1269                    4122                         2468          1920                          19908 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--06:53:54-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--06:59:01-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3859                                 1270                          1548            1799                      1523               1242                    4948                         1636          1881                          19706 
+ITERATION 2:  4843                                 991                           1859            1532                      1557               1166                    3887                         2149          1846                          19830 
+ITERATION 3:  3839                                 1022                          1958            1570                      1518               1168                    4006                         1995          1866                          18942 
+ITERATION 4:  3972                                 976                           1909            1684                      1569               1177                    4363                         1528          1970                          19148 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4128                                 1064                          1818            1646                      1541               1188                    4301                         1827          1890                          19403 
+MEDIAN:       3839                                 1022                          1958            1570                      1518               1168                    4006                         1995          1866                          18942 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--06:59:01-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-24-2020--07:02:12-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45072
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4522                                 1059                          2283            1792                      1519               1219                    4208                         2656          2147                          21405 
+ITERATION 2:  4402                                 1045                          2456            2007                      1542               1270                    4648                         2520          2498                          22388 
+ITERATION 3:  4574                                 1613                          1827            1857                      1545               1415                    4374                         2051          1719                          20975 
+ITERATION 4:  4502                                 1075                          2499            1934                      1525               1259                    4540                         1960          2107                          21401 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4500                                 1198                          2266            1897                      1532               1290                    4442                         2296          2117                          21538 
+MEDIAN:       4574                                 1613                          1827            1857                      1545               1415                    4374                         2051          1719                          20975 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-24-2020--07:02:12-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-24-2020--07:04:59-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4417                                 1551                          1775            1886                      1634               1309                    4477                         2346          2163                          21558 
+ITERATION 2:  4376                                 997                           2509            1904                      1535               1259                    4430                         2278          2327                          21615 
+ITERATION 3:  4390                                 1559                          1812            1854                      1637               1346                    5349                         1435          1997                          21379 
+ITERATION 4:  4475                                 1009                          2436            1895                      1521               1255                    5067                         1636          2174                          21468 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4414                                 1279                          2133            1884                      1581               1292                    4830                         1923          2165                          21501 
+MEDIAN:       4390                                 1559                          1812            1854                      1637               1346                    5349                         1435          1997                          21379 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-24-2020--07:04:59-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-24-2020--07:08:01-------------------------------
+SIZE DATA:
+
+Size of profile: 46643
+Size of app: 58868
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3924                                 1411                          1672            1663                      1540               1297                    4792                         1533          2510                          20342 
+ITERATION 2:  3850                                 980                           2199            1788                      1544               1176                    5081                         1256          2010                          19884 
+ITERATION 3:  3886                                 1423                          1810            1941                      1569               1273                    3809                         1920          2268                          19899 
+ITERATION 4:  3905                                 904                           2210            1692                      1510               1190                    4591                         1431          1948                          19381 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3891                                 1179                          1972            1771                      1540               1234                    4568                         1535          2184                          19874 
+MEDIAN:       3886                                 1423                          1810            1941                      1569               1273                    3809                         1920          2268                          19899 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-24-2020--07:08:01-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--07:12:53-------------------------------
+SIZE DATA:
+
+Size of profile: 60159
+Size of app: 61536
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3780                                 995                           2000            1671                      1561               1248                    5219                         1240          2002                          19716 
+ITERATION 2:  3922                                 1009                          2127            1618                      1589               1167                    4359                         1926          1898                          19615 
+ITERATION 3:  3772                                 1499                          1724            1612                      1591               1326                    4161                         2276          1817                          19778 
+ITERATION 4:  4218                                 1024                          1985            1668                      1599               1190                    4630                         1777          1846                          19937 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3923                                 1131                          1959            1642                      1585               1232                    4592                         1804          1890                          19758 
+MEDIAN:       3772                                 1499                          1724            1612                      1591               1326                    4161                         2276          1817                          19778 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--07:12:53-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--07:17:33-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4788                                 1041                          1822            1444                      1544               1108                    5223                         1834          1914                          20718 
+ITERATION 2:  3883                                 1024                          2028            1575                      1560               1207                    4838                         1715          2379                          20209 
+ITERATION 3:  3869                                 1026                          2059            1645                      1544               1171                    4665                         1496          1418                          18893 
+ITERATION 4:  4224                                 1011                          2274            1577                      1498               1208                    5084                         1490          2008                          20374 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4191                                 1025                          2045            1560                      1536               1173                    4952                         1633          1929                          20044 
+MEDIAN:       3869                                 1026                          2059            1645                      1544               1171                    4665                         1496          1418                          18893 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--07:17:33-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-24-2020--07:20:46-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45072
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4510                                 993                           2377            1799                      1490               1190                    5391                         2026          2139                          21915 
+ITERATION 2:  4447                                 1150                          2386            1998                      1579               1231                    4775                         2268          2134                          21968 
+ITERATION 3:  4445                                 1096                          2411            2008                      1553               1256                    4326                         2298          2186                          21579 
+ITERATION 4:  4488                                 1060                          2334            1779                      1604               1247                    4924                         2044          1977                          21457 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4472                                 1074                          2377            1896                      1556               1231                    4854                         2159          2109                          21728 
+MEDIAN:       4445                                 1096                          2411            2008                      1553               1256                    4326                         2298          2186                          21579 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-24-2020--07:20:46-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-24-2020--07:23:41-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  4165                                 1545                          1449            2035                      1530               1260                    5307                         1963          2103                          21357 
+ITERATION 2:  4251                                 937                           2449            1827                      1512               1239                    4973                         1712          2012                          20912 
+ITERATION 3:  4375                                 1075                          2352            1811                      1779               1224                    4292                         1925          2611                          21444 
+ITERATION 4:  4435                                 1481                          1761            1808                      1607               1367                    4238                         2423          2136                          21256 
+                                                                                                                                                                                                                                                     
+AVERAGE:      4306                                 1259                          2002            1870                      1607               1272                    4702                         2005          2215                          21238 
+MEDIAN:       4375                                 1075                          2352            1811                      1779               1224                    4292                         1925          2611                          21444 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-24-2020--07:23:41-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-24-2020--07:26:44-------------------------------
+SIZE DATA:
+
+Size of profile: 45298
+Size of app: 59072
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3761                                 979                           2298            1766                      1469               1147                    5410                         1283          2032                          20145 
+ITERATION 2:  3767                                 1075                          2185            1623                      1576               1158                    4937                         1414          1772                          19507 
+ITERATION 3:  3886                                 1010                          2128            1756                      1546               1187                    5319                         1328          2275                          20435 
+ITERATION 4:  3840                                 1453                          1784            1687                      1530               1260                    6176                         1642          1975                          21347 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3813                                 1129                          2098            1708                      1530               1188                    5460                         1416          2013                          20355 
+MEDIAN:       3886                                 1010                          2128            1756                      1546               1187                    5319                         1328          2275                          20435 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-24-2020--07:26:44-------------------------------

@@ -1,0 +1,37 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting']
+MEASURED CUJ: ['click;Your location;strict', 'click;Step']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG m: 1X[click;Your location;strict]
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: 1X[start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: 1X[start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;strict, click;DIRECTIONS, click;Choose starting]
+ACTIONS COMPILED FOR FLAG c: 1X[start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 5
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' TOTAL 
+e                45076    4761                         4761  
+m                49228    4610                         4610  
+u                53208    4478                         4478  
+f                58736    4498                         4498  
+p                60444    4367                         4367  
+c                59840    10517                        10517 
+a                170904   4421                         4421  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' TOTAL 
+e                45076    5189                         5189  
+m                49228    4434                         4434  
+u                53208    4394                         4394  
+f                58736    4281                         4281  
+p                60444    3925                         3925  
+c                59840    4533                         4533  
+a                170904   4364                         4364  
+************************************************MEGA TEST SUMMARY:*************************************************

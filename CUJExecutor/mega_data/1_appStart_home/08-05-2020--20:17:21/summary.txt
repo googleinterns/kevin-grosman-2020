@@ -1,0 +1,17 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps']
+POST CUJ:     ['click;Takeout']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG e:m_keep_L: Base: utilityProfiles/1_appStart_home/e:m_keep_L.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m_keep_HSPL: Base: utilityProfiles/1_appStart_home/e:m_keep_HSPL.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m_keep_HSPL_HPL: Base: utilityProfiles/1_appStart_home/e:m_keep_HSPL_HPL.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m_keep_HSPL_HPL_L: Base: utilityProfiles/1_appStart_home/e:m_keep_HSPL_HPL_L.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m: Base: utilityProfiles/1_appStart_home/e:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m_HnoL: Base: utilityProfiles/1_appStart_home/e:m_HnoL.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mh: Base: utilityProfiles/1_appStart_home/e:mh.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m_conv_to_HSPL_keep_L: Base: utilityProfiles/1_appStart_home/e:m_conv_to_HSPL_keep_L.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All

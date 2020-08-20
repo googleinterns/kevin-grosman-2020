@@ -1,0 +1,56 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/Takeout/7_Takeout_search_searchResults_Delivery.txt utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof /tmp/build_created_profile.prof
+RAW OUTPUT: 
+Resetting the profile....
+Success
+Setting the base profile...
+prof
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb push /tmp/build_created_profile.prof /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+/tmp/build_created_profile.prof: 1 file pushed, 0 skipped. 52.5 MB/s (26629 bytes in 0.000s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell chmod a+rw /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof profile_test_data/7_Takeout_search_searchResults_Delivery/em/07-27-2020--21:02:07/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/ref/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped. 6.6 MB/s (26629 bytes in 0.004s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+26629
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 47992
+-rw-r----- 1 system all_a245   151552 2020-07-27 21:02 base.art
+-rw-r----- 1 system all_a245  4424168 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44512392 2020-07-27 21:02 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/Takeout/7_Takeout_search_searchResults_Delivery.txt
+RAW OUTPUT: 

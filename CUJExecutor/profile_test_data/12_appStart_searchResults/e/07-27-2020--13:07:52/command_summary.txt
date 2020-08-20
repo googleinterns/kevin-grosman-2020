@@ -1,0 +1,55 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/12_appStart_searchResults.txt e
+RAW OUTPUT: 
+Resetting the profile....
+Success
+Setting the base profile...
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb push /tmp/build_created_profile.txt /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+/tmp/build_created_profile.txt: 1 file pushed, 0 skipped.
+----------------------------------
+EXECUTING COMMAND:
+adb shell chmod a+rw /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof profile_test_data/12_appStart_searchResults/e/07-27-2020--13:07:52/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped.
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+0
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 45076
+-rw-r----- 1 system all_a245   151552 2020-07-27 13:08 base.art
+-rw-r----- 1 system all_a245  1375616 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44583508 2020-07-27 13:08 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/12_appStart_searchResults.txt
+RAW OUTPUT: 

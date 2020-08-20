@@ -1,0 +1,53 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e a----------07-16-2020--14:54:52-----------------------------------------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-16-2020--14:54:57-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 1
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  1911                                 2902            4813  
+                                                                         
+AVERAGE:      1911                                 2902            4813  
+MEDIAN:       1911                                 2902            4813  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------COMPILATION SETTING: e----------07-16-2020--14:54:57-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-16-2020--14:55:40-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 1
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  1586                                 2465            4051  
+                                                                         
+AVERAGE:      1586                                 2465            4051  
+MEDIAN:       1586                                 2465            4051  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------COMPILATION SETTING: a----------07-16-2020--14:55:40-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ     : 
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout',  'click;Open now']
+
+TOTAL ITERATIONS PER FLAG: 1
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+e                45080    1911                                 2902            4813  
+a                170908   1586                                 2465            4051  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+e                45080    1911                                 2902            4813  
+a                170908   1586                                 2465            4051  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e a----------07-16-2020--14:54:52-----------------------------------------------------------------

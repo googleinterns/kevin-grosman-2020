@@ -1,0 +1,71 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: c1 c5----------07-21-2020--14:51:15-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-21-2020--14:51:19-------------------------------
+SIZE DATA:
+
+Size of profile: 50610
+Size of app: 58888
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3607            3607  
+ITERATION 2:  3174            3174  
+ITERATION 3:  2593            2593  
+ITERATION 4:  2894            2894  
+ITERATION 5:  2575            2575  
+                                    
+AVERAGE:      2968            2968  
+MEDIAN:       2894            2894  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-21-2020--14:51:19-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-21-2020--14:55:04-------------------------------
+SIZE DATA:
+
+Size of profile: 46718
+Size of app: 58868
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3619            3619  
+ITERATION 2:  3484            3484  
+ITERATION 3:  3105            3105  
+ITERATION 4:  2609            2609  
+ITERATION 5:  2616            2616  
+                                    
+AVERAGE:      3086            3086  
+MEDIAN:       3105            3105  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-21-2020--14:55:04-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout',  'click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG c1: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG c5: [start;com.google.android.apps.maps, click;Takeout]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 5
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+c1               58888    2968            2968  
+c5               58868    3086            3086  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+c1               58888    2894            2894  
+c5               58868    3105            3105  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: c1 c5----------07-21-2020--14:51:15-----------------------------------------------------------------

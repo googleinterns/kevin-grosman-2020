@@ -1,0 +1,26 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof----------07-27-2020--22:37:11-------------------------------
+SIZE DATA:
+
+Size of profile: 26629
+Size of app: 47992
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2893            2893  
+ITERATION 2:  2888            2888  
+ITERATION 3:  2939            2939  
+ITERATION 4:  2739            2739  
+ITERATION 5:  2900            2900  
+ITERATION 6:  3006            3006  
+ITERATION 7:  2864            2864  
+ITERATION 8:  2915            2915  
+ITERATION 9:  2949            2949  
+                                    
+AVERAGE:      2899            2899  
+MEDIAN:       2900            2900  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof----------07-27-2020--22:37:11-------------------------------

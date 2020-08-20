@@ -1,0 +1,19 @@
+
+--------------------------------COMPILATION SETTING: p----------07-21-2020--14:25:21-------------------------------
+SIZE DATA:
+
+Size of profile: 45428
+Size of app: 58868
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;North Mattis Avenue' TOTAL 
+                                           
+AVERAGE: N/A                         N/A   
+MEDIAN:  N/A                         N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: p----------07-21-2020--14:25:21-------------------------------

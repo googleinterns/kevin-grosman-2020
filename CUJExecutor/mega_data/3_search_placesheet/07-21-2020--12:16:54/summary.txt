@@ -1,0 +1,12 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;McDonalds Mattis']
+MEASURED CUJ: ['click;North Mattis Avenue', 'click;Fast Food']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, edit;Search here;McDonalds Mattis]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, edit;Search here;McDonalds Mattis, click;North Mattis Avenue]
+ACTIONS COMPILED FOR FLAG a: All

@@ -1,0 +1,21 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL.prof:----------08-14-2020--21:22:08-------------------------------
+SIZE DATA:
+
+Size of profile: 43044
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 8059; L: 11318; 
+Size of app: 60240
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  2837            1821          1907               1965          8530  
+ITERATION 2:  2956            1931          1873               2029          8789  
+ITERATION 3:  2812            2021          1908               2009          8750  
+ITERATION 4:  2959            1904          1892               2002          8757  
+                                                                                   
+AVERAGE:      2891            1919          1895               2001          8706  
+MEDIAN:       2956            1931          1907               2009          8803  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL.prof:----------08-14-2020--21:22:08-------------------------------

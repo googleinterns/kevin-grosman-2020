@@ -1,0 +1,18 @@
+
+--------------------------------COMPILATION SETTING: a----------07-19-2020--02:29:38-------------------------------
+SIZE DATA:
+
+Size of app: 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+NOTE: 4 iterations of data are missing
+
+         'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+                                                               
+AVERAGE: N/A               N/A                           N/A   
+MEDIAN:  N/A               N/A                           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-19-2020--02:29:38-------------------------------

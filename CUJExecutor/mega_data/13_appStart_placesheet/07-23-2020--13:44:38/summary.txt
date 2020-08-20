@@ -1,0 +1,6 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'start;com.google.android.keep', 'click;McDonalds Placesheet', 'click;https'] 
+MEASURED CUJ: ['click;Open', 'click;Fast Food']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

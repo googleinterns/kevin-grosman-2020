@@ -1,0 +1,35 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy']
+MEASURED CUJ: ['click;DIRECTIONS', 'click;Steps & more']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, click;Takeout, click;Billy]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 50
+NOTE: 5 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;DIRECTIONS' TOTAL 
+e                45076    2163               3205  
+u                53208    2007               3100  
+f                59016    1663               2716  
+p                59576    1644               2622  
+c                59783    1546               2584  
+a                170904   1637               2497  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;DIRECTIONS' TOTAL 
+e                45076    2171               3234  
+u                53208    2004               3100  
+f                59024    1619               2706  
+p                59616    1641               2612  
+c                59800    1529               2582  
+a                170904   1640               2495  
+************************************************MEGA TEST SUMMARY:*************************************************

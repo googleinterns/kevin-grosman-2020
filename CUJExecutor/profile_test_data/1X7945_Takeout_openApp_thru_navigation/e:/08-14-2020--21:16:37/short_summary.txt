@@ -1,0 +1,19 @@
+
+--------------------------------COMPILATION SETTING: e:----------08-14-2020--21:16:37-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+Size of app: 45072
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+NOTE: 4 iterations of data are missing
+
+         'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+                                                                              
+AVERAGE: N/A             N/A           N/A                N/A           N/A   
+MEDIAN:  N/A             N/A           N/A                N/A           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:----------08-14-2020--21:16:37-------------------------------

@@ -1,0 +1,18 @@
+
+--------------------------------COMPILATION SETTING: a----------08-13-2020--20:27:44-------------------------------
+SIZE DATA:
+
+Size of app: 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'edit;Try gas;Googleplex' 'click;Amphitheatre' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+ITERATION 1:  1344                      1813                 1938                       1526               1439                    4373                         2154          14587 
+ITERATION 2:  1374                      1742                 1853                       1523               1190                    4554                         3187          15423 
+ITERATION 3:  1445                      1462                 2570                       1591               1572                    5016                         3018          16674 
+                                                                                                                                                                                    
+AVERAGE:      1387                      1672                 2120                       1546               1400                    4647                         2786          15558 
+MEDIAN:       1374                      1742                 1938                       1526               1439                    4554                         3018          15591 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------08-13-2020--20:27:44-------------------------------

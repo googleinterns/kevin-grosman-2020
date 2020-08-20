@@ -1,0 +1,21 @@
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--10:22:12-------------------------------
+SIZE DATA:
+
+Size of profile: 59146
+Size of app: 60720
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3724                                 1028                          2163            1647                      1530               1159                    5112                         1339          2533                          20235 
+ITERATION 2:  3673                                 1382                          1927            1504                      1521               1286                    5106                         1482          1944                          19825 
+ITERATION 3:  3763                                 1023                          2147            1465                      1516               1218                    5354                         1560          1984                          20030 
+ITERATION 4:  3647                                 1321                          1667            1530                      1532               1257                    5098                         1403          2859                          20314 
+                                                                                                                                                                                                                                                     
+AVERAGE:      3701                                 1188                          1976            1536                      1524               1230                    5167                         1446          2330                          20101 
+MEDIAN:       3724                                 1321                          2147            1530                      1530               1257                    5112                         1482          2533                          20235 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--10:22:12-------------------------------

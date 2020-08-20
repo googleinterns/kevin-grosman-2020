@@ -1,0 +1,32 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'click;Takeout'] 
+MEASURED CUJ: ['click;Billy']
+POST CUJ:     ['click;REVIEWS']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof: Base: utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/7_Takeout_search_searchResults/em.prof: Base: utilityProfiles/7_Takeout_search_searchResults/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/takeout_em+billy_em.prof: Base: utilityProfiles/takeout_em+billy_em.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 45
+
+AVERAGED DATA:
+COMPILATION FLAG                                           APP SIZE 'click;Billy' TOTAL 
+e                                                          45072    2270          2270  
+utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof 48556    2019          2019  
+utilityProfiles/7_Takeout_search_searchResults/em.prof     47736    2129          2129  
+utilityProfiles/takeout_em+billy_em.prof                   48876    2028          2028  
+a                                                          170904   1855          1855  
+
+MEDIANED DATA:
+COMPILATION FLAG                                           APP SIZE 'click;Billy' TOTAL 
+e                                                          45072    2258          2258  
+utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof 48556    2004          2004  
+utilityProfiles/7_Takeout_search_searchResults/em.prof     47736    2125          2125  
+utilityProfiles/takeout_em+billy_em.prof                   48876    2014          2014  
+a                                                          170904   1849          1849  
+************************************************MEGA TEST SUMMARY:*************************************************

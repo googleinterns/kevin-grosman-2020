@@ -1,0 +1,25 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;McDonalds Mattis']
+MEASURED CUJ: ['click;North Mattis Avenue', 'click;Fast Food']
+
+TOTAL ITERATIONS PER FLAG: 10
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;North Mattis Avenue' TOTAL 
+e                45076    2103                        2103  
+u                53208    2055                        2055  
+f                45080    2220                        2220  
+p                59472    1853                        1853  
+c                59412    1783                        1783  
+a                170904   1883                        1883  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;North Mattis Avenue' TOTAL 
+e                45076    2213                        2213  
+u                53208    2125                        2125  
+f                45080    2289                        2289  
+p                59488    1764                        1764  
+c                59628    1794                        1794  
+a                170904   1958                        1958  
+************************************************MEGA TEST SUMMARY:*************************************************

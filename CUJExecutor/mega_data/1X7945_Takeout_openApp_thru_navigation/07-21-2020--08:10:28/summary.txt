@@ -1,0 +1,34 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS', 'click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start, clickImage;Close navigation]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 50
+NOTE: 5 iterations of data are missing for flag u
+NOTE: 5 iterations of data are missing for flag f
+NOTE: 5 iterations of data are missing for flag c
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    2179                                 3197            2086          2030               1666          1439                          12599 
+u                53208    1956                                 3158            1964          2098               1604          1427                          12209 
+f                59356    1630                                 2826            1899          2104               1469          1380                          11312 
+c                60648    1584                                 2767            1830          2049               1466          1373                          11072 
+a                170904   1618                                 2591            1773          2016               1418          1333                          10752 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    2172                                 3186            2015          2085               1590          1427                          12542 
+u                53208    1941                                 3138            1963          2126               1549          1425                          12179 
+f                59492    1617                                 2814            1875          2107               1455          1362                          11287 
+c                60704    1583                                 2758            1822          2069               1455          1352                          11078 
+a                170904   1612                                 2589            1745          2007               1401          1326                          10704 
+************************************************MEGA TEST SUMMARY:*************************************************

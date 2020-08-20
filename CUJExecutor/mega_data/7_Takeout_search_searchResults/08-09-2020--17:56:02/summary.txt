@@ -1,0 +1,89 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG u::
+Base: Cloud, Actions:
+Profile tag counts: HSPL: 10123; HPL: 4; PL: 0; L: 5623; 
+
+INFO FOR FLAG s:m-INTERSECTED-5:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-5.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 443; PL: 13935; L: 8357; 
+
+INFO FOR FLAG s:m-NC-08-01-2020--15:12:08:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-NC-08-01-2020--15:12:08.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 584; PL: 14144; L: 8357; 
+
+INFO FOR FLAG s:mmmmm-NC-08-01-2020--15:12:08:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:mmmmm-NC-08-01-2020--15:12:08.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 702; PL: 14122; L: 8357; 
+
+INFO FOR FLAG e:mhf-INTERSECTED-5:
+Base: utilityProfiles/7_Takeout_search_searchResults/e:mhf-INTERSECTED-5.prof, Actions:
+Profile tag counts: HSPL: 16653; HPL: 15226; PL: 246; L: 7646; 
+
+INFO FOR FLAG s:m-INTERSECTED-5h:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-5h.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 14378; PL: 0; L: 8357; 
+
+INFO FOR FLAG e:mhf-NC-08-07-2020--18:09:44:
+Base: utilityProfiles/7_Takeout_search_searchResults/e:mhf-NC-08-07-2020--18:09:44.prof, Actions:
+Profile tag counts: HSPL: 16791; HPL: 15673; PL: 17; L: 7655; 
+
+INFO FOR FLAG s:m-NC-08-01-2020--15:12:08h:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-NC-08-01-2020--15:12:08h.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 14728; PL: 0; L: 8357; 
+
+INFO FOR FLAG e:mhf-NC-08-07-2020--18:09:44_back_HPL:
+Base: utilityProfiles/7_Takeout_search_searchResults/e:mhf-NC-08-07-2020--18:09:44_back_HPL.prof, Actions:
+Profile tag counts: HSPL: 16791; HPL: 15673; PL: 17; L: 12917; 
+
+INFO FOR FLAG s:m-NC-08-01-2020--15:12:08h_back_HPL:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-NC-08-01-2020--15:12:08h_back_HPL.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 14728; PL: 0; L: 13320; 
+
+INFO FOR FLAG a:
+All
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 245
+NOTE: 7 iterations of data are missing for flag s:m-NC-08-01-2020--15:12:08h_back_HPL
+
+AVERAGED DATA:
+COMPILATION FLAG                       APP SIZE 'click;Takeout' TOTAL 
+e:                                     45076    3263            3263  
+u:                                     53208    3177            3177  
+s:m-INTERSECTED-5                      59848    2777            2777  
+s:m-NC-08-01-2020--15:12:08            60208    2745            2745  
+s:mmmmm-NC-08-01-2020--15:12:08        60364    2730            2730  
+e:mhf-INTERSECTED-5                    67712    2599            2599  
+s:m-INTERSECTED-5h                     68004    2600            2600  
+e:mhf-NC-08-07-2020--18:09:44          68136    2606            2606  
+s:m-NC-08-01-2020--15:12:08h           68288    2605            2605  
+e:mhf-NC-08-07-2020--18:09:44_back_HPL 69068    2594            2594  
+s:m-NC-08-01-2020--15:12:08h_back_HPL  69232    2597            2597  
+a                                      170904   2590            2590  
+
+MEDIANED DATA:
+COMPILATION FLAG                       APP SIZE 'click;Takeout' TOTAL 
+e:                                     45076    3262            3262  
+u:                                     53208    3178            3178  
+s:m-INTERSECTED-5                      59848    2769            2769  
+s:m-NC-08-01-2020--15:12:08            60208    2736            2736  
+s:mmmmm-NC-08-01-2020--15:12:08        60364    2718            2718  
+e:mhf-INTERSECTED-5                    67712    2592            2592  
+s:m-INTERSECTED-5h                     68004    2597            2597  
+e:mhf-NC-08-07-2020--18:09:44          68136    2587            2587  
+s:m-NC-08-01-2020--15:12:08h           68288    2595            2595  
+e:mhf-NC-08-07-2020--18:09:44_back_HPL 69068    2594            2594  
+s:m-NC-08-01-2020--15:12:08h_back_HPL  69232    2593            2593  
+a                                      170904   2580            2580  
+************************************************MEGA TEST SUMMARY:*************************************************

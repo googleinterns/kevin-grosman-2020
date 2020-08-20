@@ -1,0 +1,5 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 

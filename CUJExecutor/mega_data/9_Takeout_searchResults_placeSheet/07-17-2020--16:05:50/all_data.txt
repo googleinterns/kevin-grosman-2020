@@ -1,0 +1,317 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f p c a----------07-17-2020--16:05:50-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--16:05:53-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  2063          2063  
+ITERATION 2:  2147          2147  
+ITERATION 3:  2104          2104  
+ITERATION 4:  2148          2148  
+ITERATION 5:  2162          2162  
+                                  
+AVERAGE:      2124          2124  
+MEDIAN:       2147          2147  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--16:05:53-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--16:07:45-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1959          1959  
+ITERATION 2:  1917          1917  
+ITERATION 3:  2109          2109  
+ITERATION 4:  2036          2036  
+ITERATION 5:  1975          1975  
+                                  
+AVERAGE:      1999          1999  
+MEDIAN:       1975          1975  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--16:07:45-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--16:09:45-------------------------------
+SIZE DATA:
+
+Size of profile: 45452
+Size of app: 58412
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1831          1831  
+ITERATION 2:  1835          1835  
+ITERATION 3:  1819          1819  
+ITERATION 4:  1649          1649  
+ITERATION 5:  1857          1857  
+                                  
+AVERAGE:      1798          1798  
+MEDIAN:       1831          1831  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--16:09:45-------------------------------
+
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--16:13:17-------------------------------
+SIZE DATA:
+
+Size of profile: 48591
+Size of app: 59172
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1878          1878  
+ITERATION 2:  1804          1804  
+ITERATION 3:  1825          1825  
+ITERATION 4:  1833          1833  
+ITERATION 5:  1837          1837  
+                                  
+AVERAGE:      1835          1835  
+MEDIAN:       1833          1833  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--16:13:17-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--16:16:45-------------------------------
+SIZE DATA:
+
+Size of profile: 54778
+Size of app: 59708
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1848          1848  
+ITERATION 2:  1778          1778  
+ITERATION 3:  1789          1789  
+ITERATION 4:  1802          1802  
+ITERATION 5:  1804          1804  
+                                  
+AVERAGE:      1804          1804  
+MEDIAN:       1802          1802  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--16:16:45-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--16:20:08-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1729          1729  
+ITERATION 2:  1826          1826  
+ITERATION 3:  1800          1800  
+ITERATION 4:  1770          1770  
+ITERATION 5:  1766          1766  
+                                  
+AVERAGE:      1778          1778  
+MEDIAN:       1770          1770  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--16:20:08-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--16:22:17-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  2135          2135  
+ITERATION 2:  2059          2059  
+ITERATION 3:  2095          2095  
+ITERATION 4:  1943          1943  
+ITERATION 5:  2015          2015  
+                                  
+AVERAGE:      2049          2049  
+MEDIAN:       2059          2059  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--16:22:17-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--16:24:11-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1946          1946  
+ITERATION 2:  1924          1924  
+ITERATION 3:  1936          1936  
+ITERATION 4:  1936          1936  
+ITERATION 5:  1923          1923  
+                                  
+AVERAGE:      1933          1933  
+MEDIAN:       1936          1936  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--16:24:11-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--16:26:13-------------------------------
+SIZE DATA:
+
+Size of profile: 46303
+Size of app: 58656
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1873          1873  
+ITERATION 2:  1893          1893  
+ITERATION 3:  1841          1841  
+ITERATION 4:  1862          1862  
+ITERATION 5:  1820          1820  
+                                  
+AVERAGE:      1857          1857  
+MEDIAN:       1862          1862  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--16:26:13-------------------------------
+
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--16:29:29-------------------------------
+SIZE DATA:
+
+Size of profile: 51590
+Size of app: 59168
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1823          1823  
+ITERATION 2:  1864          1864  
+ITERATION 3:  1856          1856  
+ITERATION 4:  2033          2033  
+ITERATION 5:  1951          1951  
+                                  
+AVERAGE:      1905          1905  
+MEDIAN:       1864          1864  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--16:29:29-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--16:33:07-------------------------------
+SIZE DATA:
+
+Size of profile: 53489
+Size of app: 59288
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1781          1781  
+ITERATION 2:  1824          1824  
+ITERATION 3:  1791          1791  
+ITERATION 4:  1805          1805  
+ITERATION 5:  1833          1833  
+                                  
+AVERAGE:      1806          1806  
+MEDIAN:       1805          1805  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--16:33:07-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--16:36:43-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Billy' TOTAL 
+ITERATION 1:  1811          1811  
+ITERATION 2:  1718          1718  
+ITERATION 3:  1783          1783  
+ITERATION 4:  1854          1854  
+ITERATION 5:  1834          1834  
+                                  
+AVERAGE:      1800          1800  
+MEDIAN:       1811          1811  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--16:36:43-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'click;Takeout'] 
+MEASURED CUJ: ['click;Billy', 'click;REVIEWS']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy]
+ACTIONS COMPILED FOR FLAG a: All
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 10
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Billy' TOTAL 
+e                45076    2087          2087  
+u                53208    1966          1966  
+f                58534    1828          1828  
+p                59170    1870          1870  
+c                59498    1805          1805  
+a                170904   1789          1789  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Billy' TOTAL 
+e                45076    2104          2104  
+u                53208    1946          1946  
+f                58656    1841          1841  
+p                59172    1856          1856  
+c                59708    1804          1804  
+a                170904   1800          1800  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f p c a----------07-17-2020--16:05:50-----------------------------------------------------------------

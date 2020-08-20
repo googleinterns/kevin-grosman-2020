@@ -1,0 +1,6 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting']
+MEASURED CUJ: ['click;Your location;strict', 'click;Step']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

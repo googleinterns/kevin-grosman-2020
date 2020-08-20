@@ -1,0 +1,20 @@
+
+--------------------------------COMPILATION SETTING: e:----------08-13-2020--20:24:55-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+Size of app: 45076
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'edit;Try gas;Googleplex' 'click;Amphitheatre' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+ITERATION 1:  1028                      2617                 1702                       1571               1773                    4948                         3472          17111 
+ITERATION 2:  995                       2533                 2004                       1492               1226                    4924                         3479          16653 
+ITERATION 3:  957                       2653                 1580                       1949               1300                    4919                         2911          16269 
+                                                                                                                                                                                    
+AVERAGE:      993                       2601                 1762                       1670               1433                    4930                         3287          16676 
+MEDIAN:       995                       2617                 1702                       1571               1300                    4924                         3472          16581 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:----------08-13-2020--20:24:55-------------------------------

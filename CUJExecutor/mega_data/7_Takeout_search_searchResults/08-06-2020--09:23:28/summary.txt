@@ -1,0 +1,46 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG s::
+Base: Startup, Actions:
+Profile tag counts: HSPL: 17802; HPL: 177; PL: 8480; L: 8357; 
+
+INFO FOR FLAG s:h:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:h.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 8657; PL: 0; L: 8357; 
+
+INFO FOR FLAG s:m:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 577; PL: 13837; L: 8357; 
+
+INFO FOR FLAG e:mhf:
+Base: utilityProfiles/7_Takeout_search_searchResults/e:mhf.prof, Actions:
+Profile tag counts: HSPL: 18175; HPL: 14440; PL: 73; L: 8354; 
+
+INFO FOR FLAG s:mh:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:mh.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 14414; PL: 0; L: 8357; 
+
+INFO FOR FLAG s:mmmmm:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:mmmmm.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 690; PL: 14075; L: 8357; 
+
+INFO FOR FLAG e:mmmmmhf:
+Base: utilityProfiles/7_Takeout_search_searchResults/e:mmmmmhf.prof, Actions:
+Profile tag counts: HSPL: 18184; HPL: 14403; PL: 17; L: 8344; 
+
+INFO FOR FLAG s:mmmmmh:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:mmmmmh.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 14765; PL: 0; L: 8357; 
+
+INFO FOR FLAG a:
+All
+

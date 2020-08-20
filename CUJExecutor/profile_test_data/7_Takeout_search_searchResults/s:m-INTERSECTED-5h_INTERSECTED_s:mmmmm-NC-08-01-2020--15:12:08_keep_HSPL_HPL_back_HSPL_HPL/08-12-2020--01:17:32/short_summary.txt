@@ -1,0 +1,24 @@
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL----------08-12-2020--01:17:32-------------------------------
+SIZE DATA:
+
+Size of profile: 36746
+Profile tag counts: HSPL: 17802; HPL: 695; PL: 0; L: 6520; 
+Size of app: 58620
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2668            2668  
+ITERATION 2:  2918            2918  
+ITERATION 3:  2982            2982  
+ITERATION 4:  2658            2658  
+ITERATION 5:  2779            2779  
+ITERATION 6:  2760            2760  
+ITERATION 7:  3040            3040  
+                                    
+AVERAGE:      2829            2829  
+MEDIAN:       2779            2779  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL----------08-12-2020--01:17:32-------------------------------

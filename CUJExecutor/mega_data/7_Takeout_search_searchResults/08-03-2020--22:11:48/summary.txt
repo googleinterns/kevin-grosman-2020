@@ -1,0 +1,17 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG u:: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG s:: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:hot: Base: utilityProfiles/7_Takeout_search_searchResults/s:hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5: Base: utilityProfiles/7_Takeout_search_searchResults/e:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5_hot: Base: utilityProfiles/7_Takeout_search_searchResults/e:m-INTERSECTED-5_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m: Base: utilityProfiles/7_Takeout_search_searchResults/e:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m_hot: Base: utilityProfiles/7_Takeout_search_searchResults/e:m_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm: Base: utilityProfiles/7_Takeout_search_searchResults/e:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm_hot: Base: utilityProfiles/7_Takeout_search_searchResults/e:mmmmm_hot.prof, Actions:

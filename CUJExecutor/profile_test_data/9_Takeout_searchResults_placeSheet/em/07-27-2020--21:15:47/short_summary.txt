@@ -1,0 +1,17 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults/em.prof----------07-27-2020--21:15:47-------------------------------
+SIZE DATA:
+
+Size of profile: 25708
+Size of app: 47740
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Billy' TOTAL 
+                             
+AVERAGE: N/A           N/A   
+MEDIAN:  N/A           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults/em.prof----------07-27-2020--21:15:47-------------------------------

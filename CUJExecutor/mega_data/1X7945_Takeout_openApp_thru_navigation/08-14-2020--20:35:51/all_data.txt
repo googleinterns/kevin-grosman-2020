@@ -1,0 +1,23 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: ----------08-14-2020--20:35:51-----------------------------------------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout', 'click;Billy', 'click;DIRECTIONS', 'click;Start'] 
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 124
+NOTE: 124 iterations of data are missing for flag 
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+                 N/A      N/A             N/A           N/A                N/A           N/A   
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+                 N/A      N/A             N/A           N/A                N/A           N/A   
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: ----------08-14-2020--20:35:51-----------------------------------------------------------------

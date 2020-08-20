@@ -1,0 +1,35 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb push utilityProfiles/cloudProfile.prof /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+utilityProfiles/cloudProfile.prof: 1 file pushed, 0 skipped. 79.2 MB/s (38680 bytes in 0.000s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell chmod a+rw /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof profile_test_data/1_appStart_home/u/07-21-2020--12:05:34/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped. 11.0 MB/s (38680 bytes in 0.003s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+38680
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 

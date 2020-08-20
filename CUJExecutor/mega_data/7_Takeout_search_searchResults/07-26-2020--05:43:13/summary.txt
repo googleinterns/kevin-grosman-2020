@@ -1,0 +1,47 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG emmm: Base: Empty, Actions: [click;Takeout] [click;Takeout] [click;Takeout]
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG um: Base: Cloud, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG ummm: Base: Cloud, Actions: [click;Takeout] [click;Takeout] [click;Takeout]
+ACTIONS COMPILED FOR FLAG s: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG sm: Base: Startup, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG smmm: Base: Startup, Actions: [click;Takeout] [click;Takeout] [click;Takeout]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 63
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+e                45076    3409            3409  
+em               47927    3000            3000  
+emmm             48470    2902            2902  
+u                53208    3278            3278  
+um               55505    2946            2946  
+ummm             55801    2872            2872  
+s                59526    2920            2920  
+sm               60146    2818            2818  
+smmm             60330    2799            2799  
+a                170904   2666            2666  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+e                45076    3600            3600  
+em               47792    3008            3008  
+emmm             48360    3017            3017  
+u                53208    3229            3229  
+um               55596    2898            2898  
+ummm             55812    2935            2935  
+s                59528    3614            3614  
+sm               60196    2894            2894  
+smmm             60344    2804            2804  
+a                170904   2828            2828  
+************************************************MEGA TEST SUMMARY:*************************************************

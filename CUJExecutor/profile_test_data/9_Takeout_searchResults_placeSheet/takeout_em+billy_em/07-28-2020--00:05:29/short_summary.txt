@@ -1,0 +1,26 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/takeout_em+billy_em.prof----------07-28-2020--00:05:29-------------------------------
+SIZE DATA:
+
+Size of profile: 21162
+Size of app: 48876
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Billy' TOTAL 
+ITERATION 1:  2029          2029  
+ITERATION 2:  2057          2057  
+ITERATION 3:  2088          2088  
+ITERATION 4:  2033          2033  
+ITERATION 5:  2028          2028  
+ITERATION 6:  1976          1976  
+ITERATION 7:  2015          2015  
+ITERATION 8:  2023          2023  
+ITERATION 9:  2063          2063  
+                                  
+AVERAGE:      2034          2034  
+MEDIAN:       2029          2029  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/takeout_em+billy_em.prof----------07-28-2020--00:05:29-------------------------------

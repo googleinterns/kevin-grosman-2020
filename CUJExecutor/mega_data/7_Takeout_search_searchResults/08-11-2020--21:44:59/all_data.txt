@@ -1,0 +1,201 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08 s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_back_HPL_PL s:m-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL s:m-NC-08-01-2020--15:12:08 s:m-NC-08-01-2020--15:12:08_back_HPL_PL s:mmmmm-NC-08-01-2020--15:12:08----------08-11-2020--21:44:59-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e:----------08-11-2020--21:44:59-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+Size of app: 45076
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3150            3150  
+ITERATION 2:  5434            5434  
+ITERATION 3:  3633            3633  
+ITERATION 4:  3216            3216  
+ITERATION 5:  3172            3172  
+ITERATION 6:  3309            3309  
+ITERATION 7:  3285            3285  
+                                    
+AVERAGE:      3599            3599  
+MEDIAN:       3285            3285  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:----------08-11-2020--21:44:59-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL----------08-11-2020--21:47:33-------------------------------
+SIZE DATA:
+
+Size of profile: 36746
+Profile tag counts: HSPL: 17802; HPL: 695; PL: 0; L: 6520; 
+Size of app: 58620
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2852            2852  
+ITERATION 2:  3121            3121  
+ITERATION 3:  2919            2919  
+ITERATION 4:  2728            2728  
+ITERATION 5:  2665            2665  
+ITERATION 6:  2647            2647  
+ITERATION 7:  2785            2785  
+                                    
+AVERAGE:      2816            2816  
+MEDIAN:       2785            2785  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL----------08-11-2020--21:47:33-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08----------08-11-2020--21:49:34-------------------------------
+SIZE DATA:
+
+Size of profile: 43191
+Profile tag counts: HSPL: 17802; HPL: 695; PL: 13683; L: 8357; 
+Size of app: 60112
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2751            2751  
+ITERATION 2:  2674            2674  
+ITERATION 3:  2821            2821  
+ITERATION 4:  2743            2743  
+ITERATION 5:  2642            2642  
+ITERATION 6:  2940            2940  
+ITERATION 7:  2715            2715  
+                                    
+AVERAGE:      2755            2755  
+MEDIAN:       2743            2743  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08----------08-11-2020--21:49:34-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_back_HPL_PL----------08-11-2020--21:51:40-------------------------------
+SIZE DATA:
+
+Size of profile: 46405
+Profile tag counts: HSPL: 17802; HPL: 695; PL: 13683; L: 13220; 
+Size of app: 61012
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2690            2690  
+ITERATION 2:  2600            2600  
+ITERATION 3:  2645            2645  
+ITERATION 4:  2628            2628  
+ITERATION 5:  2659            2659  
+ITERATION 6:  3199            3199  
+ITERATION 7:  2760            2760  
+                                    
+AVERAGE:      2740            2740  
+MEDIAN:       2659            2659  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_back_HPL_PL----------08-11-2020--21:51:40-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:m-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL----------08-11-2020--21:53:37-------------------------------
+SIZE DATA:
+
+Size of profile: 36512
+Profile tag counts: HSPL: 17802; HPL: 584; PL: 0; L: 6490; 
+Size of app: 58512
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3151            3151  
+ITERATION 2:  2693            2693  
+ITERATION 3:  2749            2749  
+ITERATION 4:  2792            2792  
+ITERATION 5:  2824            2824  
+ITERATION 6:  3316            3316  
+ITERATION 7:  2956            2956  
+                                    
+AVERAGE:      2925            2925  
+MEDIAN:       2824            2824  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL----------08-11-2020--21:53:37-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:m-NC-08-01-2020--15:12:08----------08-11-2020--21:55:40-------------------------------
+SIZE DATA:
+
+Size of profile: 57631
+Profile tag counts: HSPL: 17802; HPL: 584; PL: 14144; L: 8357; 
+Size of app: 60204
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2787            2787  
+ITERATION 2:  2705            2705  
+ITERATION 3:  2730            2730  
+ITERATION 4:  2719            2719  
+ITERATION 5:  2804            2804  
+ITERATION 6:  2795            2795  
+ITERATION 7:  2868            2868  
+                                    
+AVERAGE:      2772            2772  
+MEDIAN:       2787            2787  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-NC-08-01-2020--15:12:08----------08-11-2020--21:55:40-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:m-NC-08-01-2020--15:12:08_back_HPL_PL----------08-11-2020--21:57:39-------------------------------
+SIZE DATA:
+
+Size of profile: 46397
+Profile tag counts: HSPL: 17802; HPL: 584; PL: 14144; L: 13320; 
+Size of app: 60928
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2725            2725  
+ITERATION 2:  2751            2751  
+ITERATION 3:  2836            2836  
+ITERATION 4:  3191            3191  
+ITERATION 5:  2833            2833  
+ITERATION 6:  2821            2821  
+ITERATION 7:  2850            2850  
+                                    
+AVERAGE:      2858            2858  
+MEDIAN:       2833            2833  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-NC-08-01-2020--15:12:08_back_HPL_PL----------08-11-2020--21:57:39-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:mmmmm-NC-08-01-2020--15:12:08----------08-11-2020--21:59:42-------------------------------
+SIZE DATA:
+
+Size of profile: 60337
+Profile tag counts: HSPL: 17802; HPL: 702; PL: 14122; L: 8357; 
+Size of app: 60364
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2657            2657  
+ITERATION 2:  2707            2707  
+ITERATION 3:  2687            2687  
+ITERATION 4:  3058            3058  
+ITERATION 5:  2785            2785  
+ITERATION 6:  2952            2952  
+ITERATION 7:  2767            2767  
+                                    
+AVERAGE:      2801            2801  
+MEDIAN:       2767            2767  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:mmmmm-NC-08-01-2020--15:12:08----------08-11-2020--21:59:42-------------------------------

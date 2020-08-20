@@ -1,0 +1,2483 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f c a----------07-12-2020--17:51:41-----------------------------------------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--17:54:46-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3695], TOTAL: 3695
+ITERATION 2: [4074], TOTAL: 4074
+ITERATION 3: [3569], TOTAL: 3569
+ITERATION 4: [3836], TOTAL: 3836
+ITERATION 5: [4196], TOTAL: 4196
+
+AVERAGE:     [3874], TOTAL: 3874
+MEDIAN:      [3836], TOTAL: 3836
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3695]
+ITERATION 2: [4074]
+ITERATION 3: [3569]
+ITERATION 4: [3836]
+ITERATION 5: [4196]
+
+AVERAGE:     [3874]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: e----------07-12-2020--17:54:46-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--17:57:58-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3331], TOTAL: 3331
+ITERATION 2: [3361], TOTAL: 3361
+ITERATION 3: [3375], TOTAL: 3375
+ITERATION 4: [3584], TOTAL: 3584
+ITERATION 5: [3481], TOTAL: 3481
+
+AVERAGE:     [3426], TOTAL: 3426
+MEDIAN:      [3375], TOTAL: 3375
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3331]
+ITERATION 2: [3361]
+ITERATION 3: [3375]
+ITERATION 4: [3584]
+ITERATION 5: [3481]
+
+AVERAGE:     [3426]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: u----------07-12-2020--17:57:58-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--18:01:22-------------------------------
+SIZE DATA:
+
+Size of profile: 46693
+Size of app: 59316
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3027], TOTAL: 3027
+ITERATION 2: [2853], TOTAL: 2853
+ITERATION 3: [2865], TOTAL: 2865
+ITERATION 4: [2761], TOTAL: 2761
+ITERATION 5: [2835], TOTAL: 2835
+
+AVERAGE:     [2868], TOTAL: 2868
+MEDIAN:      [2853], TOTAL: 2853
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3027]
+ITERATION 2: [2853]
+ITERATION 3: [2865]
+ITERATION 4: [2761]
+ITERATION 5: [2835]
+
+AVERAGE:     [2868]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: f----------07-12-2020--18:01:22-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--18:05:55-------------------------------
+SIZE DATA:
+
+Size of profile: 67499
+Size of app: 68940
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2552], TOTAL: 2552
+ITERATION 2: [2607], TOTAL: 2607
+ITERATION 3: [3246], TOTAL: 3246
+ITERATION 4: [2679], TOTAL: 2679
+ITERATION 5: [3048], TOTAL: 3048
+
+AVERAGE:     [2826], TOTAL: 2826
+MEDIAN:      [2679], TOTAL: 2679
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2552]
+ITERATION 2: [2607]
+ITERATION 3: [3246]
+ITERATION 4: [2679]
+ITERATION 5: [3048]
+
+AVERAGE:     [2826]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: c----------07-12-2020--18:05:55-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--18:10:50-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3878], TOTAL: 3878
+ITERATION 2: [2955], TOTAL: 2955
+ITERATION 3: [2734], TOTAL: 2734
+ITERATION 4: [2755], TOTAL: 2755
+ITERATION 5: [2658], TOTAL: 2658
+
+AVERAGE:     [2996], TOTAL: 2996
+MEDIAN:      [2755], TOTAL: 2755
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3878]
+ITERATION 2: [2955]
+ITERATION 3: [2734]
+ITERATION 4: [2755]
+ITERATION 5: [2658]
+
+AVERAGE:     [2996]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: a----------07-12-2020--18:10:50-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--18:14:28-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3820], TOTAL: 3820
+ITERATION 2: [4368], TOTAL: 4368
+ITERATION 3: [4150], TOTAL: 4150
+ITERATION 4: [4483], TOTAL: 4483
+ITERATION 5: [4880], TOTAL: 4880
+
+AVERAGE:     [4340], TOTAL: 4340
+MEDIAN:      [4368], TOTAL: 4368
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3820]
+ITERATION 2: [4368]
+ITERATION 3: [4150]
+ITERATION 4: [4483]
+ITERATION 5: [4880]
+
+AVERAGE:     [4340]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: e----------07-12-2020--18:14:28-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--18:17:56-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4239], TOTAL: 4239
+ITERATION 2: [3866], TOTAL: 3866
+ITERATION 3: [4509], TOTAL: 4509
+ITERATION 4: [3737], TOTAL: 3737
+ITERATION 5: [4653], TOTAL: 4653
+
+AVERAGE:     [4200], TOTAL: 4200
+MEDIAN:      [4239], TOTAL: 4239
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4239]
+ITERATION 2: [3866]
+ITERATION 3: [4509]
+ITERATION 4: [3737]
+ITERATION 5: [4653]
+
+AVERAGE:     [4200]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: u----------07-12-2020--18:17:56-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--18:21:41-------------------------------
+SIZE DATA:
+
+Size of profile: 45989
+Size of app: 59308
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2992], TOTAL: 2992
+ITERATION 2: [2973], TOTAL: 2973
+ITERATION 3: [2968], TOTAL: 2968
+ITERATION 4: [3022], TOTAL: 3022
+ITERATION 5: [3003], TOTAL: 3003
+
+AVERAGE:     [2991], TOTAL: 2991
+MEDIAN:      [2992], TOTAL: 2992
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2992]
+ITERATION 2: [2973]
+ITERATION 3: [2968]
+ITERATION 4: [3022]
+ITERATION 5: [3003]
+
+AVERAGE:     [2991]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: f----------07-12-2020--18:21:41-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--18:26:28-------------------------------
+SIZE DATA:
+
+Size of profile: 70323
+Size of app: 68900
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2789], TOTAL: 2789
+ITERATION 2: [2412], TOTAL: 2412
+ITERATION 3: [2631], TOTAL: 2631
+ITERATION 4: [2670], TOTAL: 2670
+ITERATION 5: [2570], TOTAL: 2570
+
+AVERAGE:     [2614], TOTAL: 2614
+MEDIAN:      [2631], TOTAL: 2631
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2789]
+ITERATION 2: [2412]
+ITERATION 3: [2631]
+ITERATION 4: [2670]
+ITERATION 5: [2570]
+
+AVERAGE:     [2614]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: c----------07-12-2020--18:26:28-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--18:31:27-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2724], TOTAL: 2724
+ITERATION 2: [2585], TOTAL: 2585
+ITERATION 3: [2606], TOTAL: 2606
+ITERATION 4: [2576], TOTAL: 2576
+ITERATION 5: [2678], TOTAL: 2678
+
+AVERAGE:     [2633], TOTAL: 2633
+MEDIAN:      [2606], TOTAL: 2606
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2724]
+ITERATION 2: [2585]
+ITERATION 3: [2606]
+ITERATION 4: [2576]
+ITERATION 5: [2678]
+
+AVERAGE:     [2633]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: a----------07-12-2020--18:31:27-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--18:35:08-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4362], TOTAL: 4362
+ITERATION 2: [4385], TOTAL: 4385
+ITERATION 3: [4467], TOTAL: 4467
+ITERATION 4: [5305], TOTAL: 5305
+ITERATION 5: [4997], TOTAL: 4997
+
+AVERAGE:     [4703], TOTAL: 4703
+MEDIAN:      [4467], TOTAL: 4467
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4362]
+ITERATION 2: [4385]
+ITERATION 3: [4467]
+ITERATION 4: [5305]
+ITERATION 5: [4997]
+
+AVERAGE:     [4703]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: e----------07-12-2020--18:35:08-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--18:38:37-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4762], TOTAL: 4762
+ITERATION 2: [4886], TOTAL: 4886
+ITERATION 3: [4976], TOTAL: 4976
+ITERATION 4: [5008], TOTAL: 5008
+ITERATION 5: [4336], TOTAL: 4336
+
+AVERAGE:     [4793], TOTAL: 4793
+MEDIAN:      [4886], TOTAL: 4886
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4762]
+ITERATION 2: [4886]
+ITERATION 3: [4976]
+ITERATION 4: [5008]
+ITERATION 5: [4336]
+
+AVERAGE:     [4793]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: u----------07-12-2020--18:38:37-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--18:42:34-------------------------------
+SIZE DATA:
+
+Size of profile: 45719
+Size of app: 59416
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3022], TOTAL: 3022
+ITERATION 2: [3076], TOTAL: 3076
+ITERATION 3: [3016], TOTAL: 3016
+ITERATION 4: [3024], TOTAL: 3024
+ITERATION 5: [3748], TOTAL: 3748
+
+AVERAGE:     [3177], TOTAL: 3177
+MEDIAN:      [3024], TOTAL: 3024
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3022]
+ITERATION 2: [3076]
+ITERATION 3: [3016]
+ITERATION 4: [3024]
+ITERATION 5: [3748]
+
+AVERAGE:     [3177]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: f----------07-12-2020--18:42:34-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--18:47:28-------------------------------
+SIZE DATA:
+
+Size of profile: 69951
+Size of app: 68940
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2662], TOTAL: 2662
+ITERATION 2: [2704], TOTAL: 2704
+ITERATION 3: [2566], TOTAL: 2566
+ITERATION 4: [2669], TOTAL: 2669
+ITERATION 5: [3141], TOTAL: 3141
+
+AVERAGE:     [2748], TOTAL: 2748
+MEDIAN:      [2669], TOTAL: 2669
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2662]
+ITERATION 2: [2704]
+ITERATION 3: [2566]
+ITERATION 4: [2669]
+ITERATION 5: [3141]
+
+AVERAGE:     [2748]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: c----------07-12-2020--18:47:28-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--18:52:45-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3394], TOTAL: 3394
+ITERATION 2: [3493], TOTAL: 3493
+ITERATION 3: [3482], TOTAL: 3482
+ITERATION 4: [3482], TOTAL: 3482
+ITERATION 5: [3466], TOTAL: 3466
+
+AVERAGE:     [3463], TOTAL: 3463
+MEDIAN:      [3482], TOTAL: 3482
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3394]
+ITERATION 2: [3493]
+ITERATION 3: [3482]
+ITERATION 4: [3482]
+ITERATION 5: [3466]
+
+AVERAGE:     [3463]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: a----------07-12-2020--18:52:45-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--18:57:01-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4654], TOTAL: 4654
+ITERATION 2: [5348], TOTAL: 5348
+ITERATION 3: [6217], TOTAL: 6217
+ITERATION 4: [5470], TOTAL: 5470
+ITERATION 5: [4212], TOTAL: 4212
+
+AVERAGE:     [5180], TOTAL: 5180
+MEDIAN:      [5348], TOTAL: 5348
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4654]
+ITERATION 2: [5348]
+ITERATION 3: [6217]
+ITERATION 4: [5470]
+ITERATION 5: [4212]
+
+AVERAGE:     [5180]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: e----------07-12-2020--18:57:01-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--19:00:48-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3894], TOTAL: 3894
+ITERATION 2: [4125], TOTAL: 4125
+ITERATION 3: [3554], TOTAL: 3554
+ITERATION 4: [3833], TOTAL: 3833
+ITERATION 5: [3780], TOTAL: 3780
+
+AVERAGE:     [3837], TOTAL: 3837
+MEDIAN:      [3833], TOTAL: 3833
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3894]
+ITERATION 2: [4125]
+ITERATION 3: [3554]
+ITERATION 4: [3833]
+ITERATION 5: [3780]
+
+AVERAGE:     [3837]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: u----------07-12-2020--19:00:48-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--19:04:25-------------------------------
+SIZE DATA:
+
+Size of profile: 45241
+Size of app: 58984
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2953], TOTAL: 2953
+ITERATION 2: [2958], TOTAL: 2958
+ITERATION 3: [2873], TOTAL: 2873
+ITERATION 4: [3128], TOTAL: 3128
+ITERATION 5: [3008], TOTAL: 3008
+
+AVERAGE:     [2984], TOTAL: 2984
+MEDIAN:      [2958], TOTAL: 2958
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2953]
+ITERATION 2: [2958]
+ITERATION 3: [2873]
+ITERATION 4: [3128]
+ITERATION 5: [3008]
+
+AVERAGE:     [2984]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: f----------07-12-2020--19:04:25-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--19:09:04-------------------------------
+SIZE DATA:
+
+Size of profile: 72344
+Size of app: 68940
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2542], TOTAL: 2542
+ITERATION 2: [2455], TOTAL: 2455
+ITERATION 3: [2561], TOTAL: 2561
+ITERATION 4: [2594], TOTAL: 2594
+ITERATION 5: [2840], TOTAL: 2840
+
+AVERAGE:     [2598], TOTAL: 2598
+MEDIAN:      [2561], TOTAL: 2561
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2542]
+ITERATION 2: [2455]
+ITERATION 3: [2561]
+ITERATION 4: [2594]
+ITERATION 5: [2840]
+
+AVERAGE:     [2598]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: c----------07-12-2020--19:09:04-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--19:13:58-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2636], TOTAL: 2636
+ITERATION 2: [2703], TOTAL: 2703
+ITERATION 3: [2581], TOTAL: 2581
+ITERATION 4: [2549], TOTAL: 2549
+ITERATION 5: [2750], TOTAL: 2750
+
+AVERAGE:     [2643], TOTAL: 2643
+MEDIAN:      [2636], TOTAL: 2636
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2636]
+ITERATION 2: [2703]
+ITERATION 3: [2581]
+ITERATION 4: [2549]
+ITERATION 5: [2750]
+
+AVERAGE:     [2643]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: a----------07-12-2020--19:13:58-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--19:17:35-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3979], TOTAL: 3979
+ITERATION 2: [4038], TOTAL: 4038
+ITERATION 3: [4290], TOTAL: 4290
+ITERATION 4: [3774], TOTAL: 3774
+ITERATION 5: [3964], TOTAL: 3964
+
+AVERAGE:     [4009], TOTAL: 4009
+MEDIAN:      [3979], TOTAL: 3979
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3979]
+ITERATION 2: [4038]
+ITERATION 3: [4290]
+ITERATION 4: [3774]
+ITERATION 5: [3964]
+
+AVERAGE:     [4009]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: e----------07-12-2020--19:17:35-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--19:20:57-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3367], TOTAL: 3367
+ITERATION 2: [4018], TOTAL: 4018
+ITERATION 3: [4159], TOTAL: 4159
+ITERATION 4: [3618], TOTAL: 3618
+ITERATION 5: [3589], TOTAL: 3589
+
+AVERAGE:     [3750], TOTAL: 3750
+MEDIAN:      [3618], TOTAL: 3618
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3367]
+ITERATION 2: [4018]
+ITERATION 3: [4159]
+ITERATION 4: [3618]
+ITERATION 5: [3589]
+
+AVERAGE:     [3750]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: u----------07-12-2020--19:20:57-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--19:24:27-------------------------------
+SIZE DATA:
+
+Size of profile: 46956
+Size of app: 59484
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2944], TOTAL: 2944
+ITERATION 2: [3032], TOTAL: 3032
+ITERATION 3: [3058], TOTAL: 3058
+ITERATION 4: [3007], TOTAL: 3007
+ITERATION 5: [3005], TOTAL: 3005
+
+AVERAGE:     [3009], TOTAL: 3009
+MEDIAN:      [3007], TOTAL: 3007
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2944]
+ITERATION 2: [3032]
+ITERATION 3: [3058]
+ITERATION 4: [3007]
+ITERATION 5: [3005]
+
+AVERAGE:     [3009]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: f----------07-12-2020--19:24:27-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--19:29:07-------------------------------
+SIZE DATA:
+
+Size of profile: 71080
+Size of app: 68968
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2618], TOTAL: 2618
+ITERATION 2: [2651], TOTAL: 2651
+ITERATION 3: [2778], TOTAL: 2778
+ITERATION 4: [2748], TOTAL: 2748
+ITERATION 5: [2579], TOTAL: 2579
+
+AVERAGE:     [2674], TOTAL: 2674
+MEDIAN:      [2651], TOTAL: 2651
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2618]
+ITERATION 2: [2651]
+ITERATION 3: [2778]
+ITERATION 4: [2748]
+ITERATION 5: [2579]
+
+AVERAGE:     [2674]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: c----------07-12-2020--19:29:07-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--19:34:01-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2816], TOTAL: 2816
+ITERATION 2: [2869], TOTAL: 2869
+ITERATION 3: [2691], TOTAL: 2691
+ITERATION 4: [3062], TOTAL: 3062
+ITERATION 5: [2657], TOTAL: 2657
+
+AVERAGE:     [2819], TOTAL: 2819
+MEDIAN:      [2816], TOTAL: 2816
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2816]
+ITERATION 2: [2869]
+ITERATION 3: [2691]
+ITERATION 4: [3062]
+ITERATION 5: [2657]
+
+AVERAGE:     [2819]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: a----------07-12-2020--19:34:01-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--19:37:42-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4355], TOTAL: 4355
+ITERATION 2: [4346], TOTAL: 4346
+ITERATION 3: [4249], TOTAL: 4249
+ITERATION 4: [4559], TOTAL: 4559
+ITERATION 5: [4407], TOTAL: 4407
+
+AVERAGE:     [4383], TOTAL: 4383
+MEDIAN:      [4355], TOTAL: 4355
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4355]
+ITERATION 2: [4346]
+ITERATION 3: [4249]
+ITERATION 4: [4559]
+ITERATION 5: [4407]
+
+AVERAGE:     [4383]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: e----------07-12-2020--19:37:42-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--19:41:05-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3792], TOTAL: 3792
+ITERATION 2: [4034], TOTAL: 4034
+ITERATION 3: [3937], TOTAL: 3937
+ITERATION 4: [3864], TOTAL: 3864
+ITERATION 5: [3908], TOTAL: 3908
+
+AVERAGE:     [3907], TOTAL: 3907
+MEDIAN:      [3908], TOTAL: 3908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3792]
+ITERATION 2: [4034]
+ITERATION 3: [3937]
+ITERATION 4: [3864]
+ITERATION 5: [3908]
+
+AVERAGE:     [3907]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: u----------07-12-2020--19:41:05-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--19:44:35-------------------------------
+SIZE DATA:
+
+Size of profile: 45478
+Size of app: 59512
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3090], TOTAL: 3090
+ITERATION 2: [3126], TOTAL: 3126
+ITERATION 3: [3064], TOTAL: 3064
+ITERATION 4: [3048], TOTAL: 3048
+ITERATION 5: [2954], TOTAL: 2954
+
+AVERAGE:     [3056], TOTAL: 3056
+MEDIAN:      [3064], TOTAL: 3064
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3090]
+ITERATION 2: [3126]
+ITERATION 3: [3064]
+ITERATION 4: [3048]
+ITERATION 5: [2954]
+
+AVERAGE:     [3056]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: f----------07-12-2020--19:44:35-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--19:49:18-------------------------------
+SIZE DATA:
+
+Size of profile: 77034
+Size of app: 71468
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2668], TOTAL: 2668
+ITERATION 2: [2692], TOTAL: 2692
+ITERATION 3: [2647], TOTAL: 2647
+ITERATION 4: [2700], TOTAL: 2700
+ITERATION 5: [2699], TOTAL: 2699
+
+AVERAGE:     [2681], TOTAL: 2681
+MEDIAN:      [2692], TOTAL: 2692
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2668]
+ITERATION 2: [2692]
+ITERATION 3: [2647]
+ITERATION 4: [2700]
+ITERATION 5: [2699]
+
+AVERAGE:     [2681]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: c----------07-12-2020--19:49:18-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--19:54:18-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2869], TOTAL: 2869
+ITERATION 2: [2848], TOTAL: 2848
+ITERATION 3: [2863], TOTAL: 2863
+ITERATION 4: [2705], TOTAL: 2705
+ITERATION 5: [2850], TOTAL: 2850
+
+AVERAGE:     [2827], TOTAL: 2827
+MEDIAN:      [2850], TOTAL: 2850
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2869]
+ITERATION 2: [2848]
+ITERATION 3: [2863]
+ITERATION 4: [2705]
+ITERATION 5: [2850]
+
+AVERAGE:     [2827]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: a----------07-12-2020--19:54:18-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--19:58:00-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4251], TOTAL: 4251
+ITERATION 2: [4249], TOTAL: 4249
+ITERATION 3: [4146], TOTAL: 4146
+ITERATION 4: [5246], TOTAL: 5246
+ITERATION 5: [4332], TOTAL: 4332
+
+AVERAGE:     [4444], TOTAL: 4444
+MEDIAN:      [4251], TOTAL: 4251
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4251]
+ITERATION 2: [4249]
+ITERATION 3: [4146]
+ITERATION 4: [5246]
+ITERATION 5: [4332]
+
+AVERAGE:     [4444]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: e----------07-12-2020--19:58:00-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--20:01:29-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3773], TOTAL: 3773
+ITERATION 2: [3739], TOTAL: 3739
+ITERATION 3: [4207], TOTAL: 4207
+ITERATION 4: [3774], TOTAL: 3774
+ITERATION 5: [4822], TOTAL: 4822
+
+AVERAGE:     [4063], TOTAL: 4063
+MEDIAN:      [3774], TOTAL: 3774
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3773]
+ITERATION 2: [3739]
+ITERATION 3: [4207]
+ITERATION 4: [3774]
+ITERATION 5: [4822]
+
+AVERAGE:     [4063]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: u----------07-12-2020--20:01:29-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--20:05:10-------------------------------
+SIZE DATA:
+
+Size of profile: 45453
+Size of app: 59380
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3191], TOTAL: 3191
+ITERATION 2: [3046], TOTAL: 3046
+ITERATION 3: [2933], TOTAL: 2933
+ITERATION 4: [3764], TOTAL: 3764
+ITERATION 5: [3156], TOTAL: 3156
+
+AVERAGE:     [3218], TOTAL: 3218
+MEDIAN:      [3156], TOTAL: 3156
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3191]
+ITERATION 2: [3046]
+ITERATION 3: [2933]
+ITERATION 4: [3764]
+ITERATION 5: [3156]
+
+AVERAGE:     [3218]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: f----------07-12-2020--20:05:10-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--20:10:03-------------------------------
+SIZE DATA:
+
+Size of profile: 71886
+Size of app: 68928
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2615], TOTAL: 2615
+ITERATION 2: [2644], TOTAL: 2644
+ITERATION 3: [2674], TOTAL: 2674
+ITERATION 4: [2662], TOTAL: 2662
+ITERATION 5: [2663], TOTAL: 2663
+
+AVERAGE:     [2651], TOTAL: 2651
+MEDIAN:      [2662], TOTAL: 2662
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2615]
+ITERATION 2: [2644]
+ITERATION 3: [2674]
+ITERATION 4: [2662]
+ITERATION 5: [2663]
+
+AVERAGE:     [2651]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: c----------07-12-2020--20:10:03-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--20:15:01-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2638], TOTAL: 2638
+ITERATION 2: [2708], TOTAL: 2708
+ITERATION 3: [2743], TOTAL: 2743
+ITERATION 4: [2805], TOTAL: 2805
+ITERATION 5: [2804], TOTAL: 2804
+
+AVERAGE:     [2739], TOTAL: 2739
+MEDIAN:      [2743], TOTAL: 2743
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2638]
+ITERATION 2: [2708]
+ITERATION 3: [2743]
+ITERATION 4: [2805]
+ITERATION 5: [2804]
+
+AVERAGE:     [2739]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: a----------07-12-2020--20:15:01-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--20:18:36-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4273], TOTAL: 4273
+ITERATION 2: [4392], TOTAL: 4392
+ITERATION 3: [4423], TOTAL: 4423
+ITERATION 4: [4107], TOTAL: 4107
+ITERATION 5: [4306], TOTAL: 4306
+
+AVERAGE:     [4300], TOTAL: 4300
+MEDIAN:      [4306], TOTAL: 4306
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4273]
+ITERATION 2: [4392]
+ITERATION 3: [4423]
+ITERATION 4: [4107]
+ITERATION 5: [4306]
+
+AVERAGE:     [4300]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: e----------07-12-2020--20:18:36-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--20:21:58-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4732], TOTAL: 4732
+ITERATION 2: [4150], TOTAL: 4150
+ITERATION 3: [3658], TOTAL: 3658
+ITERATION 4: [3670], TOTAL: 3670
+ITERATION 5: [3730], TOTAL: 3730
+
+AVERAGE:     [3988], TOTAL: 3988
+MEDIAN:      [3730], TOTAL: 3730
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4732]
+ITERATION 2: [4150]
+ITERATION 3: [3658]
+ITERATION 4: [3670]
+ITERATION 5: [3730]
+
+AVERAGE:     [3988]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: u----------07-12-2020--20:21:58-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--20:25:30-------------------------------
+SIZE DATA:
+
+Size of profile: 45443
+Size of app: 59296
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3168], TOTAL: 3168
+ITERATION 2: [2913], TOTAL: 2913
+ITERATION 3: [3003], TOTAL: 3003
+ITERATION 4: [3000], TOTAL: 3000
+ITERATION 5: [3076], TOTAL: 3076
+
+AVERAGE:     [3032], TOTAL: 3032
+MEDIAN:      [3003], TOTAL: 3003
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3168]
+ITERATION 2: [2913]
+ITERATION 3: [3003]
+ITERATION 4: [3000]
+ITERATION 5: [3076]
+
+AVERAGE:     [3032]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: f----------07-12-2020--20:25:30-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--20:30:15-------------------------------
+SIZE DATA:
+
+Size of profile: 73146
+Size of app: 70276
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2672], TOTAL: 2672
+ITERATION 2: [2754], TOTAL: 2754
+ITERATION 3: [2606], TOTAL: 2606
+ITERATION 4: [2644], TOTAL: 2644
+ITERATION 5: [2644], TOTAL: 2644
+
+AVERAGE:     [2664], TOTAL: 2664
+MEDIAN:      [2644], TOTAL: 2644
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2672]
+ITERATION 2: [2754]
+ITERATION 3: [2606]
+ITERATION 4: [2644]
+ITERATION 5: [2644]
+
+AVERAGE:     [2664]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: c----------07-12-2020--20:30:15-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--20:35:13-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2900], TOTAL: 2900
+ITERATION 2: [2670], TOTAL: 2670
+ITERATION 3: [2641], TOTAL: 2641
+ITERATION 4: [2602], TOTAL: 2602
+ITERATION 5: [2703], TOTAL: 2703
+
+AVERAGE:     [2703], TOTAL: 2703
+MEDIAN:      [2670], TOTAL: 2670
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2900]
+ITERATION 2: [2670]
+ITERATION 3: [2641]
+ITERATION 4: [2602]
+ITERATION 5: [2703]
+
+AVERAGE:     [2703]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: a----------07-12-2020--20:35:13-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--20:38:56-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4342], TOTAL: 4342
+ITERATION 2: [4366], TOTAL: 4366
+ITERATION 3: [4267], TOTAL: 4267
+ITERATION 4: [5182], TOTAL: 5182
+ITERATION 5: [5782], TOTAL: 5782
+
+AVERAGE:     [4787], TOTAL: 4787
+MEDIAN:      [4366], TOTAL: 4366
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4342]
+ITERATION 2: [4366]
+ITERATION 3: [4267]
+ITERATION 4: [5182]
+ITERATION 5: [5782]
+
+AVERAGE:     [4787]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: e----------07-12-2020--20:38:56-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--20:42:25-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4301], TOTAL: 4301
+ITERATION 2: [3932], TOTAL: 3932
+ITERATION 3: [3797], TOTAL: 3797
+ITERATION 4: [4828], TOTAL: 4828
+ITERATION 5: [4721], TOTAL: 4721
+
+AVERAGE:     [4315], TOTAL: 4315
+MEDIAN:      [4301], TOTAL: 4301
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4301]
+ITERATION 2: [3932]
+ITERATION 3: [3797]
+ITERATION 4: [4828]
+ITERATION 5: [4721]
+
+AVERAGE:     [4315]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: u----------07-12-2020--20:42:25-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--20:46:12-------------------------------
+SIZE DATA:
+
+Size of profile: 45983
+Size of app: 59468
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3050], TOTAL: 3050
+ITERATION 2: [3085], TOTAL: 3085
+ITERATION 3: [2943], TOTAL: 2943
+ITERATION 4: [2932], TOTAL: 2932
+ITERATION 5: [2905], TOTAL: 2905
+
+AVERAGE:     [2983], TOTAL: 2983
+MEDIAN:      [2943], TOTAL: 2943
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3050]
+ITERATION 2: [3085]
+ITERATION 3: [2943]
+ITERATION 4: [2932]
+ITERATION 5: [2905]
+
+AVERAGE:     [2983]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: f----------07-12-2020--20:46:12-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--20:50:59-------------------------------
+SIZE DATA:
+
+Size of profile: 69868
+Size of app: 68880
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3864], TOTAL: 3864
+ITERATION 2: [2733], TOTAL: 2733
+ITERATION 3: [2675], TOTAL: 2675
+ITERATION 4: [2656], TOTAL: 2656
+ITERATION 5: [2714], TOTAL: 2714
+
+AVERAGE:     [2928], TOTAL: 2928
+MEDIAN:      [2714], TOTAL: 2714
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3864]
+ITERATION 2: [2733]
+ITERATION 3: [2675]
+ITERATION 4: [2656]
+ITERATION 5: [2714]
+
+AVERAGE:     [2928]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: c----------07-12-2020--20:50:59-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--20:55:57-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3029], TOTAL: 3029
+ITERATION 2: [2976], TOTAL: 2976
+ITERATION 3: [2581], TOTAL: 2581
+ITERATION 4: [2632], TOTAL: 2632
+ITERATION 5: [2880], TOTAL: 2880
+
+AVERAGE:     [2819], TOTAL: 2819
+MEDIAN:      [2880], TOTAL: 2880
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3029]
+ITERATION 2: [2976]
+ITERATION 3: [2581]
+ITERATION 4: [2632]
+ITERATION 5: [2880]
+
+AVERAGE:     [2819]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: a----------07-12-2020--20:55:57-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--20:59:38-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3914], TOTAL: 3914
+ITERATION 2: [4441], TOTAL: 4441
+ITERATION 3: [4102], TOTAL: 4102
+ITERATION 4: [4428], TOTAL: 4428
+ITERATION 5: [5301], TOTAL: 5301
+
+AVERAGE:     [4437], TOTAL: 4437
+MEDIAN:      [4428], TOTAL: 4428
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3914]
+ITERATION 2: [4441]
+ITERATION 3: [4102]
+ITERATION 4: [4428]
+ITERATION 5: [5301]
+
+AVERAGE:     [4437]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: e----------07-12-2020--20:59:38-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--21:03:01-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [4155], TOTAL: 4155
+ITERATION 2: [3851], TOTAL: 3851
+ITERATION 3: [4178], TOTAL: 4178
+ITERATION 4: [4095], TOTAL: 4095
+ITERATION 5: [4205], TOTAL: 4205
+
+AVERAGE:     [4096], TOTAL: 4096
+MEDIAN:      [4155], TOTAL: 4155
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [4155]
+ITERATION 2: [3851]
+ITERATION 3: [4178]
+ITERATION 4: [4095]
+ITERATION 5: [4205]
+
+AVERAGE:     [4096]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: u----------07-12-2020--21:03:01-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--21:06:40-------------------------------
+SIZE DATA:
+
+Size of profile: 45815
+Size of app: 59672
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2869], TOTAL: 2869
+ITERATION 2: [2932], TOTAL: 2932
+ITERATION 3: [3019], TOTAL: 3019
+ITERATION 4: [3751], TOTAL: 3751
+ITERATION 5: [3595], TOTAL: 3595
+
+AVERAGE:     [3233], TOTAL: 3233
+MEDIAN:      [3019], TOTAL: 3019
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2869]
+ITERATION 2: [2932]
+ITERATION 3: [3019]
+ITERATION 4: [3751]
+ITERATION 5: [3595]
+
+AVERAGE:     [3233]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: f----------07-12-2020--21:06:40-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--21:11:29-------------------------------
+SIZE DATA:
+
+Size of profile: 70601
+Size of app: 69004
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2619], TOTAL: 2619
+ITERATION 2: [2649], TOTAL: 2649
+ITERATION 3: [2558], TOTAL: 2558
+ITERATION 4: [2587], TOTAL: 2587
+ITERATION 5: [2543], TOTAL: 2543
+
+AVERAGE:     [2591], TOTAL: 2591
+MEDIAN:      [2587], TOTAL: 2587
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2619]
+ITERATION 2: [2649]
+ITERATION 3: [2558]
+ITERATION 4: [2587]
+ITERATION 5: [2543]
+
+AVERAGE:     [2591]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: c----------07-12-2020--21:11:29-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--21:16:23-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2956], TOTAL: 2956
+ITERATION 2: [2563], TOTAL: 2563
+ITERATION 3: [2578], TOTAL: 2578
+ITERATION 4: [2585], TOTAL: 2585
+ITERATION 5: [2489], TOTAL: 2489
+
+AVERAGE:     [2634], TOTAL: 2634
+MEDIAN:      [2578], TOTAL: 2578
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2956]
+ITERATION 2: [2563]
+ITERATION 3: [2578]
+ITERATION 4: [2585]
+ITERATION 5: [2489]
+
+AVERAGE:     [2634]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: a----------07-12-2020--21:16:23-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--21:19:50-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3584], TOTAL: 3584
+ITERATION 2: [3557], TOTAL: 3557
+ITERATION 3: [4133], TOTAL: 4133
+ITERATION 4: [4090], TOTAL: 4090
+ITERATION 5: [3506], TOTAL: 3506
+
+AVERAGE:     [3774], TOTAL: 3774
+MEDIAN:      [3584], TOTAL: 3584
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3584]
+ITERATION 2: [3557]
+ITERATION 3: [4133]
+ITERATION 4: [4090]
+ITERATION 5: [3506]
+
+AVERAGE:     [3774]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: e----------07-12-2020--21:19:50-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--21:23:01-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3717], TOTAL: 3717
+ITERATION 2: [3108], TOTAL: 3108
+ITERATION 3: [3164], TOTAL: 3164
+ITERATION 4: [3232], TOTAL: 3232
+ITERATION 5: [3244], TOTAL: 3244
+
+AVERAGE:     [3293], TOTAL: 3293
+MEDIAN:      [3232], TOTAL: 3232
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3717]
+ITERATION 2: [3108]
+ITERATION 3: [3164]
+ITERATION 4: [3232]
+ITERATION 5: [3244]
+
+AVERAGE:     [3293]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: u----------07-12-2020--21:23:01-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--21:26:21-------------------------------
+SIZE DATA:
+
+Size of profile: 46358
+Size of app: 59268
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2921], TOTAL: 2921
+ITERATION 2: [2814], TOTAL: 2814
+ITERATION 3: [2897], TOTAL: 2897
+ITERATION 4: [2685], TOTAL: 2685
+ITERATION 5: [2638], TOTAL: 2638
+
+AVERAGE:     [2791], TOTAL: 2791
+MEDIAN:      [2814], TOTAL: 2814
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2921]
+ITERATION 2: [2814]
+ITERATION 3: [2897]
+ITERATION 4: [2685]
+ITERATION 5: [2638]
+
+AVERAGE:     [2791]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: f----------07-12-2020--21:26:21-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--21:30:54-------------------------------
+SIZE DATA:
+
+Size of profile: 71319
+Size of app: 68816
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2130], TOTAL: 2130
+ITERATION 2: [2565], TOTAL: 2565
+ITERATION 3: [2328], TOTAL: 2328
+ITERATION 4: [2440], TOTAL: 2440
+ITERATION 5: [2409], TOTAL: 2409
+
+AVERAGE:     [2374], TOTAL: 2374
+MEDIAN:      [2409], TOTAL: 2409
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2130]
+ITERATION 2: [2565]
+ITERATION 3: [2328]
+ITERATION 4: [2440]
+ITERATION 5: [2409]
+
+AVERAGE:     [2374]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: c----------07-12-2020--21:30:54-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--21:35:40-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2591], TOTAL: 2591
+ITERATION 2: [2559], TOTAL: 2559
+ITERATION 3: [2567], TOTAL: 2567
+ITERATION 4: [2488], TOTAL: 2488
+ITERATION 5: [2514], TOTAL: 2514
+
+AVERAGE:     [2543], TOTAL: 2543
+MEDIAN:      [2559], TOTAL: 2559
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2591]
+ITERATION 2: [2559]
+ITERATION 3: [2567]
+ITERATION 4: [2488]
+ITERATION 5: [2514]
+
+AVERAGE:     [2543]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: a----------07-12-2020--21:35:40-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--21:39:11-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3705], TOTAL: 3705
+ITERATION 2: [3209], TOTAL: 3209
+ITERATION 3: [3570], TOTAL: 3570
+ITERATION 4: [3372], TOTAL: 3372
+ITERATION 5: [3472], TOTAL: 3472
+
+AVERAGE:     [3465], TOTAL: 3465
+MEDIAN:      [3472], TOTAL: 3472
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3705]
+ITERATION 2: [3209]
+ITERATION 3: [3570]
+ITERATION 4: [3372]
+ITERATION 5: [3472]
+
+AVERAGE:     [3465]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: e----------07-12-2020--21:39:11-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--21:42:22-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3094], TOTAL: 3094
+ITERATION 2: [3021], TOTAL: 3021
+ITERATION 3: [2999], TOTAL: 2999
+ITERATION 4: [3505], TOTAL: 3505
+ITERATION 5: [3116], TOTAL: 3116
+
+AVERAGE:     [3147], TOTAL: 3147
+MEDIAN:      [3094], TOTAL: 3094
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3094]
+ITERATION 2: [3021]
+ITERATION 3: [2999]
+ITERATION 4: [3505]
+ITERATION 5: [3116]
+
+AVERAGE:     [3147]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: u----------07-12-2020--21:42:22-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--21:45:40-------------------------------
+SIZE DATA:
+
+Size of profile: 46454
+Size of app: 59312
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2787], TOTAL: 2787
+ITERATION 2: [2627], TOTAL: 2627
+ITERATION 3: [2555], TOTAL: 2555
+ITERATION 4: [2629], TOTAL: 2629
+ITERATION 5: [2685], TOTAL: 2685
+
+AVERAGE:     [2656], TOTAL: 2656
+MEDIAN:      [2629], TOTAL: 2629
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2787]
+ITERATION 2: [2627]
+ITERATION 3: [2555]
+ITERATION 4: [2629]
+ITERATION 5: [2685]
+
+AVERAGE:     [2656]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: f----------07-12-2020--21:45:40-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--21:50:10-------------------------------
+SIZE DATA:
+
+Size of profile: 68199
+Size of app: 68868
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2313], TOTAL: 2313
+ITERATION 2: [2198], TOTAL: 2198
+ITERATION 3: [2246], TOTAL: 2246
+ITERATION 4: [2260], TOTAL: 2260
+ITERATION 5: [3103], TOTAL: 3103
+
+AVERAGE:     [2424], TOTAL: 2424
+MEDIAN:      [2260], TOTAL: 2260
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2313]
+ITERATION 2: [2198]
+ITERATION 3: [2246]
+ITERATION 4: [2260]
+ITERATION 5: [3103]
+
+AVERAGE:     [2424]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: c----------07-12-2020--21:50:10-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--21:54:56-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2901], TOTAL: 2901
+ITERATION 2: [2469], TOTAL: 2469
+ITERATION 3: [2496], TOTAL: 2496
+ITERATION 4: [2477], TOTAL: 2477
+ITERATION 5: [2528], TOTAL: 2528
+
+AVERAGE:     [2574], TOTAL: 2574
+MEDIAN:      [2496], TOTAL: 2496
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2901]
+ITERATION 2: [2469]
+ITERATION 3: [2496]
+ITERATION 4: [2477]
+ITERATION 5: [2528]
+
+AVERAGE:     [2574]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: a----------07-12-2020--21:54:56-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--21:58:26-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3308], TOTAL: 3308
+ITERATION 2: [3497], TOTAL: 3497
+ITERATION 3: [3323], TOTAL: 3323
+ITERATION 4: [3383], TOTAL: 3383
+ITERATION 5: [3270], TOTAL: 3270
+
+AVERAGE:     [3356], TOTAL: 3356
+MEDIAN:      [3323], TOTAL: 3323
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3308]
+ITERATION 2: [3497]
+ITERATION 3: [3323]
+ITERATION 4: [3383]
+ITERATION 5: [3270]
+
+AVERAGE:     [3356]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: e----------07-12-2020--21:58:26-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--22:01:38-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2912], TOTAL: 2912
+ITERATION 2: [3213], TOTAL: 3213
+ITERATION 3: [3118], TOTAL: 3118
+ITERATION 4: [3146], TOTAL: 3146
+ITERATION 5: [3085], TOTAL: 3085
+
+AVERAGE:     [3094], TOTAL: 3094
+MEDIAN:      [3118], TOTAL: 3118
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2912]
+ITERATION 2: [3213]
+ITERATION 3: [3118]
+ITERATION 4: [3146]
+ITERATION 5: [3085]
+
+AVERAGE:     [3094]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: u----------07-12-2020--22:01:38-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--22:04:54-------------------------------
+SIZE DATA:
+
+Size of profile: 45988
+Size of app: 59248
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2649], TOTAL: 2649
+ITERATION 2: [2877], TOTAL: 2877
+ITERATION 3: [2684], TOTAL: 2684
+ITERATION 4: [2694], TOTAL: 2694
+ITERATION 5: [2827], TOTAL: 2827
+
+AVERAGE:     [2746], TOTAL: 2746
+MEDIAN:      [2694], TOTAL: 2694
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2649]
+ITERATION 2: [2877]
+ITERATION 3: [2684]
+ITERATION 4: [2694]
+ITERATION 5: [2827]
+
+AVERAGE:     [2746]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 4
+--------------------------------COMPILATION SETTING: f----------07-12-2020--22:04:54-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--22:09:23-------------------------------
+SIZE DATA:
+
+Size of profile: 71109
+Size of app: 68824
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2119], TOTAL: 2119
+ITERATION 2: [2395], TOTAL: 2395
+ITERATION 3: [2363], TOTAL: 2363
+ITERATION 4: [2233], TOTAL: 2233
+ITERATION 5: [2332], TOTAL: 2332
+
+AVERAGE:     [2288], TOTAL: 2288
+MEDIAN:      [2332], TOTAL: 2332
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2119]
+ITERATION 2: [2395]
+ITERATION 3: [2363]
+ITERATION 4: [2233]
+ITERATION 5: [2332]
+
+AVERAGE:     [2288]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: c----------07-12-2020--22:09:23-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--22:14:05-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2628], TOTAL: 2628
+ITERATION 2: [2362], TOTAL: 2362
+ITERATION 3: [2578], TOTAL: 2578
+ITERATION 4: [2644], TOTAL: 2644
+ITERATION 5: [3143], TOTAL: 3143
+
+AVERAGE:     [2671], TOTAL: 2671
+MEDIAN:      [2628], TOTAL: 2628
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2628]
+ITERATION 2: [2362]
+ITERATION 3: [2578]
+ITERATION 4: [2644]
+ITERATION 5: [3143]
+
+AVERAGE:     [2671]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: a----------07-12-2020--22:14:05-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--22:17:32-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3441], TOTAL: 3441
+ITERATION 2: [3523], TOTAL: 3523
+ITERATION 3: [3752], TOTAL: 3752
+ITERATION 4: [4120], TOTAL: 4120
+ITERATION 5: [3563], TOTAL: 3563
+
+AVERAGE:     [3679], TOTAL: 3679
+MEDIAN:      [3563], TOTAL: 3563
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3441]
+ITERATION 2: [3523]
+ITERATION 3: [3752]
+ITERATION 4: [4120]
+ITERATION 5: [3563]
+
+AVERAGE:     [3679]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: e----------07-12-2020--22:17:32-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--22:20:45-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3034], TOTAL: 3034
+ITERATION 2: [3146], TOTAL: 3146
+ITERATION 3: [3186], TOTAL: 3186
+ITERATION 4: [3126], TOTAL: 3126
+ITERATION 5: [3402], TOTAL: 3402
+
+AVERAGE:     [3178], TOTAL: 3178
+MEDIAN:      [3146], TOTAL: 3146
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3034]
+ITERATION 2: [3146]
+ITERATION 3: [3186]
+ITERATION 4: [3126]
+ITERATION 5: [3402]
+
+AVERAGE:     [3178]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: u----------07-12-2020--22:20:45-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--22:24:05-------------------------------
+SIZE DATA:
+
+Size of profile: 46441
+Size of app: 59324
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2707], TOTAL: 2707
+ITERATION 2: [2722], TOTAL: 2722
+ITERATION 3: [2680], TOTAL: 2680
+ITERATION 4: [2712], TOTAL: 2712
+ITERATION 5: [2708], TOTAL: 2708
+
+AVERAGE:     [2705], TOTAL: 2705
+MEDIAN:      [2708], TOTAL: 2708
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2707]
+ITERATION 2: [2722]
+ITERATION 3: [2680]
+ITERATION 4: [2712]
+ITERATION 5: [2708]
+
+AVERAGE:     [2705]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: f----------07-12-2020--22:24:05-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--22:28:29-------------------------------
+SIZE DATA:
+
+Size of profile: 73850
+Size of app: 69624
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2316], TOTAL: 2316
+ITERATION 2: [2386], TOTAL: 2386
+ITERATION 3: [2396], TOTAL: 2396
+ITERATION 4: [2421], TOTAL: 2421
+ITERATION 5: [2575], TOTAL: 2575
+
+AVERAGE:     [2418], TOTAL: 2418
+MEDIAN:      [2396], TOTAL: 2396
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2316]
+ITERATION 2: [2386]
+ITERATION 3: [2396]
+ITERATION 4: [2421]
+ITERATION 5: [2575]
+
+AVERAGE:     [2418]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 3
+--------------------------------COMPILATION SETTING: c----------07-12-2020--22:28:29-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--22:33:14-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2479], TOTAL: 2479
+ITERATION 2: [2532], TOTAL: 2532
+ITERATION 3: [2592], TOTAL: 2592
+ITERATION 4: [2439], TOTAL: 2439
+ITERATION 5: [2433], TOTAL: 2433
+
+AVERAGE:     [2495], TOTAL: 2495
+MEDIAN:      [2479], TOTAL: 2479
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2479]
+ITERATION 2: [2532]
+ITERATION 3: [2592]
+ITERATION 4: [2439]
+ITERATION 5: [2433]
+
+AVERAGE:     [2495]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 1
+--------------------------------COMPILATION SETTING: a----------07-12-2020--22:33:14-------------------------------
+
+--------------------------------COMPILATION SETTING: e----------07-12-2020--22:36:41-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3431], TOTAL: 3431
+ITERATION 2: [3503], TOTAL: 3503
+ITERATION 3: [3487], TOTAL: 3487
+ITERATION 4: [3672], TOTAL: 3672
+ITERATION 5: [3811], TOTAL: 3811
+
+AVERAGE:     [3580], TOTAL: 3580
+MEDIAN:      [3503], TOTAL: 3503
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3431]
+ITERATION 2: [3503]
+ITERATION 3: [3487]
+ITERATION 4: [3672]
+ITERATION 5: [3811]
+
+AVERAGE:     [3580]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: e----------07-12-2020--22:36:41-------------------------------
+
+--------------------------------COMPILATION SETTING: u----------07-12-2020--22:39:52-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [3113], TOTAL: 3113
+ITERATION 2: [2923], TOTAL: 2923
+ITERATION 3: [3471], TOTAL: 3471
+ITERATION 4: [3553], TOTAL: 3553
+ITERATION 5: [3373], TOTAL: 3373
+
+AVERAGE:     [3286], TOTAL: 3286
+MEDIAN:      [3373], TOTAL: 3373
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [3113]
+ITERATION 2: [2923]
+ITERATION 3: [3471]
+ITERATION 4: [3553]
+ITERATION 5: [3373]
+
+AVERAGE:     [3286]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: u----------07-12-2020--22:39:52-------------------------------
+
+--------------------------------COMPILATION SETTING: f----------07-12-2020--22:43:12-------------------------------
+SIZE DATA:
+
+Size of profile: 46320
+Size of app: 59324
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2842], TOTAL: 2842
+ITERATION 2: [2712], TOTAL: 2712
+ITERATION 3: [2669], TOTAL: 2669
+ITERATION 4: [2558], TOTAL: 2558
+ITERATION 5: [2672], TOTAL: 2672
+
+AVERAGE:     [2690], TOTAL: 2690
+MEDIAN:      [2672], TOTAL: 2672
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2842]
+ITERATION 2: [2712]
+ITERATION 3: [2669]
+ITERATION 4: [2558]
+ITERATION 5: [2672]
+
+AVERAGE:     [2690]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 5
+--------------------------------COMPILATION SETTING: f----------07-12-2020--22:43:12-------------------------------
+
+--------------------------------COMPILATION SETTING: c----------07-12-2020--22:47:42-------------------------------
+SIZE DATA:
+
+Size of profile: 71164
+Size of app: 68900
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2314], TOTAL: 2314
+ITERATION 2: [2308], TOTAL: 2308
+ITERATION 3: [2248], TOTAL: 2248
+ITERATION 4: [2302], TOTAL: 2302
+ITERATION 5: [2331], TOTAL: 2331
+
+AVERAGE:     [2300], TOTAL: 2300
+MEDIAN:      [2308], TOTAL: 2308
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2314]
+ITERATION 2: [2308]
+ITERATION 3: [2248]
+ITERATION 4: [2302]
+ITERATION 5: [2331]
+
+AVERAGE:     [2300]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: c----------07-12-2020--22:47:42-------------------------------
+
+--------------------------------COMPILATION SETTING: a----------07-12-2020--22:52:27-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTION DURATIONS:
+
+ITERATION 1: [2330], TOTAL: 2330
+ITERATION 2: [2610], TOTAL: 2610
+ITERATION 3: [2565], TOTAL: 2565
+ITERATION 4: [3233], TOTAL: 3233
+ITERATION 5: [2616], TOTAL: 2616
+
+AVERAGE:     [2670], TOTAL: 2670
+MEDIAN:      [2610], TOTAL: 2610
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TIME STAMPS:
+
+ITERATION 1: [2330]
+ITERATION 2: [2610]
+ITERATION 3: [2565]
+ITERATION 4: [3233]
+ITERATION 5: [2616]
+
+AVERAGE:     [2670]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MEDIAN RUN: 2
+--------------------------------COMPILATION SETTING: a----------07-12-2020--22:52:27-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+TOTAL ITERATIONS PER FLAG: 75
+
+AVERAGED DATA:
+Compilation flag App size 'click;Open'  TOTAL 
+e                45076    4154          4154  
+u                53208    3758          3758  
+f                59354    2942          2942  
+c                69218    2585          2585  
+a                170907   2748          2748  
+
+MEDIANED DATA:
+Compilation flag App size 'click;Open'  TOTAL 
+e                45076    4146          4146  
+u                53208    3737          3737  
+f                59324    2944          2944  
+c                68940    2607          2607  
+a                170908   2657          2657  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f c a----------07-12-2020--17:51:41-----------------------------------------------------------------

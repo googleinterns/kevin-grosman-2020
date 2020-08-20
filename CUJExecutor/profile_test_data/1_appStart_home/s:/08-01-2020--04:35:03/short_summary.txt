@@ -1,0 +1,28 @@
+
+--------------------------------COMPILATION SETTING: s:----------08-01-2020--04:35:03-------------------------------
+SIZE DATA:
+
+Size of profile: 45454
+Size of app: 59528
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 11
+
+               'start;com.google.android.apps.maps' TOTAL 
+ITERATION 1:   1672                                 1672  
+ITERATION 2:   1658                                 1658  
+ITERATION 3:   1673                                 1673  
+ITERATION 4:   1648                                 1648  
+ITERATION 5:   1668                                 1668  
+ITERATION 6:   1658                                 1658  
+ITERATION 7:   1660                                 1660  
+ITERATION 8:   1635                                 1635  
+ITERATION 9:   2029                                 2029  
+ITERATION 10:  1676                                 1676  
+ITERATION 11:  1637                                 1637  
+                                                          
+AVERAGE:       1692                                 1692  
+MEDIAN:        1660                                 1660  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:----------08-01-2020--04:35:03-------------------------------

@@ -1,0 +1,7 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS', 'click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG c: 1X[start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start, clickImage;Close navigation]

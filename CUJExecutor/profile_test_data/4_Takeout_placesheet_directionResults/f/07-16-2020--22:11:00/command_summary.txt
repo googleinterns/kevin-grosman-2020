@@ -1,0 +1,48 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+./runCujNTimes CUJS/aGMM_Latency_Transitions/Takeout/4_Takeout_placesheet_directionResults.txt f 1
+RAW OUTPUT: 
+EXECUTION FLAG INVALID: Use one of {p - execute actions in Pre-CUJ, c - execute all but the last action in the CUJ, w - execute entire CUJ}
+----------------------------------
+EXECUTING COMMAND:
+sleep 60
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof profile_test_data/4_Takeout_placesheet_directionResults/f/07-16-2020--22:11:00/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped.
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+-rw-rw-rw- 1 root root 0 2020-07-16 22:11 /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 45080
+-rw-r----- 1 system all_a245   151552 2020-07-16 22:12 base.art
+-rw-r----- 1 system all_a245  1375616 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44586416 2020-07-16 22:12 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/Takeout/4_Takeout_placesheet_directionResults.txt
+RAW OUTPUT: 

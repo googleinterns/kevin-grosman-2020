@@ -1,0 +1,212 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: em um ec uc ep up ef uf----------07-24-2020--22:04:45-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: em----------07-24-2020--22:04:45-------------------------------
+SIZE DATA:
+
+Size of profile: 26651
+Size of app: 47992
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2620            2620  
+ITERATION 2:  2591            2591  
+ITERATION 3:  2557            2557  
+                                    
+AVERAGE:      2589            2589  
+MEDIAN:       2591            2591  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: em----------07-24-2020--22:04:45-------------------------------
+
+
+--------------------------------COMPILATION SETTING: um----------07-24-2020--22:08:22-------------------------------
+SIZE DATA:
+
+Size of profile: 56801
+Size of app: 55476
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2600            2600  
+ITERATION 2:  2990            2990  
+ITERATION 3:  3045            3045  
+                                    
+AVERAGE:      2878            2878  
+MEDIAN:       2990            2990  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: um----------07-24-2020--22:08:22-------------------------------
+
+
+--------------------------------COMPILATION SETTING: ec----------07-24-2020--22:12:05-------------------------------
+SIZE DATA:
+
+Size of profile: 49309
+Size of app: 59036
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2490            2490  
+ITERATION 2:  2453            2453  
+ITERATION 3:  2988            2988  
+                                    
+AVERAGE:      2643            2643  
+MEDIAN:       2453            2453  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: ec----------07-24-2020--22:12:05-------------------------------
+
+
+--------------------------------COMPILATION SETTING: uc----------07-24-2020--22:14:39-------------------------------
+SIZE DATA:
+
+Size of profile: 69335
+Size of app: 62268
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2568            2568  
+ITERATION 2:  2517            2517  
+ITERATION 3:  2555            2555  
+                                    
+AVERAGE:      2546            2546  
+MEDIAN:       2517            2517  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: uc----------07-24-2020--22:14:39-------------------------------
+
+
+--------------------------------COMPILATION SETTING: ep----------07-24-2020--22:17:10-------------------------------
+SIZE DATA:
+
+Size of profile: 46160
+Size of app: 59404
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2601            2601  
+ITERATION 2:  2739            2739  
+ITERATION 3:  2684            2684  
+                                    
+AVERAGE:      2674            2674  
+MEDIAN:       2739            2739  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: ep----------07-24-2020--22:17:10-------------------------------
+
+
+--------------------------------COMPILATION SETTING: up----------07-24-2020--22:19:44-------------------------------
+SIZE DATA:
+
+Size of profile: 63516
+Size of app: 61808
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2464            2464  
+ITERATION 2:  2754            2754  
+ITERATION 3:  2810            2810  
+                                    
+AVERAGE:      2676            2676  
+MEDIAN:       2754            2754  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: up----------07-24-2020--22:19:44-------------------------------
+
+
+--------------------------------COMPILATION SETTING: ef----------07-24-2020--22:22:23-------------------------------
+SIZE DATA:
+
+Size of profile: 46900
+Size of app: 59704
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2804            2804  
+ITERATION 2:  2672            2672  
+ITERATION 3:  2820            2820  
+                                    
+AVERAGE:      2765            2765  
+MEDIAN:       2672            2672  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: ef----------07-24-2020--22:22:23-------------------------------
+
+
+--------------------------------COMPILATION SETTING: uf----------07-24-2020--22:24:57-------------------------------
+SIZE DATA:
+
+Size of profile: 63880
+Size of app: 61976
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2522            2522  
+ITERATION 2:  2657            2657  
+ITERATION 3:  2683            2683  
+                                    
+AVERAGE:      2620            2620  
+MEDIAN:       2657            2657  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: uf----------07-24-2020--22:24:57-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps'] 
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;Open now']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG um: Base: Cloud, Actions: [click;Takeout]
+ACTIONS COMPILED FOR FLAG ec: Base: Empty, Actions: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG uc: Base: Cloud, Actions: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG ep: Base: Empty, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG up: Base: Cloud, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG ef: Base: Empty, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG uf: Base: Cloud, Actions: [start;com.google.android.apps.maps]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 3
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+em               47992    2589            2589  
+um               55476    2878            2878  
+ec               59036    2643            2643  
+uc               62268    2546            2546  
+ep               59404    2674            2674  
+up               61808    2676            2676  
+ef               59704    2765            2765  
+uf               61976    2620            2620  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+em               47992    2591            2591  
+um               55476    2990            2990  
+ec               59036    2453            2453  
+uc               62268    2517            2517  
+ep               59404    2739            2739  
+up               61808    2754            2754  
+ef               59704    2672            2672  
+uf               61976    2657            2657  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: em um ec uc ep up ef uf----------07-24-2020--22:04:45-----------------------------------------------------------------

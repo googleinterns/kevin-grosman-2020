@@ -1,0 +1,117 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: c3 c1----------07-23-2020--18:37:26-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--18:37:26-------------------------------
+SIZE DATA:
+
+Size of profile: 55110
+Size of app: 60172
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  1558                                 2475            4033  
+ITERATION 2:  1549                                 2544            4093  
+ITERATION 3:  1561                                 2520            4081  
+ITERATION 4:  1601                                 2491            4092  
+ITERATION 5:  1653                                 2492            4145  
+                                                                         
+AVERAGE:      1584                                 2504            4088  
+MEDIAN:       1561                                 2520            4081  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--18:37:26-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--18:43:29-------------------------------
+SIZE DATA:
+
+Size of profile: 51083
+Size of app: 59920
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  1646                                 2493            4139  
+ITERATION 2:  1646                                 2595            4241  
+ITERATION 3:  1718                                 2625            4343  
+ITERATION 4:  1620                                 2456            4076  
+ITERATION 5:  1635                                 2490            4125  
+                                                                         
+AVERAGE:      1653                                 2531            4184  
+MEDIAN:       1718                                 2625            4343  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--18:43:29-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--18:46:30-------------------------------
+SIZE DATA:
+
+Size of profile: 55779
+Size of app: 60300
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  1568                                 2474            4042  
+ITERATION 2:  1663                                 2499            4162  
+ITERATION 3:  1674                                 2564            4238  
+ITERATION 4:  1594                                 2488            4082  
+ITERATION 5:  1562                                 2523            4085  
+                                                                         
+AVERAGE:      1612                                 2509            4121  
+MEDIAN:       1674                                 2564            4238  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--18:46:30-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--18:52:29-------------------------------
+SIZE DATA:
+
+Size of profile: 51360
+Size of app: 59532
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  1652                                 2484            4136  
+ITERATION 2:  1612                                 2526            4138  
+ITERATION 3:  1636                                 2555            4191  
+ITERATION 4:  1659                                 2572            4231  
+ITERATION 5:  1667                                 2654            4321  
+                                                                         
+AVERAGE:      1645                                 2558            4203  
+MEDIAN:       1636                                 2555            4191  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--18:52:29-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout',  'click;Open now']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG c3: 3X[click;Open now] [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG c1: 1X[start;com.google.android.apps.maps, click;Takeout]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 10
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+c3               60236    1598                                 2507            4105  
+c1               59726    1649                                 2545            4194  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+c3               60300    1568                                 2474            4042  
+c1               59532    1652                                 2484            4136  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: c3 c1----------07-23-2020--18:37:26-----------------------------------------------------------------

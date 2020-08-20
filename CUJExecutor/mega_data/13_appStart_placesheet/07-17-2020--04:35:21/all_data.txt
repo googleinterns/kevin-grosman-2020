@@ -1,0 +1,272 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f p c a----------07-17-2020--04:35:21-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--04:35:26-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--04:35:26-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--04:36:19-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--04:36:19-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--04:37:21-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--04:37:21-------------------------------
+
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--04:39:22-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--04:39:22-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--04:42:12-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--04:42:12-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--04:45:01-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--04:45:01-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--04:46:16-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--04:46:16-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--04:47:10-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--04:47:10-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--04:48:13-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--04:48:13-------------------------------
+
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--04:50:15-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--04:50:15-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--04:53:08-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--04:53:08-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--04:55:57-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'click;Open' TOTAL 
+                            
+AVERAGE: N/A          N/A   
+MEDIAN:  N/A          N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--04:55:57-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.keep', 'click;McDonalds placesheet', 'click;https'] 
+MEASURED CUJ: ['click;Open', 'click;Fast Food']
+
+TOTAL ITERATIONS PER FLAG: 10
+NOTE: 10 iterations of data are missing for flag e
+NOTE: 10 iterations of data are missing for flag u
+NOTE: 10 iterations of data are missing for flag f
+NOTE: 10 iterations of data are missing for flag p
+NOTE: 10 iterations of data are missing for flag c
+NOTE: 10 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45080    N/A          N/A   
+u                53208    N/A          N/A   
+f                45080    N/A          N/A   
+p                45080    N/A          N/A   
+c                45080    N/A          N/A   
+a                170908   N/A          N/A   
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45080    N/A          N/A   
+u                53208    N/A          N/A   
+f                45080    N/A          N/A   
+p                45080    N/A          N/A   
+c                45080    N/A          N/A   
+a                170908   N/A          N/A   
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f p c a----------07-17-2020--04:35:21-----------------------------------------------------------------

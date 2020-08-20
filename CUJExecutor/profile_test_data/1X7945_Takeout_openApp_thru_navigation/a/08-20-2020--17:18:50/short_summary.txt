@@ -1,0 +1,17 @@
+
+--------------------------------COMPILATION SETTING: a----------08-20-2020--17:18:50-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+NOTE: 4 iterations of data are missing
+
+         'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+                                                                              
+AVERAGE: N/A             N/A           N/A                N/A           N/A   
+MEDIAN:  N/A             N/A           N/A                N/A           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------08-20-2020--17:18:50-------------------------------

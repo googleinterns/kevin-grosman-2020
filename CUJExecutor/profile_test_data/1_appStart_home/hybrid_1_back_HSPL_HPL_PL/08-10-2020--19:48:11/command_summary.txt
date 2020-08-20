@@ -1,0 +1,5 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/1_appStart_home.txt hybrid_1_back_HSPL_HPL_PL /tmp/build_created_profile.prof
+RAW OUTPUT: 

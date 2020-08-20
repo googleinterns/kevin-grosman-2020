@@ -1,0 +1,5 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/startup.txt utilityProfiles/empty.prof /tmp/build_created_profile.prof
+RAW OUTPUT: 
