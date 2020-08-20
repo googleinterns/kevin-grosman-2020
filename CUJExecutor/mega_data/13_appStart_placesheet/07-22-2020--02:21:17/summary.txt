@@ -1,0 +1,32 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.keep', 'click;McDonalds Placesheet', 'click;https'] 
+MEASURED CUJ: ['click;Open', 'click;Fast Food']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.keep]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.keep, click;McDonalds Placesheet, click;https, click;Open]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 35
+NOTE: 5 iterations of data are missing for flag c
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    2802         2802  
+u                53208    2596         2596  
+f                45080    2698         2698  
+c                69253    2072         2072  
+a                170904   2129         2129  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    2703         2703  
+u                53208    2557         2557  
+f                45080    2672         2672  
+c                68884    2088         2088  
+a                170904   2127         2127  
+************************************************MEGA TEST SUMMARY:*************************************************

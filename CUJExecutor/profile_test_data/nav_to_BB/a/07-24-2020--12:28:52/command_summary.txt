@@ -1,0 +1,32 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m everything -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 170904
+-rw-r--r-- 1 system all_a245 133077384 2020-07-08 18:07 base.odex
+-rw-r--r-- 1 system all_a245  41744300 2020-07-24 12:29 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/nav_to_BB.txt
+RAW OUTPUT: 

@@ -1,0 +1,26 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/delivery_em+takeout_em.prof----------07-27-2020--23:36:14-------------------------------
+SIZE DATA:
+
+Size of profile: 17825
+Size of app: 48072
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Delivery' TOTAL 
+ITERATION 1:  3012             3012  
+ITERATION 2:  2936             2936  
+ITERATION 3:  2977             2977  
+ITERATION 4:  2868             2868  
+ITERATION 5:  2983             2983  
+ITERATION 6:  2951             2951  
+ITERATION 7:  2908             2908  
+ITERATION 8:  2903             2903  
+ITERATION 9:  2872             2872  
+                                     
+AVERAGE:      2934             2934  
+MEDIAN:       2936             2936  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/delivery_em+takeout_em.prof----------07-27-2020--23:36:14-------------------------------

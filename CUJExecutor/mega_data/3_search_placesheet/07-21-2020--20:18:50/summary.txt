@@ -1,0 +1,37 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;McDonalds Mattis']
+MEASURED CUJ: ['click;North Mattis Avenue', 'click;Fast Food']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG m: [click;North Mattis Avenue]
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, edit;Search here;McDonalds Mattis]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, edit;Search here;McDonalds Mattis, click;North Mattis Avenue]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 35
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;North Mattis Avenue' TOTAL 
+e                45076    2121                        2121  
+m                48016    2005                        2005  
+u                53208    2029                        2029  
+f                58897    1948                        1948  
+p                59201    1973                        1973  
+c                59024    1908                        1908  
+a                170904   1850                        1850  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;North Mattis Avenue' TOTAL 
+e                45076    2138                        2138  
+m                48020    2077                        2077  
+u                53208    1989                        1989  
+f                58828    1913                        1913  
+p                59184    2046                        2046  
+c                58984    1912                        1912  
+a                170904   1866                        1866  
+************************************************MEGA TEST SUMMARY:*************************************************

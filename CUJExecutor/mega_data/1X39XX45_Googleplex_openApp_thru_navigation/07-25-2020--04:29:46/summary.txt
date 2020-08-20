@@ -1,0 +1,37 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG f: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG c: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 28
+NOTE: 28 iterations of data are missing for flag e
+NOTE: 28 iterations of data are missing for flag u
+NOTE: 28 iterations of data are missing for flag f
+NOTE: 28 iterations of data are missing for flag c
+NOTE: 28 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+u                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+f                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+c                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+a                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+u                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+f                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+c                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+a                N/A      N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+************************************************MEGA TEST SUMMARY:*************************************************

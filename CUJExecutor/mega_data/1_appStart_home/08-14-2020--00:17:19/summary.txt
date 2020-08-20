@@ -1,0 +1,110 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps']
+POST CUJ:     ['click;Takeout']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG u::
+Base: Cloud, Actions:
+Profile tag counts: HSPL: 10123; HPL: 4; PL: 0; L: 5623; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL.prof, Actions:
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 0; L: 6536; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL.prof, Actions:
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 0; L: 6589; 
+
+INFO FOR FLAG e:m-INTERSECTED-5:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5.prof, Actions:
+Profile tag counts: HSPL: 17181; HPL: 224; PL: 9220; L: 7940; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01_back_HPL_PL:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01_back_HPL_PL.prof, Actions:
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 9262; L: 11597; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof, Actions:
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 9262; L: 8277; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL.prof, Actions:
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 8059; L: 11318; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01mmm:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmm.prof, Actions:
+Profile tag counts: HSPL: 18533; HPL: 230; PL: 8974; L: 8467; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmm:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmm.prof, Actions:
+Profile tag counts: HSPL: 18574; HPL: 227; PL: 8927; L: 11460; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01mmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18638; HPL: 231; PL: 8878; L: 8483; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18675; HPL: 230; PL: 8842; L: 11482; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01mmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18689; HPL: 213; PL: 8852; L: 8493; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18699; HPL: 215; PL: 8840; L: 11487; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18869; HPL: 213; PL: 8672; L: 8529; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18878; HPL: 215; PL: 8661; L: 11496; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18896; HPL: 205; PL: 8654; L: 8584; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18896; HPL: 208; PL: 8651; L: 11532; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18896; HPL: 207; PL: 8652; L: 8660; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18896; HPL: 212; PL: 8647; L: 11616; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18896; HPL: 207; PL: 8652; L: 8660; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 18896; HPL: 212; PL: 8647; L: 11616; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmmmmmmmmmmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 19011; HPL: 198; PL: 8548; L: 8716; 
+
+INFO FOR FLAG e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmmmmmmmmmmmmmm:
+Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PLmmmmmmmmmmmmmmmmmmmmmmmm.prof, Actions:
+Profile tag counts: HSPL: 19007; HPL: 200; PL: 8548; L: 11617; 
+
+INFO FOR FLAG e:m-NC-08-01-2020--13:33:01h_back_HPL:
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof, Actions:Profile tag counts: HSPL: 18066; HPL: 9478; PL: 0; L: 8277; 
+
+INFO FOR FLAG a::
+Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof, Actions:Profile tag counts: HSPL: 18066; HPL: 9478; PL: 0; L: 8277; 
+Profile tag counts: HSPL: 18066; HPL: 9478; PL: 0; L: 8277; 
+

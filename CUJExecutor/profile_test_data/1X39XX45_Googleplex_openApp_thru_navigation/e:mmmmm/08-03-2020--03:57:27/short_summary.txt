@@ -1,0 +1,21 @@
+
+--------------------------------COMPILATION SETTING: e:mmmmm----------08-03-2020--03:57:27-------------------------------
+SIZE DATA:
+
+Size of profile: 69809
+Size of app: 61700
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+ITERATION 1:  3769                                 1029                          2279            1831                       1546               1166                    4344                         2438          18402 
+ITERATION 2:  4073                                 1360                          2106            1688                       1436               1325                    4084                         2402          18474 
+ITERATION 3:  4072                                 998                           2152            1825                       1533               1165                    4399                         2860          19004 
+ITERATION 4:  3792                                 1010                          2710            1533                       1773               1218                    4261                         2830          19127 
+                                                                                                                                                                                                                        
+AVERAGE:      3926                                 1099                          2311            1719                       1572               1218                    4272                         2632          18749 
+MEDIAN:       4072                                 1029                          2279            1825                       1546               1218                    4344                         2830          19143 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:mmmmm----------08-03-2020--03:57:27-------------------------------

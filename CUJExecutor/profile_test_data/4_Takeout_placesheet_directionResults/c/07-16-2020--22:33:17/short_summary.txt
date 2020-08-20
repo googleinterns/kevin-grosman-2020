@@ -1,0 +1,19 @@
+
+--------------------------------COMPILATION SETTING: c----------07-16-2020--22:33:17-------------------------------
+SIZE DATA:
+
+Size of profile: 52565
+Size of app: 59740
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+NOTE: 9 iterations of data are missing
+
+         'click;DIRECTIONS' TOTAL 
+                                  
+AVERAGE: N/A                N/A   
+MEDIAN:  N/A                N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-16-2020--22:33:17-------------------------------

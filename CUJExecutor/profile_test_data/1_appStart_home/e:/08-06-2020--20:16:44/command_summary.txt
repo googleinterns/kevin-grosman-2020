@@ -1,0 +1,59 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/1_appStart_home.txt e: /tmp/build_created_profile.prof
+RAW OUTPUT: 
+BASE PROFILE:      e
+COMPILATION FLAGS: 
+Resetting the profile....
+Setting the inital working profile...
+No prefix profile found. Starting from scratch.
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb push /tmp/build_created_profile.prof /sdcard/profiles/temp_profile.prof
+RAW OUTPUT: 
+adb: error: failed to get feature set: no devices/emulators found
+----------------------------------
+EXECUTING COMMAND:
+adb shell cp /sdcard/profiles/temp_profile.prof /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof profile_test_data/1_appStart_home/e:/08-06-2020--20:16:44/saved_profile.prof
+RAW OUTPUT: 
+adb: error: failed to get feature set: no devices/emulators found
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+./profileTagCounts profile_test_data/1_appStart_home/e:/08-06-2020--20:16:44/saved_profile.prof
+RAW OUTPUT: 
+HSPL: 0; HPL: 0; PL: 0; L: 0; 
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/1_appStart_home.txt
+RAW OUTPUT: 

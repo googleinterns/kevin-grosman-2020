@@ -1,0 +1,145 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof utilityProfiles/7_Takeout_search_searchResults/em.prof utilityProfiles/delivery_em+takeout_em.prof a----------07-27-2020--21:07:27-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--21:07:28-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Delivery' TOTAL 
+ITERATION 1:  3361             3361  
+ITERATION 2:  3479             3479  
+ITERATION 3:  3232             3232  
+ITERATION 4:  3077             3077  
+ITERATION 5:  3395             3395  
+ITERATION 6:  3342             3342  
+ITERATION 7:  3317             3317  
+ITERATION 8:  3395             3395  
+ITERATION 9:  3270             3270  
+                                     
+AVERAGE:      3318             3318  
+MEDIAN:       3342             3342  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-27-2020--21:07:28-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof----------07-27-2020--21:09:56-------------------------------
+SIZE DATA:
+
+Size of profile: 26629
+Size of app: 47992
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Delivery' TOTAL 
+ITERATION 1:  2920             2920  
+ITERATION 2:  2958             2958  
+ITERATION 3:  2674             2674  
+ITERATION 4:  2978             2978  
+ITERATION 5:  2946             2946  
+ITERATION 6:  2966             2966  
+ITERATION 7:  3010             3010  
+ITERATION 8:  3305             3305  
+ITERATION 9:  2974             2974  
+                                     
+AVERAGE:      2970             2970  
+MEDIAN:       2966             2966  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof----------07-27-2020--21:09:56-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults/em.prof----------07-27-2020--21:12:20-------------------------------
+SIZE DATA:
+
+Size of profile: 25708
+Size of app: 47736
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Delivery' TOTAL 
+                                
+AVERAGE: N/A              N/A   
+MEDIAN:  N/A              N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/7_Takeout_search_searchResults/em.prof----------07-27-2020--21:12:20-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/delivery_em+takeout_em.prof----------07-27-2020--21:12:59-------------------------------
+SIZE DATA:
+
+Size of profile: 17825
+Size of app: 48072
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Delivery' TOTAL 
+                                
+AVERAGE: N/A              N/A   
+MEDIAN:  N/A              N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/delivery_em+takeout_em.prof----------07-27-2020--21:12:59-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--21:13:36-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Delivery' TOTAL 
+                                
+AVERAGE: N/A              N/A   
+MEDIAN:  N/A              N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-27-2020--21:13:36-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Delivery']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof: Base: utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/7_Takeout_search_searchResults/em.prof: Base: utilityProfiles/7_Takeout_search_searchResults/em.prof, Actions:
+ACTIONS COMPILED FOR FLAG utilityProfiles/delivery_em+takeout_em.prof: Base: utilityProfiles/delivery_em+takeout_em.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 9
+NOTE: 9 iterations of data are missing for flag utilityProfiles/7_Takeout_search_searchResults/em.prof
+NOTE: 9 iterations of data are missing for flag utilityProfiles/delivery_em+takeout_em.prof
+NOTE: 9 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG                                                APP SIZE 'click;Delivery' TOTAL 
+e                                                               45076    3318             3318  
+utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof 47992    2970             2970  
+utilityProfiles/7_Takeout_search_searchResults/em.prof          N/A      N/A              N/A   
+utilityProfiles/delivery_em+takeout_em.prof                     N/A      N/A              N/A   
+a                                                               N/A      N/A              N/A   
+
+MEDIANED DATA:
+COMPILATION FLAG                                                APP SIZE 'click;Delivery' TOTAL 
+e                                                               45076    3342             3342  
+utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof 47992    2966             2966  
+utilityProfiles/7_Takeout_search_searchResults/em.prof          N/A      N/A              N/A   
+utilityProfiles/delivery_em+takeout_em.prof                     N/A      N/A              N/A   
+a                                                               N/A      N/A              N/A   
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e utilityProfiles/7_Takeout_search_searchResults_Delivery/em.prof utilityProfiles/7_Takeout_search_searchResults/em.prof utilityProfiles/delivery_em+takeout_em.prof a----------07-27-2020--21:07:27-----------------------------------------------------------------

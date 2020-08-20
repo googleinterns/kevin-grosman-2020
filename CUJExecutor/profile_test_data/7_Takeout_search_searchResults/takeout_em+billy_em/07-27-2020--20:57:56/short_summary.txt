@@ -1,0 +1,17 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/takeout_em+billy_em.prof----------07-27-2020--20:57:56-------------------------------
+SIZE DATA:
+
+Size of profile: 21162
+Size of app: 48876
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 0
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/takeout_em+billy_em.prof----------07-27-2020--20:57:56-------------------------------

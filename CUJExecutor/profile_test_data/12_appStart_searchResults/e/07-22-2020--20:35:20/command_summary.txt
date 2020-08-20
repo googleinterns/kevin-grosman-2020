@@ -1,0 +1,28 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+0
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 45076
+-rw-r----- 1 system all_a245   151552 2020-07-22 20:35 base.art
+-rw-r----- 1 system all_a245  1375616 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44583796 2020-07-22 20:35 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/12_appStart_searchResults.txt
+RAW OUTPUT: 

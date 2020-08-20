@@ -1,0 +1,20 @@
+
+--------------------------------COMPILATION SETTING: copy_churned.prof:----------07-30-2020--11:35:01-------------------------------
+SIZE DATA:
+
+Size of profile: 40551
+Size of app: 59444
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  1851                                 2956            4807  
+ITERATION 2:  1571                                 2469            4040  
+ITERATION 3:  1740                                 2448            4188  
+                                                                         
+AVERAGE:      1720                                 2624            4344  
+MEDIAN:       1740                                 2469            4209  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: copy_churned.prof:----------07-30-2020--11:35:01-------------------------------

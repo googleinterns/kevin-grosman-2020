@@ -1,0 +1,68 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: emm em----------07-24-2020--22:40:08-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: emm----------07-24-2020--22:40:09-------------------------------
+SIZE DATA:
+
+Size of profile: 26867
+Size of app: 48140
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  3406            3406  
+ITERATION 2:  2684            2684  
+ITERATION 3:  2553            2553  
+                                    
+AVERAGE:      2881            2881  
+MEDIAN:       2684            2684  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: emm----------07-24-2020--22:40:09-------------------------------
+
+
+--------------------------------COMPILATION SETTING: em----------07-24-2020--22:46:18-------------------------------
+SIZE DATA:
+
+Size of profile: 25818
+Size of app: 48016
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2599            2599  
+ITERATION 2:  2681            2681  
+ITERATION 3:  2698            2698  
+                                    
+AVERAGE:      2659            2659  
+MEDIAN:       2681            2681  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: em----------07-24-2020--22:46:18-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps'] 
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;Open now']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG emm: Base: Empty, Actions: [click;Takeout] [click;Takeout]
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Takeout]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 3
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+emm              48140    2881            2881  
+em               48016    2659            2659  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' TOTAL 
+emm              48140    2684            2684  
+em               48016    2681            2681  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: emm em----------07-24-2020--22:40:08-----------------------------------------------------------------

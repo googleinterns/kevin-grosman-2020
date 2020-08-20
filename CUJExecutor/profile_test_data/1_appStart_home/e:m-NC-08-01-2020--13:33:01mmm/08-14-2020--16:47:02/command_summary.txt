@@ -1,0 +1,63 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/1_appStart_home.txt e:m-NC-08-01-2020--13:33:01mmm /tmp/build_created_profile.prof
+RAW OUTPUT: 
+BASE PROFILE:      e:m-NC-08-01-2020--13:33
+COMPILATION FLAGS: 01mmm
+Resetting the profile....
+Success
+Setting the inital working profile...
+Prefix profile utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmm.prof found! Now executing actions starting from index 5.
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb push /tmp/build_created_profile.prof /sdcard/profiles/temp_profile.prof
+RAW OUTPUT: 
+/tmp/build_created_profile.prof: 1 file pushed, 0 skipped. 48.0 MB/s (50352 bytes in 0.001s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell cp /sdcard/profiles/temp_profile.prof /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof profile_test_data/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmm/08-14-2020--16:47:02/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/ref/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped. 2.1 MB/s (50352 bytes in 0.023s)
+----------------------------------
+EXECUTING COMMAND:
+adb shell stat -c%s /data/misc/profiles/ref/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+50352
+----------------------------------
+EXECUTING COMMAND:
+./tagCounts profile_test_data/1_appStart_home/e:m-NC-08-01-2020--13:33:01mmm/08-14-2020--16:47:02/saved_profile.prof
+RAW OUTPUT: 
+HSPL: 18533; HPL: 230; PL: 8974; L: 8467; 
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 60004
+-rw-r----- 1 system all_a245  2965504 2020-08-14 16:47 base.art
+-rw-r----- 1 system all_a245 14069616 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44347256 2020-08-14 16:47 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/1_appStart_home.txt
+RAW OUTPUT: 

@@ -1,0 +1,19 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/1_appStart_home.txt e: /tmp/build_created_profile.prof
+RAW OUTPUT: 
+BASE PROFILE:      e
+COMPILATION FLAGS: 
+Resetting the profile....
+Setting the inital working profile...
+No prefix profile found. Starting from scratch.
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb push /tmp/build_created_profile.prof /sdcard/profiles/temp_profile.prof
+RAW OUTPUT: 

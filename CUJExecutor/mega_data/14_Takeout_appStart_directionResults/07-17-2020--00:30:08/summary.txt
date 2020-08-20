@@ -1,0 +1,25 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'start;com.google.android.keep', 'click;Directions to BB', 'click;https'] 
+MEASURED CUJ: ['click;Open', 'click;Steps']
+
+TOTAL ITERATIONS PER FLAG: 10
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    2838         2838  
+u                53208    2667         2667  
+f                45080    2791         2791  
+p                45080    2797         2797  
+c                70152    2147         2147  
+a                170908   2268         2268  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    2800         2800  
+u                53208    2692         2692  
+f                45080    2783         2783  
+p                45080    2833         2833  
+c                70260    2059         2059  
+a                170908   2251         2251  
+************************************************MEGA TEST SUMMARY:*************************************************

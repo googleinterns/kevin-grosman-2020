@@ -1,0 +1,63 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS', 'click;Start'] 
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmm: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:mmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG u: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/u.prof, Actions:
+ACTIONS COMPILED FOR FLAG u:m: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/u:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG u:mmm: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/u:mmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG u:mmmmm: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/u:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG s: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/s.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m: Base: Startup, Actions: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start]
+ACTIONS COMPILED FOR FLAG s:mmm: Base: Startup, Actions: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start] [clickImage;Close navigation, clickImage;Navigate up]
+[start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start] [clickImage;Close navigation, clickImage;Navigate up]
+[start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start]
+ACTIONS COMPILED FOR FLAG s:mmmmm: Base: Startup, Actions: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start] [clickImage;Close navigation, clickImage;Navigate up]
+[start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start] [clickImage;Close navigation, clickImage;Navigate up]
+[start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start] [clickImage;Close navigation, clickImage;Navigate up] [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 36
+NOTE: 4 iterations of data are missing for flag e
+NOTE: 8 iterations of data are missing for flag u:mmmmm
+NOTE: 4 iterations of data are missing for flag s:mmm
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+e                45073    2323                                 3302            2142          2235               2193          12195 
+e:m              61172    1688                                 2874            1872          2071               1896          10401 
+e:mmm            61448    1679                                 2767            1871          2101               1836          10254 
+e:mmmmm          61311    1625                                 2755            1829          2131               1854          10194 
+u                53208    2117                                 3238            2028          2148               2200          11731 
+u:m              63372    1635                                 2859            1883          2076               1904          10357 
+u:mmm            63680    1632                                 2836            1860          2018               1876          10222 
+u:mmmmm          63804    1620                                 2795            1832          2076               1846          10169 
+s                59528    1722                                 2936            1902          2175               1806          10541 
+s:m              61432    1636                                 2817            1839          2042               1894          10228 
+s:mmm            61932    1619                                 2793            1840          2035               1811          10098 
+s:mmmmm          62024    1644                                 2795            1870          2099               1780          10188 
+a                170904   1744                                 2599            1814          2029               1735          9921  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+e                45072    2324                                 3312            2118          1957               2261          11972 
+e:m              61172    1655                                 2841            1858          1939               1925          10218 
+e:mmm            61448    1646                                 2754            1854          1991               1895          10140 
+e:mmmmm          61312    1631                                 2757            1817          1957               1894          10056 
+u                53208    2104                                 3261            1992          1957               2276          11590 
+u:m              63372    1643                                 2826            1876          1941               1950          10236 
+u:mmm            63680    1638                                 2833            1855          1919               1900          10145 
+u:mmmmm          63804    1620                                 2780            1819          1917               1893          10029 
+s                59528    1702                                 2904            1878          2136               1894          10514 
+s:m              61432    1627                                 2826            1834          1940               1921          10148 
+s:mmm            61932    1615                                 2787            1825          1924               1872          10023 
+s:mmmmm          62024    1613                                 2759            1824          2077               1824          10097 
+a                170904   1683                                 2619            1772          1941               1831          9846  
+************************************************MEGA TEST SUMMARY:*************************************************

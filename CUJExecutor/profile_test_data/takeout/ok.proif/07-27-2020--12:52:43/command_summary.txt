@@ -1,0 +1,5 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/takeout.txt ok.proif
+RAW OUTPUT: 

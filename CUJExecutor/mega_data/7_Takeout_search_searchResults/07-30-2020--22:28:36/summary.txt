@@ -1,0 +1,45 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-1: Base: utilityProfiles/7_Takeout_search_searchResults/e:m-INTERSECTED-1.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-3: Base: utilityProfiles/7_Takeout_search_searchResults/e:m-INTERSECTED-3.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5: Base: utilityProfiles/7_Takeout_search_searchResults/e:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-1: Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-1.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-3: Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-3.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-5: Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 52
+NOTE: 4 iterations of data are missing for flag e:m-INTERSECTED-3
+
+AVERAGED DATA:
+COMPILATION FLAG  APP SIZE 'click;Takeout' TOTAL 
+e:                45076    3260            3260  
+e:m-INTERSECTED-1 47804    2936            2936  
+e:m-INTERSECTED-3 47308    3241            3241  
+e:m-INTERSECTED-5 47208    3045            3045  
+s:                59524    2853            2853  
+s:m-INTERSECTED-1 59968    2763            2763  
+s:m-INTERSECTED-3 59840    2784            2784  
+s:m-INTERSECTED-5 59804    2768            2768  
+a                 170904   2594            2594  
+
+MEDIANED DATA:
+COMPILATION FLAG  APP SIZE 'click;Takeout' TOTAL 
+e:                45076    3263            3263  
+e:m-INTERSECTED-1 47804    2921            2921  
+e:m-INTERSECTED-3 47308    3004            3004  
+e:m-INTERSECTED-5 47208    3024            3024  
+s:                59524    2839            2839  
+s:m-INTERSECTED-1 59968    2761            2761  
+s:m-INTERSECTED-3 59840    2783            2783  
+s:m-INTERSECTED-5 59804    2758            2758  
+a                 170904   2588            2588  
+************************************************MEGA TEST SUMMARY:*************************************************

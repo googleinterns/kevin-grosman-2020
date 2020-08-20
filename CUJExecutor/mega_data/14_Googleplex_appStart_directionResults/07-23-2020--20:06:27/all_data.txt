@@ -1,0 +1,148 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f c a----------07-23-2020--20:06:27-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-23-2020--20:06:28-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Open' TOTAL 
+ITERATION 1:  4092         4092  
+ITERATION 2:  5193         5193  
+ITERATION 3:  4081         4081  
+ITERATION 4:  4889         4889  
+ITERATION 5:  3907         3907  
+                                 
+AVERAGE:      4432         4432  
+MEDIAN:       4081         4081  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-23-2020--20:06:28-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-23-2020--20:09:30-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Open' TOTAL 
+ITERATION 1:  3730         3730  
+ITERATION 2:  4686         4686  
+ITERATION 3:  3627         3627  
+ITERATION 4:  4291         4291  
+ITERATION 5:  3680         3680  
+                                 
+AVERAGE:      4002         4002  
+MEDIAN:       3627         3627  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-23-2020--20:09:30-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-23-2020--20:12:37-------------------------------
+SIZE DATA:
+
+Size of profile: 47285
+Size of app: 59176
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Open' TOTAL 
+ITERATION 1:  3743         3743  
+ITERATION 2:  3515         3515  
+ITERATION 3:  2655         2655  
+ITERATION 4:  3978         3978  
+ITERATION 5:  2706         2706  
+                                 
+AVERAGE:      3319         3319  
+MEDIAN:       2655         2655  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-23-2020--20:12:37-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--20:17:23-------------------------------
+SIZE DATA:
+
+Size of profile: 70472
+Size of app: 69840
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Open' TOTAL 
+ITERATION 1:  3623         3623  
+ITERATION 2:  3895         3895  
+ITERATION 3:  2738         2738  
+ITERATION 4:  3847         3847  
+ITERATION 5:  2339         2339  
+                                 
+AVERAGE:      3288         3288  
+MEDIAN:       2738         2738  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-23-2020--20:17:23-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-23-2020--20:22:14-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+              'click;Open' TOTAL 
+ITERATION 1:  3747         3747  
+ITERATION 2:  3748         3748  
+ITERATION 3:  3776         3776  
+ITERATION 4:  4171         4171  
+ITERATION 5:  2639         2639  
+                                 
+AVERAGE:      3616         3616  
+MEDIAN:       3776         3776  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-23-2020--20:22:14-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'start;com.google.android.keep', 'click;Directions to GP', 'click;https'] 
+MEASURED CUJ: ['click;Open', 'click;Steps & more']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: 1X[start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG c: 1X[start;com.google.android.apps.maps, start;com.google.android.keep, click;Directions to GP, click;https, click;Open]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 5
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    4432         4432  
+u                53208    4002         4002  
+f                59176    3319         3319  
+c                69840    3288         3288  
+a                170908   3616         3616  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Open' TOTAL 
+e                45076    4081         4081  
+u                53208    3627         3627  
+f                59176    2655         2655  
+c                69840    2738         2738  
+a                170908   3776         3776  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f c a----------07-23-2020--20:06:27-----------------------------------------------------------------

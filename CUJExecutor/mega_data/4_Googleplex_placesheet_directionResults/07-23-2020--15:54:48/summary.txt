@@ -1,0 +1,12 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting']
+MEASURED CUJ: ['click;Your location;strict', 'click;Step']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG m: [click;Your location;strict]
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;strict, click;DIRECTIONS, click;Choose starting]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict]

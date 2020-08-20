@@ -1,0 +1,8 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m_HnoL.prof----------08-05-2020--12:48:39-------------------------------
+SIZE DATA:
+
+Size of profile: 23419
+Size of app: 55932
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

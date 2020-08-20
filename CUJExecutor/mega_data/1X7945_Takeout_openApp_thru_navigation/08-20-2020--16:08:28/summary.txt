@@ -1,0 +1,116 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout', 'click;Billy', 'click;DIRECTIONS', 'click;Start'] 
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e:
+Base: Empty, Actions:Profile tag counts: HSPL HPL PL L
+HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG e:m:
+Base: Empty, Actions: 
+Profile tag counts: HSPL HPL PL L
+HSPL: 0; HPL: 1887; PL: 30191; L: 0; 
+
+INFO FOR FLAG e:mmm:
+Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:m.prof, Actions:  
+Profile tag counts: HSPL HPL PL L
+HSPL: 0; HPL: 2336; PL: 29828; L: 0; 
+
+INFO FOR FLAG e:mmmmm:
+Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:mmm.prof, Actions:  
+Profile tag counts: HSPL HPL PL L
+HSPL: 0; HPL: 2444; PL: 29726; L: 0; 
+
+INFO FOR FLAG u:
+Base: Cloud, Actions:Profile tag counts: HSPL HPL PL L
+HSPL: 10123; HPL: 4; PL: 0; L: 5623; 
+
+INFO FOR FLAG u:m:
+Base: Cloud, Actions: 
+Profile tag counts: HSPL HPL PL L
+HSPL: 10123; HPL: 1343; PL: 21497; L: 5623; 
+
+INFO FOR FLAG u:mmm:
+Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/u:m.prof, Actions:  
+Profile tag counts: HSPL HPL PL L
+HSPL: 10123; HPL: 1666; PL: 21315; L: 5623; 
+
+INFO FOR FLAG u:mmmmm:
+Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/u:mmm.prof, Actions:  
+Profile tag counts: HSPL HPL PL L
+HSPL: 10123; HPL: 1847; PL: 21149; L: 5623; 
+
+INFO FOR FLAG s:
+Base: Startup, Actions:Profile tag counts: HSPL HPL PL L
+HSPL: 18066; HPL: 216; PL: 9262; L: 8277; 
+
+INFO FOR FLAG s:m:
+Base: Startup, Actions: 
+Profile tag counts: HSPL HPL PL L
+HSPL: 18066; HPL: 645; PL: 13984; L: 8277; 
+
+INFO FOR FLAG s:mmm:
+Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/s:m.prof, Actions:  
+Profile tag counts: HSPL HPL PL L
+HSPL: 18066; HPL: 740; PL: 13924; L: 8277; 
+
+INFO FOR FLAG s:mmmmm:
+Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/s:mmm.prof, Actions:  
+Profile tag counts: HSPL HPL PL L
+HSPL: 18066; HPL: 784; PL: 13961; L: 8277; 
+
+INFO FOR FLAG a:
+All
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 4
+NOTE: 4 iterations of data are missing for flag e
+NOTE: 4 iterations of data are missing for flag e:m
+NOTE: 4 iterations of data are missing for flag e:mmm
+NOTE: 4 iterations of data are missing for flag e:mmmmm
+NOTE: 4 iterations of data are missing for flag u
+NOTE: 4 iterations of data are missing for flag u:m
+NOTE: 4 iterations of data are missing for flag u:mmm
+NOTE: 4 iterations of data are missing for flag u:mmmmm
+NOTE: 4 iterations of data are missing for flag s
+NOTE: 4 iterations of data are missing for flag s:m
+NOTE: 4 iterations of data are missing for flag s:mmm
+NOTE: 4 iterations of data are missing for flag s:mmmmm
+NOTE: 4 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+e                N/A      N/A             N/A           N/A                N/A           N/A   
+e:m              N/A      N/A             N/A           N/A                N/A           N/A   
+e:mmm            N/A      N/A             N/A           N/A                N/A           N/A   
+e:mmmmm          N/A      N/A             N/A           N/A                N/A           N/A   
+u                N/A      N/A             N/A           N/A                N/A           N/A   
+u:m              N/A      N/A             N/A           N/A                N/A           N/A   
+u:mmm            N/A      N/A             N/A           N/A                N/A           N/A   
+u:mmmmm          N/A      N/A             N/A           N/A                N/A           N/A   
+s                N/A      N/A             N/A           N/A                N/A           N/A   
+s:m              N/A      N/A             N/A           N/A                N/A           N/A   
+s:mmm            N/A      N/A             N/A           N/A                N/A           N/A   
+s:mmmmm          N/A      N/A             N/A           N/A                N/A           N/A   
+a                N/A      N/A             N/A           N/A                N/A           N/A   
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+e                N/A      N/A             N/A           N/A                N/A           N/A   
+e:m              N/A      N/A             N/A           N/A                N/A           N/A   
+e:mmm            N/A      N/A             N/A           N/A                N/A           N/A   
+e:mmmmm          N/A      N/A             N/A           N/A                N/A           N/A   
+u                N/A      N/A             N/A           N/A                N/A           N/A   
+u:m              N/A      N/A             N/A           N/A                N/A           N/A   
+u:mmm            N/A      N/A             N/A           N/A                N/A           N/A   
+u:mmmmm          N/A      N/A             N/A           N/A                N/A           N/A   
+s                N/A      N/A             N/A           N/A                N/A           N/A   
+s:m              N/A      N/A             N/A           N/A                N/A           N/A   
+s:mmm            N/A      N/A             N/A           N/A                N/A           N/A   
+s:mmmmm          N/A      N/A             N/A           N/A                N/A           N/A   
+a                N/A      N/A             N/A           N/A                N/A           N/A   
+************************************************MEGA TEST SUMMARY:*************************************************

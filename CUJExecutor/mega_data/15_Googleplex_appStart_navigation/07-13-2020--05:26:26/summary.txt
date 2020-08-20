@@ -1,0 +1,20 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+TOTAL ITERATIONS PER FLAG: 75
+
+AVERAGED DATA:
+Compilation flag App size 'click;Nav to GP'  'clickImage;Close navigation'  TOTAL 
+e                45076    6800               2306                           9107  
+u                53208    6167               2314                           8482  
+f                69613    5474               1975                           7449  
+c                70103    5334               1900                           7235  
+a                170908   5478               1850                           7328  
+
+MEDIANED DATA:
+Compilation flag App size 'click;Nav to GP'  'clickImage;Close navigation'  TOTAL 
+e                45076    6438               2299                           8820  
+u                53208    6158               2291                           8481  
+f                69876    5658               1968                           7508  
+c                70140    5222               1848                           7196  
+a                170908   5501               1843                           7254  
+************************************************MEGA TEST SUMMARY:*************************************************

@@ -1,0 +1,26 @@
+
+--------------------------------COMPILATION SETTING: emmm----------07-26-2020--11:28:17-------------------------------
+SIZE DATA:
+
+Size of profile: 32181
+Size of app: 48764
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2835            2835  
+ITERATION 2:  2980            2980  
+ITERATION 3:  2591            2591  
+ITERATION 4:  2909            2909  
+ITERATION 5:  2771            2771  
+ITERATION 6:  2911            2911  
+ITERATION 7:  2840            2840  
+ITERATION 8:  2862            2862  
+ITERATION 9:  2859            2859  
+                                    
+AVERAGE:      2839            2839  
+MEDIAN:       2771            2771  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: emmm----------07-26-2020--11:28:17-------------------------------

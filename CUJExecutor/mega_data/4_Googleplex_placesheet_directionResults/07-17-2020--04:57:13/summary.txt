@@ -1,0 +1,25 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting']
+MEASURED CUJ: ['click;Your location;strict', 'click;Step']
+
+TOTAL ITERATIONS PER FLAG: 10
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' TOTAL 
+e                45078    5079                         5079  
+u                53208    4469                         4469  
+f                45080    4649                         4649  
+p                59942    4485                         4485  
+c                60082    4750                         4750  
+a                170904   4602                         4602  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' TOTAL 
+e                45080    4932                         4932  
+u                53208    4389                         4389  
+f                45080    4770                         4770  
+p                60096    4684                         4684  
+c                60104    4666                         4666  
+a                170904   4791                         4791  
+************************************************MEGA TEST SUMMARY:*************************************************

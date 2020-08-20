@@ -1,0 +1,40 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m: Base: Empty, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG e:mmmmm-INTERSECTED-5: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:mmmmm-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm: Base: utilityProfiles/1X39XX45_Googleplex_openApp_thru_navigation/e:m.prof, Actions: [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start] [start;com.google.android.apps.maps, edit;Search here;Googleplex, click;Amphith, click;Googleplex;+strict, click;DIRECTIONS, click;Choose starting, click;Your location;strict, click;Start]
+ACTIONS COMPILED FOR FLAG s:: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG a:: Base: Startup, Actions:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 124
+NOTE: 4 iterations of data are missing for flag e:mmmmm
+NOTE: 4 iterations of data are missing for flag a:
+
+AVERAGED DATA:
+COMPILATION FLAG      APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:                    45076    4715                                 1370                          2488            1999                       1647               1306                    4783                         3044          21352 
+e:m-INTERSECTED-5     58272    4186                                 1324                          2352            1906                       1588               1282                    4619                         2665          19922 
+e:m                   61200    4067                                 1306                          2325            1848                       1554               1264                    4611                         2436          19411 
+e:mmmmm-INTERSECTED-5 59280    4118                                 1654                          2301            1934                       1573               1284                    4659                         2602          20125 
+e:mmmmm               61700    4074                                 1244                          2273            1868                       1578               1265                    4621                         2393          19316 
+s:                    59528    4165                                 1419                          2296            1946                       1558               1273                    4772                         2549          19978 
+a:                    59528    4132                                 1299                          2310            2019                       1557               1272                    4562                         2560          19711 
+
+MEDIANED DATA:
+COMPILATION FLAG      APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:                    45076    4568                                 1512                          2488            1920                       1578               1297                    4837                         3044          21244 
+e:m-INTERSECTED-5     58272    4106                                 1059                          2381            1855                       1542               1258                    4666                         2533          19400 
+e:m                   61200    3962                                 1160                          2341            1806                       1552               1242                    4611                         2327          19001 
+e:mmmmm-INTERSECTED-5 59280    4059                                 1379                          2318            1886                       1531               1272                    4643                         2466          19554 
+e:mmmmm               61700    3970                                 1364                          2264            1825                       1553               1257                    4606                         2288          19127 
+s:                    59528    4061                                 1382                          2313            1874                       1529               1259                    4616                         2444          19478 
+a:                    59528    4057                                 1348                          2343            1869                       1531               1251                    4541                         2458          19398 
+************************************************MEGA TEST SUMMARY:*************************************************

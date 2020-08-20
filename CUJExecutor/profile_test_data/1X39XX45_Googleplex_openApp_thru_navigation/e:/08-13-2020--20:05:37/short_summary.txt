@@ -1,0 +1,19 @@
+
+--------------------------------COMPILATION SETTING: e:----------08-13-2020--20:05:37-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+Size of app: 45076
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+NOTE: 3 iterations of data are missing
+
+         'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+                                                                                                                                                                              
+AVERAGE: N/A                           N/A             N/A                        N/A                N/A                     N/A                          N/A           N/A   
+MEDIAN:  N/A                           N/A             N/A                        N/A                N/A                     N/A                          N/A           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:----------08-13-2020--20:05:37-------------------------------

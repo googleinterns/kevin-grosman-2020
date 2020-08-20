@@ -1,0 +1,44 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps']
+POST CUJ:     ['click;Takeout']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG u:: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG s:: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:hot: Base: utilityProfiles/1_appStart_home/s:hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5: Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5_hot: Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm: Base: utilityProfiles/1_appStart_home/e:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm_hot: Base: utilityProfiles/1_appStart_home/e:mmmmm_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 35
+
+AVERAGED DATA:
+COMPILATION FLAG      APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:                    45076    2324                                 2324  
+u:                    53204    2259                                 2259  
+s:                    59528    1900                                 1900  
+s:hot                 61844    1921                                 1921  
+e:m-INTERSECTED-5     58616    1969                                 1969  
+e:m-INTERSECTED-5_hot 61004    1871                                 1871  
+e:mmmmm               59964    1873                                 1873  
+e:mmmmm_hot           62300    1940                                 1940  
+a                     170908   1891                                 1891  
+
+MEDIANED DATA:
+COMPILATION FLAG      APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:                    45076    2239                                 2239  
+u:                    53204    2197                                 2197  
+s:                    59528    1796                                 1796  
+s:hot                 61844    1762                                 1762  
+e:m-INTERSECTED-5     58616    1856                                 1856  
+e:m-INTERSECTED-5_hot 61004    1764                                 1764  
+e:mmmmm               59964    1751                                 1751  
+e:mmmmm_hot           62300    1773                                 1773  
+a                     170908   1710                                 1710  
+************************************************MEGA TEST SUMMARY:*************************************************

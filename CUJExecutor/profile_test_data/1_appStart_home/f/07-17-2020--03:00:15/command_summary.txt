@@ -1,0 +1,124 @@
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile --reset com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+./runCujNTimes CUJS/aGMM_Latency_Transitions/1_appStart_home.txt f 1
+RAW OUTPUT: 
+EXECUTION FLAG INVALID: Use one of {p - execute actions in Pre-CUJ, c - execute all but the last action in the CUJ, w - execute entire CUJ}
+----------------------------------
+EXECUTING COMMAND:
+sleep 60
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb shell am force-stop com.google.android.apps.maps
+RAW OUTPUT: 
+
+----------------------------------
+EXECUTING COMMAND:
+adb pull /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof profile_test_data/1_appStart_home/f/07-17-2020--03:00:15/saved_profile.prof
+RAW OUTPUT: 
+/data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof: 1 file pulled, 0 skipped.
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+RAW OUTPUT: 
+-rw-rw-rw- 1 root root 0 2020-07-17 03:00 /data/misc/profiles/cur/0/com.google.android.apps.maps/primary.prof
+----------------------------------
+EXECUTING COMMAND:
+adb shell cmd package compile -m speed-profile -f com.google.android.apps.maps
+RAW OUTPUT: 
+Success
+----------------------------------
+EXECUTING COMMAND:
+adb shell ls -l /data/app/com.google.android.apps.maps*/oat/arm64
+RAW OUTPUT: 
+total 45080
+-rw-r----- 1 system all_a245   151552 2020-07-17 03:01 base.art
+-rw-r----- 1 system all_a245  1375616 2020-07-08 18:07 base.odex
+-rw-r----- 1 system all_a245 44586336 2020-07-17 03:01 base.vdex
+----------------------------------
+EXECUTING COMMAND:
+./executeCuj CUJS/aGMM_Latency_Transitions/1_appStart_home.txt
+RAW OUTPUT: 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:compileDebugRenderscript NO-SOURCE
+> Task :app:writeDebugApplicationId UP-TO-DATE
+> Task :app:generateSafeArgsDebug UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:bundleDebugClasses UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:compileDebugAndroidTestAidl NO-SOURCE
+> Task :app:javaPreCompileDebugAndroidTest UP-TO-DATE
+> Task :app:processDebugAndroidTestManifest UP-TO-DATE
+> Task :app:compileDebugAndroidTestRenderscript NO-SOURCE
+> Task :app:generateDebugAndroidTestBuildConfig UP-TO-DATE
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:generateDebugAndroidTestResources UP-TO-DATE
+> Task :app:mergeDebugAndroidTestResources UP-TO-DATE
+> Task :app:processDebugAndroidTestResources UP-TO-DATE
+> Task :app:compileDebugAndroidTestJavaWithJavac UP-TO-DATE
+> Task :app:mergeDebugAndroidTestShaders UP-TO-DATE
+> Task :app:compileDebugAndroidTestShaders NO-SOURCE
+> Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :app:mergeDebugAndroidTestAssets UP-TO-DATE
+> Task :app:processDebugAndroidTestJavaRes NO-SOURCE
+> Task :app:mergeDebugAndroidTestJavaResource UP-TO-DATE
+> Task :app:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugAndroidTestNativeLibs UP-TO-DATE
+> Task :app:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
+> Task :app:dexBuilderDebugAndroidTest UP-TO-DATE
+> Task :app:validateSigningDebugAndroidTest UP-TO-DATE
+> Task :app:desugarDebugAndroidTestFileDependencies UP-TO-DATE
+> Task :app:mergeExtDexDebugAndroidTest UP-TO-DATE
+> Task :app:mergeDexDebugAndroidTest UP-TO-DATE
+> Task :app:packageDebugAndroidTest UP-TO-DATE
+
+> Task :app:installDebugAndroidTest
+Installing APK 'app-debug-androidTest.apk' on 'Pixel 4 XL - 10' for app:debugAndroidTest
+Installed on 1 device.
+
+BUILD SUCCESSFUL in 2s
+32 actionable tasks: 1 executed, 31 up-to-date
+
+com.example.firstapp.UserCujTest:.
+
+Time: 74.153
+
+OK (1 test)
+
+
+/tmp/raw_durations.txt
+/tmp/time_data.txt
+'start;com.google.android.apps.maps', 'click;Takeout'
+5
+.
+false
+Executed: start;com.google.android.apps.maps
+Executed: click;Takeout
+Executed: start;com.google.android.apps.maps
+Executed: click;Takeout
+Executed: start;com.google.android.apps.maps
+Executed: click;Takeout
+Executed: start;com.google.android.apps.maps
+Executed: click;Takeout
+Executed: start;com.google.android.apps.maps
+Executed: click;Takeout
+Executed: start;com.google.android.apps.maps
+Executed: click;Takeout

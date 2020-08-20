@@ -1,0 +1,20 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/startup.prof:----------07-30-2020--11:33:17-------------------------------
+SIZE DATA:
+
+Size of profile: 45454
+Size of app: 59528
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+ITERATION 1:  1747                                 2601            4348  
+ITERATION 2:  1738                                 2510            4248  
+ITERATION 3:  1712                                 2576            4288  
+                                                                         
+AVERAGE:      1732                                 2562            4294  
+MEDIAN:       1738                                 2576            4314  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/startup.prof:----------07-30-2020--11:33:17-------------------------------

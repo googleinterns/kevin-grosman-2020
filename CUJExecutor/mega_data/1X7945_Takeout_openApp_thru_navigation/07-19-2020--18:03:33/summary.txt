@@ -1,0 +1,35 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS', 'click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start, clickImage;Close navigation]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 75
+NOTE: 3 iterations of data are missing for flag e
+NOTE: 3 iterations of data are missing for flag u
+NOTE: 6 iterations of data are missing for flag c
+NOTE: 3 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    2922                                 3926            2430          2541               1970          1831                          15622 
+u                53208    2590                                 3720            2384          2359               1951          1753                          14760 
+f                59176    1897                                 3158            2142          2252               1788          1608                          12848 
+c                60656    1816                                 2962            1992          2116               1632          1549                          12071 
+a                170904   1902                                 2773            1912          2198               1620          1544                          11951 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    2908                                 3836            2482          2851               2091          1780                          15728 
+u                53208    2359                                 3543            2257          1974               2060          1703                          13968 
+f                59004    1846                                 3106            2090          2142               1757          1599                          12524 
+c                60632    1807                                 2948            1985          2097               1607          1573                          12014 
+a                170904   1854                                 2734            1873          2098               1560          1548                          11792 
+************************************************MEGA TEST SUMMARY:*************************************************

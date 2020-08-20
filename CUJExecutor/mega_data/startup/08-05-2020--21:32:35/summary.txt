@@ -1,0 +1,15 @@
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 1
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:               45076    2007                                 2007  
+e:m              59136    1600                                 1600  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:               45076    2007                                 2007  
+e:m              59136    1600                                 1600  
+************************************************MEGA TEST SUMMARY:*************************************************

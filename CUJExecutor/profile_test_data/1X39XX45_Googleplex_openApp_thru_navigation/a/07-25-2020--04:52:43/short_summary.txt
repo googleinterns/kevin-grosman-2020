@@ -1,0 +1,18 @@
+
+--------------------------------COMPILATION SETTING: a----------07-25-2020--04:52:43-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+NOTE: 4 iterations of data are missing
+
+         'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+                                                                                                                                                                                                                  
+AVERAGE: N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+MEDIAN:  N/A                                  N/A                           N/A             N/A                       N/A                N/A                     N/A                          N/A           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-25-2020--04:52:43-------------------------------

@@ -1,0 +1,57 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps']
+POST CUJ:     ['click;Takeout']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG u:: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG s:: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:hot: Base: utilityProfiles/1_appStart_home/s:hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5: Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5_hot: Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m: Base: utilityProfiles/1_appStart_home/e:m.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m_hot: Base: utilityProfiles/1_appStart_home/e:m_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm: Base: utilityProfiles/1_appStart_home/e:mmmmm.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:mmmmm_hot: Base: utilityProfiles/1_appStart_home/e:mmmmm_hot.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 231
+NOTE: 7 iterations of data are missing for flag e:
+NOTE: 14 iterations of data are missing for flag s:
+NOTE: 21 iterations of data are missing for flag e:m-INTERSECTED-5
+NOTE: 7 iterations of data are missing for flag e:m-INTERSECTED-5_hot
+NOTE: 14 iterations of data are missing for flag e:m
+NOTE: 14 iterations of data are missing for flag e:mmmmm_hot
+NOTE: 21 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG      APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:                    45076    2311                                 2311  
+u:                    53206    2171                                 2171  
+s:                    59527    1830                                 1830  
+s:hot                 61844    1812                                 1812  
+e:m-INTERSECTED-5     58616    1848                                 1848  
+e:m-INTERSECTED-5_hot 61004    1836                                 1836  
+e:m                   58964    1815                                 1815  
+e:m_hot               61916    1808                                 1808  
+e:mmmmm               59964    1813                                 1813  
+e:mmmmm_hot           62300    1826                                 1826  
+a                     170907   1815                                 1815  
+
+MEDIANED DATA:
+COMPILATION FLAG      APP SIZE 'start;com.google.android.apps.maps' TOTAL 
+e:                    45076    2242                                 2242  
+u:                    53208    2131                                 2131  
+s:                    59528    1774                                 1774  
+s:hot                 61844    1730                                 1730  
+e:m-INTERSECTED-5     58616    1783                                 1783  
+e:m-INTERSECTED-5_hot 61004    1769                                 1769  
+e:m                   58964    1733                                 1733  
+e:m_hot               61916    1731                                 1731  
+e:mmmmm               59964    1730                                 1730  
+e:mmmmm_hot           62300    1739                                 1739  
+a                     170908   1739                                 1739  
+************************************************MEGA TEST SUMMARY:*************************************************

@@ -1,0 +1,19 @@
+
+--------------------------------COMPILATION SETTING: e----------07-23-2020--12:20:49-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 5
+
+NOTE: 5 iterations of data are missing
+
+         'start;com.google.android.apps.maps' 'click;Takeout' TOTAL 
+                                                                    
+AVERAGE: N/A                                  N/A             N/A   
+MEDIAN:  N/A                                  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-23-2020--12:20:49-------------------------------

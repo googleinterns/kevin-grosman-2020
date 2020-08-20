@@ -1,0 +1,47 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS', 'click;Start'] 
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-1: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:m-INTERSECTED-1.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-3: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:m-INTERSECTED-3.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-5: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/e:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:: Base: Startup, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-1: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/s:m-INTERSECTED-1.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-3: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/s:m-INTERSECTED-3.prof, Actions:
+ACTIONS COMPILED FOR FLAG s:m-INTERSECTED-5: Base: utilityProfiles/1X7945_Takeout_openApp_thru_navigation/s:m-INTERSECTED-5.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 52
+NOTE: 4 iterations of data are missing for flag e:m-INTERSECTED-1
+NOTE: 4 iterations of data are missing for flag s:m-INTERSECTED-1
+NOTE: 4 iterations of data are missing for flag s:m-INTERSECTED-5
+
+AVERAGED DATA:
+COMPILATION FLAG  APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+e:                45072    2227                                 3344            2040          1969               2066          11646 
+e:m-INTERSECTED-1 60136    1612                                 2816            1843          1906               1838          10015 
+e:m-INTERSECTED-3 59454    1682                                 2790            1853          1854               1872          10051 
+e:m-INTERSECTED-5 59364    1687                                 2780            1844          1902               1860          10073 
+s:                59528    1688                                 2919            1869          1895               1908          10279 
+s:m-INTERSECTED-1 61312    1618                                 2790            1830          1864               1865          9967  
+s:m-INTERSECTED-3 61096    1641                                 2774            1873          1874               1885          10047 
+s:m-INTERSECTED-5 60788    1663                                 2817            1878          1876               1865          10099 
+a                 170904   1659                                 2620            1768          1832               1785          9664  
+
+MEDIANED DATA:
+COMPILATION FLAG  APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+e:                45072    2205                                 3348            2009          1915               2057          11534 
+e:m-INTERSECTED-1 60136    1601                                 2815            1837          1890               1826          9969  
+e:m-INTERSECTED-3 59456    1670                                 2792            1845          1869               1863          10039 
+e:m-INTERSECTED-5 59364    1679                                 2788            1826          1885               1849          10027 
+s:                59528    1662                                 2836            1854          1881               1885          10118 
+s:m-INTERSECTED-1 61312    1607                                 2779            1811          1872               1841          9910  
+s:m-INTERSECTED-3 61096    1637                                 2781            1828          1854               1861          9961  
+s:m-INTERSECTED-5 60788    1648                                 2809            1849          1888               1852          10046 
+a                 170904   1644                                 2623            1756          1840               1796          9659  
+************************************************MEGA TEST SUMMARY:*************************************************

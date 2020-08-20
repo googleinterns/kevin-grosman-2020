@@ -1,0 +1,133 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e: u: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL.prof: s:m-INTERSECTED-5 s:m-NC-08-14-2020--22:09:27 s:m-NC-08-14-2020--22:09:27_back_HPL s:m-NC-08-14-2020--22:09:27_back_HPL_PL s:m-INTERSECTED-5h_INTERSECTED_s:m-NC-08-14-2020--22:09:27 s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-14-2020--22:09:27 s:mmmmm-NC-08-14-2020--22:09:27 a----------08-14-2020--23:51:49-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e:----------08-14-2020--23:51:49-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+Size of app: 45072
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  3215            2023          1879               1995          9112  
+ITERATION 2:  3430            2075          1924               1966          9395  
+ITERATION 3:  3391            2090          1975               1891          9347  
+ITERATION 4:  3388            2064          2025               2001          9478  
+                                                                                   
+AVERAGE:      3356            2063          1950               1963          9332  
+MEDIAN:       3391            2075          1975               1995          9436  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:----------08-14-2020--23:51:49-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u:----------08-14-2020--23:53:58-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Profile tag counts: HSPL: 10123; HPL: 4; PL: 0; L: 5623; 
+Size of app: 53204
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  3175            1996          1975               2081          9227  
+ITERATION 2:  3296            1991          1910               2059          9256  
+ITERATION 3:  3188            2035          1960               2081          9264  
+ITERATION 4:  3124            2122          2535               1922          9703  
+                                                                                   
+AVERAGE:      3195            2036          2095               2035          9361  
+MEDIAN:       3188            2035          1975               2081          9279  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u:----------08-14-2020--23:53:58-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof:----------08-14-2020--23:56:12-------------------------------
+SIZE DATA:
+
+Size of profile: 48746
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 9262; L: 8277; 
+Size of app: 59604
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  3175            1859          1908               1992          8934  
+ITERATION 2:  2970            1886          1925               1927          8708  
+ITERATION 3:  3527            2245          2480               1872          10124 
+ITERATION 4:  2903            1882          1957               2071          8813  
+                                                                                   
+AVERAGE:      3143            1968          2067               1965          9143  
+MEDIAN:       3175            1886          1957               1992          9010  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof:----------08-14-2020--23:56:12-------------------------------
+
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL.prof:----------08-14-2020--23:58:22-------------------------------
+SIZE DATA:
+
+Size of profile: 43044
+Profile tag counts: HSPL: 18349; HPL: 217; PL: 8059; L: 11318; 
+Size of app: 60240
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  3041            1879          1908               2124          8952  
+ITERATION 2:  2952            1868          1958               1911          8689  
+ITERATION 3:  3185            1884          1891               1915          8875  
+ITERATION 4:  3004            1901          2514               1905          9324  
+                                                                                   
+AVERAGE:      3045            1883          2067               1963          8958  
+MEDIAN:       3041            1884          1958               1915          8798  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/1_appStart_home/e:m-INTERSECTED-5h_convert_HPL_HSPL_INTERSECTED_e:mmmmm-NC-08-01-2020--13:33:01_back_HSPL_back_HPL_PL.prof:----------08-14-2020--23:58:22-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5----------08-15-2020--00:00:30-------------------------------
+SIZE DATA:
+
+Size of profile: 48755
+Profile tag counts: HSPL: 18066; HPL: 1190; PL: 29077; L: 8277; 
+Size of app: 60644
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  2842            1844          1942               1964          8592  
+ITERATION 2:  3137            1839          1860               1871          8707  
+ITERATION 3:  2941            1934          1891               1907          8673  
+ITERATION 4:  2926            1795          2080               1856          8657  
+                                                                                   
+AVERAGE:      2961            1853          1943               1899          8656  
+MEDIAN:       2941            1844          1942               1907          8634  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5----------08-15-2020--00:00:30-------------------------------
+
+
+--------------------------------COMPILATION SETTING: s:m-NC-08-14-2020--22:09:27----------08-15-2020--00:02:52-------------------------------
+SIZE DATA:
+
+Size of profile: 70482
+Profile tag counts: HSPL: 18066; HPL: 1469; PL: 29109; L: 8277; 
+Size of app: 61232
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' TOTAL 
+ITERATION 1:  2727            2730          1890               1916          9263  
+ITERATION 2:  2766            1821          1917               1882          8386  
+ITERATION 3:  2907            1897          1908               1846          8558  
+ITERATION 4:  2872            1898          1935               1836          8541  
+                                                                                   
+AVERAGE:      2818            2086          1912               1870          8686  
+MEDIAN:       2872            1898          1917               1882          8569  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-NC-08-14-2020--22:09:27----------08-15-2020--00:02:52-------------------------------

@@ -1,0 +1,24 @@
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5----------08-03-2020--23:34:05-------------------------------
+SIZE DATA:
+
+Size of profile: 43007
+Size of app: 59848
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'click;Takeout' TOTAL 
+ITERATION 1:  2729            2729  
+ITERATION 2:  2970            2970  
+ITERATION 3:  2765            2765  
+ITERATION 4:  2676            2676  
+ITERATION 5:  2741            2741  
+ITERATION 6:  2720            2720  
+ITERATION 7:  2749            2749  
+                                    
+AVERAGE:      2764            2764  
+MEDIAN:       2741            2741  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: s:m-INTERSECTED-5----------08-03-2020--23:34:05-------------------------------

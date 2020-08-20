@@ -1,0 +1,25 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+TOTAL ITERATIONS PER FLAG: 8
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    4246                                 1214                          2471            1727                      1512               1199                    5207                         1564          2182                          21326 
+u                53208    4101                                 1242                          2347            1664                      1502               1257                    5002                         1818          2029                          20966 
+f                45080    4196                                 1267                          2345            1681                      1536               1222                    4881                         1861          2150                          21144 
+p                45080    4198                                 1114                          2499            1669                      1604               1237                    4818                         1858          2421                          21421 
+c                60754    3720                                 1145                          2058            1560                      1518               1213                    5099                         1580          2246                          20142 
+a                170904   4131                                 1168                          1917            1580                      1500               1185                    5144                         1647          2167                          20443 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    4205                                 1075                          2560            1759                      1536               1218                    5350                         1756          2222                          21213 
+u                53208    4128                                 1454                          2451            1664                      1511               1229                    5172                         1861          1954                          21061 
+f                45080    4193                                 1466                          2474            1713                      1540               1217                    5023                         1847          2041                          21310 
+p                45080    4218                                 1091                          2505            1747                      1606               1244                    4909                         1969          2508                          21254 
+c                60788    3724                                 1060                          2147            1560                      1525               1218                    5112                         1482          2384                          20235 
+a                170904   3791                                 1286                          2086            1593                      1505               1192                    5105                         1763          2222                          20351 
+************************************************MEGA TEST SUMMARY:*************************************************

@@ -1,0 +1,25 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS']
+MEASURED CUJ: ['click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+TOTAL ITERATIONS PER FLAG: 12
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                50497    1378          1417                          2795  
+u                53208    1378          1417                          2795  
+f                53208    1378          1417                          2795  
+p                53208    1378          1417                          2795  
+c                53208    1378          1417                          2795  
+a                53208    1378          1417                          2795  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                53208    1520          1431                          2912  
+u                53208    1520          1431                          2912  
+f                53208    1520          1431                          2912  
+p                53208    1520          1431                          2912  
+c                53208    1520          1431                          2912  
+a                53208    1520          1431                          2912  
+************************************************MEGA TEST SUMMARY:*************************************************

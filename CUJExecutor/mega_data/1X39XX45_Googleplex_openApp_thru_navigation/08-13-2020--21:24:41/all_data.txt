@@ -1,0 +1,71 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e: a----------08-13-2020--21:24:41-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e:----------08-13-2020--21:24:41-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+Size of app: 45072
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'edit;Try gas;Googleplex' 'click;Amphitheatre' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+ITERATION 1:  1510                      1963                 1763                       1917               1504                    4468                         3700          16825 
+ITERATION 2:  977                       2887                 2653                       1529               1225                    3928                         3604          16803 
+ITERATION 3:  1011                      1780                 20974                      1595               1205                    31165                        2972          60702 
+                                                                                                                                                                                    
+AVERAGE:      1166                      2210                 8463                       1680               1311                    13187                        3425          31442 
+MEDIAN:       1011                      1963                 2653                       1595               1225                    4468                         3604          16519 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:----------08-13-2020--21:24:41-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------08-13-2020--21:28:28-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 3
+
+              'edit;Try gas;Googleplex' 'click;Amphitheatre' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+ITERATION 1:  973                       2406                 1689                       1474               1676                    4470                         2843          15531 
+ITERATION 2:  1042                      2673                 1915                       1570               1321                    4613                         3403          16537 
+ITERATION 3:  1065                      3286                 1725                       1912               1304                    5111                         3238          17641 
+                                                                                                                                                                                    
+AVERAGE:      1026                      2788                 1776                       1652               1433                    4731                         3161          16567 
+MEDIAN:       1042                      2673                 1725                       1570               1321                    4613                         3238          16182 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------08-13-2020--21:28:28-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps'] 
+MEASURED CUJ: ['edit;Try gas;Googleplex', 'click;Amphitheatre', 'click;Googleplex;+strict', 'click;DIRECTIONS', 'click;Choose starting', 'click;Your location;strict', 'click;Start']
+POST CUJ:     ['clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG a:
+All
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 3
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'edit;Try gas;Googleplex' 'click;Amphitheatre' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:               45072    1166                      2210                 8463                       1680               1311                    13187                        3425          31442 
+a                170904   1026                      2788                 1776                       1652               1433                    4731                         3161          16567 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'edit;Try gas;Googleplex' 'click;Amphitheatre' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+e:               45072    1011                      1963                 2653                       1595               1225                    4468                         3604          16519 
+a                170904   1042                      2673                 1725                       1570               1321                    4613                         3238          16182 
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e: a----------08-13-2020--21:24:41-----------------------------------------------------------------

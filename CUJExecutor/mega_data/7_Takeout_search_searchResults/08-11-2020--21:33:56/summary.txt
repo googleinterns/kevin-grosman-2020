@@ -1,0 +1,27 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps']
+MEASURED CUJ: ['click;Takeout']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO FOR FLAG e::
+Base: Empty, Actions:
+Profile tag counts: HSPL: 0; HPL: 0; PL: 0; L: 0; 
+
+INFO FOR FLAG s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 695; PL: 0; L: 6520; 
+
+INFO FOR FLAG s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 695; PL: 13683; L: 8357; 
+
+INFO FOR FLAG s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_back_HPL_PL:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-INTERSECTED-5h_INTERSECTED_s:mmmmm-NC-08-01-2020--15:12:08_back_HPL_PL.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 695; PL: 13683; L: 13220; 
+
+INFO FOR FLAG s:m-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL:
+Base: utilityProfiles/7_Takeout_search_searchResults/s:m-NC-08-01-2020--15:12:08_keep_HSPL_HPL_back_HSPL_HPL.prof, Actions:
+Profile tag counts: HSPL: 17802; HPL: 584; PL: 0; L: 6490; 
+

@@ -1,0 +1,25 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS', 'click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+TOTAL ITERATIONS PER FLAG: 8
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    2088                                 2991            1899          2106               1600          1549                          12236 
+u                53208    1882                                 4350            1858          2031               1609          1526                          13257 
+f                45080    1977                                 2906            1874          2060               1582          1549                          11950 
+p                45080    1963                                 2906            1829          2070               1592          1533                          11895 
+c                60404    1535                                 2622            1722          1979               1453          1458                          10772 
+a                170904   1590                                 2534            1676          1952               1539          1395                          10688 
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    1985                                 3041            1917          2130               1598          1541                          12150 
+u                53208    1904                                 3036            1885          2055               1581          1515                          12185 
+f                45080    2003                                 2926            1883          2080               1599          1525                          11982 
+p                45080    1963                                 2919            1849          2090               1590          1539                          11911 
+c                60496    1540                                 2629            1701          1964               1469          1442                          10791 
+a                170904   1599                                 2540            1713          1942               1532          1391                          10760 
+************************************************MEGA TEST SUMMARY:*************************************************

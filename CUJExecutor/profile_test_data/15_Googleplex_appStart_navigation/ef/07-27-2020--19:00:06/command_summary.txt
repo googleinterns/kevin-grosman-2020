@@ -1,0 +1,5 @@
+
+----------------------------------
+EXECUTING COMMAND:
+./buildProfile CUJS/aGMM_Latency_Transitions/Googleplex/15_Googleplex_appStart_navigation.txt ef
+RAW OUTPUT: 

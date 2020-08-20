@@ -1,0 +1,21 @@
+
+--------------------------------COMPILATION SETTING: e:m-INTERSECTED-5----------08-03-2020--03:48:07-------------------------------
+SIZE DATA:
+
+Size of profile: 39072
+Size of app: 58272
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'start;com.google.android.apps.maps' 'edit;Search here;Googleplex' 'click;Amphith' 'click;Googleplex;+strict' 'click;DIRECTIONS' 'click;Choose starting' 'click;Your location;strict' 'click;Start' TOTAL 
+ITERATION 1:  4006                                 992                           2268            1744                       1573               1154                    4725                         2468          18930 
+ITERATION 2:  4068                                 1418                          1926            1759                       1572               1287                    4213                         2313          18556 
+ITERATION 3:  4129                                 1392                          1951            1781                       1534               1203                    4935                         2380          19305 
+ITERATION 4:  3959                                 999                           2276            1779                       1538               1164                    5009                         2703          19427 
+                                                                                                                                                                                                                        
+AVERAGE:      4040                                 1200                          2105            1765                       1554               1202                    4720                         2466          19052 
+MEDIAN:       4068                                 1392                          2268            1779                       1572               1203                    4935                         2468          19685 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:m-INTERSECTED-5----------08-03-2020--03:48:07-------------------------------

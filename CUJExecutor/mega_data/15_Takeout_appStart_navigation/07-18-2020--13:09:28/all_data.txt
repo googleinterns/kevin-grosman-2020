@@ -1,0 +1,143 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f c a----------07-18-2020--13:09:28-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-18-2020--13:09:29-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3045              1655                          4700  
+ITERATION 2:  3250              1645                          4895  
+ITERATION 3:  3652              1830                          5482  
+ITERATION 4:  3350              1645                          4995  
+                                                                    
+AVERAGE:      3324              1693                          5018  
+MEDIAN:       3350              1655                          4995  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-18-2020--13:09:29-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-18-2020--13:10:46-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  3362              1657                          5019  
+ITERATION 2:  3141              1672                          4813  
+ITERATION 3:  3142              1687                          4829  
+ITERATION 4:  3060              1765                          4825  
+                                                                    
+AVERAGE:      3176              1695                          4871  
+MEDIAN:       3142              1687                          4829  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-18-2020--13:10:46-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-18-2020--13:12:14-------------------------------
+SIZE DATA:
+
+Size of profile: 71837
+Size of app: 70040
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  2697              1559                          4256  
+ITERATION 2:  2706              1492                          4198  
+ITERATION 3:  2612              1490                          4102  
+ITERATION 4:  2773              1511                          4284  
+                                                                    
+AVERAGE:      2697              1513                          4210  
+MEDIAN:       2706              1511                          4256  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-18-2020--13:12:14-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-18-2020--13:15:01-------------------------------
+SIZE DATA:
+
+Size of profile: 72763
+Size of app: 70208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  2488              1509                          3997  
+ITERATION 2:  2641              1468                          4109  
+ITERATION 3:  2614              1511                          4125  
+ITERATION 4:  2661              1487                          4148  
+                                                                    
+AVERAGE:      2601              1493                          4094  
+MEDIAN:       2641              1509                          4125  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-18-2020--13:15:01-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-18-2020--13:17:50-------------------------------
+SIZE DATA:
+
+Size of app: 170908
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  2856              1415                          4271  
+ITERATION 2:  2861              1565                          4426  
+ITERATION 3:  2958              1599                          4557  
+ITERATION 4:  3127              1505                          4632  
+                                                                    
+AVERAGE:      2950              1521                          4471  
+MEDIAN:       2958              1565                          4557  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-18-2020--13:17:50-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['click;Nav to BB', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [click;Nav to BB]
+ACTIONS COMPILED FOR FLAG c: [click;Nav to BB, clickImage;Close navigation]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 4
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+e                45080    3324              1693                          5018  
+u                53208    3176              1695                          4871  
+f                70040    2697              1513                          4210  
+c                70208    2601              1493                          4094  
+a                170908   2950              1521                          4471  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Nav to BB' 'clickImage;Close navigation' TOTAL 
+e                45080    3350              1655                          4995  
+u                53208    3142              1687                          4829  
+f                70040    2706              1511                          4256  
+c                70208    2641              1509                          4125  
+a                170908   2958              1565                          4557  
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f c a----------07-18-2020--13:09:28-----------------------------------------------------------------

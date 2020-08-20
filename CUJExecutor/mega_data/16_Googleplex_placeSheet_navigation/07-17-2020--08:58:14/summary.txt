@@ -1,0 +1,25 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Googleplex', 'click;Amphith', 'click;Googleplex;strict', 'click;DIRECTIONS', 'click;Choose starting']
+MEASURED CUJ: ['click;Your location;strict', 'click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+TOTAL ITERATIONS PER FLAG: 8
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    5154                         1861          2610                          9626  
+u                53208    5174                         1988          2143                          9306  
+f                45080    5233                         1901          2209                          9343  
+p                60120    5027                         1792          2279                          9099  
+c                61184    4995                         1710          2322                          9028  
+a                170904   4978                         1826          2205                          9009  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Your location;strict' 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45076    5414                         1987          2678                          9712  
+u                53208    5187                         2139          2092                          9553  
+f                45080    5366                         1885          2089                          9277  
+p                60212    5116                         1843          2351                          9229  
+c                61356    4974                         1712          2248                          9017  
+a                170904   5103                         1663          2221                          9275  
+************************************************MEGA TEST SUMMARY:*************************************************

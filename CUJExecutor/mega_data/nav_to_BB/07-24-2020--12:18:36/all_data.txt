@@ -1,0 +1,94 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: c a c a----------07-24-2020--12:18:36-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--12:18:37-------------------------------
+SIZE DATA:
+
+Size of profile: 58950
+Size of app: 60896
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 1
+
+              'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1472                                 2644            1617          1886               1775          1860                          11254 
+                                                                                                                                                      
+AVERAGE:      1472                                 2644            1617          1886               1775          1860                          11254 
+MEDIAN:       1472                                 2644            1617          1886               1775          1860                          11254 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--12:18:37-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--12:21:15-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 1
+
+              'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1589                                 2316            1755          1988               1682          1285                          10615 
+                                                                                                                                                      
+AVERAGE:      1589                                 2316            1755          1988               1682          1285                          10615 
+MEDIAN:       1589                                 2316            1755          1988               1682          1285                          10615 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--12:21:15-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--12:22:28-------------------------------
+SIZE DATA:
+
+Size of profile: 58004
+Size of app: 59676
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 1
+
+              'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1552                                 2670            1729          2082               1234          1373                          10640 
+                                                                                                                                                      
+AVERAGE:      1552                                 2670            1729          2082               1234          1373                          10640 
+MEDIAN:       1552                                 2670            1729          2082               1234          1373                          10640 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--12:22:28-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--12:25:03-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 1
+
+              'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1521                                 2560            1595          2023               1612          1336                          10647 
+                                                                                                                                                      
+AVERAGE:      1521                                 2560            1595          2023               1612          1336                          10647 
+MEDIAN:       1521                                 2560            1595          2023               1612          1336                          10647 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-24-2020--12:25:03-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--12:26:15-------------------------------
+SIZE DATA:
+
+Size of profile: 60529
+Size of app: 60716
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 1
+
+              'start;com.google.android.apps.maps' 'click;Takeout' 'click;Billy' 'click;DIRECTIONS' 'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1512                                 2745            1689          1886               1519          1402                          10753 
+                                                                                                                                                      
+AVERAGE:      1512                                 2745            1689          1886               1519          1402                          10753 
+MEDIAN:       1512                                 2745            1689          1886               1519          1402                          10753 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-24-2020--12:26:15-------------------------------

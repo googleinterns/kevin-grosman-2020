@@ -1,0 +1,19 @@
+
+--------------------------------COMPILATION SETTING: e:m-INTERSECTED-3----------07-30-2020--22:34:16-------------------------------
+SIZE DATA:
+
+Size of profile: 16921
+Size of app: 47308
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+NOTE: 4 iterations of data are missing
+
+         'click;Takeout' TOTAL 
+                               
+AVERAGE: N/A             N/A   
+MEDIAN:  N/A             N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:m-INTERSECTED-3----------07-30-2020--22:34:16-------------------------------

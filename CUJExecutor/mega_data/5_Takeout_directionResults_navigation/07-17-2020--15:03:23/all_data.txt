@@ -1,0 +1,301 @@
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f p c a----------07-17-2020--15:03:23-----------------------------------------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--15:03:39-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45080
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1267          1411                          2678  
+ITERATION 2:  1236          1461                          2697  
+ITERATION 3:  1204          1445                          2649  
+ITERATION 4:  1643          1353                          2996  
+                                                                
+AVERAGE:      1337          1417                          2755  
+MEDIAN:       1267          1445                          2697  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--15:03:39-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--15:05:44-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1218          1394                          2612  
+ITERATION 2:  1145          1346                          2491  
+ITERATION 3:  1477          1401                          2878  
+ITERATION 4:  1160          1444                          2604  
+                                                                
+AVERAGE:      1250          1396                          2646  
+MEDIAN:       1218          1401                          2612  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--15:05:44-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--15:08:03-------------------------------
+SIZE DATA:
+
+Size of profile: 46465
+Size of app: 58516
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1294          1307                          2601  
+ITERATION 2:  1294          1302                          2596  
+ITERATION 3:  1561          1316                          2877  
+ITERATION 4:  1551          1325                          2876  
+                                                                
+AVERAGE:      1425          1312                          2737  
+MEDIAN:       1551          1316                          2876  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--15:08:03-------------------------------
+
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--15:11:34-------------------------------
+SIZE DATA:
+
+Size of profile: 53076
+Size of app: 59220
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1205          1335                          2540  
+ITERATION 2:  1066          1342                          2408  
+ITERATION 3:  1179          1278                          2457  
+ITERATION 4:  1205          1261                          2466  
+                                                                
+AVERAGE:      1163          1304                          2467  
+MEDIAN:       1205          1335                          2466  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--15:11:34-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--15:15:14-------------------------------
+SIZE DATA:
+
+Size of profile: 58009
+Size of app: 60092
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1244          1282                          2526  
+ITERATION 2:  1181          1342                          2523  
+ITERATION 3:  1239          1281                          2520  
+ITERATION 4:  1259          1300                          2559  
+                                                                
+AVERAGE:      1230          1301                          2532  
+MEDIAN:       1244          1300                          2526  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--15:15:14-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--15:18:53-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+NOTE: 4 iterations of data are missing
+
+         'click;Start' 'clickImage;Close navigation' TOTAL 
+                                                           
+AVERAGE: N/A           N/A                           N/A   
+MEDIAN:  N/A           N/A                           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--15:18:53-------------------------------
+
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--15:20:14-------------------------------
+SIZE DATA:
+
+Size of profile: 0
+Size of app: 45076
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1260          1429                          2689  
+ITERATION 2:  1222          1427                          2649  
+ITERATION 3:  1229          1999                          3228  
+ITERATION 4:  1136          1579                          2715  
+                                                                
+AVERAGE:      1211          1608                          2820  
+MEDIAN:       1229          1579                          2715  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e----------07-17-2020--15:20:14-------------------------------
+
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--15:22:22-------------------------------
+SIZE DATA:
+
+Size of profile: 38680
+Size of app: 53208
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+NOTE: 4 iterations of data are missing
+
+         'click;Start' 'clickImage;Close navigation' TOTAL 
+                                                           
+AVERAGE: N/A           N/A                           N/A   
+MEDIAN:  N/A           N/A                           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: u----------07-17-2020--15:22:22-------------------------------
+
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--15:24:01-------------------------------
+SIZE DATA:
+
+Size of profile: 47494
+Size of app: 60032
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1306          1318                          2624  
+ITERATION 2:  1248          1351                          2599  
+ITERATION 3:  1415          1463                          2878  
+ITERATION 4:  1149          1388                          2537  
+                                                                
+AVERAGE:      1279          1380                          2659  
+MEDIAN:       1306          1388                          2624  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: f----------07-17-2020--15:24:01-------------------------------
+
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--15:27:24-------------------------------
+SIZE DATA:
+
+Size of profile: 51920
+Size of app: 59468
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1278          1319                          2597  
+ITERATION 2:  1233          1447                          2680  
+ITERATION 3:  1136          1446                          2582  
+ITERATION 4:  1230          1325                          2555  
+                                                                
+AVERAGE:      1219          1384                          2603  
+MEDIAN:       1233          1446                          2597  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: p----------07-17-2020--15:27:24-------------------------------
+
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--15:30:58-------------------------------
+SIZE DATA:
+
+Size of profile: 59258
+Size of app: 60192
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+              'click;Start' 'clickImage;Close navigation' TOTAL 
+ITERATION 1:  1240          1284                          2524  
+ITERATION 2:  1526          1296                          2822  
+ITERATION 3:  1155          1306                          2461  
+ITERATION 4:  1132          1301                          2433  
+                                                                
+AVERAGE:      1263          1296                          2560  
+MEDIAN:       1240          1301                          2524  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: c----------07-17-2020--15:30:58-------------------------------
+
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--15:34:42-------------------------------
+SIZE DATA:
+
+Size of app: 170904
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 4
+
+NOTE: 4 iterations of data are missing
+
+         'click;Start' 'clickImage;Close navigation' TOTAL 
+                                                           
+AVERAGE: N/A           N/A                           N/A   
+MEDIAN:  N/A           N/A                           N/A   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: a----------07-17-2020--15:34:42-------------------------------
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'click;Takeout', 'click;Billy', 'click;DIRECTIONS']
+MEASURED CUJ: ['click;Start', 'clickImage;Close navigation', 'clickImage;Navigate up']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start, clickImage;Close navigation]
+ACTIONS COMPILED FOR FLAG a: All
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy, click;DIRECTIONS, click;Start, clickImage;Close navigation]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 8
+NOTE: 4 iterations of data are missing for flag u
+NOTE: 8 iterations of data are missing for flag a
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45078    1274          1513                          2787  
+u                53208    1250          1396                          2646  
+f                59274    1352          1346                          2698  
+p                59344    1191          1344                          2535  
+c                60142    1247          1299                          2546  
+a                170904   N/A           N/A                           N/A   
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Start' 'clickImage;Close navigation' TOTAL 
+e                45080    1236          1445                          2697  
+u                53208    1218          1401                          2612  
+f                60032    1306          1325                          2624  
+p                59468    1205          1335                          2555  
+c                60192    1240          1300                          2524  
+a                170904   N/A           N/A                           N/A   
+************************************************MEGA TEST SUMMARY:*************************************************
+
+-----------------------------------------------------------------CPU STATUSES: 1 1 1 1 1 1 1 1----------COMPILATION FLAGS: e u f p c a----------07-17-2020--15:03:23-----------------------------------------------------------------

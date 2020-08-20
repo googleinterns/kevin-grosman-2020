@@ -1,0 +1,25 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Google Office near Mountainview'] 
+MEASURED CUJ: ['click;Search for', 'click;View map']
+
+TOTAL ITERATIONS PER FLAG: 10
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Search for' TOTAL 
+e                45076    3221               3221  
+u                53208    3024               3024  
+f                45080    3009               3009  
+p                59096    2671               2671  
+c                59194    2738               2738  
+a                170908   2560               2560  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Search for' TOTAL 
+e                45076    3088               3088  
+u                53208    2998               2998  
+f                45080    3029               3029  
+p                59176    2709               2709  
+c                59264    2710               2710  
+a                170908   2582               2582  
+************************************************MEGA TEST SUMMARY:*************************************************

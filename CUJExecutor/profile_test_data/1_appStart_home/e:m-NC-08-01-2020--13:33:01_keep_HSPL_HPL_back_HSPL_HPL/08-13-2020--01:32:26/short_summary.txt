@@ -1,0 +1,24 @@
+
+--------------------------------COMPILATION SETTING: e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL----------08-13-2020--01:32:26-------------------------------
+SIZE DATA:
+
+Size of profile: 36333
+Profile tag counts: HSPL: 18066; HPL: 216; PL: 0; L: 6536; 
+Size of app: 58064
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 7
+
+              'start;com.google.android.apps.maps' TOTAL 
+ITERATION 1:  1538                                 1538  
+ITERATION 2:  1556                                 1556  
+ITERATION 3:  1546                                 1546  
+ITERATION 4:  1596                                 1596  
+ITERATION 5:  1473                                 1473  
+ITERATION 6:  1484                                 1484  
+ITERATION 7:  1581                                 1581  
+                                                         
+AVERAGE:      1539                                 1539  
+MEDIAN:       1546                                 1546  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: e:m-NC-08-01-2020--13:33:01_keep_HSPL_HPL_back_HSPL_HPL----------08-13-2020--01:32:26-------------------------------

@@ -1,0 +1,40 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'click;Takeout'] 
+MEASURED CUJ: ['click;Billy', 'click;REVIEWS']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy]
+ACTIONS COMPILED FOR FLAG a: All
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG u: Those in the Cloud Profile
+ACTIONS COMPILED FOR FLAG f: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG p: [start;com.google.android.apps.maps, click;Takeout]
+ACTIONS COMPILED FOR FLAG c: [start;com.google.android.apps.maps, click;Takeout, click;Billy]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 10
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Billy' TOTAL 
+e                45076    2087          2087  
+u                53208    1966          1966  
+f                58534    1828          1828  
+p                59170    1870          1870  
+c                59498    1805          1805  
+a                170904   1789          1789  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Billy' TOTAL 
+e                45076    2104          2104  
+u                53208    1946          1946  
+f                58656    1841          1841  
+p                59172    1856          1856  
+c                59708    1804          1804  
+a                170904   1800          1800  
+************************************************MEGA TEST SUMMARY:*************************************************

@@ -1,0 +1,38 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      ['start;com.google.android.apps.maps', 'edit;Search here;Google Office near Mountainview'] 
+MEASURED CUJ: ['click;Search for']
+POST CUJ:     ['click;View map']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e: None
+ACTIONS COMPILED FOR FLAG em: Base: Empty, Actions: [click;Search for]
+ACTIONS COMPILED FOR FLAG u: Base: Cloud, Actions:
+ACTIONS COMPILED FOR FLAG ef: Base: Empty, Actions: [start;com.google.android.apps.maps]
+ACTIONS COMPILED FOR FLAG ep: Base: Empty, Actions: [start;com.google.android.apps.maps, edit;Search here;Google Office near Mountainview]
+ACTIONS COMPILED FOR FLAG ec: Base: Empty, Actions: [start;com.google.android.apps.maps, edit;Search here;Google Office near Mountainview, click;Search for]
+ACTIONS COMPILED FOR FLAG a: All
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS PER FLAG: 35
+
+AVERAGED DATA:
+COMPILATION FLAG APP SIZE 'click;Search for' TOTAL 
+e                45076    2949               2949  
+em               48170    2741               2741  
+u                53208    2865               2865  
+ef               58918    2666               2666  
+ep               59237    2684               2684  
+ec               59772    2632               2632  
+a                170904   2547               2547  
+
+MEDIANED DATA:
+COMPILATION FLAG APP SIZE 'click;Search for' TOTAL 
+e                45076    2987               2987  
+em               48152    2637               2637  
+u                53208    2789               2789  
+ef               58964    2578               2578  
+ep               59828    2579               2579  
+ec               59576    2501               2501  
+a                170904   2468               2468  
+************************************************MEGA TEST SUMMARY:*************************************************

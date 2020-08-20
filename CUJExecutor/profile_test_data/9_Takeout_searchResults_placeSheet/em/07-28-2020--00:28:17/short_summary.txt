@@ -1,0 +1,26 @@
+
+--------------------------------COMPILATION SETTING: utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof----------07-28-2020--00:28:17-------------------------------
+SIZE DATA:
+
+Size of profile: 28836
+Size of app: 48556
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TOTAL ITERATIONS: 9
+
+              'click;Billy' TOTAL 
+ITERATION 1:  2020          2020  
+ITERATION 2:  1953          1953  
+ITERATION 3:  2048          2048  
+ITERATION 4:  2080          2080  
+ITERATION 5:  2003          2003  
+ITERATION 6:  1978          1978  
+ITERATION 7:  1981          1981  
+ITERATION 8:  2053          2053  
+ITERATION 9:  2028          2028  
+                                  
+AVERAGE:      2016          2016  
+MEDIAN:       2020          2020  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------COMPILATION SETTING: utilityProfiles/9_Takeout_searchResults_placeSheet/em.prof----------07-28-2020--00:28:17-------------------------------

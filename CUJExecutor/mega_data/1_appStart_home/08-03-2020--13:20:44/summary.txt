@@ -1,0 +1,11 @@
+
+************************************************MEGA TEST SUMMARY:*************************************************
+PRE CUJ:      
+MEASURED CUJ: ['start;com.google.android.apps.maps']
+POST CUJ:     ['click;Takeout']
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ACTIONS COMPILED FOR FLAG e:: Base: Empty, Actions:
+ACTIONS COMPILED FOR FLAG e:m-INTERSECTED-1: Base: utilityProfiles/1_appStart_home/e:m-INTERSECTED-1.prof, Actions:
+ACTIONS COMPILED FOR FLAG e:m-NC-08-01-2020--13:33:01.prof: Base: utilityProfiles/1_appStart_home/e:m-NC-08-01-2020--13:33:01.prof, Actions:
+ACTIONS COMPILED FOR FLAG a: All
