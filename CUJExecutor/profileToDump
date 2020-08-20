@@ -13,7 +13,7 @@ then
 fi
 
 
-PHONE_PROFILE="/sdcard/profiles/profileIntersection_intersection.prof"
+PHONE_PROFILE="/sdcard/profiles/profileToDump_phone_profile.prof"
 
 
 APK_LOCATION=$(adb shell "ls /data/app/${PACKAGE}*/base.apk")

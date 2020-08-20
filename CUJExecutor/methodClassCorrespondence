@@ -7,10 +7,10 @@ FILE=${1?"ERROR: need to provide a file"}
 #         echos the number of entries with each tag in each file
 
 
-#If we are provided a profile, convert it to it's dump. If we were given a text file, interpret it as the dump
+#If we are provided a profile, convert it to its dump. If we were given a text file, interpret it as the dump
 if [ "${FILE##*.}" = "prof" ]
 then
-	DUMP="/tmp/methodClassBacking_dump.txt"
+	DUMP="/tmp/methodClassCorrespondence_dump.txt"
 	./profileToDump $FILE > $DUMP
 elif [ "${FILE##*.}" = "txt" ]
 then
@@ -22,8 +22,8 @@ fi
 
 
 
-NON_BACKED="/tmp/methodClassBacking_non_backed.txt"
-BACKED="/tmp/methodClassBacking_backed.txt"
+NON_BACKED="/tmp/methodClassCorrespondence_non_backed.txt"
+BACKED="/tmp/methodClassCorrespondence_backed.txt"
 echo -n "" > $NON_BACKED
 echo -n "" > $BACKED
 
@@ -40,10 +40,10 @@ do
 	fi
 
 done
-echo "NON_BACKED SUMMARY:"
+echo "Entry counts filtered by entries without their corresponding class in the profile"
 ./dumpSummary $NON_BACKED
 echo ""
-echo "BACKED SUMMARY:"
+echo "Entry counts filtered by entries with their corresponding class in the profile"
 ./dumpSummary $BACKED
 echo ""
 

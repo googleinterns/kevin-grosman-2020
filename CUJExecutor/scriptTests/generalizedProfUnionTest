@@ -22,7 +22,7 @@ HOT_P1_COLD_P2_DUMP="scriptTests/scriptTestFiles/hot_p1_cold_p2_dump.txt"	#Conta
 HOT_P1_COLD_P2_PROF="/tmp/test_hot_p1_cold_p2.prof"
 UNION_PROF="/tmp/test_union.prof"
 UNION_DUMP="/tmp/test_union_dump.txt"
-EMPTY_PROF="/utilityProfiles/empty.prof"
+EMPTY_PROF="utilityProfiles/empty.prof"
 
 ./dumpToProfile $COLD_DUMP > $COLD_PROF
 ./dumpToProfile $HOT_DUMP > $HOT_PROF

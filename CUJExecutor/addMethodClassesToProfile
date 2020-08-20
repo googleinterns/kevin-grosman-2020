@@ -4,7 +4,7 @@
 # OUTPUT: a new profile in which all methods with the provided tags have their corresponding classes included in the profile (these methods are backed by their classes).
 
 PROFILE=${1?"ERROR: need to provide a profile"}
-DUMP="/tmp/back_dump.txt"
+DUMP="/tmp/addMethodClassesToProfile_dump.txt"
 
 ./profileToDump $PROFILE > $DUMP
 

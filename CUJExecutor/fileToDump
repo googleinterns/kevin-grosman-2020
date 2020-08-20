@@ -2,8 +2,8 @@
 
 # INPUT: a .prof or .txt file
 # OUTPUT: a method-class dump. 
-# If a .txt file is passed, it is enterpretted as the dump to be returned.
-# If a .prof file is passed, it is converted to a dump and returned.
+# If a .txt file is passed, it is simply printed to stdout
+# If a .prof file is passed, it is converted to a dump and printed to stdout
 
 
 FILE=${1?"ERROR: must provide a file"}

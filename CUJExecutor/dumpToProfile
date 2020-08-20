@@ -12,8 +12,8 @@ then
 	exit 1
 fi
 
-PHONE_DUMP="/sdcard/profiles/dump.txt"
-PHONE_PROFILE="/sdcard/profiles/profileIntersection_intersection.prof"
+PHONE_DUMP="/sdcard/profiles/dumpToProfile_phoneDump.txt"
+PHONE_PROFILE="/sdcard/profiles/dumpToProfile_phoneProfile.prof"
 
 
 APK_LOCATION=$(adb shell "ls /data/app/${PACKAGE}*/base.apk")

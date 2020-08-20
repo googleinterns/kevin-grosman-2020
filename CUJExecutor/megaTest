@@ -27,7 +27,7 @@ POST_CUJ=$(sed '3q;d' $INPUT_FILE)
 ITERS=$(sed '4q;d' $INPUT_FILE)
 RECORD=$(sed '5q;d' $INPUT_FILE)
 MEASURED_CUJ_STR_ARRAY=$(./peelHardBrackets $MEASURED_CUJ) #peel off hard brackets
-LOOPS=35 #Probably should make this an input
+LOOPS=51 #Probably should make this an input
 let "TOTAL_ITERS=$ITERS * $LOOPS"
 
 #Initializing variables
@@ -124,7 +124,7 @@ echo $FOLDERS_WITH_VIDS
 for MPT_FOLDER in $FOLDERS_WITH_VIDS
 do
 	echo "${MPT_FOLDER}" 
-	rm "${MPT_FOLDER}/full_video.mp4" #2> /dev/null
+	rm "${MPT_FOLDER}/full_video.mp4" 2> /dev/null
 done
 
 #Display the summary table

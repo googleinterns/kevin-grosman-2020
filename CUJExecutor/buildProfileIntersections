@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # The script builds new (non-cached) profiles for your CUJ and compilation profile until the utilityProfiles folder  has enough to create the 
-# intersection you want.T hen it performs the intersections up the number you specify, dumping intersections of the first (as ordered by date) 
+# intersection you want. Then it performs the intersections up the number you specify, dumping intersections of the first (as ordered by date) 
 # i profiles for all  1 <= i <= $NUM_INTERSECTIONS. 
 #
 # The files will be stored in the utilityProfiles folder in the sub-folder corresponding to your CUJ and will be named 

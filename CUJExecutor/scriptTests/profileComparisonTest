@@ -38,7 +38,7 @@ function assertContentEquals() {
 
 ./dumpToProfile $DUMP_A1 > $PROFILE_A
 ./dumpToProfile $DUMP_B1 > $PROFILE_B
-./profileComparison $PROFILE_A $PROFILE_B > $COMPARISON
+./tagComparison $PROFILE_A $PROFILE_B > $COMPARISON
 
 assertContentEquals $EXPECTED_COMPARISON_1 $COMPARISON 1
 
@@ -46,6 +46,6 @@ assertContentEquals $EXPECTED_COMPARISON_1 $COMPARISON 1
 
 ./dumpToProfile $DUMP_A2 > $PROFILE_A
 ./dumpToProfile $DUMP_B2 > $PROFILE_B
-./profileComparison $PROFILE_A $PROFILE_B > $COMPARISON
+./tagComparison $PROFILE_A $PROFILE_B > $COMPARISON
 
 assertContentEquals $EXPECTED_COMPARISON_2 $COMPARISON 2

@@ -12,17 +12,18 @@ FILE2=${2?"ERROR: need to provide two files"}
 
 DUMP1="/tmp/comparison_dump1.txt"
 DUMP2="/tmp/comparison_dump2.txt"
-
+LOST="/tmp/comparison_lost.txt"
 
 ./fileToDump $FILE1 > $DUMP1 
 ./fileToDump $FILE2 > $DUMP2
 
 
 
-i=0
 sort -o $DUMP1 $DUMP1
 sort -o $DUMP2 $DUMP2
+echo -n "" > $LOST
 
+i=0
 for VAL in  $(comm -3 $DUMP1 $DUMP2 | sed 's/^[[:blank:]]*[HSPL]*//' | sort -u) #Iterate through a unique, sorted list of all methods/classes not shared by both dumps
 do
 	SpecialChars=("["  "]")
@@ -46,7 +47,10 @@ do
 	if [ "$TAG2" = "" ] 
 	then
 		TAG2="NA"
+		echo $LINE1 >> $LOST
 	fi
+
+
 
 	#Increment the counter for the corresponding transition
 	((${TAG1}_to_${TAG2}++))
